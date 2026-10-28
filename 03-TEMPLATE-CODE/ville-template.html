@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  TEMPLATE de page — structure réelle issue d'un site vitrine local en production.
+  Structure HTML + JSON-LD + classes CSS : à garder telles quelles.
+  Textes, prix, villes, offres : illustratifs → à réécrire selon
+  le métier réel (voir BRIEF-A-REMPLIR.md et les PROMPT-0X).
+  UNE page ville. Dupliquer une fois par ville réellement desservie (voir PROMPT-04).
+  ============================================================
+-->
+
+<html lang="fr">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{GA4_ID}}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "{{GA4_ID}}");
+</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Installation {{Service}} {{VILLE_1}} — {{MOT_CONVERSION}} Gratuit 24h | {{NOM_ENTREPRISE}}</title>
+  <meta name="description" content="{{NOM_ENTREPRISE}}, votre installateur {{service}} à {{VILLE_1}}. Mono-split, bi-split, tri-split {{OFFRE_3}}, {{OFFRE_2}}, {{OFFRE_1}}. {{MOT_CONVERSION}} gratuit sous 24h, installation en 48h."/>
+  <meta property="og:title" content="Installation {{Service}} {{VILLE_1}} — {{MOT_CONVERSION}} Gratuit 24h | {{NOM_ENTREPRISE}}"/>
+  <meta property="og:description" content="{{NOM_ENTREPRISE}}, votre installateur {{service}} à {{VILLE_1}}. Mono-split, bi-split, tri-split {{OFFRE_3}}, {{OFFRE_2}}, {{OFFRE_1}}. {{MOT_CONVERSION}} gratuit sous 24h, installation en 48h."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://{{DOMAINE}}/assets/img/lifestyle-{{service_court}}-salon-vue-mer.png"/>
+  <meta property="og:url" content="https://{{DOMAINE}}/{{slug-metier}}-{{slug-ville-1}}.html"/>
+  <meta property="og:site_name" content="{{NOM_ENTREPRISE}}"/>
+  <link rel="canonical" href="https://{{DOMAINE}}/{{slug-metier}}-{{slug-ville-1}}.html"/>
+  <link rel="icon" type="image/png" href="assets/img/logo-{{SLUG}}.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "{{TYPE_SCHEMA}}",
+    "name": "{{NOM_ENTREPRISE}}",
+    "url": "https://{{DOMAINE}}",
+    "telephone": "{{TEL_INTERNATIONAL}}",
+    "email": "{{EMAIL_PRO}}",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "{{VILLE_1}}",
+      "postalCode": "{{CODE_POSTAL}}",
+      "addressRegion": "{{REGION}}",
+      "addressCountry": "FR"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": {{LAT}}, "longitude": {{LON}} },
+    "areaServed": { "@type": "State", "name": "{{DEPARTEMENT}}" },
+    "priceRange": "{{FOURCHETTE_PRIX}}",
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "{{HEURE_OUVERTURE}}",
+      "closes": "{{HEURE_FERMETURE}}"
+    }]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{"@type":"Question","name":"Combien coûte l'installation d'une {{service}} à {{VILLE_1}} ?","acceptedAnswer":{"@type":"Answer","text":"À {{VILLE_1}}, le prix d'une installation complète (matériel + pose) varie de 899 € pour un mono-split entrée de gamme à 4 999 € pour un tri-split {{OFFRE_3}}. Nos tarifs sont fixés et affichés sans surprise."}},{"@type":"Question","name":"Faut-il une autorisation pour installer une {{service_court}} à {{VILLE_1}} ?","acceptedAnswer":{"@type":"Answer","text":"En copropriété, il faut généralement l'accord de l'assemblée générale ou du syndic selon le règlement de copropriété. Pour les maisons individuelles, aucune autorisation n'est nécessaire. {{NOM_ENTREPRISE}} vous accompagne dans ces démarches."}},{"@type":"Question","name":"Intervenez-vous dans tous les quartiers de {{VILLE_1}} ?","acceptedAnswer":{"@type":"Answer","text":"Oui, nous intervenons dans tous les quartiers de {{VILLE_1}} : {{VILLE_1}} Centre, Cimiez, Riquier, Libération, Carré d'Or, {{VILLE_1}} Nord, {{VILLE_1}} Ouest, Pasteur, Magnan, Les Moulins, L'Ariane et alentours."}},{"@type":"Question","name":"Quelle puissance de {{service}} pour un appartement niçois ?","acceptedAnswer":{"@type":"Answer","text":"Pour un appartement à {{VILLE_1}}, comptez 1 kW de puissance pour 10 m². Pour un studio de 25 m², un mono-split 2,5 kW suffit. Pour un T3 de 60 m², un bi-split ou deux mono-splits sont recommandés."}}]
+  }]
+  </script>
+  <style>
+    .ville-hero { position:relative; min-height:520px; display:flex; align-items:center; overflow:hidden; }
+    .ville-hero__bg { position:absolute; inset:0; background-image:url('assets/img/lifestyle-{{service_court}}-salon-vue-mer.png'); background-size:cover; background-position:center; }
+    .ville-hero__overlay { position:absolute; inset:0; background:linear-gradient(135deg, rgba(13,31,60,0.88) 0%, rgba(0,174,239,0.35) 100%); }
+    .ville-hero__content { position:relative; z-index:2; padding:120px 0 80px; }
+    .ville-hero__tag { display:inline-flex; align-items:center; gap:8px; background:rgba(0,174,239,0.18); border:1px solid rgba(0,174,239,0.35); color:#00AEEF; padding:8px 18px; border-radius:40px; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:24px; }
+    .ville-hero h1 { font-family:var(--font-head); font-size:clamp(36px,6vw,64px); font-weight:900; color:#fff; line-height:1.1; letter-spacing:-0.03em; margin-bottom:20px; }
+    .ville-hero p { font-size:18px; color:rgba(255,255,255,0.8); max-width:600px; line-height:1.7; margin-bottom:32px; }
+    .ville-hero__btns { display:flex; gap:16px; flex-wrap:wrap; }
+    .ville-content { padding:80px 0; }
+    .ville-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+    @media(max-width:768px){ .ville-grid{ grid-template-columns:1fr; } }
+    .ville-section { margin-bottom:64px; }
+    .ville-section h2 { font-family:var(--font-head); font-size:clamp(24px,4vw,36px); font-weight:800; color:var(--brand-dark); letter-spacing:-0.02em; margin-bottom:16px; }
+    .ville-section p { font-size:16px; color:var(--text-dim); line-height:1.85; margin-bottom:16px; }
+    .offres-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:32px; }
+    @media(max-width:768px){ .offres-grid{ grid-template-columns:1fr; } }
+    .offre-card { background:var(--white); border:1px solid rgba(0,0,0,0.07); border-radius:16px; padding:28px; text-align:center; transition:box-shadow .25s; }
+    .offre-card:hover { box-shadow:0 8px 32px rgba(0,174,239,0.15); }
+    .offre-card__brand { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--brand); margin-bottom:8px; }
+    .offre-card__name { font-family:var(--font-head); font-size:20px; font-weight:800; color:var(--brand-dark); margin-bottom:8px; }
+    .offre-card__price { font-size:22px; font-weight:700; color:var(--brand); margin-bottom:16px; }
+    .quartiers-list { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+    .quartier-tag { background:rgba(0,174,239,0.1); color:var(--brand); padding:6px 14px; border-radius:40px; font-size:13px; font-weight:600; }
+    .faq-item { border-bottom:1px solid rgba(0,0,0,0.08); }
+    .faq-q { width:100%; text-align:left; background:none; border:none; padding:20px 48px 20px 0; font-family:var(--font-head); font-size:17px; font-weight:700; color:var(--brand-dark); cursor:pointer; position:relative; }
+    .faq-q::after { content:"＋"; position:absolute; right:0; top:50%; transform:translateY(-50%); font-size:20px; color:var(--brand); transition:.25s; }
+    .faq-q.open::after { content:"－"; }
+    .faq-a { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+    .faq-a.open { max-height:300px; }
+    .faq-a p { padding:0 0 20px; font-size:15px; color:var(--text-dim); line-height:1.8; }
+    .why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:32px; }
+    @media(max-width:768px){ .why-grid{ grid-template-columns:1fr; } }
+    .why-card { background:var(--gray); border-radius:16px; padding:28px; }
+    .why-card__icon { width:44px; height:44px; background:var(--brand); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+    .why-card__icon svg { width:22px; height:22px; stroke:#fff; fill:none; stroke-width:2; }
+    .why-card h3 { font-family:var(--font-head); font-size:17px; font-weight:800; color:var(--brand-dark); margin-bottom:8px; }
+    .why-card p { font-size:14px; color:var(--text-dim); line-height:1.7; }
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="navbar__logo">
+    <img src="assets/img/logo-{{SLUG}}.png" alt="{{NOM_ENTREPRISE}} — {{METIER}} {{ZONE}}"/>
+  </a>
+  <div class="navbar__links">
+    <a href="index.html">Accueil</a>
+    <div class="nav-drop"><button class="nav-drop__btn">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="{{slug-offre-1}}.html"><span class="nav-drop__icon">❄️</span><span><strong>{{OFFRE_1}}</strong><small>Entrée de gamme · dès 899 €</small></span></a><a href="{{slug-offre-2}}.html"><span class="nav-drop__icon">⚡</span><span><strong>{{OFFRE_2}}</strong><small>Milieu de gamme · dès 1 199 €</small></span></a><a href="{{slug-offre-3}}.html"><span class="nav-drop__icon">👑</span><span><strong>{{OFFRE_3}}</strong><small>Haut de gamme · dès 1 699 €</small></span></a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel nav-drop__panel--grid"><a href="{{slug-metier}}-{{slug-ville-1}}.html">{{VILLE_1}}</a><a href="{{slug-metier}}-{{slug-ville-2}}.html">{{VILLE_2}}</a><a href="{{slug-metier}}-{{slug-ville-3}}.html">{{VILLE_3}}</a><a href="{{slug-metier}}-{{slug-ville-4}}.html">{{VILLE_4}}</a><a href="{{slug-metier}}-{{slug-ville-5}}.html">{{VILLE_5}}</a><a href="{{slug-metier}}-{{slug-ville-6}}.html">{{VILLE_6}}</a><a href="{{slug-metier}}-{{slug-ville-7}}.html">{{VILLE_7}}</a><a href="{{slug-metier}}-{{slug-ville-8}}.html">{{VILLE_8}}</a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="certifications-{{service}}.html"><span class="nav-drop__icon">🏅</span><span><strong>Certifications</strong><small>RGE, F-Gaz, normes 2026</small></span></a><a href="realisations.html"><span class="nav-drop__icon">📸</span><span><strong>Réalisations</strong><small>Nos installations en photos</small></span></a><a href="blog.html"><span class="nav-drop__icon">📰</span><span><strong>Blog</strong><small>Conseils &amp; guides</small></span></a></div></div>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="navbar__cta">
+    <button class="navbar__search-btn" id="search-btn" aria-label="Rechercher une page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+    <a href="contact.html" class="btn btn--primary">{{MOT_CONVERSION}} Gratuit</a>
+  </div>
+  <div class="navbar__burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu__close" id="menu-close">&#x2715;</button>
+  <a href="index.html">Accueil</a>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="{{slug-offre-1}}.html">{{OFFRE_1}}</a><a href="{{slug-offre-2}}.html">{{OFFRE_2}}</a><a href="{{slug-offre-3}}.html">{{OFFRE_3}}</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="{{slug-metier}}-{{slug-ville-1}}.html">{{VILLE_1}}</a><a href="{{slug-metier}}-{{slug-ville-2}}.html">{{VILLE_2}}</a><a href="{{slug-metier}}-{{slug-ville-3}}.html">{{VILLE_3}}</a><a href="{{slug-metier}}-{{slug-ville-4}}.html">{{VILLE_4}}</a><a href="{{slug-metier}}-{{slug-ville-5}}.html">{{VILLE_5}}</a><a href="{{slug-metier}}-{{slug-ville-6}}.html">{{VILLE_6}}</a><a href="{{slug-metier}}-{{slug-ville-7}}.html">{{VILLE_7}}</a><a href="{{slug-metier}}-{{slug-ville-8}}.html">{{VILLE_8}}</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="certifications-{{service}}.html">Certifications</a><a href="realisations.html">Réalisations</a><a href="blog.html">Blog</a></div></div>
+  <a href="contact.html">Contact</a>
+  <div class="mobile-menu__cta"><a href="contact.html" class="btn btn--primary">{{MOT_CONVERSION}} Gratuit</a></div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="search-overlay">
+  <button class="search-overlay__close" id="search-close">&#x2715;</button>
+  <div class="search-overlay__inner">
+    <h2>Que recherchez-vous ?</h2>
+    <div class="search-overlay__bar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="Ex : {{VILLE_1}}, {{OFFRE_3}}, aides financières…" autocomplete="off"/>
+    </div>
+    <div id="search-results"></div>
+    <p class="search-overlay__hint">Appuyez sur <kbd>Echap</kbd> pour fermer</p>
+  </div>
+</div>
+
+<section class="ville-hero">
+  <div class="ville-hero__bg"></div>
+  <div class="ville-hero__overlay"></div>
+  <div class="container">
+    <div class="ville-hero__content">
+      <div class="ville-hero__tag">{{Service}} {{VILLE_1}}</div>
+      <h1>Installation {{service}}<br>à <span class="azure">{{VILLE_1}}</span></h1>
+      <p>Techniciens certifiés, intervention sous 48h, {{MOT_CONVERSION}} gratuit. {{NOM_ENTREPRISE}}, votre expert {{service}} à {{VILLE_1}} et dans tout le département {{DEPARTEMENT_NUM}}.</p>
+      <div class="ville-hero__btns">
+        <a href="contact.html" class="btn btn--primary">{{MOT_CONVERSION}} gratuit sous 24h</a>
+        <a href="tel:{{TEL_INTERNATIONAL}}" class="btn btn--outline-white">07 45 44 82 69</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container">
+    <div class="stats__grid">
+      <div class="stats__item"><div class="stats__num">24h</div><div class="stats__label">{{MOT_CONVERSION}} gratuit</div></div>
+      <div class="stats__item"><div class="stats__num">48h</div><div class="stats__label">Délai d'installation</div></div>
+      <div class="stats__item"><div class="stats__num">3</div><div class="stats__label">Gammes disponibles</div></div>
+      <div class="stats__item"><div class="stats__num">5 ans</div><div class="stats__label">Garantie {{OFFRE_3}}</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="ville-content">
+  <div class="container">
+
+    <div class="ville-section">
+      <h2>Votre installateur {{service}} à {{VILLE_1}}</h2>
+      <p>{{VILLE_1}} est la capitale de la {{ZONE}} et l'une des villes les plus chaudes de France continentale. Avec des températures qui dépassent régulièrement 35°C en juillet et août — et des nuits tropicales où le mercure ne descend pas sous 25°C — la {{service}} n'est plus un luxe mais une nécessité pour les Niçois. Les appartements haussmanniens du centre-ville, les studios de la Libération, les villas de Cimiez ou de {{VILLE_1}} Ouest : chaque logement a ses spécificités, et {{NOM_ENTREPRISE}} connaît chaque quartier.</p>
+      <p>Les copropriétés niçoises ont souvent des règlements stricts sur l'installation des unités extérieures. Nos techniciens maîtrisent les contraintes des immeubles anciens du centre, les terrasses des appartements modernes de la Plaine du Var, et les contraintes architecturales des quartiers historiques classés.</p>
+    </div>
+
+    <div class="ville-section">
+      <h2>Nos 3 gammes disponibles à {{VILLE_1}}</h2>
+      <p>Quel que soit votre budget ou la superficie de votre logement, {{NOM_ENTREPRISE}} dispose d'une solution adaptée.</p>
+      <div class="offres-grid">
+        <div class="offre-card">
+          <div class="offre-card__brand">{{OFFRE_1}}</div>
+          <div class="offre-card__name">Pack Essentiel</div>
+          <div class="offre-card__price">À partir de 899 €</div>
+          <p style="font-size:14px;color:var(--text-dim);margin-bottom:16px;">Idéal pour 1 à 3 pièces. Fiable, économique, classe A++.</p>
+          <a href="{{slug-offre-1}}.html" class="btn btn--outline" style="width:100%;text-align:center;">Voir l'offre</a>
+        </div>
+        <div class="offre-card" style="border-color:var(--brand);">
+          <div class="offre-card__brand">{{OFFRE_2}}</div>
+          <div class="offre-card__name">Pack Confort</div>
+          <div class="offre-card__price">À partir de 1 199 €</div>
+          <p style="font-size:14px;color:var(--text-dim);margin-bottom:16px;">Le meilleur rapport qualité-prix. Fiabilité allemande, SEER 7.4.</p>
+          <a href="{{slug-offre-2}}.html" class="btn btn--primary" style="width:100%;text-align:center;">Voir l'offre</a>
+        </div>
+        <div class="offre-card">
+          <div class="offre-card__brand">{{OFFRE_3}}</div>
+          <div class="offre-card__name">Pack Premium</div>
+          <div class="offre-card__price">À partir de 1 699 €</div>
+          <p style="font-size:14px;color:var(--text-dim);margin-bottom:16px;">Wi-Fi intégré, silence 19 dB, anti-corrosion. 5 ans de garantie.</p>
+          <a href="{{slug-offre-3}}.html" class="btn btn--outline" style="width:100%;text-align:center;">Voir l'offre</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ville-section">
+      <h2>Pourquoi choisir {{NOM_ENTREPRISE}} à {{VILLE_1}} ?</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-card__icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h3>Techniciens locaux certifiés</h3>
+          <p>Nos techniciens connaissent {{VILLE_1}} et ses particularités. Pas de sous-traitant : toujours le même interlocuteur.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h3>Installation en 48h</h3>
+          <p>{{MOT_CONVERSION}} gratuit sous 24h, installation programmée sous 48h. Nous respectons vos délais et votre emploi du temps.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card__icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Prix transparents</h3>
+          <p>Le prix affiché est le prix payé. Pas de frais cachés, pas de surprises. {{MOT_CONVERSION}} détaillé avant toute intervention.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ville-section">
+      <h2>Zones desservies à {{VILLE_1}}</h2>
+      <p>{{NOM_ENTREPRISE}} intervient dans tous les quartiers de {{VILLE_1}} et alentours :</p>
+      <div class="quartiers-list">
+        <span class="quartier-tag">{{VILLE_1}} Centre</span><span class="quartier-tag">Cimiez</span><span class="quartier-tag">Libération</span><span class="quartier-tag">Carré d'Or</span><span class="quartier-tag">Riquier</span><span class="quartier-tag">{{VILLE_1}} Ouest</span><span class="quartier-tag">{{VILLE_1}} Nord</span><span class="quartier-tag">Pessicart</span><span class="quartier-tag">Les Moulins</span><span class="quartier-tag">L'Ariane</span><span class="quartier-tag">Pasteur</span><span class="quartier-tag">Magnan</span>
+      </div>
+    </div>
+
+    <div class="ville-section">
+      <h2>Questions fréquentes — {{Service}} {{VILLE_1}}</h2>
+      <div class="faq-section">
+        
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Combien coûte l'installation d'une {{service}} à {{VILLE_1}} ?</button>
+        <div class="faq-a"><p>À {{VILLE_1}}, le prix d'une installation complète (matériel + pose) varie de 899 € pour un mono-split entrée de gamme à 4 999 € pour un tri-split {{OFFRE_3}}. Nos tarifs sont fixés et affichés sans surprise.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Faut-il une autorisation pour installer une {{service_court}} à {{VILLE_1}} ?</button>
+        <div class="faq-a"><p>En copropriété, il faut généralement l'accord de l'assemblée générale ou du syndic selon le règlement de copropriété. Pour les maisons individuelles, aucune autorisation n'est nécessaire. {{NOM_ENTREPRISE}} vous accompagne dans ces démarches.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Intervenez-vous dans tous les quartiers de {{VILLE_1}} ?</button>
+        <div class="faq-a"><p>Oui, nous intervenons dans tous les quartiers de {{VILLE_1}} : {{VILLE_1}} Centre, Cimiez, Riquier, Libération, Carré d'Or, {{VILLE_1}} Nord, {{VILLE_1}} Ouest, Pasteur, Magnan, Les Moulins, L'Ariane et alentours.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Quelle puissance de {{service}} pour un appartement niçois ?</button>
+        <div class="faq-a"><p>Pour un appartement à {{VILLE_1}}, comptez 1 kW de puissance pour 10 m². Pour un studio de 25 m², un mono-split 2,5 kW suffit. Pour un T3 de 60 m², un bi-split ou deux mono-splits sont recommandés.</p></div>
+      </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <div class="reveal">
+      <h2>Prêt à vous rafraîchir à {{VILLE_1}} ?</h2>
+      <p>{{MOT_CONVERSION}} gratuit en 24h · Installation sous 48h · Prix transparents · Techniciens locaux</p>
+      <a href="contact.html" class="btn btn--white">Obtenir mon {{MOT_CONVERSION}} gratuit</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/img/logo-{{SLUG}}.png" alt="{{NOM_ENTREPRISE}}"/>
+        <p>L'expert {{service}} de la {{ZONE}}. Installation rapide, prix transparents, service premium.</p>
+        <div class="footer__socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.{{DEPARTEMENT_NUM}}.1-1.79.{{DEPARTEMENT_NUM}}-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col"><h4>Nos offres</h4><ul>
+        <li><a href="{{slug-offre-1}}.html">Entrée de gamme — {{OFFRE_1}}</a></li>
+        <li><a href="{{slug-offre-2}}.html">Milieu de gamme — {{OFFRE_2}}</a></li>
+        <li><a href="{{slug-offre-3}}.html">Premium — {{OFFRE_3}}</a></li>
+        <li><a href="contact.html">Demander un {{MOT_CONVERSION}}</a></li>
+      </ul></div>
+      <div class="footer__col"><h4>Villes</h4><ul>
+        <li><a href="{{slug-metier}}-{{slug-ville-1}}.html">{{VILLE_1}}</a></li>
+        <li><a href="{{slug-metier}}-{{slug-ville-2}}.html">{{VILLE_2}}</a></li>
+        <li><a href="{{slug-metier}}-{{slug-ville-4}}.html">{{VILLE_4}}</a></li>
+        <li><a href="{{slug-metier}}-{{slug-ville-3}}.html">{{VILLE_3}}</a></li>
+        <li><a href="{{slug-metier}}-{{slug-ville-6}}.html">{{VILLE_6}}</a></li>
+      </ul></div>
+      <div class="footer__col"><h4>Contact</h4>
+        <p>{{VILLE_1}}, {{ZONE}}<br>Département {{DEPARTEMENT_NUM}}</p>
+        <p style="margin-top:12px;"><a href="tel:{{TEL_INTERNATIONAL}}" style="color:rgba(255,255,255,0.55);">07 45 44 82 69</a></p>
+        <p style="margin-top:4px;"><a href="mailto:{{EMAIL_PRO}}" style="color:rgba(255,255,255,0.55);">{{EMAIL_PRO}}</a></p>
+        <p style="margin-top:8px;">Lun–Sam 8h à 19h</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 {{NOM_ENTREPRISE}}. Tous droits réservés.</span>
+      <span><a href="mentions-legales.html">Mentions légales</a> &nbsp;|&nbsp; <a href="politique-confidentialite.html">Confidentialité</a></span>
+    </div>
+  </div>
+</footer>
+<a class="whatsapp-float" href="https://wa.me/{{TEL_INTERNATIONAL_SANS_PLUS}}" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/promo.js"></script>
+</body>
+</html>

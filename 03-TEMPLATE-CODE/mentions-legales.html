@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  TEMPLATE de page — structure réelle issue d'un site vitrine local en production.
+  Structure HTML + JSON-LD + classes CSS : à garder telles quelles.
+  Textes, prix, villes, offres : illustratifs → à réécrire selon
+  le métier réel (voir BRIEF-A-REMPLIR.md et les PROMPT-0X).
+  Mentions légales — remplir avec les vraies infos de l'entreprise (SIRET, adresse, assurance...).
+  ============================================================
+-->
+
+<html lang="fr">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{GA4_ID}}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "{{GA4_ID}}");
+</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mentions Légales — {{NOM_ENTREPRISE}}</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    .legal-hero { background: var(--brand-dark); padding: 140px 0 60px; text-align: center; }
+    .legal-hero h1 { font-size: clamp(32px,4vw,52px); color: var(--white); letter-spacing:-0.025em; margin-bottom:12px; }
+    .legal-hero p { color: rgba(255,255,255,0.5); font-size:15px; }
+    .legal-body { padding: 80px 0 100px; background: var(--gray); }
+    .legal-content { max-width: 760px; margin: 0 auto; background: var(--white); border-radius: 20px; padding: 56px; box-shadow: 0 4px 32px rgba(0,0,0,0.{{DEPARTEMENT_NUM}}); }
+    @media(max-width:768px){ .legal-content { padding: 28px 20px; } }
+    .legal-content h2 { font-size: 20px; color: var(--brand-dark); letter-spacing:-0.015em; margin: 40px 0 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
+    .legal-content h2:first-child { margin-top: 0; }
+    .legal-content p { font-size: 15px; color: #475569; line-height: 1.75; margin-bottom: 12px; }
+    .legal-content a { color: var(--brand); }
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="navbar__logo"><img src="assets/img/logo-{{SLUG}}.png" alt="{{NOM_ENTREPRISE}}"/></a>
+  <div class="navbar__links">
+    <a href="index.html">Accueil</a>
+    <div class="nav-drop"><button class="nav-drop__btn">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="{{slug-offre-1}}.html"><span class="nav-drop__icon">❄️</span><span><strong>{{OFFRE_1}}</strong><small>Entrée de gamme · dès 899 €</small></span></a><a href="{{slug-offre-2}}.html"><span class="nav-drop__icon">⚡</span><span><strong>{{OFFRE_2}}</strong><small>Milieu de gamme · dès 1 199 €</small></span></a><a href="{{slug-offre-3}}.html"><span class="nav-drop__icon">👑</span><span><strong>{{OFFRE_3}}</strong><small>Haut de gamme · dès 1 699 €</small></span></a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel nav-drop__panel--grid"><a href="{{slug-metier}}-{{slug-ville-1}}.html">{{VILLE_1}}</a><a href="{{slug-metier}}-{{slug-ville-2}}.html">{{VILLE_2}}</a><a href="{{slug-metier}}-{{slug-ville-3}}.html">{{VILLE_3}}</a><a href="{{slug-metier}}-{{slug-ville-4}}.html">{{VILLE_4}}</a><a href="{{slug-metier}}-{{slug-ville-5}}.html">{{VILLE_5}}</a><a href="{{slug-metier}}-{{slug-ville-6}}.html">{{VILLE_6}}</a><a href="{{slug-metier}}-{{slug-ville-7}}.html">{{VILLE_7}}</a><a href="{{slug-metier}}-{{slug-ville-8}}.html">{{VILLE_8}}</a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="certifications-{{service}}.html"><span class="nav-drop__icon">🏅</span><span><strong>Certifications</strong><small>RGE, F-Gaz, normes 2026</small></span></a><a href="realisations.html"><span class="nav-drop__icon">📸</span><span><strong>Réalisations</strong><small>Nos installations en photos</small></span></a><a href="blog.html"><span class="nav-drop__icon">📰</span><span><strong>Blog</strong><small>Conseils &amp; guides</small></span></a></div></div>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="navbar__cta">
+    <button class="navbar__search-btn" id="search-btn" aria-label="Rechercher une page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+    <a href="contact.html" class="btn btn--primary">{{MOT_CONVERSION}} Gratuit</a>
+  </div>
+  <div class="navbar__burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu__close" id="menu-close">&#x2715;</button>
+  <a href="index.html">Accueil</a>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="{{slug-offre-1}}.html">{{OFFRE_1}}</a><a href="{{slug-offre-2}}.html">{{OFFRE_2}}</a><a href="{{slug-offre-3}}.html">{{OFFRE_3}}</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="{{slug-metier}}-{{slug-ville-1}}.html">{{VILLE_1}}</a><a href="{{slug-metier}}-{{slug-ville-2}}.html">{{VILLE_2}}</a><a href="{{slug-metier}}-{{slug-ville-3}}.html">{{VILLE_3}}</a><a href="{{slug-metier}}-{{slug-ville-4}}.html">{{VILLE_4}}</a><a href="{{slug-metier}}-{{slug-ville-5}}.html">{{VILLE_5}}</a><a href="{{slug-metier}}-{{slug-ville-6}}.html">{{VILLE_6}}</a><a href="{{slug-metier}}-{{slug-ville-7}}.html">{{VILLE_7}}</a><a href="{{slug-metier}}-{{slug-ville-8}}.html">{{VILLE_8}}</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="certifications-{{service}}.html">Certifications</a><a href="realisations.html">Réalisations</a><a href="blog.html">Blog</a></div></div>
+  <a href="contact.html">Contact</a>
+  <div class="mobile-menu__cta"><a href="contact.html" class="btn btn--primary">{{MOT_CONVERSION}} Gratuit</a></div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="search-overlay">
+  <button class="search-overlay__close" id="search-close">&#x2715;</button>
+  <div class="search-overlay__inner">
+    <h2>Que recherchez-vous ?</h2>
+    <div class="search-overlay__bar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="Ex : {{VILLE_1}}, {{OFFRE_3}}, aides financières…" autocomplete="off"/>
+    </div>
+    <div id="search-results"></div>
+    <p class="search-overlay__hint">Appuyez sur <kbd>Echap</kbd> pour fermer</p>
+  </div>
+</div>
+
+<section class="legal-hero">
+  <div class="container">
+    <h1>Mentions légales</h1>
+    <p>Dernière mise à jour : mai 2026</p>
+  </div>
+</section>
+
+<section class="legal-body">
+  <div class="container">
+    <div class="legal-content">
+
+      <h2>1. Éditeur du site</h2>
+      <p>Le site azuria.fr est édité par la société <strong>{{NOM_ENTREPRISE}}</strong>, spécialisée dans l'installation et la maintenance de systèmes de {{service}} réversible sur la {{ZONE}}.</p>
+      <p><strong>Dénomination sociale :</strong> {{NOM_ENTREPRISE}}<br/>
+      <strong>Siège social :</strong> {{VILLE_1}}, {{DEPARTEMENT}} ({{DEPARTEMENT_NUM}}), France<br/>
+      <strong>Email :</strong> <a href="mailto:{{EMAIL_PRO}}">{{EMAIL_PRO}}</a><br/>
+      <strong>Téléphone :</strong> À compléter</p>
+
+      <h2>2. Hébergeur</h2>
+      <p>Le site azuria.fr est hébergé par :<br/>
+      <strong>Nom de l'hébergeur :</strong> À compléter<br/>
+      <strong>Adresse :</strong> À compléter</p>
+
+      <h2>3. Propriété intellectuelle</h2>
+      <p>L'ensemble du contenu du site azuria.fr (textes, images, graphismes, logo, icônes, vidéos) est protégé par le droit de la propriété intellectuelle et appartient à {{NOM_ENTREPRISE}} ou a fait l'objet d'une autorisation d'utilisation.</p>
+      <p>Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable d'{{NOM_ENTREPRISE}}.</p>
+
+      <h2>4. Limitation de responsabilité</h2>
+      <p>{{NOM_ENTREPRISE}} s'efforce de fournir sur le site des informations aussi précises que possible. Toutefois, les informations et/ou documents figurant sur ce site sont susceptibles de contenir des inexactitudes techniques et des erreurs typographiques.</p>
+      <p>{{NOM_ENTREPRISE}} se réserve le droit de corriger, à tout moment et sans préavis, le contenu de ce site. Toutefois, {{NOM_ENTREPRISE}} ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à la disposition sur ce site.</p>
+
+      <h2>5. Liens hypertextes</h2>
+      <p>Le site azuria.fr peut contenir des liens hypertextes vers d'autres sites internet. Ces liens sont fournis à titre informatif. {{NOM_ENTREPRISE}} n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.</p>
+
+      <h2>6. Droit applicable</h2>
+      <p>Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+
+      <h2>7. Contact</h2>
+      <p>Pour toute question relative aux présentes mentions légales, vous pouvez nous contacter par email à l'adresse suivante : <a href="mailto:{{EMAIL_PRO}}">{{EMAIL_PRO}}</a></p>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><img src="assets/img/logo-{{SLUG}}.png" alt="{{NOM_ENTREPRISE}}"/><p>L'expert {{service}} de la {{ZONE}}. Installation rapide, prix transparents, service premium.</p></div><div class="footer__col"><h4>Nos offres</h4><ul><li><a href="{{slug-offre-1}}.html">Entrée de gamme</a></li><li><a href="{{slug-offre-2}}.html">Milieu de gamme — {{OFFRE_2}}</a></li><li><a href="{{slug-offre-3}}.html">Premium — {{OFFRE_3}}</a></li></ul></div><div class="footer__col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="certifications-{{service}}.html">Certifications</a></li>
+          <li></li><li><a href="blog.html">Blog</a>
+    <a href="realisations.html">Réalisations</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="politique-confidentialite.html">Confidentialité</a></li></ul></div><div class="footer__col"><h4>Contact</h4><p>{{VILLE_1}}, {{ZONE}} — Département {{DEPARTEMENT_NUM}}</p><p style="margin-top:12px;"><a href="mailto:{{EMAIL_PRO}}" style="color:rgba(255,255,255,0.55);">{{EMAIL_PRO}}</a></p></div></div><div class="footer__bottom"><span>&copy; 2026 {{NOM_ENTREPRISE}}. Tous droits réservés.</span><span><a href="mentions-legales.html">Mentions légales</a> &nbsp;|&nbsp; <a href="politique-confidentialite.html">Confidentialité</a></span></div></div></footer>
+
+<div class="cookie-banner" id="cookie-banner"><p>Nous utilisons des cookies pour améliorer votre expérience. <a href="politique-confidentialite.html">En savoir plus</a>.</p><div class="cookie-banner__actions"><button id="cookie-accept" class="btn btn--primary">Accepter</button><button id="cookie-decline" class="btn btn--outline-white">Refuser</button></div></div>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script><script src="assets/js/popup.js"></script>
+</body>
+</html>

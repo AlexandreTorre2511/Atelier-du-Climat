@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  TEMPLATE de page — structure réelle issue d'un site vitrine local en production.
+  Structure HTML + JSON-LD + classes CSS : à garder telles quelles.
+  Textes, prix, villes, offres : illustratifs → à réécrire selon
+  le métier réel (voir BRIEF-A-REMPLIR.md et les PROMPT-0X).
+  Page d'accueil — les 15 blocs (hero, stats, offres, calculateur, avis, CTA...).
+  ============================================================
+-->
+
+<html lang="fr">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{GA4_ID}}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "{{GA4_ID}}");
+</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{NOM_ENTREPRISE}} — Installation {{Service}} {{ZONE}} | {{MOT_CONVERSION}} Gratuit 24h</title>
+  <meta name="description" content="{{NOM_ENTREPRISE}}, expert installation {{service}} sur la {{ZONE}}. 3 gammes ({{OFFRE_1}}, {{OFFRE_2}}, {{OFFRE_3}}), pose en 24h, prix transparents. {{MOT_CONVERSION}} gratuit."/>
+  <meta property="og:title" content="{{NOM_ENTREPRISE}} — {{Service}} {{ZONE}}"/>
+  <meta property="og:description" content="Installation professionnelle de {{service}} sur toute la {{ZONE}}. 3 gammes adaptées à votre budget, pose en 24h."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://{{DOMAINE}}/assets/img/lifestyle-{{service_court}}-salon-vue-mer.png"/>
+  <meta property="og:url" content="https://{{DOMAINE}}/"/>
+  <meta property="og:site_name" content="{{NOM_ENTREPRISE}}"/>
+  <link rel="canonical" href="https://{{DOMAINE}}/"/>
+  <link rel="icon" type="image/png" href="assets/img/logo-{{SLUG}}.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <!-- Google Analytics GA4 → Remplacer G-XXXXXXXXXX par votre ID -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "{{TYPE_SCHEMA}}",
+    "name": "{{NOM_ENTREPRISE}}",
+    "url": "https://{{DOMAINE}}",
+    "telephone": "{{TEL_INTERNATIONAL}}",
+    "email": "{{EMAIL_PRO}}",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "{{VILLE_1}}",
+      "postalCode": "{{CODE_POSTAL}}",
+      "addressRegion": "{{REGION}}",
+      "addressCountry": "FR"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": {{LAT}}, "longitude": {{LON}} },
+    "areaServed": { "@type": "State", "name": "{{DEPARTEMENT}}" },
+    "priceRange": "{{FOURCHETTE_PRIX}}",
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "{{HEURE_OUVERTURE}}",
+      "closes": "{{HEURE_FERMETURE}}"
+    }]
+  }
+  </script>
+</head>
+<body>
+
+<!-- PROMO BANNER -->
+<div class="promo-banner">
+  <div class="promo-banner__text">
+    <em>🔥 Offre de lancement</em>
+    <span>— Prix réduits sur toutes les gammes —</span>
+  </div>
+  <div class="promo-banner__countdown">
+    <div class="promo-banner__unit" data-cd-days>14</div>
+    <span class="promo-banner__sep">j</span>
+    <div class="promo-banner__unit" data-cd-hours>00</div>
+    <span class="promo-banner__sep">h</span>
+    <div class="promo-banner__unit" data-cd-min>00</div>
+    <span class="promo-banner__sep">m</span>
+    <div class="promo-banner__unit" data-cd-sec>00</div>
+    <span class="promo-banner__sep">s</span>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="navbar__logo">
+    <img src="assets/img/logo-{{SLUG}}.png" alt="{{NOM_ENTREPRISE}} — {{METIER}} {{ZONE}}"/>
+  </a>
+  <div class="navbar__links">
+    <a href="index.html">Accueil</a>
+    <div class="nav-drop"><button class="nav-drop__btn">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="{{slug-offre-1}}.html"><span class="nav-drop__icon">❄️</span><span><strong>{{OFFRE_1}}</strong><small>Entrée de gamme · dès 899 €</small></span></a><a href="{{slug-offre-2}}.html"><span class="nav-drop__icon">⚡</span><span><strong>{{OFFRE_2}}</strong><small>Milieu de gamme · dès 1 199 €</small></span></a><a href="{{slug-offre-3}}.html"><span class="nav-drop__icon">👑</span><span><strong>{{OFFRE_3}}</strong><small>Haut de gamme · dès 1 699 €</small></span></a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel nav-drop__panel--grid"><a href="{{slug-metier}}-{{slug-ville-1}}.html">{{VILLE_1}}</a><a href="{{slug-metier}}-{{slug-ville-2}}.html">{{VILLE_2}}</a><a href="{{slug-metier}}-{{slug-ville-3}}.html">{{VILLE_3}}</a><a href="{{slug-metier}}-{{slug-ville-4}}.html">{{VILLE_4}}</a><a href="{{slug-metier}}-{{slug-ville-5}}.html">{{VILLE_5}}</a><a href="{{slug-metier}}-{{slug-ville-6}}.html">{{VILLE_6}}</a><a href="{{slug-metier}}-{{slug-ville-7}}.html">{{VILLE_7}}</a><a href="{{slug-metier}}-{{slug-ville-8}}.html">{{VILLE_8}}</a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="certifications-{{service}}.html"><span class="nav-drop__icon">🏅</span><span><strong>Certifications</strong><small>RGE, F-Gaz, normes 2026</small></span></a><a href="realisations.html"><span class="nav-drop__icon">📸</span><span><strong>Réalisations</strong><small>Nos installations en photos</small></span></a><a href="blog.html"><span class="nav-drop__icon">📰</span><span><strong>Blog</strong><small>Conseils &amp; guides</small></span></a></div></div>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="navbar__cta">
+    <button class="navbar__search-btn" id="search-btn" aria-label="Rechercher une page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+    <a href="contact.html" class="btn btn--primary">{{MOT_CONVERSION}} Gratuit</a>
+  </div>
+  <div class="navbar__burger" id="burger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu__close" id="menu-close">&#x2715;</button>
+  <a href="index.html">Accueil</a>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="{{slug-offre-1}}.html">{{OFFRE_1}}</a><a href="{{slug-offre-2}}.html">{{OFFRE_2}}</a><a href="{{slug-offre-3}}.html">{{OFFRE_3}}</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="{{slug-metier}}-{{slug-ville-1}}.html">{{VILLE_1}}</a><a href="{{slug-metier}}-{{slug-ville-2}}.html">{{VILLE_2}}</a><a href="{{slug-metier}}-{{slug-ville-3}}.html">{{VILLE_3}}</a><a href="{{slug-metier}}-{{slug-ville-4}}.html">{{VILLE_4}}</a><a href="{{slug-metier}}-{{slug-ville-5}}.html">{{VILLE_5}}</a><a href="{{slug-metier}}-{{slug-ville-6}}.html">{{VILLE_6}}</a><a href="{{slug-metier}}-{{slug-ville-7}}.html">{{VILLE_7}}</a><a href="{{slug-metier}}-{{slug-ville-8}}.html">{{VILLE_8}}</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="certifications-{{service}}.html">Certifications</a><a href="realisations.html">Réalisations</a><a href="blog.html">Blog</a></div></div>
+  <a href="contact.html">Contact</a>
+  <div class="mobile-menu__cta"><a href="contact.html" class="btn btn--primary">{{MOT_CONVERSION}} Gratuit</a></div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="search-overlay">
+  <button class="search-overlay__close" id="search-close">&#x2715;</button>
+  <div class="search-overlay__inner">
+    <h2>Que recherchez-vous ?</h2>
+    <div class="search-overlay__bar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="Ex : {{VILLE_1}}, {{OFFRE_3}}, aides financières…" autocomplete="off"/>
+    </div>
+    <div id="search-results"></div>
+    <p class="search-overlay__hint">Appuyez sur <kbd>Echap</kbd> pour fermer</p>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__bg" style="background-image:url('assets/img/lifestyle-{{service_court}}-salon-vue-mer.png')"></div>
+  <div class="hero__overlay"></div>
+  <div class="container">
+    <div class="hero__content">
+      <div class="hero__tag anim-fade-up">
+        <span></span>
+        N°1 de la {{Service}} sur la {{ZONE}}
+      </div>
+      <h1 class="hero__title anim-fade-up anim-delay-1">
+        L'air frais,<br><span class="azure">à prix juste.</span>
+      </h1>
+      <p class="hero__sub anim-fade-up anim-delay-2">
+        Installation professionnelle de {{service}} sur toute la {{ZONE}}. 3 gammes adaptées à votre budget, pose en 24h, garantie incluse.
+      </p>
+      <div class="hero__actions anim-fade-up anim-delay-3">
+        <a href="contact.html" class="btn btn--primary">Obtenir mon {{MOT_CONVERSION}} gratuit</a>
+        <a href="#packs" class="btn btn--outline-white">Découvrir nos offres</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero__scroll">
+    <div class="hero__scroll-line"></div>
+    Défiler
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats__grid">
+      <div class="stats__item">
+        <div class="stats__num" data-count="500" data-suffix="+">0+</div>
+        <div class="stats__label">Installations réalisées</div>
+      </div>
+      <div class="stats__item">
+        <div class="stats__num">24h</div>
+        <div class="stats__label">Délai de réponse</div>
+      </div>
+      <div class="stats__item">
+        <div class="stats__num">5 ans</div>
+        <div class="stats__label">De garantie {{OFFRE_3}}</div>
+      </div>
+      <div class="stats__item">
+        <div class="stats__num" data-count="100" data-suffix="%">0%</div>
+        <div class="stats__label">Clients satisfaits</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE COUNTER -->
+<div class="live-counter">
+  <span class="live-counter__dot"></span>
+  En ce moment, une famille à <strong data-live-city>{{VILLE_1}}</strong> bénéficie de la fraîcheur {{NOM_ENTREPRISE}}
+</div>
+
+<!-- PACKS -->
+<section class="section section--gray" id="packs">
+  <div class="container">
+    <div class="section__head center reveal">
+      <span class="label">Nos 3 Gammes</span>
+      <h2 class="section__title">Une solution pour chaque budget</h2>
+      <p class="section__sub">De l'entrée de gamme au premium, nous installons la {{service}} qui correspond à vos besoins et à votre logement.</p>
+    </div>
+    <div class="packs__grid">
+
+      <!-- ONE CLIMA -->
+      <div class="pack-card reveal">
+        <div class="pack-card__img">
+          <img src="assets/img/oneclima-modele-4---clean.png" alt="{{OFFRE_1}} climatiseur entrée de gamme" loading="lazy"/>
+        </div>
+        <div class="pack-card__body">
+          <div class="pack-card__brand">{{OFFRE_1}}</div>
+          <div class="pack-card__name">Pack Essentiel</div>
+          <p class="pack-card__desc">Idéal pour une à trois pièces. Fiable, économique et efficace dès le premier jour. Parfait pour un premier équipement.</p>
+          <div class="promo-badge">🔥 Offre de lancement</div>
+          <div class="pack-card__prices">
+            <div class="pack-card__price-row">
+              <span class="pack-card__price-label">Mono-Split</span>
+              <span class="pack-card__price-val"><span class="price-original">1 099 €</span> 899 €</span>
+            </div>
+            <div class="pack-card__price-row">
+              <span class="pack-card__price-label">Bi-Split</span>
+              <span class="pack-card__price-val"><span class="price-original">2 399 €</span> 1 999 €</span>
+            </div>
+            <div class="pack-card__price-row">
+              <span class="pack-card__price-label">Tri-Split</span>
+              <span class="pack-card__price-val"><span class="price-original">3 499 €</span> 2 999 €</span>
+            </div>
+          </div>
+          <div class="pack-card__features">
+            <div class="pack-card__feat">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Installation & télécommande incluses
+            </div>
+            <div class="pack-card__feat">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Classe A++ — Gaz R-32
+            </div>
+            <div class="pack-card__feat">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Autonettoyage 4 niveaux
+            </div>
+            <div class="pack-card__feat">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Garantie 2 ans
+            </div>
+          </div>
+          <div class="pack-card__cta">
+            <a href="{{slug-offre-1}}.html" class="btn btn--outline">Voir l'offre</a>
+            <a href="contact.html" class="btn btn--primary">{{MOT_CONVERSION}}</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOSCH -->
+      <div class="pack-card pack-card--featured reveal reveal-delay-1">
+        <div class="pack-card__badge">Le plus populaire</div>
+        <div class="pack-card__img">
+          <img src="assets/img/bosch-modele-1---clean.png" alt="{{OFFRE_2}} climatiseur milieu de gamme" loading="lazy"/>
+        </div>
+        <div class="pack-card__body">
+          <div class="pack-card__brand">{{OFFRE_2}}</div>
+          <div class="pack-card__name">Pack Confort</div>
+          <p class="pack-card__desc">Le meilleur rapport qualité-prix. La fiabilité allemande {{OFFRE_2}} pour un confort optimal toute l'année, été comme hiver.</p>
+          <div class="promo-badge">🔥 Offre de lancement</div>
+          <div class="pack-card__prices">
+            <div class="pack-card__price-row">
+              <span class="pack-card__price-label">Mono-Split</span>
+              <span class="pack-card__price-val"><span class="price-original">1 499 €</span> 1 199 €</span>
+            </div>
+            <div class="pack-card__price-row">
+              <span class="pack-card__price-label">Bi-Split</span>
+              <span class="pack-card__price-val"><span class="price-original">3 199 €</span> 2 699 €</span>
+            </div>
+            <div class="pack-card__price-row">
+              <span class="pack-card__price-label">Tri-Split</span>
+              <span class="pack-card__price-val"><span class="price-original">4 499 €</span> 3 799 €</span>
+            </div>
+          </div>
+          <div class="pack-card__features">
+            <div class="pack-card__feat">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              SEER 7,4 — Économies maximales
+            </div>
+            <div class="pack-card__feat">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Design blanc mat élégant
+            </div>
+            <div class="pack-card__feat">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Wi-Fi en option
+            </div>
+            <div class="pack-card__feat">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Garantie 3 ans
+            </div>
+          </div>
+          <div class="pack-card__cta">
+            <a href="{{slug-offre-2}}.html" class="btn btn--outline">Voir l'offre</a>
+            <a href="contact.html" class="btn btn--primary">{{MOT_CONVERSION}}</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAIKIN -->
+      <div class="pack-card reveal reveal-delay-2">
+        <div class="pack-card__img">
+          <img src="assets/img/daikin-modele-1---clean.png" alt="{{OFFRE_3}} Sensira climatiseur premium" loading="lazy"/>
+        </div>
+        <div class="pack-card__body">
+          <div class="pack-card__brand">{{OFFRE_3}}</div>
+          <div class="pack-card__name">Pack Premium</div>
+          <p class="pack-card__desc">Le nec plus ultra de la {{service}}. Wi-Fi intégré, silence absolu, efficacité A++ pour les plus exigeants.</p>
+          <div class="promo-badge">🔥 Offre de lancement</div>
+          <div class="pack-card__prices">
+            <div class="pack-card__price-row">
+              <span class="pack-card__price-label">Mono-Split</span>
+              <span class="pack-card__price-val"><span class="price-original">1 999 €</span> 1 699 €</span>
+            </div>
+            <div class="pack-card__price-row">
+              <span class="pack-card__price-label">Bi-Split</span>
+              <span class="pack-card__price-val"><span class="price-original">4 299 €</span> 3 599 €</span>
+            </div>
+            <div class="pack-card__price-row">
+              <span class="pack-card__price-label">Tri-Split</span>
+              <span class="pack-card__price-val"><span class="price-original">5 999 €</span> 4 999 €</span>
+            </div>
+          </div>
+          <div class="pack-card__features">
+            <div class="pack-card__feat">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Wi-Fi intégré — App Onecta
+            </div>
+            <div class="pack-card__feat">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Ultra-silencieux 21 dB(A)
+            </div>
+            <div class="pack-card__feat">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Anti-corrosion Blue Fin
+            </div>
+            <div class="pack-card__feat">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Garantie 5 ans
+            </div>
+          </div>
+          <div class="pack-card__cta">
+            <a href="{{slug-offre-3}}.html" class="btn btn--outline">Voir l'offre</a>
+            <a href="contact.html" class="btn btn--primary">{{MOT_CONVERSION}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO SECTION -->
+<section class="promo-section">
+  <div class="container">
+    <div class="promo-section__inner">
+      <div>
+        <div class="promo-section__label">🔥 Offre de lancement — 2 semaines seulement</div>
+        <h2 class="promo-section__title">Jusqu'à <span>1 000 €</span> d'économie<br>sur votre installation</h2>
+        <p class="promo-section__sub">Pour toute commande passée pendant cette période, bénéficiez de nos tarifs de lancement sur les 3 gammes. Cette offre ne sera pas reconduite.</p>
+      </div>
+      <div class="promo-countdown">
+        <div class="promo-countdown__block">
+          <div class="promo-countdown__num" data-cd-days>14</div>
+          <div class="promo-countdown__label">Jours</div>
+        </div>
+        <div class="promo-countdown__sep">:</div>
+        <div class="promo-countdown__block">
+          <div class="promo-countdown__num" data-cd-hours>00</div>
+          <div class="promo-countdown__label">Heures</div>
+        </div>
+        <div class="promo-countdown__sep">:</div>
+        <div class="promo-countdown__block">
+          <div class="promo-countdown__num" data-cd-min>00</div>
+          <div class="promo-countdown__label">Minutes</div>
+        </div>
+        <div class="promo-countdown__sep">:</div>
+        <div class="promo-countdown__block">
+          <div class="promo-countdown__num" data-cd-sec>00</div>
+          <div class="promo-countdown__label">Secondes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATEUR DE PRIX -->
+<section class="section calc-section" id="calculateur">
+  <div class="container">
+    <div class="section__head center reveal">
+      <span class="label">Estimez votre budget</span>
+      <h2 class="section__title">Combien coûte votre installation ?</h2>
+      <p class="section__sub">Obtenez une estimation en 10 secondes. Choisissez le nombre de pièces à climatiser.</p>
+    </div>
+    <div class="calc-wrap">
+      <div class="calc-progress">
+        <div class="calc-progress__dot active"></div>
+        <div class="calc-progress__line"></div>
+        <div class="calc-progress__dot"></div>
+      </div>
+      <div class="calc-step active" id="calc-step1">
+        <div class="calc-step__title">Combien de pièces souhaitez-vous climatiser ?</div>
+        <div class="calc-options">
+          <button class="calc-opt" data-pieces="1" onclick="calcSelect('pieces', 1)">
+            <span class="calc-opt__icon">🏠</span>
+            <span class="calc-opt__label">1 pièce</span>
+            <span class="calc-opt__sub">Studio / chambre</span>
+          </button>
+          <button class="calc-opt" data-pieces="2" onclick="calcSelect('pieces', 2)">
+            <span class="calc-opt__icon">🏡</span>
+            <span class="calc-opt__label">2 pièces</span>
+            <span class="calc-opt__sub">Appartement</span>
+          </button>
+          <button class="calc-opt" data-pieces="3" onclick="calcSelect('pieces', 3)">
+            <span class="calc-opt__icon">🏘️</span>
+            <span class="calc-opt__label">3 pièces</span>
+            <span class="calc-opt__sub">Maison / villa</span>
+          </button>
+        </div>
+      </div>
+      <div class="calc-step" id="calc-result"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY {{NOM_ENTREPRISE}} -->
+<section class="section">
+  <div class="container">
+    <div class="section__head center reveal">
+      <span class="label">Pourquoi nous choisir</span>
+      <h2 class="section__title">La différence {{NOM_ENTREPRISE}}</h2>
+      <p class="section__sub">Nous ne sommes pas juste un installateur. Nous sommes votre partenaire long terme pour un confort durable à prix transparent.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+      <div class="review-card reveal" style="text-align:center;">
+        <div style="width:64px;height:64px;background:var(--brand-glow);border:1px solid rgba(0,174,239,0.25);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="var(--brand)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-head);font-size:18px;font-weight:700;color:var(--brand-dark);margin-bottom:10px;letter-spacing:-0.02em;">Intervention Rapide</h3>
+        <p style="font-size:14px;color:var(--text-dim);line-height:1.7;">Pose en 24 à 48h sur toute la {{ZONE}}. Vous contactez le matin, nous pouvons intervenir le lendemain.</p>
+      </div>
+      <div class="review-card reveal reveal-delay-1" style="text-align:center;">
+        <div style="width:64px;height:64px;background:var(--brand-glow);border:1px solid rgba(0,174,239,0.25);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="var(--brand)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-head);font-size:18px;font-weight:700;color:var(--brand-dark);margin-bottom:10px;letter-spacing:-0.02em;">Prix Transparents</h3>
+        <p style="font-size:14px;color:var(--text-dim);line-height:1.7;">Nos tarifs sont affichés. Pas de surprise, pas de {{MOT_CONVERSION}} farfelus. Le prix que vous voyez est le prix que vous payez.</p>
+      </div>
+      <div class="review-card reveal reveal-delay-2" style="text-align:center;">
+        <div style="width:64px;height:64px;background:var(--brand-glow);border:1px solid rgba(0,174,239,0.25);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="var(--brand)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-head);font-size:18px;font-weight:700;color:var(--brand-dark);margin-bottom:10px;letter-spacing:-0.02em;">Techniciens Certifiés</h3>
+        <p style="font-size:14px;color:var(--text-dim);line-height:1.7;">Nos équipes sont formées et certifiées sur les 3 marques. Chaque installation est réalisée dans les règles de l'art.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section section--gray">
+  <div class="container">
+    <div class="section__head center reveal">
+      <span class="label">Comment ça marche</span>
+      <h2 class="section__title">De la demande à l'installation</h2>
+      <p class="section__sub">Un processus simple et transparent en 4 étapes.</p>
+    </div>
+    <div class="process__grid">
+      <div class="process__step reveal">
+        <div class="process__num">1</div>
+        <div class="process__title">Votre {{MOT_CONVERSION}} en ligne</div>
+        <p class="process__desc">Remplissez notre formulaire en 2 minutes. Réponse personnalisée sous 24h, sans engagement.</p>
+      </div>
+      <div class="process__step reveal reveal-delay-1">
+        <div class="process__num">2</div>
+        <div class="process__title">Visite technique</div>
+        <p class="process__desc">Notre technicien évalue votre logement, valide le projet et confirme le tarif définitif.</p>
+      </div>
+      <div class="process__step reveal reveal-delay-2">
+        <div class="process__num">3</div>
+        <div class="process__title">Installation professionnelle</div>
+        <p class="process__desc">Nos équipes posent votre {{service}} proprement et rapidement. Chantier propre, aucun dégât.</p>
+      </div>
+      <div class="process__step reveal reveal-delay-3">
+        <div class="process__num">4</div>
+        <div class="process__title">Profitez !</div>
+        <p class="process__desc">Mise en route complète, explications sur l'utilisation, garantie activée. Bienvenue dans la fraîcheur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE GALLERY -->
+<section class="section">
+  <div class="container">
+    <div class="section__head center reveal">
+      <span class="label">Réalisations</span>
+      <h2 class="section__title">Installé chez nos clients</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div class="reveal" style="border-radius:16px;overflow:hidden;position:relative;aspect-ratio:4/3;">
+        <img src="assets/img/lifestyle-{{service_court}}-salon-contemporain.png" alt="{{Service}} salon contemporain {{VILLE_1}}" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);transition:all 0.6s;" onmouseover="this.style.filter='brightness(0.95)';this.style.transform='scale(1.03)'" onmouseout="this.style.filter='brightness(0.8)';this.style.transform='scale(1)'"/>
+        <div style="position:absolute;bottom:16px;left:16px;background:rgba(13,31,60,0.75);backdrop-filter:blur(8px);color:white;padding:6px 14px;border-radius:40px;font-size:12px;font-weight:600;font-family:var(--font-head);letter-spacing:0.5px;">Salon — {{VILLE_1}}</div>
+      </div>
+      <div class="reveal reveal-delay-1" style="border-radius:16px;overflow:hidden;position:relative;aspect-ratio:4/3;">
+        <img src="assets/img/lifestyle-{{service_court}}-chambre-parentale.png" alt="{{Service}} chambre parentale" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);transition:all 0.6s;" onmouseover="this.style.filter='brightness(0.95)';this.style.transform='scale(1.03)'" onmouseout="this.style.filter='brightness(0.8)';this.style.transform='scale(1)'"/>
+        <div style="position:absolute;bottom:16px;left:16px;background:rgba(13,31,60,0.75);backdrop-filter:blur(8px);color:white;padding:6px 14px;border-radius:40px;font-size:12px;font-weight:600;font-family:var(--font-head);letter-spacing:0.5px;">Chambre — {{VILLE_3}}</div>
+      </div>
+      <div class="reveal reveal-delay-2" style="border-radius:16px;overflow:hidden;position:relative;aspect-ratio:4/3;">
+        <img src="assets/img/lifestyle-{{service_court}}-villa-provencale.png" alt="{{Service}} villa provençale {{ZONE}}" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);transition:all 0.6s;" onmouseover="this.style.filter='brightness(0.95)';this.style.transform='scale(1.03)'" onmouseout="this.style.filter='brightness(0.8)';this.style.transform='scale(1)'"/>
+        <div style="position:absolute;bottom:16px;left:16px;background:rgba(13,31,60,0.75);backdrop-filter:blur(8px);color:white;padding:6px 14px;border-radius:40px;font-size:12px;font-weight:600;font-family:var(--font-head);letter-spacing:0.5px;">Villa — {{VILLE_2}}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZONES -->
+<section class="section section--brand-dark">
+  <div class="container">
+    <div class="section__head center reveal">
+      <span class="label">Zone d'intervention</span>
+      <h2 class="section__title">Toute la {{ZONE}} couverte</h2>
+      <p class="section__sub">Nous intervenons dans tout le département {{DEPARTEMENT_NUM}} et les alentours.</p>
+    </div>
+    <div class="zones__grid">
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">{{VILLE_1}}</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">{{VILLE_3}}</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">{{VILLE_2}}</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">{{VILLE_4}}</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">{{VILLE_5}}</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">{{VILLE_6}}</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">{{VILLE_8}}</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">Villefranche-sur-Mer</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">Juan-les-Pins</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">Mandelieu</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">Sophia-Antipolis</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">Mougins</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">Vallauris</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">Beaulieu-sur-Mer</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">Saint-Laurent-du-Var</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">Biot</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">Vence</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">Roquebrune-Cap-Martin</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">Théoule-sur-Mer</div>
+      <div class="zone-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);">Peymeinade</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section section--gray">
+  <div class="container">
+    <div class="section__head center reveal">
+      <span class="label">Avis clients</span>
+      <h2 class="section__title">Ce que disent nos clients</h2>
+      <p class="section__sub">Des centaines de familles et professionnels nous font confiance sur toute la {{ZONE}}.</p>
+    </div>
+    <div class="reviews__grid">
+      <div class="review-card reveal">
+        <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-card__text">"Installation rapide et propre. Le technicien était professionnel et a tout expliqué. Ma {{service_court}} {{OFFRE_3}} fonctionne parfaitement, la maison est fraîche dès l'entrée."</p>
+        <div class="review-card__footer">
+          <div class="review-card__avatar">ML</div>
+          <div>
+            <div class="review-card__name">Marie L.</div>
+            <div class="review-card__source">{{VILLE_1}} — Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-1">
+        <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-card__text">"Prix imbattables sur la côte. J'avais demandé 3 {{MOT_CONVERSION}}, {{NOM_ENTREPRISE}} était le moins cher avec le meilleur matériel. Je recommande les yeux fermés."</p>
+        <div class="review-card__footer">
+          <div class="review-card__avatar">TR</div>
+          <div>
+            <div class="review-card__name">Thomas R.</div>
+            <div class="review-card__source">{{VILLE_3}} — Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-2">
+        <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-card__text">"Vraiment top ! Équipe sympa, travail soigné, pas de déchets laissés. Bi-split {{OFFRE_2}} installé en une demi-journée. Je suis ravie."</p>
+        <div class="review-card__footer">
+          <div class="review-card__avatar">SM</div>
+          <div>
+            <div class="review-card__name">Sophie M.</div>
+            <div class="review-card__source">{{VILLE_2}} — Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-card__text">"Service impeccable, technicien ponctuel et très compétent. Le résultat est parfait, on n'entend presque rien. Parfait pour mon bureau à {{VILLE_4}}."</p>
+        <div class="review-card__footer">
+          <div class="review-card__avatar">JV</div>
+          <div>
+            <div class="review-card__name">Jean-Paul V.</div>
+            <div class="review-card__source">{{VILLE_4}} — Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-1">
+        <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        <p class="review-card__text">"Bon rapport qualité-prix, installation soignée. Quelques jours d'attente mais le résultat est là. Très satisfaite du service et du matériel {{OFFRE_2}}."</p>
+        <div class="review-card__footer">
+          <div class="review-card__avatar">IC</div>
+          <div>
+            <div class="review-card__name">Isabelle C.</div>
+            <div class="review-card__source">{{VILLE_6}} — Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-2">
+        <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-card__text">"J'avais peur que ce soit compliqué mais tout s'est fait en moins de 4 heures. Prix transparent, aucune mauvaise surprise. Je referais appel à {{NOM_ENTREPRISE}}."</p>
+        <div class="review-card__footer">
+          <div class="review-card__avatar">RD</div>
+          <div>
+            <div class="review-card__name">Romain D.</div>
+            <div class="review-card__source">{{VILLE_5}} — Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="reveal">
+      <h2>Prêt à profiter de la fraîcheur ?</h2>
+      <p>{{MOT_CONVERSION}} gratuit en 24h. Installation dans les 48h. Tarifs 100% transparents.</p>
+      <a href="contact.html" class="btn btn--white">Obtenir mon {{MOT_CONVERSION}} gratuit</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/img/logo-{{SLUG}}.png" alt="{{NOM_ENTREPRISE}}"/>
+        <p>L'expert {{service}} de la {{ZONE}}. Installation rapide, prix transparents, service premium.</p>
+        <div class="footer__socials">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.{{DEPARTEMENT_NUM}}.1-1.79.{{DEPARTEMENT_NUM}}-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Nos offres</h4>
+        <ul>
+          <li><a href="{{slug-offre-1}}.html">Entrée de gamme — {{OFFRE_1}}</a></li>
+          <li><a href="{{slug-offre-2}}.html">Milieu de gamme — {{OFFRE_2}}</a></li>
+          <li><a href="{{slug-offre-3}}.html">Premium — {{OFFRE_3}}</a></li>
+          <li><a href="contact.html">Demander un {{MOT_CONVERSION}}</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="certifications-{{service}}.html">Certifications</a></li>
+          <li></li>
+          <li><a href="blog.html">Blog & Conseils</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="politique-confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <p>{{VILLE_1}}, {{ZONE}}<br>Département {{DEPARTEMENT_NUM}}</p>
+        <p style="margin-top:12px;"><a href="mailto:{{EMAIL_PRO}}" style="color:rgba(255,255,255,0.55);">{{EMAIL_PRO}}</a></p>
+        <p style="margin-top:8px;">Lun–Sam 8h à 19h</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 {{NOM_ENTREPRISE}}. Tous droits réservés.</span>
+      <span>
+        <a href="mentions-legales.html">Mentions légales</a> &nbsp;|&nbsp;
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a class="whatsapp-float" href="https://wa.me/{{TEL_INTERNATIONAL_SANS_PLUS}}" target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- EMAIL POPUP -->
+<div class="email-popup" id="email-popup">
+  <div class="email-popup__overlay"></div>
+  <div class="email-popup__box">
+    <button class="email-popup__close" aria-label="Fermer">&#x2715;</button>
+    <div class="email-popup__header">
+      <div class="email-popup__badge">🔥 Offre de lancement — 2 semaines</div>
+      <h3 class="email-popup__title">Votre {{service_court}} installée<br><span>dès demain.</span></h3>
+      <p class="email-popup__sub">Recevez une estimation personnalisée et profitez de nos tarifs de lancement avant qu'ils expirent. Gratuit, sous 24h.</p>
+    </div>
+    <div class="email-popup__body">
+      <form class="email-popup__form" id="popup-form">
+        <input type="email" name="email" placeholder="Votre adresse email" required/>
+        <button type="submit" class="btn btn--primary">Recevoir mon estimation gratuite →</button>
+      </form>
+      <div class="email-popup__trust">
+        <span>Gratuit</span>
+        <span>Sans engagement</span>
+        <span>Réponse sous 24h</span>
+      </div>
+      <div class="email-popup__proof">
+        ⭐⭐⭐⭐⭐ &nbsp;Plus de 300 familles nous font confiance sur la {{ZONE}}
+      </div>
+      <p class="email-popup__legal">En soumettant, vous acceptez notre <a href="politique-confidentialite.html">politique de confidentialité</a>. Zéro spam.</p>
+    </div>
+  </div>
+</div>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookie-banner">
+  <p>Nous utilisons des cookies pour améliorer votre expérience et analyser notre trafic. En continuant, vous acceptez notre <a href="politique-confidentialite.html">politique de confidentialité</a>.</p>
+  <div class="cookie-banner__actions">
+    <button id="cookie-accept" class="btn btn--primary">Accepter</button>
+    <button id="cookie-decline" class="btn btn--outline-white">Refuser</button>
+  </div>
+</div>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-mobile-cta">
+  <div class="sticky-mobile-cta__text">{{MOT_CONVERSION}} gratuit en 24h</div>
+  <a href="contact.html" class="btn btn--primary">Demander</a>
+</div>
+
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/popup.js"></script>
+<script src="assets/js/promo.js"></script>
+<script src="assets/js/social-proof.js"></script>
+</body>
+</html>

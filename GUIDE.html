@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Méthode — Construire un site qui ramène des clients</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --ink:#14181F; --ink-soft:#434B57; --ink-mute:#79838F;
+  --line:#E3E7EC; --line-soft:#EFF2F5;
+  --paper:#FBFAF8; --card:#FFFFFF;
+  --accent:#1B5BD7; --accent-soft:#EEF3FD;
+  --warn:#9A3412; --warn-soft:#FEF3EC; --warn-line:#F6C9A8;
+  --ok:#136043; --ok-soft:#EDF7F1; --ok-line:#B6DEC8;
+  --head:'Fraunces',Georgia,serif;
+  --body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+
+/* ── Layout ── */
+.wrap{display:grid;grid-template-columns:260px minmax(0,1fr);max-width:1340px;margin:0 auto;gap:0;align-items:start}
+.toc{position:sticky;top:0;max-height:100vh;overflow-y:auto;padding:38px 26px 60px;border-right:1px solid var(--line);font-size:13.5px}
+.toc__brand{font-family:var(--head);font-weight:800;font-size:17px;letter-spacing:-.02em;margin-bottom:22px;line-height:1.25}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 24px;position:relative;border-radius:4px}
+.toc a::before{content:attr(data-n);position:absolute;left:0;color:var(--ink-mute);font-variant-numeric:tabular-nums;font-size:12px;font-weight:500}
+.toc a:hover{color:var(--accent)}
+.toc__sep{height:1px;background:var(--line);margin:14px 0}
+main{padding:0 0 120px;min-width:0}
+.page{max-width:780px;margin:0 auto;padding:0 32px}
+
+/* ── Cover ── */
+.cover{padding:88px 32px 72px;max-width:780px;margin:0 auto;border-bottom:1px solid var(--line)}
+.cover__eyebrow{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:26px}
+.cover h1{font-family:var(--head);font-size:clamp(36px,6vw,58px);line-height:1.02;letter-spacing:-.035em;font-weight:800;margin-bottom:22px}
+.cover h1 em{font-style:italic;font-weight:600;color:var(--accent)}
+.cover__lede{font-size:19px;color:var(--ink-soft);line-height:1.6;max-width:62ch}
+.cover__meta{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 40px;font-size:13.5px;color:var(--ink-mute)}
+.cover__meta b{display:block;color:var(--ink);font-weight:600;font-size:14.5px}
+
+/* ── Sections ── */
+section{padding-top:62px}
+h2{font-family:var(--head);font-size:clamp(25px,3.6vw,33px);line-height:1.12;letter-spacing:-.025em;font-weight:800;margin-bottom:8px;scroll-margin-top:24px}
+h2 .num{display:block;font-family:var(--body);font-size:11.5px;letter-spacing:.2em;color:var(--accent);font-weight:600;margin-bottom:10px}
+h3{font-family:var(--head);font-size:20px;letter-spacing:-.015em;font-weight:600;margin:34px 0 10px}
+h4{font-size:14px;font-weight:700;margin:24px 0 8px;letter-spacing:-.005em}
+p{margin-bottom:14px;color:var(--ink-soft)}
+p strong,li strong{color:var(--ink);font-weight:600}
+.lead{font-size:17.5px;color:var(--ink-soft);margin-bottom:22px}
+ul,ol{margin:0 0 16px 20px;color:var(--ink-soft)}
+li{margin-bottom:7px}
+hr{border:none;border-top:1px solid var(--line);margin:46px 0}
+a{color:var(--accent)}
+code{font-family:var(--mono);font-size:.875em;background:var(--line-soft);padding:2px 6px;border-radius:4px;color:var(--ink)}
+
+/* ── Blocks ── */
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:22px 0}
+.box__title{font-family:var(--head);font-weight:600;font-size:17px;margin-bottom:8px;letter-spacing:-.01em}
+.box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
+.box--accent{background:var(--accent-soft);border-color:#CFE0FA}
+.box--warn{background:var(--warn-soft);border-color:var(--warn-line)}
+.box--warn .box__title{color:var(--warn)}
+.box--ok{background:var(--ok-soft);border-color:var(--ok-line)}
+.box--ok .box__title{color:var(--ok)}
+.quote{border-left:3px solid var(--accent);padding:4px 0 4px 20px;margin:24px 0;font-family:var(--head);font-size:19px;line-height:1.45;color:var(--ink);font-weight:600;letter-spacing:-.015em}
+
+.tbl{width:100%;border-collapse:collapse;font-size:14px;margin:22px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tbl th{text-align:left;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;padding:12px 14px;background:#F7F8FA;border-bottom:1px solid var(--line)}
+.tbl td{padding:12px 14px;border-bottom:1px solid var(--line-soft);color:var(--ink-soft);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td b,.tbl td strong{color:var(--ink);font-weight:600}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:22px 0}
+.scroll .tbl{margin:0;min-width:620px}
+
+.steps{counter-reset:s;list-style:none;margin:24px 0 0}
+.steps>li{counter-increment:s;position:relative;padding:0 0 26px 52px;border-left:1px solid var(--line);margin-left:15px}
+.steps>li:last-child{border-left-color:transparent;padding-bottom:0}
+.steps>li::before{content:counter(s);position:absolute;left:-15px;top:-3px;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;font-size:12.5px;font-weight:600;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.steps__h{font-family:var(--head);font-size:18px;font-weight:600;color:var(--ink);letter-spacing:-.015em;margin-bottom:5px;line-height:1.3}
+.steps__f{font-family:var(--mono);font-size:12px;color:var(--accent);margin-top:7px;display:inline-block;background:var(--accent-soft);padding:3px 8px;border-radius:5px}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:22px 0}
+.mini{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.mini__h{font-size:14px;font-weight:700;margin-bottom:5px}
+.mini p{font-size:13.5px;margin:0;line-height:1.55}
+
+.filetree{font-family:var(--mono);font-size:12.5px;line-height:1.95;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:22px 0;color:var(--ink-soft);overflow-x:auto;white-space:pre}
+.filetree b{color:var(--ink);font-weight:500}
+.filetree i{color:var(--ink-mute);font-style:normal}
+
+.kpi{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+.kpi>div{flex:1 1 150px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi b{display:block;font-family:var(--head);font-size:27px;font-weight:800;letter-spacing:-.03em;line-height:1;margin-bottom:5px}
+.kpi span{font-size:12.5px;color:var(--ink-mute);line-height:1.4;display:block}
+
+footer{max-width:780px;margin:80px auto 0;padding:26px 32px 0;border-top:1px solid var(--line);font-size:13px;color:var(--ink-mute)}
+
+/* ── Responsive ── */
+@media(max-width:940px){
+  .wrap{grid-template-columns:1fr}
+  .toc{position:static;max-height:none;border-right:none;border-bottom:1px solid var(--line);padding:26px 32px;columns:2;column-gap:28px}
+  .toc__brand{column-span:all}
+  .toc__sep{display:none}
+}
+@media(max-width:560px){
+  body{font-size:15.5px}
+  .toc{columns:1}
+  .cover{padding:52px 24px 44px}
+  .page{padding:0 24px}
+  footer{padding:26px 24px 0}
+  .steps>li{padding-left:42px}
+}
+
+/* ── Print → PDF ── */
+@media print{
+  :root{--paper:#fff;--card:#fff}
+  body{background:#fff;font-size:10.5pt;line-height:1.5}
+  .toc{display:none}
+  .wrap{display:block;max-width:none}
+  main{padding:0}
+  .page,.cover,footer{max-width:none;padding-left:0;padding-right:0;margin:0}
+  .cover{padding-top:0;page-break-after:always}
+  section{page-break-inside:auto;padding-top:26pt}
+  h2{page-break-after:avoid;page-break-before:auto}
+  h3,h4,.box__title,.steps__h{page-break-after:avoid}
+  .box,.mini,.kpi>div,.quote,.filetree,.steps>li,.tbl tr{page-break-inside:avoid}
+  .tbl{font-size:9pt}
+  .scroll{overflow:visible}
+  .scroll .tbl{min-width:0}
+  a{color:var(--ink);text-decoration:none}
+  @page{margin:16mm 14mm}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<nav class="toc">
+  <div class="toc__brand">Construire un site<br/>qui ramène des clients</div>
+  <a href="#demarrer" data-n="00">Démarrer en 10 minutes</a>
+  <div class="toc__sep"></div>
+  <a href="#principe" data-n="01">Le principe</a>
+  <a href="#architecture" data-n="02">L'architecture du site</a>
+  <a href="#seo-local" data-n="03">Le moteur : les pages villes</a>
+  <a href="#conversion" data-n="04">Les 8 mécaniques de conversion</a>
+  <a href="#honnetete" data-n="05">Les règles d'honnêteté</a>
+  <div class="toc__sep"></div>
+  <a href="#stack" data-n="06">La stack technique</a>
+  <a href="#phases" data-n="07">Les 10 phases</a>
+  <a href="#publication" data-n="08">Mise en ligne</a>
+  <a href="#trafic" data-n="09">Amener du trafic</a>
+  <div class="toc__sep"></div>
+  <a href="#metiers" data-n="10">Adapter à votre métier</a>
+  <a href="#erreurs" data-n="11">Les erreurs qui coûtent cher</a>
+  <a href="#budget" data-n="12">Budget et délais réels</a>
+  <a href="#fichiers" data-n="13">Les fichiers du kit</a>
+</nav>
+
+<main>
+
+<header class="cover">
+  <div class="cover__eyebrow">Méthode complète · de la page blanche à la première demande</div>
+  <h1>Construire un site qui <em>ramène des clients</em>, avec Claude.</h1>
+  <p class="cover__lede">
+    Ce dossier contient la méthode exacte utilisée pour construire un site vitrine local
+    de 30 pages qui génère des demandes de devis. Elle fonctionne pour n'importe quel
+    métier : plombier, photographe, paysagiste, avocat, coach, menuisier, traiteur.
+    Vous remplissez un questionnaire, vous collez dix prompts à Claude, vous publiez.
+  </p>
+  <div class="cover__meta">
+    <div><b>Pour qui</b> Toute entreprise locale</div>
+    <div><b>Prérequis</b> Claude Code + un terminal</div>
+    <div><b>Temps</b> 2 à 4 jours de travail</div>
+    <div><b>Coût</b> ~15 €/an (le domaine)</div>
+  </div>
+</header>
+
+<div class="page">
+
+<section id="demarrer">
+  <h2><span class="num">00 — Mode d'emploi</span>Démarrer en 10 minutes</h2>
+  <p class="lead">Ce kit n'est pas un livre à lire. C'est une procédure à exécuter. Voici l'ordre.</p>
+
+  <ol class="steps">
+    <li>
+      <div class="steps__h">Remplissez le questionnaire</div>
+      <p>Toutes les informations sur votre entreprise : offres, prix, villes, preuves, couleurs.
+      Comptez une heure, à faire sérieusement — <b>la qualité du site dépend entièrement de
+      la qualité de ce fichier</b>. Claude écrit bien, mais il n'invente pas vos prix.</p>
+      <span class="steps__f">01-BRIEF/BRIEF-A-REMPLIR.md</span>
+    </li>
+    <li>
+      <div class="steps__h">Préparez le dossier de travail</div>
+      <p>Créez un dossier pour votre projet. Mettez-y <code>CLAUDE.md</code>, votre questionnaire
+      rempli, et le dossier <code>03-TEMPLATE-CODE/</code> renommé en <code>site/</code>.</p>
+      <span class="steps__f">02-INSTRUCTIONS-CLAUDE/CLAUDE.md</span>
+    </li>
+    <li>
+      <div class="steps__h">Lancez Claude dans ce dossier</div>
+      <p>Ouvrez un terminal dans le dossier du projet, tapez <code>claude</code>.
+      Il lira <code>CLAUDE.md</code> tout seul : les règles du projet s'appliquent sans
+      que vous ayez à les répéter à chaque session.</p>
+    </li>
+    <li>
+      <div class="steps__h">Collez les prompts, un par un, dans l'ordre</div>
+      <p>Dix fichiers, numérotés de 00 à 09. Un prompt = une phase. Vous validez,
+      vous passez au suivant. <b>Ne sautez pas de phase et n'en lancez pas deux à la fois</b> :
+      la phase 3 suppose que la phase 2 est validée.</p>
+      <span class="steps__f">02-INSTRUCTIONS-CLAUDE/PROMPT-00 → PROMPT-09</span>
+    </li>
+    <li>
+      <div class="steps__h">Vérifiez vous-même avant de publier</div>
+      <p>Les deux checklists, à passer dans le navigateur, en cliquant réellement partout.
+      Ne publiez jamais sur la foi d'un « c'est fait ».</p>
+      <span class="steps__f">04-CHECKLISTS/</span>
+    </li>
+  </ol>
+
+  <div class="box box--accent">
+    <div class="box__title">Si vous ne lisez qu'une seule page de ce dossier</div>
+    <p>Lisez la <a href="#honnetete">section 05, les règles d'honnêteté</a>. C'est la seule
+    qui peut vous éviter une amende et un bad buzz. Tout le reste est du savoir-faire ;
+    celle-là est une limite à ne pas franchir.</p>
+  </div>
+</section>
+
+<hr/>
+
+<section id="principe">
+  <h2><span class="num">01 — Le principe</span>Pourquoi ce genre de site fonctionne</h2>
+
+  <p class="lead">La plupart des sites d'entreprises locales sont des brochures.
+  Celui-ci est un tunnel.</p>
+
+  <p>Un site-brochure dit qui vous êtes, affiche trois photos et un formulaire « Contactez-nous ».
+  Il ne convertit rien, parce qu'il ne répond à aucune des questions que le visiteur se pose
+  réellement. Le visiteur part, ouvre le site suivant, et ainsi de suite jusqu'à tomber sur
+  celui qui lui donne un prix.</p>
+
+  <div class="quote">Le client local ne cherche pas la meilleure entreprise. Il cherche celle qui lui donne un prix et un délai avant les autres.</div>
+
+  <p>Toute la méthode tient dans cette phrase. Le site est construit pour répondre, dans
+  l'ordre exact où elles arrivent, aux cinq questions du visiteur :</p>
+
+  <div class="scroll">
+  <table class="tbl">
+    <thead><tr><th>Dans sa tête</th><th>Ce que le site lui répond</th><th>Où</th></tr></thead>
+    <tbody>
+      <tr><td><b>« Est-ce qu'ils font ça, chez moi ? »</b></td><td>Une page dédiée à sa ville, avec ses quartiers</td><td>Pages villes</td></tr>
+      <tr><td><b>« Combien ça coûte ? »</b></td><td>Trois offres chiffrées, visibles immédiatement</td><td>Accueil + pages offres</td></tr>
+      <tr><td><b>« Combien pour MOI ? »</b></td><td>Un calculateur : une question, trois prix</td><td>Accueil</td></tr>
+      <tr><td><b>« Est-ce que je peux leur faire confiance ? »</b></td><td>Chiffres réels, avis réels, certifications réelles, photos de chantiers</td><td>Partout</td></tr>
+      <tr><td><b>« Comment je les joigns ? »</b></td><td>Téléphone cliquable, WhatsApp flottant, formulaire court</td><td>Toutes les pages</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Un site qui répond à ces cinq questions gagne contre un site plus beau qui n'y répond pas.
+  C'est aussi simple que ça, et c'est pour cette raison que cette méthode marche dans tous
+  les métiers : les questions ne changent pas, seules les réponses changent.</p>
+
+  <h3>Les deux sources de trafic</h3>
+  <div class="grid2">
+    <div class="mini">
+      <div class="mini__h">Le référencement local — gratuit, lent</div>
+      <p>Une page par ville, un blog qui répond aux questions, et une fiche Google Business.
+      Résultats au bout de 1 à 3 mois, puis du trafic qui ne coûte rien, indéfiniment.</p>
+    </div>
+    <div class="mini">
+      <div class="mini__h">La publicité — payante, immédiate</div>
+      <p>Google Ads sur « métier + ville ». Des demandes dès 48 h. C'est ce qui fait vivre
+      l'entreprise pendant que le référencement monte.</p>
+    </div>
+  </div>
+  <p>Il faut les deux. Le SEO seul, c'est trois mois sans chiffre d'affaires.
+  La publicité seule, c'est un robinet qui se ferme le jour où vous arrêtez de payer.</p>
+</section>
+
+<hr/>
+
+<section id="architecture">
+  <h2><span class="num">02 — Architecture</span>Trente pages, et la raison de chacune</h2>
+
+  <p class="lead">Un site d'entreprise locale efficace ne fait pas 5 pages. Il en fait 30.
+  Non pas pour faire du volume : parce que <b>chaque page est une porte d'entrée différente
+  depuis Google</b>.</p>
+
+  <p>Règle qui gouverne tout : <b>une page = un mot-clé = une intention de recherche</b>.
+  Jamais deux. Une page qui essaie de se classer sur « plombier Nice » et « dépannage fuite
+  Cannes » ne se classe sur aucun des deux.</p>
+
+  <div class="scroll">
+  <table class="tbl">
+    <thead><tr><th>Type de page</th><th>Nb</th><th>Ce qu'elle va chercher</th><th>Son rôle</th></tr></thead>
+    <tbody>
+      <tr><td><b>Accueil</b></td><td>1</td><td>Nom de marque + métier + zone</td><td>Convertir le trafic de marque et de publicité</td></tr>
+      <tr><td><b>Pages offres</b></td><td>3</td><td>« prix », « tarif », nom de gamme</td><td>Transformer l'intéressé en demande. Faire monter en gamme.</td></tr>
+      <tr><td><b>Pages villes</b></td><td>5-10</td><td>« métier + ville » ← <b>le gros du trafic</b></td><td>Capter chaque recherche locale</td></tr>
+      <tr><td><b>Réalisations</b></td><td>1</td><td>« avant après », photos</td><td>Prouver le savoir-faire</td></tr>
+      <tr><td><b>Pages d'autorité</b></td><td>1-2</td><td>Certifications, normes, aides, garanties</td><td>Rassurer. Capter des recherches à forte intention.</td></tr>
+      <tr><td><b>Blog</b></td><td>1+12</td><td>« combien coûte », « comment choisir », « A ou B »</td><td>Capter le visiteur <i>avant</i> qu'il cherche une entreprise</td></tr>
+      <tr><td><b>Contact</b></td><td>1</td><td>« contact », « devis »</td><td>Le point de conversion</td></tr>
+      <tr><td><b>Légal</b></td><td>2</td><td>—</td><td>Obligation légale. Et signal de sérieux pour Google.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box">
+    <div class="box__title">Le maillage interne : ce que presque tout le monde oublie</div>
+    <p>Les pages ne doivent pas vivre côte à côte, elles doivent se renvoyer les visiteurs :</p>
+    <ul>
+      <li>chaque <b>page ville</b> renvoie vers les 3 pages offres</li>
+      <li>chaque <b>page offre</b> renvoie vers les pages villes et vers le contact</li>
+      <li>chaque <b>article de blog</b> renvoie vers au moins une offre et une ville</li>
+      <li>la <b>page d'accueil</b> renvoie vers tout, et toutes les pages renvoient vers elle</li>
+    </ul>
+    <p>Effet concret : Google comprend que le site forme un ensemble cohérent sur un sujet,
+    et le visiteur ne se retrouve jamais dans un cul-de-sac.</p>
+  </div>
+
+  <h3>Deux fichiers à mettre à jour à chaque nouvelle page</h3>
+  <p>C'est l'oubli le plus fréquent, et il annule une partie du travail :</p>
+  <ul>
+    <li><code>sitemap.xml</code> — sinon Google peut mettre des semaines à trouver la page</li>
+    <li><code>assets/js/nav.js</code>, tableau <code>PAGES</code> — sinon la page est
+    invisible dans la recherche interne du site</li>
+  </ul>
+</section>
+
+<hr/>
+
+<section id="seo-local">
+  <h2><span class="num">03 — Le moteur</span>Une page par ville : le mécanisme qui change tout</h2>
+
+  <p class="lead">C'est le cœur de la méthode. Si vous ne retenez qu'une technique,
+  retenez celle-ci.</p>
+
+  <p>Personne ne cherche « plombier ». Les gens cherchent <b>« plombier Nice »</b>,
+  <b>« plombier Antibes »</b>, <b>« plombier Cagnes-sur-Mer »</b>. Ce sont trois recherches
+  différentes, avec trois classements Google différents.</p>
+
+  <p>Vos concurrents ont une seule page qui dit « nous intervenons dans tout le département ».
+  Elle est faible sur les trois recherches à la fois. Vous, vous avez une page entière
+  consacrée à chaque ville, avec le nom de la ville dans le titre, dans le <code>&lt;h1&gt;</code>,
+  dans l'URL, et dans le contenu. Sur chacune de ces recherches, vous êtes plus pertinent
+  qu'eux.</p>
+
+  <div class="kpi">
+    <div><b>1 ville</b><span>= 1 page = 1 chance d'être en première page</span></div>
+    <div><b>8 villes</b><span>= 8 portes d'entrée au lieu d'une</span></div>
+    <div><b>250 mots</b><span>de contenu unique minimum par page</span></div>
+  </div>
+
+  <div class="box box--warn">
+    <div class="box__title">⚠ Le piège qui fait échouer la plupart des gens</div>
+    <p>Dupliquer la page et remplacer juste « Nice » par « Cannes ».
+    Google détecte le contenu dupliqué et déclasse l'ensemble — vous vous retrouvez
+    moins bien positionné qu'avec une seule page.</p>
+    <p><b>Chaque page ville doit contenir au moins 250 mots qui n'existent nulle part ailleurs
+    sur le site.</b> Et ce contenu doit être vrai.</p>
+  </div>
+
+  <h3>Ce qui rend une page ville réellement unique</h3>
+  <p>Pour chaque ville, il faut écrire des choses qu'on ne peut écrire que sur cette ville :</p>
+  <ul>
+    <li>les <b>quartiers réels</b>, nommés (six à dix, vérifiés)</li>
+    <li>le <b>type de bâti</b> dominant : centre ancien, résidences des années 70, villas, immeubles haussmanniens</li>
+    <li>les <b>contraintes propres au lieu</b> : copropriétés, secteur sauvegardé, accès difficile, stationnement, zone classée, altitude, climat</li>
+    <li>les <b>délais ou tarifs</b> spécifiques si la distance les change</li>
+    <li>une <b>FAQ de quatre questions</b> contenant le nom de la ville</li>
+  </ul>
+
+  <div class="box box--ok">
+    <div class="box__title">La FAQ : quatre questions qui marchent dans tous les métiers</div>
+    <ol style="margin-bottom:0">
+      <li>Combien coûte <i>[votre service]</i> à <i>[ville]</i> ? → une vraie fourchette de prix</li>
+      <li>Quel est le délai d'intervention à <i>[ville]</i> ? → un vrai délai</li>
+      <li>Intervenez-vous dans tous les quartiers de <i>[ville]</i> ? → six à huit quartiers réels</li>
+      <li>Une question technique propre à votre métier → trois ou quatre phrases</li>
+    </ol>
+  </div>
+
+  <p>Ces questions-réponses sont aussi déclarées en <code>JSON-LD FAQPage</code> dans le code.
+  C'est ce qui permet à Google d'afficher vos réponses directement dans les résultats,
+  dans les blocs « Autres questions posées ». <b>Le texte du code doit être exactement celui
+  affiché sur la page</b> — sinon c'est considéré comme une tentative de manipulation.</p>
+
+  <div class="box box--warn">
+    <div class="box__title">⚠ Ne créez une page que pour une ville où vous allez vraiment</div>
+    <p>Une page qui classe bien sur une ville où vous refuserez de vous déplacer, cela donne
+    un appel, une déception, et parfois un avis négatif. Le référencement local amplifie
+    aussi vos mauvaises décisions.</p>
+  </div>
+</section>
+
+<hr/>
+
+<section id="conversion">
+  <h2><span class="num">04 — Conversion</span>Les huit mécaniques, et ce qu'elles font vraiment</h2>
+
+  <p class="lead">Amener du trafic est la moitié du travail. Voici ce qui transforme
+  un visiteur en demande — et ce que chaque mécanique coûte en risque.</p>
+
+  <div class="scroll">
+  <table class="tbl">
+    <thead><tr><th>Mécanique</th><th>Ce qu'elle déclenche chez le visiteur</th><th>Risque</th></tr></thead>
+    <tbody>
+      <tr><td><b>1. Hero orienté bénéfice</b><br/><i>Une accroche de deux lignes sur le résultat, pas sur l'entreprise</i></td><td>Il comprend en deux secondes qu'il est au bon endroit, et ne repart pas</td><td>Aucun</td></tr>
+      <tr><td><b>2. Prix affichés</b><br/><i>Trois offres chiffrées dès la page d'accueil</i></td><td>Il n'a plus besoin d'appeler trois concurrents pour comparer. <b>C'est le plus gros avantage concurrentiel du site</b> : 90 % des entreprises locales n'affichent rien.</td><td>Aucun, si les prix sont tenus</td></tr>
+      <tr><td><b>3. Trois offres au lieu d'une</b><br/><i>Entrée, intermédiaire mise en avant, premium</i></td><td>Il ne se demande plus « est-ce que je prends ? » mais « laquelle je prends ? ». La présence du premium rend l'intermédiaire raisonnable.</td><td>Aucun</td></tr>
+      <tr><td><b>4. Calculateur de prix</b><br/><i>Une question, trois prix instantanés</i></td><td>Il obtient un prix personnalisé sans rien remplir ni envoyer. Repart avec un chiffre en tête. <b>Le meilleur levier après les prix affichés.</b></td><td>Aucun, si les prix sont tenus</td></tr>
+      <tr><td><b>5. Chiffres vérifiables</b><br/><i>Quatre chiffres animés au scroll</i></td><td>Il se rassure sur le sérieux de l'entreprise</td><td><b>Élevé si inventé</b> — voir section 05</td></tr>
+      <tr><td><b>6. Contact permanent</b><br/><i>Téléphone cliquable dans la navbar, WhatsApp flottant</i></td><td>Il peut agir au moment exact où il décide, sans chercher. Sur mobile, le téléphone bat le formulaire.</td><td>Aucun</td></tr>
+      <tr><td><b>7. Compte à rebours d'offre</b><br/><i>Bannière + minuteur</i></td><td>Il arrête de reporter sa décision</td><td><b>Élevé</b> si l'offre ne s'arrête jamais</td></tr>
+      <tr><td><b>8. Popup de sortie</b><br/><i>Captation d'email quand il s'en va</i></td><td>Il laisse un contact au lieu de disparaître, ce qui permet de le relancer</td><td>Faible — RGPD à respecter</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box">
+    <div class="box__title">Une neuvième mécanique existe dans le code, et elle est désactivée</div>
+    <p>Les petites notifications du type « <i>Julien (Nice) vient de demander un devis</i> ».
+    Elles sont dans <code>social-proof.js</code>, avec <code>SP_ENABLED = false</code>.</p>
+    <p>Elles fonctionnent très bien. Mais <b>si les noms sont inventés, c'est une pratique
+    commerciale trompeuse</b> (articles L121-2 et L121-4 du Code de la consommation).
+    Deux usages légitimes : les remplir avec de vrais clients récents, prénom et ville
+    seulement, avec leur accord ; ou les remplacer par des faits vérifiables et intemporels
+    (« 4,8/5 sur 36 avis Google », « intervention sous 48 h »). Même effet rassurant,
+    zéro risque.</p>
+  </div>
+
+  <h3>Les trois règles de conversion valables sur chaque page</h3>
+  <ul>
+    <li><b>Un bouton d'action visible sans scroller.</b> Toujours.</li>
+    <li><b>Jamais plus de deux scrolls sans un moyen de contact.</b></li>
+    <li><b>Mobile d'abord.</b> Entre 70 et 80 % du trafic local vient du téléphone.
+    Un site testé seulement sur ordinateur est un site testé sur 25 % de ses visiteurs.</li>
+  </ul>
+</section>
+
+<hr/>
+
+<section id="honnetete">
+  <h2><span class="num">05 — La limite</span>Les règles d'honnêteté</h2>
+
+  <p class="lead">La section la plus importante du dossier. Elle vous protège de l'amende
+  et, surtout, du client qui découvre le mensonge au premier rendez-vous.</p>
+
+  <p>Un site de ce type donne envie d'exagérer : les chiffres animés appellent de gros chiffres,
+  les cartes d'avis appellent des avis, les badges appellent des certifications.
+  Claude, si on ne le cadre pas, comblera les vides avec du <i>plausible</i>.
+  Le fichier <code>CLAUDE.md</code> du kit lui interdit explicitement de le faire.</p>
+
+  <div class="box box--warn">
+    <div class="box__title">Interdit, sauf si c'est dans votre questionnaire et prouvable</div>
+    <ul style="margin-bottom:0">
+      <li>un nombre de clients, de chantiers, d'années d'expérience</li>
+      <li>une note ou un nombre d'avis</li>
+      <li>« N°1 », « leader », « le meilleur », « certifié », « agréé »</li>
+      <li>un avis client, même « inspiré » d'un vrai</li>
+      <li>un délai d'intervention ou une garantie que vous ne tiendrez pas</li>
+      <li>un logo de marque, de label ou de certification</li>
+      <li>un prix barré qui n'a jamais été pratiqué</li>
+      <li>un compte à rebours qui se réinitialise tout seul</li>
+    </ul>
+  </div>
+
+  <p>En France, les publicités trompeuses relèvent des articles L121-2 et suivants du Code
+  de la consommation, avec des sanctions réelles. Mais le vrai risque est ailleurs :
+  <b>un client qui a lu « 500 chantiers réalisés » et qui découvre que vous avez démarré
+  l'an dernier ne vous fera plus confiance sur rien</b>, y compris sur votre devis.</p>
+
+  <div class="box box--ok">
+    <div class="box__title">Ce qui remplace un chiffre que vous n'avez pas</div>
+    <p>Un bénéfice qualitatif vrai fonctionne aussi bien, et parfois mieux :</p>
+    <ul style="margin-bottom:0">
+      <li>« Devis clair, sans surprise » plutôt que « 500 clients satisfaits »</li>
+      <li>« Nous rappelons toujours sous 24 h » plutôt que « Le meilleur service de la région »</li>
+      <li>« Nous vous disons quand ce n'est pas la bonne solution » plutôt que « Leader du secteur »</li>
+      <li>« 12 ans de métier » <i>(si c'est vrai)</i> plutôt que « expérience reconnue »</li>
+    </ul>
+  </div>
+
+  <p>Quand une information manque, la bonne pratique est de laisser visible dans le code
+  un <code>{{À COMPLÉTER}}</code> et de le signaler, plutôt que de combler. Un trou visible
+  se répare en cinq minutes ; un chiffre inventé reste en ligne des années.</p>
+
+  <div class="box">
+    <div class="box__title">À demander à Claude à la fin de chaque phase</div>
+    <p style="margin-bottom:0"><i>« Liste-moi tous les chiffres, délais, certifications et avis
+    que tu as écrits, et dis-moi pour chacun d'où il vient dans mon brief. »</i><br/>
+    Un seul « je l'ai déduit » ou « c'est un exemple » et la ligne doit sauter.</p>
+  </div>
+</section>
+
+<hr/>
+
+<section id="stack">
+  <h2><span class="num">06 — Technique</span>La stack, et pourquoi elle est volontairement simple</h2>
+
+  <div class="scroll">
+  <table class="tbl">
+    <thead><tr><th>Brique</th><th>Choix</th><th>Pourquoi</th><th>Coût</th></tr></thead>
+    <tbody>
+      <tr><td>Pages</td><td><b>HTML statique</b>, un fichier par page</td><td>Chargement instantané, indexation immédiate, lisible et modifiable à la main pendant dix ans</td><td>0 €</td></tr>
+      <tr><td>Style</td><td><b>Un seul CSS</b>, variables dans <code>:root</code></td><td>Changer six variables suffit à rhabiller tout le site</td><td>0 €</td></tr>
+      <tr><td>Interactions</td><td><b>JavaScript natif</b></td><td>Aucune dépendance, rien à mettre à jour, rien qui casse</td><td>0 €</td></tr>
+      <tr><td>Hébergement</td><td><b>Netlify</b></td><td>Glisser-déposer du dossier, HTTPS automatique, CDN mondial</td><td>0 €</td></tr>
+      <tr><td>Formulaire</td><td><b>Netlify Function + Resend</b></td><td>Un email propre dans votre boîte à chaque demande, sans serveur à gérer</td><td>0 € jusqu'à 3 000 emails/mois</td></tr>
+      <tr><td>Domaine</td><td><b>OVH, Ionos, Gandi…</b></td><td>—</td><td>~15 €/an</td></tr>
+      <tr><td>Mesure</td><td><b>Google Analytics 4 + Search Console</b></td><td>Savoir ce qui amène les demandes, et ce qui n'amène rien</td><td>0 €</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box box--accent">
+    <div class="box__title">Pourquoi pas WordPress, React ou un constructeur de site</div>
+    <p><b>WordPress</b> : mises à jour permanentes, extensions qui cassent, lenteur, piratages.
+    Un site vitrine n'a pas besoin de base de données.<br/>
+    <b>React / Next.js</b> : il faut compiler pour publier, et plus personne ne peut modifier
+    une virgule sans environnement de développement.<br/>
+    <b>Wix, Squarespace</b> : abonnement mensuel, et vous ne possédez pas votre code.</p>
+    <p style="margin-bottom:0">Ici, trente fichiers HTML dans un dossier. Dans cinq ans, ça
+    fonctionnera encore exactement pareil, et n'importe qui pourra reprendre le site.
+    <b>Zéro dette technique.</b></p>
+  </div>
+
+  <h3>Le circuit du formulaire, en clair</h3>
+  <ol>
+    <li>Le visiteur remplit le formulaire et clique.</li>
+    <li>Le JavaScript de la page envoie les champs à <code>/.netlify/functions/send-email</code>.</li>
+    <li>La fonction met en forme un email HTML lisible et l'envoie via l'API Resend.</li>
+    <li>L'email arrive dans votre boîte, aux couleurs de votre marque, avec un bouton
+    « Répondre à <i>[prénom]</i> » qui répond directement au prospect.</li>
+    <li>Un événement <code>generate_lead</code> est envoyé à Analytics — c'est lui qui servira
+    à mesurer le coût d'une demande en publicité.</li>
+  </ol>
+  <p>La clé API Resend n'est <b>jamais</b> dans le code du site : elle vit dans les variables
+  d'environnement de Netlify. C'est la seule façon de ne pas l'exposer publiquement.</p>
+</section>
+
+<hr/>
+
+<section id="phases">
+  <h2><span class="num">07 — Exécution</span>Les dix phases</h2>
+
+  <p class="lead">Une phase, un prompt, une validation. L'ordre compte : chaque phase
+  s'appuie sur la précédente.</p>
+
+  <div class="scroll">
+  <table class="tbl">
+    <thead><tr><th>#</th><th>Phase</th><th>Ce que vous obtenez</th><th>Durée</th></tr></thead>
+    <tbody>
+      <tr><td><b>00</b></td><td>Démarrage</td><td>Variables du projet remplies, liste des informations manquantes, architecture complète validée, liste des photos à fournir</td><td>30 min</td></tr>
+      <tr><td><b>01</b></td><td>Design system</td><td>Vos couleurs et polices appliquées, contrastes vérifiés, une page d'aperçu pour valider le style <b>avant</b> de construire 30 pages</td><td>30 min</td></tr>
+      <tr><td><b>02</b></td><td>Page d'accueil</td><td>Les 15 blocs dans l'ordre, calculateur configuré avec vos prix</td><td>2-3 h</td></tr>
+      <tr><td><b>03</b></td><td>Pages offres</td><td>3 pages avec onglets, tableau comparatif, FAQ</td><td>2 h</td></tr>
+      <tr><td><b>04</b></td><td>Pages villes</td><td>5 à 10 pages avec contenu local réel et FAQ par ville</td><td>3-4 h</td></tr>
+      <tr><td><b>05</b></td><td>Blog + autorité</td><td>10 à 12 articles de 1 200 à 1 800 mots, 1 à 2 pages d'autorité</td><td>4-6 h</td></tr>
+      <tr><td><b>06</b></td><td>Contact + formulaire</td><td>Le circuit d'envoi d'email qui fonctionne vraiment, et testé</td><td>1 h</td></tr>
+      <tr><td><b>07</b></td><td>Audit SEO technique</td><td>Toutes les pages vérifiées une par une, liens morts corrigés, images compressées</td><td>1 h</td></tr>
+      <tr><td><b>08</b></td><td>Pages légales</td><td>Mentions légales + RGPD + bandeau cookies conforme</td><td>45 min</td></tr>
+      <tr><td><b>09</b></td><td>Publication</td><td>Site en ligne, domaine branché, Google Business, Search Console, Analytics, publicité</td><td>2-3 h + attentes</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box">
+    <div class="box__title">Trois réflexes qui changent la qualité du résultat</div>
+    <ul style="margin-bottom:0">
+      <li><b>Faites toujours produire un seul exemplaire d'abord.</b> Une page ville, un article.
+      Vous validez le modèle, puis Claude décline. Sinon vous corrigez dix pages au lieu d'une.</li>
+      <li><b>Ouvrez les pages dans le navigateur</b> à chaque phase. Pas en fin de projet.</li>
+      <li><b>Ne demandez pas « refais la page d'accueil »</b> si un bloc vous déplaît.
+      Demandez la modification du bloc. Une refonte entière fait perdre ce qui était déjà bon.</li>
+    </ul>
+  </div>
+</section>
+
+<hr/>
+
+<section id="publication">
+  <h2><span class="num">08 — Publication</span>Mettre le site en ligne</h2>
+
+  <ol class="steps">
+    <li>
+      <div class="steps__h">Netlify — le site en ligne en deux minutes</div>
+      <p>Créez un compte sur <code>netlify.com</code>, « Add new site » → « Deploy manually »,
+      et glissez le dossier <code>site/</code> dans la fenêtre. Le site est en ligne,
+      sous une adresse en <code>.netlify.app</code>.</p>
+    </li>
+    <li>
+      <div class="steps__h">Resend — pour que le formulaire envoie vraiment</div>
+      <p>Compte sur <code>resend.com</code>, ajoutez votre domaine, validez les enregistrements
+      DNS demandés, récupérez la clé API. Dans Netlify : <i>Site configuration → Environment
+      variables</i> → <code>RESEND_API_KEY</code>.</p>
+      <p><b>Puis redéployez le site.</b> Une variable d'environnement n'est prise en compte
+      qu'au déploiement suivant — c'est la cause numéro un des « mon formulaire ne marche pas ».</p>
+    </li>
+    <li>
+      <div class="steps__h">Le domaine</div>
+      <p>Netlify → <i>Domain management</i> → <i>Add custom domain</i>. Netlify vous donne
+      les enregistrements DNS à créer chez votre registrar. Le HTTPS s'active ensuite tout seul.
+      Comptez de 1 à 24 h de propagation DNS : c'est normal, il n'y a rien à faire pendant
+      ce temps.</p>
+    </li>
+    <li>
+      <div class="steps__h">Le test qui conditionne tout le reste</div>
+      <p>Envoyez une vraie demande depuis le formulaire du site en ligne. Vérifiez :
+      l'email arrive, toutes les informations sont dedans, le bouton « Répondre » renvoie
+      bien au prospect. <b>Tant que ce test échoue, le site ne sert à rien.</b></p>
+    </li>
+  </ol>
+</section>
+
+<hr/>
+
+<section id="trafic">
+  <h2><span class="num">09 — Trafic</span>Être trouvé, puis acheter de la visibilité</h2>
+
+  <div class="box box--accent">
+    <div class="box__title">Google Business Profile — à faire avant tout le reste</div>
+    <p>En recherche locale, <b>la fiche Google pèse souvent plus lourd que le site lui-même</b>.
+    C'est elle qui vous place dans la carte à trois résultats, tout en haut.
+    C'est gratuit, c'est plus rapide que le référencement, et beaucoup d'entreprises
+    locales la négligent.</p>
+    <p style="margin-bottom:0">Créez-la sur <code>business.google.com</code> : catégorie précise,
+    zone d'intervention, horaires, lien vers le site, dix photos minimum.
+    La vérification prend une à deux semaines. Et <b>demandez un avis à chaque client,
+    dès le premier</b> : c'est le principal critère de classement local.</p>
+  </div>
+
+  <h3>La semaine 1</h3>
+  <ul>
+    <li><b>Search Console</b> — vérifier la propriété, soumettre le sitemap, demander
+    l'indexation de l'accueil et des pages villes. L'indexation complète prend de 1 à 4 semaines.</li>
+    <li><b>Analytics GA4</b> — installer l'identifiant sur toutes les pages,
+    créer la conversion sur l'événement <code>generate_lead</code>.</li>
+    <li><b>Bing Webmaster Tools</b> — cinq minutes, import direct depuis Search Console.
+    Peu de trafic, mais gratuit.</li>
+  </ul>
+
+  <h3>La publicité, dès que les emails arrivent</h3>
+  <p>Google Ads sur les recherches « métier + ville » donne des demandes en 48 h, là où
+  le référencement met trois mois. Deux points décident de la rentabilité :</p>
+  <ul>
+    <li><b>Les mots-clés négatifs, dès le premier jour</b> : « gratuit », « emploi », « formation »,
+    « salaire », « pas cher », « occasion », « tuto », plus ceux propres à votre métier.
+    Sans eux, la moitié du budget part en clics inutiles.</li>
+    <li><b>La conversion importée depuis GA4</b>, pour piloter sur le coût par demande
+    et non sur le coût par clic. Sans elle, vous achetez du trafic à l'aveugle.</li>
+  </ul>
+
+  <h3>Le suivi, une fois lancé</h3>
+  <div class="grid2">
+    <div class="mini">
+      <div class="mini__h">Chaque semaine</div>
+      <p>Demandes reçues et depuis quelle page · dépense publicitaire et coût par demande ·
+      nouveaux termes de recherche dans Search Console (ce sont vos prochains articles) ·
+      répondre à tous les avis, y compris les mauvais.</p>
+    </div>
+    <div class="mini">
+      <div class="mini__h">Chaque mois</div>
+      <p>Trafic par page : quelles villes fonctionnent, lesquelles ne décollent pas ·
+      taux de conversion du site · un ou deux nouveaux articles · prix toujours à jour.</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box__title">Lire les chiffres correctement</div>
+    <p style="margin-bottom:0"><b>Zéro visiteur</b> → problème de trafic : référencement ou publicité.<br/>
+    <b>Cent visiteurs, zéro demande</b> → problème de page : prix absents, formulaire trop long,
+    offre pas claire.<br/>
+    Ce sont deux problèmes opposés, avec deux solutions opposées. Regardez toujours
+    le nombre de visiteurs avant de conclure.</p>
+  </div>
+</section>
+
+<hr/>
+
+<section id="metiers">
+  <h2><span class="num">10 — Adaptation</span>La même méthode, dans n'importe quel métier</h2>
+
+  <p class="lead">Seules trois choses changent d'un métier à l'autre : les trois offres,
+  la question du calculateur, et les pages d'autorité. Tout le reste est identique.</p>
+
+  <div class="scroll">
+  <table class="tbl">
+    <thead><tr><th>Métier</th><th>Les 3 offres</th><th>La question du calculateur</th><th>Pages d'autorité</th></tr></thead>
+    <tbody>
+      <tr><td><b>Plombier / chauffagiste</b></td><td>Dépannage · Rénovation · Installation complète</td><td>Type d'intervention ?</td><td>Certifications, garantie décennale</td></tr>
+      <tr><td><b>Électricien</b></td><td>Mise aux normes · Rénovation · Neuf</td><td>Surface du logement ?</td><td>Norme NF C 15-100, Consuel</td></tr>
+      <tr><td><b>Paysagiste</b></td><td>Entretien · Création · Aménagement complet</td><td>Surface du jardin ?</td><td>Crédit d'impôt services à la personne</td></tr>
+      <tr><td><b>Menuisier / fenêtres</b></td><td>PVC · Alu · Bois-alu</td><td>Combien d'ouvertures ?</td><td>Aides à la rénovation, labels</td></tr>
+      <tr><td><b>Photographe</b></td><td>Essentiel · Complet · Prestige</td><td>Type de séance ?</td><td>Droits à l'image, livrables</td></tr>
+      <tr><td><b>Coach sportif</b></td><td>À la séance · Pack 10 · Suivi 3 mois</td><td>Votre objectif ?</td><td>Diplômes, carte professionnelle</td></tr>
+      <tr><td><b>Avocat</b></td><td>Consultation · Dossier · Accompagnement</td><td>Type de dossier ?</td><td>Barreau, aide juridictionnelle, honoraires</td></tr>
+      <tr><td><b>Traiteur</b></td><td>Cocktail · Repas assis · Prestation complète</td><td>Combien de convives ?</td><td>Hygiène HACCP, allergènes</td></tr>
+      <tr><td><b>Garagiste</b></td><td>Révision · Entretien complet · Réparation</td><td>Type de véhicule ?</td><td>Agréments, garantie pièces</td></tr>
+      <tr><td><b>Déménageur</b></td><td>Économique · Standard · Clé en main</td><td>Surface à déménager ?</td><td>Assurance, formalités</td></tr>
+      <tr><td><b>Agent immobilier</b></td><td>Estimation · Mandat simple · Mandat exclusif</td><td>Type de bien ?</td><td>Carte T, honoraires, diagnostics</td></tr>
+      <tr><td><b>Esthétique / coiffure</b></td><td>Découverte · Signature · Abonnement</td><td>Quelle prestation ?</td><td>Diplômes, marques utilisées, hygiène</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box">
+    <div class="box__title">Si votre métier n'affiche jamais ses prix</div>
+    <p>Trois solutions, dans l'ordre de préférence :</p>
+    <ol style="margin-bottom:0">
+      <li><b>Des fourchettes</b> : « entre 1 200 € et 2 800 € selon la configuration ».
+      Cela suffit à qualifier le visiteur et à écarter ceux qui ne sont pas dans votre marché.</li>
+      <li><b>Un prix de départ</b> : « à partir de 890 € » — à condition que ce prix existe réellement.</li>
+      <li><b>Un forfait de première étape</b> : « diagnostic à 90 €, déduits en cas de travaux ».</li>
+    </ol>
+  </div>
+  <p>Dans tous les cas, le visiteur doit repartir avec <b>un ordre de grandeur</b>.
+  Une page qui ne donne aucun chiffre perd contre une page qui en donne, même approximatif.</p>
+
+  <div class="box box--warn">
+    <div class="box__title">⚠ Métiers réglementés</div>
+    <p style="margin-bottom:0">Santé, droit, finance, assurance, alimentaire, petite enfance :
+    la publicité et les allégations sont encadrées, parfois strictement. Faites relire
+    les textes du site par votre ordre professionnel ou votre conseil avant publication.
+    Claude peut écrire les pages, il ne peut pas vous dire ce que votre déontologie autorise.</p>
+  </div>
+</section>
+
+<hr/>
+
+<section id="erreurs">
+  <h2><span class="num">11 — Pièges</span>Les erreurs qui coûtent le plus cher</h2>
+
+  <div class="scroll">
+  <table class="tbl">
+    <thead><tr><th>Erreur</th><th>Ce qu'elle produit</th><th>À faire à la place</th></tr></thead>
+    <tbody>
+      <tr><td><b>Dupliquer les pages villes</b> en changeant juste le nom</td><td>Google déclasse tout le site : pire qu'une seule page</td><td>250 mots de contenu local réel par ville</td></tr>
+      <tr><td><b>Inventer des chiffres</b> et des avis</td><td>Risque légal, et confiance détruite au premier rendez-vous</td><td>Moins de preuves, mais toutes vraies</td></tr>
+      <tr><td><b>Ne pas afficher les prix</b></td><td>Le visiteur part comparer ailleurs et ne revient pas</td><td>Au minimum une fourchette</td></tr>
+      <tr><td><b>Oublier de redéployer après la clé API</b></td><td>Le formulaire ne fonctionne pas, et personne ne s'en aperçoit avant des semaines</td><td>Redéployer, puis envoyer une vraie demande de test</td></tr>
+      <tr><td><b>Ne tester que sur ordinateur</b></td><td>Site cassé pour 75 % des visiteurs</td><td>Tester sur un vrai téléphone</td></tr>
+      <tr><td><b>Laisser des liens morts</b> et des <code>href="#"</code></td><td>Visiteur perdu, signal de négligence pour Google</td><td>Cliquer tous les liens avant de publier</td></tr>
+      <tr><td><b>Images de 4 Mo</b></td><td>Page lente : la moitié des visiteurs mobiles partent avant l'affichage</td><td>300 Ko maximum par image</td></tr>
+      <tr><td><b>Pas de fiche Google Business</b></td><td>Absent de la carte locale, là où se font la majorité des clics</td><td>La créer le jour de la mise en ligne</td></tr>
+      <tr><td><b>Publicité sans mots-clés négatifs</b></td><td>La moitié du budget en clics inutiles</td><td>La liste des négatifs dès le premier jour</td></tr>
+      <tr><td><b>Un site qu'on ne touche plus</b> après le lancement</td><td>Stagnation : les concurrents qui publient passent devant</td><td>Un ou deux articles par mois, répondre aux avis</td></tr>
+      <tr><td><b>Abandonner au bout de trois semaines</b></td><td>On arrête juste avant que le référencement produise</td><td>Compter trois mois. La publicité fait le pont.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<hr/>
+
+<section id="budget">
+  <h2><span class="num">12 — Réalité</span>Budget et délais, sans embellissement</h2>
+
+  <h3>Ce que ça coûte</h3>
+  <div class="scroll">
+  <table class="tbl">
+    <thead><tr><th>Poste</th><th>Coût</th><th>Remarque</th></tr></thead>
+    <tbody>
+      <tr><td>Nom de domaine</td><td><b>~15 €/an</b></td><td>Le seul coût obligatoire</td></tr>
+      <tr><td>Hébergement Netlify</td><td><b>0 €</b></td><td>L'offre gratuite suffit très largement</td></tr>
+      <tr><td>Emails Resend</td><td><b>0 €</b></td><td>Jusqu'à 3 000 emails par mois</td></tr>
+      <tr><td>Analytics, Search Console, fiche Google</td><td><b>0 €</b></td><td>—</td></tr>
+      <tr><td>Photos</td><td><b>0 à 400 €</b></td><td>Vos propres photos de chantier valent mieux que des banques d'images</td></tr>
+      <tr><td>Google Ads <i>(optionnel)</i></td><td><b>300 à 600 €/mois</b></td><td>Pour démarrer. Le seul poste réellement variable.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Les délais, honnêtement</h3>
+  <div class="scroll">
+  <table class="tbl">
+    <thead><tr><th>Étape</th><th>Délai réel</th></tr></thead>
+    <tbody>
+      <tr><td>Construction complète du site (les 10 phases)</td><td><b>2 à 4 jours</b> de travail effectif</td></tr>
+      <tr><td>Mise en ligne et propagation du domaine</td><td>1 à 24 h</td></tr>
+      <tr><td>Premières pages indexées par Google</td><td>3 à 10 jours</td></tr>
+      <tr><td>Fiche Google Business vérifiée</td><td>1 à 2 semaines</td></tr>
+      <tr><td>Premières demandes via la publicité</td><td><b>24 à 72 h</b> après le lancement de la campagne</td></tr>
+      <tr><td>Premières demandes via le référencement naturel</td><td><b>1 à 3 mois</b></td></tr>
+      <tr><td>Positions stables sur « métier + ville »</td><td>3 à 6 mois</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box box--accent">
+    <div class="box__title">La seule chose qui décide du résultat</div>
+    <p style="margin-bottom:0">Ce n'est ni le design, ni le nombre de pages, ni le budget
+    publicitaire. C'est <b>la qualité du questionnaire de départ et la vitesse à laquelle
+    vous rappelez les gens</b>. Un site correct avec un rappel en deux heures bat un site
+    magnifique avec un rappel à trois jours. Le travail du site s'arrête quand l'email arrive ;
+    le vôtre commence là.</p>
+  </div>
+</section>
+
+<hr/>
+
+<section id="fichiers">
+  <h2><span class="num">13 — Index</span>Les fichiers du kit</h2>
+
+  <div class="filetree"><b>KIT-SITE-ENTREPRISE/</b>
+│
+├── <b>GUIDE.html</b>                        <i>← ce document (imprimable en PDF)</i>
+├── <b>LIRE-MOI.txt</b>                      <i>les 5 premières minutes</i>
+│
+├── <b>01-BRIEF/</b>
+│   └── BRIEF-A-REMPLIR.md              <i>★ à remplir en premier</i>
+│
+├── <b>02-INSTRUCTIONS-CLAUDE/</b>
+│   ├── CLAUDE.md                       <i>★ à la racine du projet</i>
+│   ├── PROMPT-00-demarrage.md          <i>architecture + informations manquantes</i>
+│   ├── PROMPT-01-design-system.md      <i>couleurs, polices, aperçu</i>
+│   ├── PROMPT-02-homepage.md           <i>les 15 blocs</i>
+│   ├── PROMPT-03-pages-offres.md       <i>3 pages + comparatif</i>
+│   ├── PROMPT-04-pages-villes.md       <i>le moteur du référencement local</i>
+│   ├── PROMPT-05-blog.md               <i>articles + pages d'autorité</i>
+│   ├── PROMPT-06-contact-formulaire.md <i>envoi d'email réel</i>
+│   ├── PROMPT-07-seo-technique.md      <i>audit page par page</i>
+│   ├── PROMPT-08-legal.md              <i>mentions légales + RGPD</i>
+│   └── PROMPT-09-publication.md        <i>mise en ligne + trafic</i>
+│
+├── <b>03-TEMPLATE-CODE/</b>                 <i>★ à renommer en site/ dans le projet</i>
+│   ├── SNIPPETS.md                     <i>head SEO, JSON-LD, formulaire, classes CSS</i>
+│   ├── assets/css/style.css            <i>design system complet (1 485 lignes)</i>
+│   ├── assets/js/main.js               <i>scroll, apparitions, onglets, compteurs</i>
+│   ├── assets/js/nav.js                <i>menus déroulants + recherche interne</i>
+│   ├── assets/js/popup.js              <i>popup email + bandeau cookies</i>
+│   ├── assets/js/promo.js              <i>compte à rebours d'offre</i>
+│   ├── assets/js/social-proof.js       <i>calculateur de prix + ville rotative</i>
+│   ├── assets/img/                     <i>vos images ici</i>
+│   ├── netlify/functions/send-email.js <i>envoi des demandes par email</i>
+│   ├── netlify.toml
+│   └── robots.txt
+│
+└── <b>04-CHECKLISTS/</b>
+    ├── CHECKLIST-AVANT-PUBLICATION.md
+    └── CHECKLIST-APRES-PUBLICATION.md</div>
+
+  <div class="box box--ok">
+    <div class="box__title">Le code du dossier 03 est déjà fonctionnel</div>
+    <p style="margin-bottom:0">Ce n'est pas un exemple à réécrire : c'est le code d'un site
+    réellement en production, avec les noms de marque retirés et remplacés par des
+    <code>{{VARIABLES}}</code>. Claude l'adapte, il ne le refait pas. C'est ce qui permet
+    de construire trente pages en deux jours au lieu de deux semaines.</p>
+  </div>
+</section>
+
+<footer>
+  <p><b>Pour imprimer ce guide en PDF</b> — <code>Cmd</code> + <code>P</code>
+  (ou <code>Ctrl</code> + <code>P</code>), puis « Enregistrer au format PDF ».
+  La mise en page est déjà prévue pour l'impression.</p>
+  <p style="margin-bottom:0">Méthode issue d'un site vitrine local de 30 pages réellement
+  en production. Les chiffres de prix, de délais et de coûts sont ceux constatés sur ce projet :
+  vérifiez-les pour votre marché avant de les reprendre.</p>
+</footer>
+
+</div><!-- /.page -->
+</main>
+</div><!-- /.wrap -->
+
+</body>
+</html>

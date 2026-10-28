@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  TEMPLATE de page — structure réelle issue d'un site vitrine local en production.
+  Structure HTML + JSON-LD + classes CSS : à garder telles quelles.
+  Textes, prix, villes, offres : illustratifs → à réécrire selon
+  le métier réel (voir BRIEF-A-REMPLIR.md et les PROMPT-0X).
+  Politique de confidentialité RGPD — déjà structurée, à vérifier avec vos vrais sous-traitants.
+  ============================================================
+-->
+
+<html lang="fr">
+<head>
+<!-- Mesure d'audience desactivee : aucun identifiant fourni.
+     Avant la mise en ligne, choisir entre Cloudflare Web Analytics (sans cookie,
+     pas de bandeau de consentement) et Google Analytics 4 (bandeau obligatoire,
+     script bloque tant que le visiteur n'a pas accepte), puis mettre a jour la
+     section 6 de politique-confidentialite.html en consequence. -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Politique de Confidentialité — Climatisation Khalil</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    .legal-hero { background: var(--brand-dark); padding: 140px 0 60px; text-align: center; }
+    .legal-hero h1 { font-size: clamp(32px,4vw,52px); color: var(--white); letter-spacing:-0.025em; margin-bottom:12px; }
+    .legal-hero p { color: rgba(255,255,255,0.5); font-size:15px; }
+    .legal-body { padding: 80px 0 100px; background: var(--gray); }
+    .legal-content { max-width: 760px; margin: 0 auto; background: var(--white); border-radius: 20px; padding: 56px; box-shadow: 0 4px 32px rgba(0,0,0,0.06); }
+    @media(max-width:768px){ .legal-content { padding: 28px 20px; } }
+    .legal-content h2 { font-size: 20px; color: var(--brand-dark); letter-spacing:-0.015em; margin: 40px 0 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
+    .legal-content h2:first-child { margin-top: 0; }
+    .legal-content h3 { font-size: 17px; color: var(--brand-dark); margin: 24px 0 8px; }
+    .legal-content p { font-size: 15px; color: #475569; line-height: 1.75; margin-bottom: 12px; }
+    .legal-content ul { margin: 0 0 16px 20px; }
+    .legal-content li { font-size: 15px; color: #475569; line-height: 1.75; margin-bottom: 6px; }
+    .legal-content a { color: var(--brand); }
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="navbar__logo"><img src="assets/img/logo-climatisation-khalil.png" alt="Climatisation Khalil"/></a>
+  <div class="navbar__links">
+    <a href="index.html">Accueil</a>
+    <div class="nav-drop"><button class="nav-drop__btn">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="entree-de-gamme.html"><span class="nav-drop__icon">❄️</span><span><strong>One Clima</strong><small>Entrée de gamme · dès 899 €</small></span></a><a href="bosch.html"><span class="nav-drop__icon">⚡</span><span><strong>Bosch</strong><small>Milieu de gamme · dès 1 199 €</small></span></a><a href="daikin-premium.html"><span class="nav-drop__icon">👑</span><span><strong>Daikin</strong><small>Haut de gamme · dès 1 699 €</small></span></a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel nav-drop__panel--grid"><a href="climatisation-nice.html">Nice</a><a href="climatisation-antibes.html">Antibes</a><a href="climatisation-cannes.html">Cannes</a><a href="climatisation-monaco.html">Monaco</a><a href="climatisation-menton.html">Menton</a><a href="climatisation-grasse.html">Grasse</a><a href="climatisation-sophia-antipolis.html">Sophia Antipolis</a><a href="climatisation-cagnes-sur-mer.html">Cagnes-sur-Mer</a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="certifications-climatisation.html"><span class="nav-drop__icon">🏅</span><span><strong>Certifications</strong><small>RGE, F-Gaz, normes 2026</small></span></a><a href="realisations.html"><span class="nav-drop__icon">📸</span><span><strong>Réalisations</strong><small>Nos installations en photos</small></span></a><a href="blog.html"><span class="nav-drop__icon">📰</span><span><strong>Blog</strong><small>Conseils &amp; guides</small></span></a></div></div>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="navbar__cta">
+    <button class="navbar__search-btn" id="search-btn" aria-label="Rechercher une page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+    <a href="contact.html" class="btn btn--primary">Devis Gratuit</a>
+  </div>
+  <div class="navbar__burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu__close" id="menu-close">&#x2715;</button>
+  <a href="index.html">Accueil</a>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="entree-de-gamme.html">One Clima</a><a href="bosch.html">Bosch</a><a href="daikin-premium.html">Daikin</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="climatisation-nice.html">Nice</a><a href="climatisation-antibes.html">Antibes</a><a href="climatisation-cannes.html">Cannes</a><a href="climatisation-monaco.html">Monaco</a><a href="climatisation-menton.html">Menton</a><a href="climatisation-grasse.html">Grasse</a><a href="climatisation-sophia-antipolis.html">Sophia Antipolis</a><a href="climatisation-cagnes-sur-mer.html">Cagnes-sur-Mer</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="certifications-climatisation.html">Certifications</a><a href="realisations.html">Réalisations</a><a href="blog.html">Blog</a></div></div>
+  <a href="contact.html">Contact</a>
+  <div class="mobile-menu__cta"><a href="contact.html" class="btn btn--primary">Devis Gratuit</a></div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="search-overlay">
+  <button class="search-overlay__close" id="search-close">&#x2715;</button>
+  <div class="search-overlay__inner">
+    <h2>Que recherchez-vous ?</h2>
+    <div class="search-overlay__bar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="Ex : Nice, Daikin, aides financières…" autocomplete="off"/>
+    </div>
+    <div id="search-results"></div>
+    <p class="search-overlay__hint">Appuyez sur <kbd>Echap</kbd> pour fermer</p>
+  </div>
+</div>
+
+<section class="legal-hero">
+  <div class="container">
+    <h1>Politique de confidentialité</h1>
+    <p>Dernière mise à jour : octobre 2026 — Conforme au RGPD</p>
+  </div>
+</section>
+
+<section class="legal-body">
+  <div class="container">
+    <div class="legal-content">
+
+      <h2>1. Responsable du traitement</h2>
+      <p>Le responsable du traitement des données personnelles collectées sur ce site est :</p>
+      <p><strong>BTP AZUR</strong>, exploitant de la marque Climatisation Khalil<br/>
+      6 bis avenue Durante, 06000 Nice<br/>
+      Email : <a href="mailto:depannage06contact@gmail.com">depannage06contact@gmail.com</a></p>
+
+      <h2>2. Données collectées</h2>
+      <p>Nous collectons uniquement les données nécessaires au traitement de votre demande :</p>
+      <ul>
+        <li>Formulaire de devis : nom et prénom, téléphone, email, ville, adresse de l'intervention, type de logement, description du besoin</li>
+        <li>Formulaire de capture email : prénom et email</li>
+        <li>Prise de contact directe par téléphone, email ou WhatsApp</li>
+      </ul>
+      <p>Lors de l'intervention, des photos de l'installation peuvent être prises pour le diagnostic et le suivi des travaux. <strong>Aucune donnée bancaire n'est collectée sur le site.</strong></p>
+
+      <h2>3. Finalités et bases légales</h2>
+      <ul>
+        <li>Traiter la demande de devis ou de rendez-vous, organiser et réaliser l'intervention : exécution du contrat ou mesures précontractuelles prises à votre demande</li>
+        <li>Établir les devis et factures, et les conserver : obligation légale comptable et fiscale</li>
+        <li>Gérer les réclamations, le service après intervention et les garanties : exécution du contrat</li>
+        <li>Vous demander un avis sur l'intervention : intérêt légitime. Vous pouvez vous y opposer à tout moment.</li>
+      </ul>
+      <p>Vos données ne sont jamais vendues ni louées, et ne sont pas utilisées pour de la prospection commerciale sans votre accord.</p>
+
+      <h2>4. Destinataires</h2>
+      <p>Vos données sont accessibles à l'équipe chargée de votre demande et aux techniciens qui interviennent. Elles sont également traitées par nos prestataires techniques, dans la limite de leur mission : Netlify (hébergement du site et réception des demandes). Ces prestataires sont situés aux États-Unis ; les transferts sont encadrés par les clauses contractuelles types de la Commission européenne ou le cadre de protection des données UE–États-Unis.</p>
+
+      <h2>5. Durée de conservation</h2>
+      <ul>
+        <li>Demande sans intervention : 3 ans après le dernier contact</li>
+        <li>Client : pendant la relation, puis 5 ans après la dernière intervention</li>
+        <li>Devis et factures : 10 ans, comme l'impose le code de commerce</li>
+        <li>Photos d'intervention : pendant la durée des garanties applicables aux travaux</li>
+      </ul>
+
+      <h2>6. Mesure d'audience et cookies</h2>
+      <p>{{À COMPLÉTER : choisir l'outil de mesure d'audience avant la mise en ligne.
+      Option A — Cloudflare Web Analytics, sans cookie et sans suivi individuel : aucun bandeau cookie n'est alors nécessaire.
+      Option B — Google Analytics 4 : le bandeau de consentement est obligatoire et doit bloquer le script tant que le visiteur n'a pas accepté.
+      Cette section doit décrire exactement ce qui est déployé.}}</p>
+      <p>Les cookies strictement nécessaires au fonctionnement du site (mémorisation de votre choix, préférences d'affichage) ne nécessitent pas votre consentement.</p>
+
+      <h2>7. Vos droits</h2>
+      <p>Conformément au RGPD (Règlement Général sur la Protection des Données), vous disposez des droits suivants :</p>
+      <ul>
+        <li><strong>Droit d'accès</strong> : obtenir une copie de vos données</li>
+        <li><strong>Droit de rectification</strong> : corriger des données inexactes</li>
+        <li><strong>Droit à l'effacement</strong> : demander la suppression de vos données</li>
+        <li><strong>Droit d'opposition</strong> : vous opposer à certains traitements</li>
+        <li><strong>Droit à la portabilité</strong> : recevoir vos données dans un format structuré</li>
+        <li><strong>Droit à la limitation</strong> : demander la limitation du traitement</li>
+      </ul>
+      <p>Vous disposez également du droit de définir des directives sur le sort de vos données après votre décès.</p>
+      <p>Pour exercer l'un de ces droits, écrivez à <a href="mailto:depannage06contact@gmail.com">depannage06contact@gmail.com</a> ou par courrier à BTP AZUR, 6 bis avenue Durante, 06000 Nice. Une réponse vous est apportée dans un délai d'un mois.</p>
+      <p>Si vous estimez que vos droits ne sont pas respectés, vous pouvez saisir la CNIL : <a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a></p>
+      <p>Si vous ne souhaitez pas faire l'objet de prospection commerciale par téléphone, vous pouvez vous inscrire gratuitement sur la liste d'opposition <a href="https://www.bloctel.gouv.fr" target="_blank" rel="noopener">Bloctel</a>.</p>
+
+      <h2>8. Sécurité des données</h2>
+      <p>Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, modification, divulgation ou destruction. Le site est servi en HTTPS (connexion chiffrée).</p>
+
+      <h2>9. Modifications</h2>
+      <p>Nous nous réservons le droit de modifier la présente politique de confidentialité à tout moment. Les modifications prendront effet dès leur publication sur cette page. Nous vous encourageons à consulter cette page régulièrement.</p>
+
+      <h2>10. Contact</h2>
+      <p>Pour toute question relative à la présente politique de confidentialité ou à l'exercice de vos droits, contactez-nous à : <a href="mailto:depannage06contact@gmail.com">depannage06contact@gmail.com</a></p>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><img src="assets/img/logo-climatisation-khalil.png" alt="Climatisation Khalil"/><p>L'expert climatisation de la Côte d'Azur. Installation rapide, prix transparents, service premium.</p></div><div class="footer__col"><h4>Nos offres</h4><ul><li><a href="entree-de-gamme.html">Entrée de gamme</a></li><li><a href="bosch.html">Milieu de gamme — Bosch</a></li><li><a href="daikin-premium.html">Premium — Daikin</a></li></ul></div><div class="footer__col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="certifications-climatisation.html">Certifications</a></li>
+          <li></li><li><a href="blog.html">Blog</a>
+    <a href="realisations.html">Réalisations</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="politique-confidentialite.html">Confidentialité</a></li><li><a href="cgv.html">Conditions générales</a></li></ul></div><div class="footer__col"><h4>Contact</h4><p>Nice, Côte d'Azur — Département 06</p><p style="margin-top:12px;"><a href="mailto:depannage06contact@gmail.com" style="color:rgba(255,255,255,0.55);">depannage06contact@gmail.com</a></p></div></div><div class="footer__bottom"><span>&copy; 2026 Climatisation Khalil. Tous droits réservés.</span><span><a href="mentions-legales.html">Mentions légales</a> &nbsp;|&nbsp; <a href="politique-confidentialite.html">Confidentialité</a> &nbsp;|&nbsp; <a href="cgv.html">CGV</a></span></div></div></footer>
+
+<div class="cookie-banner" id="cookie-banner"><p>Nous utilisons des cookies pour améliorer votre expérience. <a href="politique-confidentialite.html">En savoir plus</a>.</p><div class="cookie-banner__actions"><button id="cookie-accept" class="btn btn--primary">Accepter</button><button id="cookie-decline" class="btn btn--outline-white">Refuser</button></div></div>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script><script src="assets/js/popup.js"></script>
+</body>
+</html>

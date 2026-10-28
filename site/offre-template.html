@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  TEMPLATE de page — structure réelle issue d'un site vitrine local en production.
+  Structure HTML + JSON-LD + classes CSS : à garder telles quelles.
+  Textes, prix, villes, offres : illustratifs → à réécrire selon
+  le métier réel (voir BRIEF-A-REMPLIR.md et les PROMPT-0X).
+  UNE des 3 pages d'offre. Dupliquer 3x (entrée/milieu/premium) en adaptant le contenu.
+  ============================================================
+-->
+
+<html lang="fr">
+<head>
+<!-- Mesure d'audience desactivee : aucun identifiant fourni.
+     Avant la mise en ligne, choisir entre Cloudflare Web Analytics (sans cookie,
+     pas de bandeau de consentement) et Google Analytics 4 (bandeau obligatoire,
+     script bloque tant que le visiteur n'a pas accepte), puis mettre a jour la
+     section 6 de politique-confidentialite.html en consequence. -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pack Premium Daikin — Climatisation Haut de Gamme | Climatisation Khalil Côte d'Azur</title>
+  <meta name="description" content="Installez une climatisation Daikin Sensira dès 1699€ sur la Côte d'Azur. Wi-Fi intégré, App Onecta, revêtement Blue Fin. Mono, bi, tri-split. Devis gratuit sous 24h."/>
+  <meta property="og:title" content="Pack Premium Daikin — Climatisation Khalil"/>
+  <meta property="og:description" content="Daikin Sensira avec Wi-Fi, App Onecta et protection Blue Fin. Climatisation haut de gamme installée sur la Côte d'Azur."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://climatisationkhalil.fr/assets/img/lifestyle-clim-salon-vue-mer.png"/>
+  <meta property="og:url" content="https://climatisationkhalil.fr/daikin-premium.html"/>
+  <meta property="og:site_name" content="Climatisation Khalil"/>
+  <link rel="canonical" href="https://climatisationkhalil.fr/daikin-premium.html"/>
+  <link rel="icon" type="image/png" href="assets/img/logo-climatisation-khalil.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <!-- Google Analytics GA4 → Remplacer G-XXXXXXXXXX -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+<!-- PROMO BANNER -->
+<div class="promo-banner">
+  <div class="promo-banner__text">
+    <em>🔥 Offre de lancement</em>
+    <span>— Prix réduits sur toutes les gammes —</span>
+  </div>
+  <div class="promo-banner__countdown">
+    <div class="promo-banner__unit" data-cd-days>14</div>
+    <span class="promo-banner__sep">j</span>
+    <div class="promo-banner__unit" data-cd-hours>00</div>
+    <span class="promo-banner__sep">h</span>
+    <div class="promo-banner__unit" data-cd-min>00</div>
+    <span class="promo-banner__sep">m</span>
+    <div class="promo-banner__unit" data-cd-sec>00</div>
+    <span class="promo-banner__sep">s</span>
+  </div>
+</div>
+
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="navbar__logo"><img src="assets/img/logo-climatisation-khalil.png" alt="Climatisation Khalil"/></a>
+  <div class="navbar__links">
+    <a href="index.html">Accueil</a>
+    <div class="nav-drop"><button class="nav-drop__btn">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="entree-de-gamme.html"><span class="nav-drop__icon">❄️</span><span><strong>One Clima</strong><small>Entrée de gamme · dès 899 €</small></span></a><a href="bosch.html"><span class="nav-drop__icon">⚡</span><span><strong>Bosch</strong><small>Milieu de gamme · dès 1 199 €</small></span></a><a href="daikin-premium.html"><span class="nav-drop__icon">👑</span><span><strong>Daikin</strong><small>Haut de gamme · dès 1 699 €</small></span></a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel nav-drop__panel--grid"><a href="climatisation-nice.html">Nice</a><a href="climatisation-antibes.html">Antibes</a><a href="climatisation-cannes.html">Cannes</a><a href="climatisation-monaco.html">Monaco</a><a href="climatisation-menton.html">Menton</a><a href="climatisation-grasse.html">Grasse</a><a href="climatisation-sophia-antipolis.html">Sophia Antipolis</a><a href="climatisation-cagnes-sur-mer.html">Cagnes-sur-Mer</a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="certifications-climatisation.html"><span class="nav-drop__icon">🏅</span><span><strong>Certifications</strong><small>RGE, F-Gaz, normes 2026</small></span></a><a href="realisations.html"><span class="nav-drop__icon">📸</span><span><strong>Réalisations</strong><small>Nos installations en photos</small></span></a><a href="blog.html"><span class="nav-drop__icon">📰</span><span><strong>Blog</strong><small>Conseils &amp; guides</small></span></a></div></div>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="navbar__cta">
+    <button class="navbar__search-btn" id="search-btn" aria-label="Rechercher une page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+    <a href="contact.html" class="btn btn--primary">Devis Gratuit</a>
+  </div>
+  <div class="navbar__burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu__close" id="menu-close">&#x2715;</button>
+  <a href="index.html">Accueil</a>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="entree-de-gamme.html">One Clima</a><a href="bosch.html">Bosch</a><a href="daikin-premium.html">Daikin</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="climatisation-nice.html">Nice</a><a href="climatisation-antibes.html">Antibes</a><a href="climatisation-cannes.html">Cannes</a><a href="climatisation-monaco.html">Monaco</a><a href="climatisation-menton.html">Menton</a><a href="climatisation-grasse.html">Grasse</a><a href="climatisation-sophia-antipolis.html">Sophia Antipolis</a><a href="climatisation-cagnes-sur-mer.html">Cagnes-sur-Mer</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="certifications-climatisation.html">Certifications</a><a href="realisations.html">Réalisations</a><a href="blog.html">Blog</a></div></div>
+  <a href="contact.html">Contact</a>
+  <div class="mobile-menu__cta"><a href="contact.html" class="btn btn--primary">Devis Gratuit</a></div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="search-overlay">
+  <button class="search-overlay__close" id="search-close">&#x2715;</button>
+  <div class="search-overlay__inner">
+    <h2>Que recherchez-vous ?</h2>
+    <div class="search-overlay__bar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="Ex : Nice, Daikin, aides financières…" autocomplete="off"/>
+    </div>
+    <div id="search-results"></div>
+    <p class="search-overlay__hint">Appuyez sur <kbd>Echap</kbd> pour fermer</p>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="label anim-fade-up">Pack Premium</span>
+    <h1 class="page-hero__title anim-fade-up anim-delay-1">Pack Prestige<br>Daikin</h1>
+    <p class="page-hero__sub anim-fade-up anim-delay-2">Le leader mondial de la climatisation. Wi-Fi intégré, App Onecta, revêtement Blue Fin anti-corrosion. Le choix de l'excellence sur la Côte d'Azur.</p>
+  </div>
+</section>
+
+<section class="product-section" style="background:var(--white);">
+  <div class="container" style="padding-top:24px;padding-bottom:24px;">
+    <div class="product-layout reveal" style="align-items:center;gap:24px;background:#f0f8ff;border-radius:16px;padding:28px 32px;">
+      <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:center;justify-content:center;">
+        <div style="display:flex;align-items:center;gap:12px;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="var(--brand)" stroke-width="2" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"/></svg><span style="font-size:14px;font-weight:600;color:var(--brand-dark);">Wi-Fi intégré</span></div>
+        <div style="display:flex;align-items:center;gap:12px;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="var(--brand)" stroke-width="2" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 9l1.5 1.5 3-3"/></svg><span style="font-size:14px;font-weight:600;color:var(--brand-dark);">App Onecta</span></div>
+        <div style="display:flex;align-items:center;gap:12px;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="var(--brand)" stroke-width="2" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg><span style="font-size:14px;font-weight:600;color:var(--brand-dark);">Blue Fin anti-corrosion</span></div>
+        <div style="display:flex;align-items:center;gap:12px;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="var(--brand)" stroke-width="2" width="28" height="28"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:14px;font-weight:600;color:var(--brand-dark);">Leader mondial clim</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MONO-SPLIT -->
+<div class="container" style="padding-top:140px;">
+  <div class="promo-encart">
+    <div class="promo-encart__left">
+      <div class="promo-encart__icon">🔥</div>
+      <div>
+        <div class="promo-encart__title">Offre de lancement — Prix réduits</div>
+        <div class="promo-encart__sub">Cette offre se termine dans :</div>
+      </div>
+    </div>
+    <div class="promo-encart__countdown">
+      <div class="promo-encart__unit" data-cd-days>14</div>
+      <span class="promo-encart__sep">j</span>
+      <div class="promo-encart__unit" data-cd-hours>00</div>
+      <span class="promo-encart__sep">h</span>
+      <div class="promo-encart__unit" data-cd-min>00</div>
+      <span class="promo-encart__sep">m</span>
+      <div class="promo-encart__unit" data-cd-sec>00</div>
+      <span class="promo-encart__sep">s</span>
+    </div>
+  </div>
+</div>
+<section class="product-section">
+  <div class="container">
+    <div class="product-layout reveal">
+      <div class="product-img"><img src="assets/img/daikin-modele-1---clean.png" alt="Daikin Sensira FTXC35C mono-split 12000 BTU"/></div>
+      <div class="product-info">
+        <div class="product-info__badge">Mono-Split — 25 à 35 m² — Wi-Fi intégré</div>
+        <h2 class="product-info__name">Daikin Sensira FTXC35C 12 000 BTU</h2>
+        <div class="product-info__price-block">
+          <div class="product-info__price"><span class="price-original">1 999 €</span> 1 699 € <span>installation incluse</span></div>
+          <div class="product-info__included">Unité intérieure + groupe extérieur + télécommande + App Onecta</div>
+        </div>
+        <div class="product-info__features">
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Wi-Fi intégré — App Onecta gratuite</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Revêtement Blue Fin anti-sel / anti-humidité</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>SEER 6,84 — Classe A++ refroidissement</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Gaz R-32 écologique</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bruit minimum 19 dB(A) — ultra-silencieux</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Garantie 3 ans constructeur</div>
+        </div>
+        <div class="product-info__cta">
+          <a href="contact.html" class="btn btn--primary">Demander un devis</a>
+          <a href="tel:+33766846856" class="btn btn--outline">Nous appeler</a>
+        </div>
+        <div class="product-tabs">
+          <div class="tabs__nav">
+            <button class="tab-btn active" data-tab="dm1">Description</button>
+            <button class="tab-btn" data-tab="dt1">Fiche technique</button>
+          </div>
+          <div class="tab-panel active" data-panel="dm1">
+            <div class="tab-desc">
+              <p>Le <strong>Daikin Sensira FTXC35C</strong> est notre modèle premium d'entrée. Conçu par le leader mondial de la climatisation, il embarque le Wi-Fi de série pour un contrôle complet depuis votre smartphone via l'application <strong>Onecta</strong>.</p>
+              <p>Son revêtement <strong>Blue Fin</strong> protège l'échangeur de chaleur contre la corrosion saline et l'humidité — un atout décisif sur la Côte d'Azur, exposée à l'air marin. Il couvre jusqu'à 35 m² avec un niveau sonore de 19 dB(A) en mode silencieux, soit l'équivalent d'un murmure.</p>
+              <p>Compatible avec les assistants vocaux Amazon Alexa et Google Assistant pour une intégration parfaite dans votre maison connectée.</p>
+            </div>
+          </div>
+          <div class="tab-panel" data-panel="dt1">
+            <div class="tech-grid">
+              <div class="tech-row"><span class="tech-key">Modèle</span><span class="tech-val">FTXC35C / RXC35C</span></div>
+              <div class="tech-row"><span class="tech-key">Puissance</span><span class="tech-val">12 000 BTU (3,5 kW)</span></div>
+              <div class="tech-row"><span class="tech-key">Surface couverte</span><span class="tech-val">25–35 m²</span></div>
+              <div class="tech-row"><span class="tech-key">SEER</span><span class="tech-val">6,84</span></div>
+              <div class="tech-row"><span class="tech-key">SCOP</span><span class="tech-val">3,97</span></div>
+              <div class="tech-row"><span class="tech-key">Classe refroidissement</span><span class="tech-val">A++</span></div>
+              <div class="tech-row"><span class="tech-key">Classe chauffage</span><span class="tech-val">A+</span></div>
+              <div class="tech-row"><span class="tech-key">Gaz réfrigérant</span><span class="tech-val">R-32</span></div>
+              <div class="tech-row"><span class="tech-key">Bruit intérieur min.</span><span class="tech-val">19 dB(A)</span></div>
+              <div class="tech-row"><span class="tech-key">Débit d'air</span><span class="tech-val">600 m³/h</span></div>
+              <div class="tech-row"><span class="tech-key">Wi-Fi</span><span class="tech-val">Intégré — App Onecta</span></div>
+              <div class="tech-row"><span class="tech-key">Protection</span><span class="tech-val">Blue Fin anti-corrosion</span></div>
+              <div class="tech-row"><span class="tech-key">Alimentation</span><span class="tech-val">220–240 V / 50 Hz</span></div>
+              <div class="tech-row"><span class="tech-key">Garantie</span><span class="tech-val">3 ans constructeur</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BI-SPLIT -->
+<section class="product-section section--gray">
+  <div class="container">
+    <div class="product-layout reverse reveal">
+      <div class="product-img"><img src="assets/img/daikin-modele-4---clean.png" alt="Daikin bi-split 2MXF40A"/></div>
+      <div class="product-info">
+        <div class="product-info__badge">Bi-Split — 2 pièces simultanées — Wi-Fi intégré</div>
+        <h2 class="product-info__name">Daikin Sensira 9 000+9 000 BTU Bi-Split</h2>
+        <div class="product-info__price-block">
+          <div class="product-info__price"><span class="price-original">4 299 €</span> 3 599 € <span>installation incluse</span></div>
+          <div class="product-info__included">2 unités intérieures + 1 groupe extérieur 2MXF40A + télécommandes</div>
+        </div>
+        <div class="product-info__features">
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>2 pièces en contrôle indépendant</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Wi-Fi intégré sur chaque unité</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Blue Fin — protection anti-corrosion marine</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>App Onecta — contrôle depuis partout</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Classe A++ refroidissement</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Gaz R-32 — faible impact environnemental</div>
+        </div>
+        <div class="product-info__cta">
+          <a href="contact.html" class="btn btn--primary">Demander un devis</a>
+          <a href="tel:+33766846856" class="btn btn--outline">Nous appeler</a>
+        </div>
+        <div class="product-tabs">
+          <div class="tabs__nav">
+            <button class="tab-btn active" data-tab="dm2">Description</button>
+            <button class="tab-btn" data-tab="dt2">Fiche technique</button>
+          </div>
+          <div class="tab-panel active" data-panel="dm2">
+            <div class="tab-desc">
+              <p>Le système bi-split Daikin Sensira allie la puissance d'un groupe extérieur <strong>2MXF40A</strong> à deux unités intérieures indépendantes. Chaque pièce dispose de son propre contrôleur Wi-Fi, accessible depuis l'application <strong>Onecta</strong>.</p>
+              <p>Idéal pour un appartement 2 pièces ou une villa avec séjour et chambre principale, ce système offre une <strong>flexibilité totale</strong> : températures différentes dans chaque pièce, programmations horaires indépendantes, et monitoring de la consommation en temps réel.</p>
+              <p>Le revêtement Blue Fin sur l'unité extérieure garantit une durabilité exceptionnelle face aux embruns de la Méditerranée.</p>
+            </div>
+          </div>
+          <div class="tab-panel" data-panel="dt2">
+            <div class="tech-grid">
+              <div class="tech-row"><span class="tech-key">Groupe extérieur</span><span class="tech-val">2MXF40A</span></div>
+              <div class="tech-row"><span class="tech-key">Puissance totale</span><span class="tech-val">2 x 9 000 BTU</span></div>
+              <div class="tech-row"><span class="tech-key">Nombre de pièces</span><span class="tech-val">2</span></div>
+              <div class="tech-row"><span class="tech-key">Classe refroid.</span><span class="tech-val">A++</span></div>
+              <div class="tech-row"><span class="tech-key">Gaz réfrigérant</span><span class="tech-val">R-32</span></div>
+              <div class="tech-row"><span class="tech-key">Wi-Fi</span><span class="tech-val">Intégré — App Onecta</span></div>
+              <div class="tech-row"><span class="tech-key">Protection extérieure</span><span class="tech-val">Blue Fin</span></div>
+              <div class="tech-row"><span class="tech-key">Marque</span><span class="tech-val">Daikin</span></div>
+              <div class="tech-row"><span class="tech-key">Garantie</span><span class="tech-val">3 ans constructeur</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRI-SPLIT -->
+<section class="product-section">
+  <div class="container">
+    <div class="product-layout reveal">
+      <div class="product-img"><img src="assets/img/daikin-modele-3---clean.png" alt="Daikin Sensira tri-split 3MXF52A"/></div>
+      <div class="product-info">
+        <div class="product-info__badge">Tri-Split — 3 pièces — Premium complet</div>
+        <h2 class="product-info__name">Daikin Sensira 9+9+9 BTU Tri-Split</h2>
+        <div class="product-info__price-block">
+          <div class="product-info__price"><span class="price-original">5 999 €</span> 4 999 € <span>installation incluse</span></div>
+          <div class="product-info__included">3 unités intérieures + 1 groupe extérieur 3MXF52A + télécommandes</div>
+        </div>
+        <div class="product-info__features">
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>3 pièces — contrôle totalement indépendant</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Wi-Fi intégré — App Onecta sur chaque unité</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Groupe extérieur 3MXF52A haute puissance</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Blue Fin — durabilité côtière garantie</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Compatible Alexa &amp; Google Assistant</div>
+          <div class="product-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Garantie 3 ans constructeur Daikin</div>
+        </div>
+        <div class="product-info__cta">
+          <a href="contact.html" class="btn btn--primary">Demander un devis</a>
+          <a href="tel:+33766846856" class="btn btn--outline">Nous appeler</a>
+        </div>
+        <div class="product-tabs">
+          <div class="tabs__nav">
+            <button class="tab-btn active" data-tab="dm3">Description</button>
+            <button class="tab-btn" data-tab="dt3">Fiche technique</button>
+          </div>
+          <div class="tab-panel active" data-panel="dm3">
+            <div class="tab-desc">
+              <p>Le système tri-split Daikin Sensira est la solution ultime pour climatiser intégralement une villa ou un grand appartement. Avec son groupe extérieur <strong>3MXF52A</strong> et trois unités intérieures indépendantes, chaque espace bénéficie de son propre micro-climat.</p>
+              <p>La technologie inverter <strong>Daikin</strong> adapte en permanence la puissance aux besoins réels — résultat : une consommation optimisée et un confort absolu, quelle que soit la chaleur extérieure. Même par 40°C sur la Côte d'Azur, il maintient la température souhaitée sans effort.</p>
+              <p>Compatible avec les assistants vocaux Alexa et Google Assistant, et piloté depuis l'application <strong>Onecta</strong> disponible sur iOS et Android.</p>
+            </div>
+          </div>
+          <div class="tab-panel" data-panel="dt3">
+            <div class="tech-grid">
+              <div class="tech-row"><span class="tech-key">Groupe extérieur</span><span class="tech-val">3MXF52A</span></div>
+              <div class="tech-row"><span class="tech-key">Puissance totale</span><span class="tech-val">3 x 9 000 BTU</span></div>
+              <div class="tech-row"><span class="tech-key">Nombre de pièces</span><span class="tech-val">3</span></div>
+              <div class="tech-row"><span class="tech-key">Wi-Fi</span><span class="tech-val">Intégré — App Onecta</span></div>
+              <div class="tech-row"><span class="tech-key">Classe</span><span class="tech-val">A++</span></div>
+              <div class="tech-row"><span class="tech-key">Gaz</span><span class="tech-val">R-32</span></div>
+              <div class="tech-row"><span class="tech-key">Protection extérieure</span><span class="tech-val">Blue Fin</span></div>
+              <div class="tech-row"><span class="tech-key">Compatibilité vocale</span><span class="tech-val">Alexa / Google</span></div>
+              <div class="tech-row"><span class="tech-key">Marque</span><span class="tech-val">Daikin</span></div>
+              <div class="tech-row"><span class="tech-key">Garantie</span><span class="tech-val">3 ans constructeur</span></div>
+              <div class="tech-row"><span class="tech-key">Installation</span><span class="tech-val">Incluse</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product-section section--gray">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:48px;">
+      <span class="label">Pourquoi choisir Daikin ?</span>
+      <h2 style="font-size:clamp(28px,4vw,44px);margin-top:12px;color:var(--brand-dark);">Le leader mondial depuis 1924</h2>
+    </div>
+    <div class="process__grid reveal">
+      <div class="process-card">
+        <div class="process-card__num">01</div>
+        <h3>Wi-Fi intégré de série</h3>
+        <p>Contrairement à la concurrence, le Wi-Fi est inclus sur tous les modèles Sensira. Contrôle depuis l'application Onecta, programmation, historique de consommation — tout en un.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-card__num">02</div>
+        <h3>Blue Fin — adaptation côtière</h3>
+        <p>Le revêtement Blue Fin protège l'échangeur de chaleur extérieur contre la corrosion marine. Sur la Côte d'Azur, exposée aux embruns, c'est une protection indispensable pour la durabilité.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-card__num">03</div>
+        <h3>Technologie inverter avancée</h3>
+        <p>Le compresseur Daikin adapte en continu sa puissance pour maintenir exactement la température souhaitée. Moins d'à-coups, moins de bruit, moins de consommation.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-card__num">04</div>
+        <h3>Garantie constructeur 3 ans</h3>
+        <p>Tous nos modèles Daikin sont couverts par une garantie constructeur de 3 ans, pièces et main-d'oeuvre. La tranquillité d'esprit incluse dans le prix.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner"><div class="container"><div class="reveal"><h2>Passez au confort premium Daikin</h2><p>Devis gratuit sous 24h. Installation en 48h. Financement disponible.</p><a href="contact.html" class="btn btn--white">Obtenir mon devis gratuit</a></div></div></section>
+
+<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><img src="assets/img/logo-climatisation-khalil.png" alt="Climatisation Khalil"/><p>L'expert climatisation de la Côte d'Azur. Installation rapide, prix transparents, service premium.</p><div class="footer__socials"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a></div></div><div class="footer__col"><h4>Nos offres</h4><ul><li><a href="entree-de-gamme.html">Entrée de gamme — One Clima</a></li><li><a href="bosch.html">Milieu de gamme — Bosch</a></li><li><a href="daikin-premium.html">Premium — Daikin</a></li><li><a href="contact.html">Demander un devis</a></li></ul></div><div class="footer__col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="certifications-climatisation.html">Certifications</a></li>
+          <li></li><li><a href="blog.html">Blog &amp; Conseils</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="politique-confidentialite.html">Confidentialité</a></li><li><a href="cgv.html">Conditions générales</a></li></ul></div><div class="footer__col"><h4>Contact</h4><p>Nice, Côte d'Azur — Département 06</p><p style="margin-top:12px;"><a href="mailto:depannage06contact@gmail.com" style="color:rgba(255,255,255,0.55);">depannage06contact@gmail.com</a></p><p style="margin-top:8px;">Lun–Sam 8h à 19h</p></div></div><div class="footer__bottom"><span>&copy; 2026 Climatisation Khalil. Tous droits réservés.</span><span><a href="mentions-legales.html">Mentions légales</a> &nbsp;|&nbsp; <a href="politique-confidentialite.html">Confidentialité</a> &nbsp;|&nbsp; <a href="cgv.html">CGV</a></span></div></div></footer>
+
+<a class="whatsapp-float" href="https://wa.me/33766846856" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<!-- EMAIL POPUP -->
+<div class="email-popup" id="email-popup">
+  <div class="email-popup__overlay"></div>
+  <div class="email-popup__box">
+    <button class="email-popup__close" aria-label="Fermer">&#x2715;</button>
+    <div class="email-popup__header">
+      <div class="email-popup__badge">🔥 Offre de lancement — 2 semaines</div>
+      <h3 class="email-popup__title">Votre clim installée<br><span>dès demain.</span></h3>
+      <p class="email-popup__sub">Recevez une estimation personnalisée et profitez de nos tarifs de lancement avant qu'ils expirent. Gratuit, sous 24h.</p>
+    </div>
+    <div class="email-popup__body">
+      <form class="email-popup__form" id="popup-form">
+        <input type="email" name="email" placeholder="Votre adresse email" required/>
+        <button type="submit" class="btn btn--primary">Recevoir mon estimation gratuite →</button>
+      </form>
+      <div class="email-popup__trust">
+        <span>Gratuit</span>
+        <span>Sans engagement</span>
+        <span>Réponse sous 24h</span>
+      </div>
+      <div class="email-popup__proof">
+        ⭐⭐⭐⭐⭐ &nbsp;Plus de 300 familles nous font confiance sur la Côte d'Azur
+      </div>
+      <p class="email-popup__legal">En soumettant, vous acceptez notre <a href="politique-confidentialite.html">politique de confidentialité</a>. Zéro spam.</p>
+    </div>
+  </div>
+</div>
+<div class="cookie-banner" id="cookie-banner"><p>Nous utilisons des cookies pour améliorer votre expérience. <a href="politique-confidentialite.html">En savoir plus</a>.</p><div class="cookie-banner__actions"><button id="cookie-accept" class="btn btn--primary">Accepter</button><button id="cookie-decline" class="btn btn--outline-white">Refuser</button></div></div>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script><script src="assets/js/popup.js"></script>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-mobile-cta">
+  <div class="sticky-mobile-cta__text">Devis gratuit en 24h</div>
+  <a href="contact.html" class="btn btn--primary">Demander</a>
+</div>
+
+<script src="assets/js/promo.js"></script>
+<script src="assets/js/social-proof.js"></script>
+</body>
+</html>

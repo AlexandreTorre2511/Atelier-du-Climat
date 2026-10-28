@@ -1,0 +1,56 @@
+================================================================
+  CONSTRUIRE UN SITE QUI RAMÈNE DES CLIENTS — KIT COMPLET
+================================================================
+
+  1. Ouvre GUIDE.html dans ton navigateur (double-clic).
+     C'est le dossier complet : comment ça marche, et pourquoi.
+     Pour l'avoir en PDF : Cmd+P → "Enregistrer au format PDF".
+
+  2. Remplis 01-BRIEF/BRIEF-A-REMPLIR.md
+     Compte 1 heure. Fais-le sérieusement : la qualité du site
+     dépend entièrement de ce fichier. Claude écrit bien,
+     mais il n'invente pas tes prix.
+
+  3. Crée un dossier pour ton projet, par exemple :
+        ~/Desktop/site-mon-entreprise/
+
+     Mets-y :
+       - CLAUDE.md                  (depuis 02-INSTRUCTIONS-CLAUDE/)
+       - BRIEF-A-REMPLIR.md         (celui que tu as rempli)
+       - le dossier 03-TEMPLATE-CODE/  → RENOMMÉ EN  site/
+
+  4. Ouvre un terminal dans ce dossier et tape :  claude
+
+  5. Colle les prompts un par un, dans l'ordre, de 00 à 09.
+     Ils sont dans 02-INSTRUCTIONS-CLAUDE/.
+     Un prompt = une phase. Tu valides, tu passes au suivant.
+
+  6. Avant de publier : passe les deux fichiers de
+     04-CHECKLISTS/ — dans le navigateur, en cliquant partout.
+
+----------------------------------------------------------------
+  LA SEULE RÈGLE À NE PAS CONTOURNER
+----------------------------------------------------------------
+  Ne mets jamais en ligne un chiffre, un avis client ou une
+  certification que tu ne peux pas prouver.
+  Ni nombre de clients inventé, ni avis écrit par toi, ni label
+  que tu n'as pas, ni compte à rebours qui ne finit jamais.
+
+  En France c'est une pratique commerciale trompeuse
+  (art. L121-2 du Code de la consommation). Mais le vrai risque
+  est plus simple : le client qui s'en aperçoit ne te fait plus
+  confiance sur rien — y compris sur ton devis.
+
+  Deux vraies preuves valent mieux que six inventées.
+  Voir la section 05 du GUIDE.html.
+
+----------------------------------------------------------------
+  COMBIEN DE TEMPS, COMBIEN D'ARGENT
+----------------------------------------------------------------
+  Construction du site ....... 2 à 4 jours de travail
+  Coût obligatoire ........... ~15 €/an (le nom de domaine)
+  Premières demandes (pub) ... 24 à 72 h
+  Premières demandes (Google). 1 à 3 mois
+
+  Tout le reste (hébergement, emails, analytics) est gratuit.
+================================================================

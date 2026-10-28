@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  TEMPLATE de page — structure réelle issue d'un site vitrine local en production.
+  Structure HTML + JSON-LD + classes CSS : à garder telles quelles.
+  Textes, prix, villes, offres : illustratifs → à réécrire selon
+  le métier réel (voir BRIEF-A-REMPLIR.md et les PROMPT-0X).
+  Page contact — formulaire + envoi d'email, déjà fonctionnel une fois branché.
+  ============================================================
+-->
+
+<html lang="fr">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{GA4_ID}}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "{{GA4_ID}}");
+</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{MOT_CONVERSION}} Gratuit {{Service}} — {{NOM_ENTREPRISE}} {{ZONE}}</title>
+  <meta name="description" content="Demandez votre {{MOT_CONVERSION}} gratuit de {{service}} sur la {{ZONE}}. Réponse sous 24h. Installation en 48h. {{VILLE_1}}, {{VILLE_3}}, {{VILLE_2}}, {{VILLE_4}} et tout le {{DEPARTEMENT_NUM}}."/>
+  <meta property="og:title" content="{{MOT_CONVERSION}} Gratuit — {{NOM_ENTREPRISE}}"/>
+  <meta property="og:description" content="Obtenez votre {{MOT_CONVERSION}} personnalisé sous 24h. Nos experts vous conseillent sur le meilleur modèle pour votre logement."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://{{DOMAINE}}/assets/img/lifestyle-{{service_court}}-salon-vue-mer.png"/>
+  <meta property="og:url" content="https://{{DOMAINE}}/contact.html"/>
+  <meta property="og:site_name" content="{{NOM_ENTREPRISE}}"/>
+  <link rel="canonical" href="https://{{DOMAINE}}/contact.html"/>
+  <link rel="icon" type="image/png" href="assets/img/logo-{{SLUG}}.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <!-- Google Analytics GA4 → Remplacer G-XXXXXXXXXX -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    .contact-hero {
+      background: var(--brand-dark);
+      padding: 140px 0 80px;
+      text-align: center;
+    }
+    .contact-hero .label { color: var(--brand); margin-bottom: 16px; display: block; }
+    .contact-hero h1 {
+      font-size: clamp(36px, 5vw, 60px);
+      color: var(--white);
+      letter-spacing: -0.025em;
+      line-height: 1.0;
+      margin-bottom: 20px;
+    }
+    .contact-hero p {
+      color: rgba(255,255,255,0.65);
+      font-size: 18px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .contact-main {
+      padding: 80px 0 100px;
+      background: var(--gray);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 48px;
+      align-items: start;
+    }
+    @media(max-width:1024px){ .contact-grid { grid-template-columns: 1fr; } }
+    .contact-form-wrap {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 48px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.{{DEPARTEMENT_NUM}});
+    }
+    @media(max-width:768px){ .contact-form-wrap { padding: 28px 20px; } }
+    .contact-form-wrap h2 {
+      font-size: 26px;
+      color: var(--brand-dark);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .contact-form-wrap .form-sub {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--brand-dark);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--brand-dark);
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(0,174,239,0.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media(max-width:600px){ .form-row { grid-template-columns: 1fr; } }
+    .form-submit {
+      margin-top: 8px;
+    }
+    .form-submit .btn {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+    }
+    .form-legal {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      text-align: center;
+    }
+    .form-legal a { color: var(--brand); }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+    }
+    .form-success svg { margin: 0 auto 20px; display: block; }
+    .form-success h3 {
+      font-size: 22px;
+      color: var(--brand-dark);
+      margin-bottom: 12px;
+    }
+    .form-success p { color: var(--text-muted); font-size: 15px; }
+
+    /* Contact cards */
+    .contact-aside { display: flex; flex-direction: column; gap: 20px; }
+    .contact-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .contact-card__icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(0,174,239,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .contact-card__icon svg { color: var(--brand); }
+    .contact-card h3 {
+      font-size: 17px;
+      color: var(--brand-dark);
+      margin-bottom: 6px;
+    }
+    .contact-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .contact-card a {
+      color: var(--brand);
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+    }
+    .contact-card a:hover { text-decoration: underline; }
+    .whatsapp-card {
+      background: #25D366;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .whatsapp-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.3); }
+    .whatsapp-card svg { flex-shrink: 0; }
+    .whatsapp-card span {
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .whatsapp-card small {
+      display: block;
+      color: rgba(255,255,255,0.8);
+      font-size: 13px;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+    .contact-promises {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .contact-promises h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    .promise-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: var(--brand-dark);
+    }
+    .promise-item svg { color: #22c55e; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="navbar__logo"><img src="assets/img/logo-{{SLUG}}.png" alt="{{NOM_ENTREPRISE}}"/></a>
+  <div class="navbar__links">
+    <a href="index.html">Accueil</a>
+    <div class="nav-drop"><button class="nav-drop__btn">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="{{slug-offre-1}}.html"><span class="nav-drop__icon">❄️</span><span><strong>{{OFFRE_1}}</strong><small>Entrée de gamme · dès 899 €</small></span></a><a href="{{slug-offre-2}}.html"><span class="nav-drop__icon">⚡</span><span><strong>{{OFFRE_2}}</strong><small>Milieu de gamme · dès 1 199 €</small></span></a><a href="{{slug-offre-3}}.html"><span class="nav-drop__icon">👑</span><span><strong>{{OFFRE_3}}</strong><small>Haut de gamme · dès 1 699 €</small></span></a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel nav-drop__panel--grid"><a href="{{slug-metier}}-{{slug-ville-1}}.html">{{VILLE_1}}</a><a href="{{slug-metier}}-{{slug-ville-2}}.html">{{VILLE_2}}</a><a href="{{slug-metier}}-{{slug-ville-3}}.html">{{VILLE_3}}</a><a href="{{slug-metier}}-{{slug-ville-4}}.html">{{VILLE_4}}</a><a href="{{slug-metier}}-{{slug-ville-5}}.html">{{VILLE_5}}</a><a href="{{slug-metier}}-{{slug-ville-6}}.html">{{VILLE_6}}</a><a href="{{slug-metier}}-{{slug-ville-7}}.html">{{VILLE_7}}</a><a href="{{slug-metier}}-{{slug-ville-8}}.html">{{VILLE_8}}</a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="certifications-{{service}}.html"><span class="nav-drop__icon">🏅</span><span><strong>Certifications</strong><small>RGE, F-Gaz, normes 2026</small></span></a><a href="realisations.html"><span class="nav-drop__icon">📸</span><span><strong>Réalisations</strong><small>Nos installations en photos</small></span></a><a href="blog.html"><span class="nav-drop__icon">📰</span><span><strong>Blog</strong><small>Conseils &amp; guides</small></span></a></div></div>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="navbar__cta">
+    <button class="navbar__search-btn" id="search-btn" aria-label="Rechercher une page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+    <a href="contact.html" class="btn btn--primary">{{MOT_CONVERSION}} Gratuit</a>
+  </div>
+  <div class="navbar__burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu__close" id="menu-close">&#x2715;</button>
+  <a href="index.html">Accueil</a>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="{{slug-offre-1}}.html">{{OFFRE_1}}</a><a href="{{slug-offre-2}}.html">{{OFFRE_2}}</a><a href="{{slug-offre-3}}.html">{{OFFRE_3}}</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="{{slug-metier}}-{{slug-ville-1}}.html">{{VILLE_1}}</a><a href="{{slug-metier}}-{{slug-ville-2}}.html">{{VILLE_2}}</a><a href="{{slug-metier}}-{{slug-ville-3}}.html">{{VILLE_3}}</a><a href="{{slug-metier}}-{{slug-ville-4}}.html">{{VILLE_4}}</a><a href="{{slug-metier}}-{{slug-ville-5}}.html">{{VILLE_5}}</a><a href="{{slug-metier}}-{{slug-ville-6}}.html">{{VILLE_6}}</a><a href="{{slug-metier}}-{{slug-ville-7}}.html">{{VILLE_7}}</a><a href="{{slug-metier}}-{{slug-ville-8}}.html">{{VILLE_8}}</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="certifications-{{service}}.html">Certifications</a><a href="realisations.html">Réalisations</a><a href="blog.html">Blog</a></div></div>
+  <a href="contact.html">Contact</a>
+  <div class="mobile-menu__cta"><a href="contact.html" class="btn btn--primary">{{MOT_CONVERSION}} Gratuit</a></div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="search-overlay">
+  <button class="search-overlay__close" id="search-close">&#x2715;</button>
+  <div class="search-overlay__inner">
+    <h2>Que recherchez-vous ?</h2>
+    <div class="search-overlay__bar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="Ex : {{VILLE_1}}, {{OFFRE_3}}, aides financières…" autocomplete="off"/>
+    </div>
+    <div id="search-results"></div>
+    <p class="search-overlay__hint">Appuyez sur <kbd>Echap</kbd> pour fermer</p>
+  </div>
+</div>
+
+<section class="contact-hero">
+  <div class="container">
+    <span class="label anim-fade-up">Réponse sous 24h garantie</span>
+    <h1 class="anim-fade-up anim-delay-1">Votre {{MOT_CONVERSION}} gratuit<br>en 2 minutes</h1>
+    <p class="anim-fade-up anim-delay-2">Remplissez le formulaire ci-dessous. Un expert {{NOM_ENTREPRISE}} vous recontacte sous 24h avec une estimation précise pour votre logement.</p>
+  </div>
+</section>
+
+<section class="contact-main">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- FORMULAIRE -->
+      <div class="contact-form-wrap reveal">
+        <h2>Demande de {{MOT_CONVERSION}}</h2>
+        <p class="form-sub">Gratuit, sans engagement. Nos experts analysent votre projet.</p>
+
+        <form id="contact-form" onsubmit="handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" name="prenom" placeholder="Jean" required/>
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" name="nom" placeholder="Dupont" required/>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="jean@example.com" required/>
+            </div>
+            <div class="form-group">
+              <label for="tel">Téléphone</label>
+              <input type="tel" id="tel" name="tel" placeholder="{{DEPARTEMENT_NUM}} XX XX XX XX" required/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="ville">Ville</label>
+            <input type="text" id="ville" name="ville" placeholder="{{VILLE_1}}, {{VILLE_3}}, {{VILLE_2}}..." required/>
+          </div>
+
+          <div class="form-group">
+            <label for="type-client">Type de logement</label>
+            <select id="type-client" name="type-client" required>
+              <option value="" disabled selected>Sélectionnez votre type de logement</option>
+              <option value="appartement">Appartement</option>
+              <option value="maison">Maison individuelle</option>
+              <option value="villa">Villa</option>
+              <option value="bureau">Bureau / Commerce</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="gamme">Gamme souhaitée</label>
+              <select id="gamme" name="gamme">
+                <option value="" disabled selected>Gamme (optionnel)</option>
+                <option value="entree">Entrée de gamme — {{OFFRE_1}} (à partir de 899 €)</option>
+                <option value="milieu">Milieu de gamme — {{OFFRE_2}} (à partir de 1 199 €)</option>
+                <option value="premium">Premium — {{OFFRE_3}} (à partir de 1 699 €)</option>
+                <option value="conseil">Je souhaite un conseil</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="surface">Surface approximative</label>
+              <select id="surface" name="surface">
+                <option value="" disabled selected>Surface (optionnel)</option>
+                <option value="moins-20">Moins de 20 m²</option>
+                <option value="20-35">20 à 35 m²</option>
+                <option value="35-60">35 à 60 m²</option>
+                <option value="60-100">60 à 100 m²</option>
+                <option value="plus-100">Plus de 100 m²</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message (optionnel)</label>
+            <textarea id="message" name="message" placeholder="Précisez votre projet : nombre de pièces à climatiser, contraintes d'accès, questions spécifiques..."></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn--primary">Envoyer ma demande de {{MOT_CONVERSION}}</button>
+          </div>
+          <p class="form-legal">En soumettant ce formulaire, vous acceptez notre <a href="politique-confidentialite.html">politique de confidentialité</a>. Aucune donnée n'est revendue à des tiers.</p>
+        </form>
+
+        <div class="form-success" id="form-success">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" viewBox="0 0 24 24" stroke="#22c55e" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <h3>Demande envoyée !</h3>
+          <p>Merci pour votre confiance. Un expert {{NOM_ENTREPRISE}} vous contacte <strong>sous 24h</strong> avec votre estimation personnalisée.</p>
+        </div>
+      </div>
+
+      <!-- ASIDE -->
+      <div class="contact-aside">
+
+        <a class="whatsapp-card" href="https://wa.me/{{TEL_INTERNATIONAL_SANS_PLUS}}" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="44" height="44" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <div>
+            <span>Contacter sur WhatsApp</span>
+            <small>Réponse en quelques minutes</small>
+          </div>
+        </a>
+
+        <div class="contact-card">
+          <div class="contact-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+          </div>
+          <div class="contact-card__body">
+            <h3>Téléphone</h3>
+            <p>Du lundi au samedi, 8h à 19h</p>
+            <a href="tel:{{TEL_INTERNATIONAL}}">07 45 44 82 69</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          </div>
+          <div class="contact-card__body">
+            <h3>Email</h3>
+            <p>Réponse garantie sous 24h</p>
+            <a href="mailto:{{EMAIL_PRO}}">{{EMAIL_PRO}}</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+          </div>
+          <div class="contact-card__body">
+            <h3>Zone d'intervention</h3>
+            <p>{{VILLE_1}}, {{VILLE_3}}, {{VILLE_2}}, {{VILLE_4}}, {{VILLE_5}}, {{VILLE_6}}, Vence, Cagnes, Villefranche — et tout le département {{DEPARTEMENT_NUM}}.</p>
+          </div>
+        </div>
+
+        <div class="contact-promises">
+          <h4>Nos engagements</h4>
+          <div class="promise-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            {{MOT_CONVERSION}} 100% gratuit et sans engagement
+          </div>
+          <div class="promise-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Réponse garantie sous 24h
+          </div>
+          <div class="promise-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Prix transparents, aucun frais caché
+          </div>
+          <div class="promise-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Installation soignée, déchets emportés
+          </div>
+          <div class="promise-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Garantie SAV incluse
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><img src="assets/img/logo-{{SLUG}}.png" alt="{{NOM_ENTREPRISE}}"/><p>L'expert {{service}} de la {{ZONE}}. Installation rapide, prix transparents, service premium.</p><div class="footer__socials"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.{{DEPARTEMENT_NUM}}.1-1.79.{{DEPARTEMENT_NUM}}-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a></div></div><div class="footer__col"><h4>Nos offres</h4><ul><li><a href="{{slug-offre-1}}.html">Entrée de gamme — {{OFFRE_1}}</a></li><li><a href="{{slug-offre-2}}.html">Milieu de gamme — {{OFFRE_2}}</a></li><li><a href="{{slug-offre-3}}.html">Premium — {{OFFRE_3}}</a></li><li><a href="contact.html">Demander un {{MOT_CONVERSION}}</a></li></ul></div><div class="footer__col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="certifications-{{service}}.html">Certifications</a></li>
+          <li></li><li><a href="blog.html">Blog &amp; Conseils</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="politique-confidentialite.html">Confidentialité</a></li></ul></div><div class="footer__col"><h4>Contact</h4><p>{{VILLE_1}}, {{ZONE}} — Département {{DEPARTEMENT_NUM}}</p><p style="margin-top:12px;"><a href="mailto:{{EMAIL_PRO}}" style="color:rgba(255,255,255,0.55);">{{EMAIL_PRO}}</a></p><p style="margin-top:8px;">Lun–Sam 8h à 19h</p></div></div><div class="footer__bottom"><span>&copy; 2026 {{NOM_ENTREPRISE}}. Tous droits réservés.</span><span><a href="mentions-legales.html">Mentions légales</a> &nbsp;|&nbsp; <a href="politique-confidentialite.html">Confidentialité</a></span></div></div></footer>
+
+<a class="whatsapp-float" href="https://wa.me/{{TEL_INTERNATIONAL_SANS_PLUS}}" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<div class="cookie-banner" id="cookie-banner"><p>Nous utilisons des cookies pour améliorer votre expérience. <a href="politique-confidentialite.html">En savoir plus</a>.</p><div class="cookie-banner__actions"><button id="cookie-accept" class="btn btn--primary">Accepter</button><button id="cookie-decline" class="btn btn--outline-white">Refuser</button></div></div>
+
+<script>
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('contact-form');
+  const btn = form.querySelector('button[type="submit"]');
+  const success = document.getElementById('form-success');
+
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours...';
+
+  const data = {
+    prenom: document.getElementById('prenom').value,
+    nom: document.getElementById('nom').value,
+    email: document.getElementById('email').value,
+    tel: document.getElementById('tel').value,
+    ville: document.getElementById('ville').value,
+    'type-client': document.getElementById('type-client').value,
+    gamme: document.getElementById('gamme').value,
+    surface: document.getElementById('surface').value,
+    message: document.getElementById('message').value
+  };
+
+  try {
+    const res = await fetch('/.netlify/functions/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    } else {
+      throw new Error('Erreur serveur');
+    }
+  } catch {
+    btn.disabled = false;
+    btn.textContent = 'Envoyer ma demande de {{MOT_CONVERSION}}';
+    alert('Une erreur est survenue. Contactez-nous directement sur WhatsApp ou à {{EMAIL_PRO}}');
+  }
+}
+</script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+
+
+<!-- EMAIL POPUP -->
+<div class="email-popup" id="email-popup">
+  <div class="email-popup__overlay"></div>
+  <div class="email-popup__box">
+    <button class="email-popup__close" aria-label="Fermer">&#x2715;</button>
+    <div class="email-popup__header">
+      <div class="email-popup__badge">🔥 Offre de lancement — 2 semaines</div>
+      <h3 class="email-popup__title">Votre {{service_court}} installée<br><span>dès demain.</span></h3>
+      <p class="email-popup__sub">Recevez une estimation personnalisée et profitez de nos tarifs de lancement avant qu'ils expirent. Gratuit, sous 24h.</p>
+    </div>
+    <div class="email-popup__body">
+      <form class="email-popup__form" id="popup-form">
+        <input type="email" name="email" placeholder="Votre adresse email" required/>
+        <button type="submit" class="btn btn--primary">Recevoir mon estimation gratuite →</button>
+      </form>
+      <div class="email-popup__trust">
+        <span>Gratuit</span>
+        <span>Sans engagement</span>
+        <span>Réponse sous 24h</span>
+      </div>
+      <div class="email-popup__proof">
+        ⭐⭐⭐⭐⭐ &nbsp;Plus de 300 familles nous font confiance sur la {{ZONE}}
+      </div>
+      <p class="email-popup__legal">En soumettant, vous acceptez notre <a href="politique-confidentialite.html">politique de confidentialité</a>. Zéro spam.</p>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-mobile-cta">
+  <div class="sticky-mobile-cta__text">{{MOT_CONVERSION}} gratuit en 24h</div>
+  <a href="contact.html" class="btn btn--primary">Demander</a>
+</div>
+
+<script src="assets/js/popup.js"></script>
+<script src="assets/js/social-proof.js"></script>
+</body>
+</html>

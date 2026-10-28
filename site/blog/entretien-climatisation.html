@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  TEMPLATE de page — structure réelle issue d'un site vitrine local en production.
+  Structure HTML + JSON-LD + classes CSS : à garder telles quelles.
+  Textes, prix, villes, offres : illustratifs → à réécrire selon
+  le métier réel (voir BRIEF-A-REMPLIR.md et les PROMPT-0X).
+  UN article de blog (format comparatif A vs B). Dupliquer pour chaque article, 6 angles possibles : voir PROMPT-05.
+  ============================================================
+-->
+
+<html lang="fr">
+<head>
+<!-- Mesure d'audience desactivee : aucun identifiant fourni.
+     Avant la mise en ligne, choisir entre Cloudflare Web Analytics (sans cookie,
+     pas de bandeau de consentement) et Google Analytics 4 (bandeau obligatoire,
+     script bloque tant que le visiteur n'a pas accepte), puis mettre a jour la
+     section 6 de politique-confidentialite.html en consequence. -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entretien climatisation : le guide annuel complet 2026</title>
+  <meta name="description" content="Nettoyage des filtres, vérification du gaz, contrôle des joints : guide complet pour l'entretien annuel de votre climatisation. Prolongez sa durée de vie."/>
+  <meta property="og:title" content="Entretien climatisation : le guide annuel complet 2026"/>
+  <meta property="og:description" content="Nettoyage des filtres, vérification du gaz, contrôle des joints : guide complet pour l'entretien annuel de votre climatisation. Prolongez sa durée de vie."/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:image" content="https://climatisationkhalil.fr/assets/img/logo-climatisation-khalil.png"/>
+  <!-- Renommer og:url et canonical en meme temps que le fichier, a chaque duplication -->
+  <meta property="og:url" content="https://climatisationkhalil.fr/blog/entretien-climatisation.html"/>
+  <meta property="og:site_name" content="Climatisation Khalil"/>
+  <link rel="canonical" href="https://climatisationkhalil.fr/blog/entretien-climatisation.html"/>
+  <!-- Google Analytics GA4 → Remplacer G-XXXXXXXXXX -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .article-body { max-width: 760px; margin: 0 auto; padding: 110px 40px 80px; }
+    .article-body h2 { font-family: var(--font-head); font-size: clamp(20px, 3vw, 28px); font-weight: 700; color: var(--brand-dark); margin: 48px 0 16px; letter-spacing: -0.02em; }
+    .article-body h3 { font-size: 20px; color: var(--brand-dark); margin: 32px 0 12px; }
+    .article-body p { font-size: 16px; color: var(--text-dim); line-height: 1.85; margin-bottom: 20px; }
+    .article-body ul { padding-left: 24px; margin-bottom: 20px; }
+    .article-body ul li { font-size: 16px; color: var(--text-dim); line-height: 1.85; margin-bottom: 8px; list-style: disc; }
+    .article-body strong { color: var(--brand-dark); }
+    .article-cta-box { background: var(--brand); border-radius: 16px; padding: 32px; margin: 48px 0; text-align: center; color: white; }
+    .article-cta-box h3 { font-family: var(--font-head); font-size: 22px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .article-cta-box p { color: rgba(255,255,255,0.85); margin-bottom: 20px; }
+    .article-img { width: 100%; border-radius: 16px; margin: 32px 0; object-fit: cover; max-height: 400px; filter: brightness(0.85); }
+    .article-meta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 40px; font-size: 13px; color: var(--text-muted); font-family: var(--font-head); }
+    .article-meta span { background: rgba(0,174,239,0.1); color: var(--brand); padding: 4px 12px; border-radius: 40px; font-weight: 600; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+    .article-related { background: var(--gray); padding: 60px 0; }
+    .article-related .container { max-width: 900px; }
+    .verdict-table { width: 100%; border-collapse: collapse; margin: 32px 0; border-radius: 12px; overflow: hidden; font-size: 15px; }
+    .verdict-table th { background: var(--brand-dark); color: white; padding: 14px 16px; text-align: left; font-size: 13px; letter-spacing: 0.03em; text-transform: uppercase; }
+    .verdict-table td { padding: 14px 16px; border-bottom: 1px solid #e2e8f0; color: var(--brand-dark); }
+    .verdict-table tr:last-child td { border-bottom: none; }
+    .verdict-table tr:nth-child(even) td { background: var(--gray); }
+    .verdict-table .winner { font-weight: 700; color: var(--brand); }
+    @media(max-width:768px) { .article-body { padding: 40px 20px; } .verdict-table { font-size: 13px; } }
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a href="../index.html" class="navbar__logo"><img src="../assets/img/logo-climatisation-khalil.png" alt="Climatisation Khalil"/></a>
+  <div class="navbar__links">
+    <a href="../index.html">Accueil</a>
+    <div class="nav-drop"><button class="nav-drop__btn">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="../entree-de-gamme.html"><span class="nav-drop__icon">❄️</span><span><strong>One Clima</strong><small>Entrée de gamme · dès 899 €</small></span></a><a href="../bosch.html"><span class="nav-drop__icon">⚡</span><span><strong>Bosch</strong><small>Milieu de gamme · dès 1 199 €</small></span></a><a href="../daikin-premium.html"><span class="nav-drop__icon">👑</span><span><strong>Daikin</strong><small>Haut de gamme · dès 1 699 €</small></span></a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel nav-drop__panel--grid"><a href="../climatisation-nice.html">Nice</a><a href="../climatisation-antibes.html">Antibes</a><a href="../climatisation-cannes.html">Cannes</a><a href="../climatisation-monaco.html">Monaco</a><a href="../climatisation-menton.html">Menton</a><a href="../climatisation-grasse.html">Grasse</a><a href="../climatisation-sophia-antipolis.html">Sophia Antipolis</a><a href="../climatisation-cagnes-sur-mer.html">Cagnes-sur-Mer</a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="../certifications-climatisation.html"><span class="nav-drop__icon">🏅</span><span><strong>Certifications</strong><small>RGE, F-Gaz, normes 2026</small></span></a><a href="../realisations.html"><span class="nav-drop__icon">📸</span><span><strong>Réalisations</strong><small>Nos installations en photos</small></span></a><a href="../blog.html"><span class="nav-drop__icon">📰</span><span><strong>Blog</strong><small>Conseils &amp; guides</small></span></a></div></div>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <div class="navbar__cta">
+    <button class="navbar__search-btn" id="search-btn" aria-label="Rechercher une page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+    <a href="../contact.html" class="btn btn--primary">Devis Gratuit</a>
+  </div>
+  <div class="navbar__burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu__close" id="menu-close">&#x2715;</button>
+  <a href="../index.html">Accueil</a>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="../entree-de-gamme.html">One Clima</a><a href="../bosch.html">Bosch</a><a href="../daikin-premium.html">Daikin</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="../climatisation-nice.html">Nice</a><a href="../climatisation-antibes.html">Antibes</a><a href="../climatisation-cannes.html">Cannes</a><a href="../climatisation-monaco.html">Monaco</a><a href="../climatisation-menton.html">Menton</a><a href="../climatisation-grasse.html">Grasse</a><a href="../climatisation-sophia-antipolis.html">Sophia Antipolis</a><a href="../climatisation-cagnes-sur-mer.html">Cagnes-sur-Mer</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="../certifications-climatisation.html">Certifications</a><a href="../realisations.html">Réalisations</a><a href="../blog.html">Blog</a></div></div>
+  <a href="../contact.html">Contact</a>
+  <div class="mobile-menu__cta"><a href="../contact.html" class="btn btn--primary">Devis Gratuit</a></div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="search-overlay">
+  <button class="search-overlay__close" id="search-close">&#x2715;</button>
+  <div class="search-overlay__inner">
+    <h2>Que recherchez-vous ?</h2>
+    <div class="search-overlay__bar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="Ex : Nice, Daikin, aides financières…" autocomplete="off"/>
+    </div>
+    <div id="search-results"></div>
+    <p class="search-overlay__hint">Appuyez sur <kbd>Echap</kbd> pour fermer</p>
+  </div>
+</div>
+
+
+<div class="article-body">
+  <div class="article-meta">
+    <span>Entretien</span>
+    <span>Mars 2026</span>
+    <span>Lecture 5 min</span>
+  </div>
+
+  <h1>Entretien climatisation : ce qu'il faut faire chaque année pour éviter les pannes</h1>
+
+
+  <img src="../assets/img/lifestyle-clim-salon-contemporain.png" alt="Entretien climatisation Côte d'Azur" class="article-img"/>
+
+  <h2>Pourquoi l'entretien est indispensable</h2>
+  <p>Une climatisation non entretenue peut perdre jusqu'à <strong>30% de son efficacité</strong> en quelques années. Les filtres encrassés réduisent le débit d'air, la serpentine s'encrasse, le gaz peut légèrement fuir — résultat : votre appareil consomme plus pour un confort moindre.</p>
+  <p>Sur la Côte d'Azur, la poussière, le sel marin et le sable fin sont des ennemis supplémentaires de votre climatisation. Un entretien annuel n'est pas un luxe — c'est ce qui fait la différence entre une clim qui dure 15 ans et une qui tombe en panne après 5 ans.</p>
+
+  <h2>Ce que vous pouvez faire vous-même</h2>
+  <h3>Nettoyage des filtres (tous les 2-4 semaines en été)</h3>
+  <p>Les filtres de l'unité intérieure captent la poussière, les acariens et les pollens. Encrassés, ils bloquent le débit d'air et forcent le compresseur. Voici comment les nettoyer :</p>
+  <ol>
+    <li>Éteindre l'appareil et attendre 5 minutes</li>
+    <li>Ouvrir le capot de l'unité intérieure (généralement en le relevant)</li>
+    <li>Retirer délicatement les filtres (souvent 2 panneaux en plastique ajouré)</li>
+    <li>Les passer sous l'eau tiède, sans savon agressif</li>
+    <li>Laisser sécher à l'air libre (ne jamais remettre en place mouillés)</li>
+    <li>Remettre en place et refermer le capot</li>
+  </ol>
+
+  <h3>Nettoyage de l'unité extérieure (une fois par an)</h3>
+  <p>Le groupe extérieur aspire l'air ambiant et peut s'encrasser de feuilles, débris et poussières. Vérifiez qu'aucune végétation ne bloque les grilles. Nettoyez délicatement les ailettes à l'aide d'une brosse douce ou d'un jet d'eau faible. Ne jamais utiliser un karcher à pleine puissance qui pourrait tordre les ailettes.</p>
+
+  <div class="checklist">
+    <h3>Checklist entretien annuel</h3>
+    <div class="check-item"><span></span>Nettoyage filtres unité intérieure</div>
+    <div class="check-item"><span></span>Nettoyage grilles unité extérieure</div>
+    <div class="check-item"><span></span>Vérification du niveau de gaz réfrigérant</div>
+    <div class="check-item"><span></span>Contrôle des joints et raccords frigorifiques</div>
+    <div class="check-item"><span></span>Nettoyage du bac de condensats et tuyau d'évacuation</div>
+    <div class="check-item"><span></span>Vérification du branchement électrique</div>
+    <div class="check-item"><span></span>Test de toutes les fonctions (froid, chaud, ventilation, minuterie)</div>
+    <div class="check-item"><span></span>Mesure des températures soufflage/aspiration</div>
+  </div>
+
+  <div class="article-cta-box">
+    <h3>Planifiez votre entretien Climatisation Khalil</h3>
+    <p>Nos techniciens certifiés réalisent l'entretien complet de votre climatisation. Prise en charge rapide sur toute la Côte d'Azur.</p>
+    <a class='btn btn--white' href="../contact.html">Prendre rendez-vous</a>
+  </div>
+
+  <h2>Ce qui nécessite un technicien certifié</h2>
+  <p>Certaines opérations sont <strong>légalement réservées aux techniciens certifiés</strong> pour la manipulation des fluides frigorigènes (attestation d'aptitude obligatoire en France) :</p>
+  <ul>
+    <li><strong>Vérification et recharge du gaz réfrigérant</strong> : si votre clim ne refroidit plus aussi bien, une fuite de gaz est probable. Seul un technicien peut détecter la fuite, la réparer et recharger en R-32.</li>
+    <li><strong>Nettoyage chimique de la serpentine</strong> : si les ailettes de l'échangeur sont encrassées de calcaire ou de sel, un nettoyage chimique professionnel peut restaurer 15 à 20% de l'efficacité.</li>
+    <li><strong>Contrôle électrique complet</strong> : vérification des composants électroniques, du condensateur, du moteur du compresseur.</li>
+  </ul>
+
+  <h2>À quelle fréquence faire entretenir sa climatisation ?</h2>
+  <p>Sur la Côte d'Azur, compte tenu de l'utilisation intensive (souvent 6 à 8 mois par an) et de l'environnement marin, nous recommandons :</p>
+  <ul>
+    <li><strong>Filtres</strong> : nettoyage toutes les 2-4 semaines pendant la saison de chauffe/rafraîchissement</li>
+    <li><strong>Entretien complet</strong> : une fois par an, idéalement en avril ou septembre (avant ou après l'été)</li>
+    <li><strong>Contrôle gaz</strong> : tous les 2 ans pour les installations récentes, annuellement pour les plus de 5 ans</li>
+  </ul>
+
+  <h2>Les signes qui doivent vous alerter</h2>
+  <ul>
+    <li>La clim souffle de l'air mais ne refroidit pas</li>
+    <li>Présence d'eau ou de givre sur l'unité intérieure</li>
+    <li>Bruit inhabituel (claquement, sifflement, vibration)</li>
+    <li>Odeur désagréable au démarrage</li>
+    <li>Augmentation anormale de la facture d'électricité</li>
+    <li>L'unité extérieure tourne mais l'intérieure est froide</li>
+  </ul>
+  <p>Si vous observez l'un de ces signes, contactez-nous rapidement. Une intervention préventive est toujours moins coûteuse qu'une réparation après panne complète.</p>
+</div>
+
+<section class="article-related">
+  <div class="container">
+    <h2 style="font-size:clamp(22px,3vw,32px);color:var(--brand-dark);margin-bottom:32px;letter-spacing:-0.02em;">Articles liés</h2>
+    <div class="blog-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+      <div class="blog-card">
+        <div class="blog-card__cat">Économies</div>
+        <h3 class="blog-card__title">Climatisation réversible : quelles économies ?</h3>
+        <a href="climatisation-reversible-economies.html" class="blog-card__link">Lire l'article &rarr;</a>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card__cat">Local</div>
+        <h3 class="blog-card__title">Installation climatisation à Cannes</h3>
+        <a href="installation-climatisation-cannes.html" class="blog-card__link">Lire l'article &rarr;</a>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card__cat">Locataires</div>
+        <h3 class="blog-card__title">Climatisation en location : vos droits</h3>
+        <a href="climatisation-location-droits.html" class="blog-card__link">Lire l'article &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><img src="../assets/img/logo-climatisation-khalil.png" alt="Climatisation Khalil"/><p>L'expert climatisation de la Côte d'Azur.</p></div><div class="footer__col"><h4>Nos offres</h4><ul><li><a href="../entree-de-gamme.html">Entrée de gamme</a></li><li><a href="../bosch.html">Bosch</a></li><li><a href="../daikin-premium.html">Daikin</a></li></ul></div><div class="footer__col"><h4>Pages</h4><ul><li><a href="../index.html">Accueil</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../contact.html">Contact</a></li></ul></div><div class="footer__col"><h4>Contact</h4><p>Nice, Côte d'Azur — 06</p><p style="margin-top:8px;"><a href="mailto:depannage06contact@gmail.com" style="color:rgba(255,255,255,0.55);">depannage06contact@gmail.com</a></p></div></div><div class="footer__bottom"><span>&copy; 2026 Climatisation Khalil.</span><span><a href="../mentions-legales.html">Mentions légales</a> &nbsp;|&nbsp; <a href="../politique-confidentialite.html">Confidentialité</a> &nbsp;|&nbsp; <a href="../cgv.html">CGV</a></span></div></div></footer>
+
+<a class="whatsapp-float" href="https://wa.me/33766846856" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413../svg></a>
+
+<div class="cookie-banner" id="cookie-banner"><p>Nous utilisons des cookies pour améliorer votre expérience. <a href="../politique-confidentialite.html">En savoir plus</a>.</p><div class="cookie-banner__actions"><button id="cookie-accept" class="btn btn--primary">Accepter</button><button id="cookie-decline" class="btn btn--outline-white">Refuser</button></div></div>
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/main.js"></script><script src="../assets/js/popup.js"></script>
+
+
+<!-- EMAIL POPUP -->
+<div class="email-popup" id="email-popup">
+  <div class="email-popup__overlay"></div>
+  <div class="email-popup__box">
+    <button class="email-popup__close" aria-label="Fermer">&#x2715;</button>
+    <div class="email-popup__header">
+      <div class="email-popup__badge">🔥 Offre de lancement — 2 semaines</div>
+      <h3 class="email-popup__title">Votre clim installée<br><span>dès demain.</span></h3>
+      <p class="email-popup__sub">Recevez une estimation personnalisée et profitez de nos tarifs de lancement avant qu'ils expirent. Gratuit, sous 24h.</p>
+    </div>
+    <div class="email-popup__body">
+      <form class="email-popup__form" id="popup-form">
+        <input type="email" name="email" placeholder="Votre adresse email" required/>
+        <button type="submit" class="btn btn--primary">Recevoir mon estimation gratuite →</button>
+      </form>
+      <div class="email-popup__trust">
+        <span>Gratuit</span>
+        <span>Sans engagement</span>
+        <span>Réponse sous 24h</span>
+      </div>
+      <div class="email-popup__proof">
+        ⭐⭐⭐⭐⭐ &nbsp;Plus de 300 familles nous font confiance sur la Côte d'Azur
+      </div>
+      <p class="email-popup__legal">En soumettant, vous acceptez notre <a href="../politique-confidentialite.html">politique de confidentialité</a>. Zéro spam.</p>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-mobile-cta">
+  <div class="sticky-mobile-cta__text">Devis gratuit en 24h</div>
+  <a href="../contact.html" class="btn btn--primary">Demander</a>
+</div>
+
+<script src="../assets/js/social-proof.js"></script>
+</body>
+</html>
