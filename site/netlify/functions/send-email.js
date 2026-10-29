@@ -1,3 +1,15 @@
+/* Formulaire de devis de contact.html → boîte de l'entreprise via Resend.
+
+   MAIL_FROM doit être une adresse sur un domaine vérifié dans Resend.
+   Par défaut on utilise onboarding@resend.dev, qui fonctionne sans aucune
+   configuration DNS mais n'envoie QUE vers l'adresse du compte Resend.
+   Une fois climatisationkhalil.fr vérifié chez Resend, définir dans Netlify :
+     MAIL_FROM = Climatisation Khalil <contact@climatisationkhalil.fr>
+*/
+
+const MAIL_FROM = process.env.MAIL_FROM || 'Climatisation Khalil <onboarding@resend.dev>';
+const MAIL_TO = process.env.MAIL_TO || 'depannage06contact@gmail.com';
+
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
@@ -44,6 +56,10 @@ exports.handler = async (event) => {
     </div>
   `;
 
+  if (!process.env.RESEND_API_KEY) {
+    return { statusCode: 500, body: JSON.stringify({ error: 'RESEND_API_KEY absente' }) };
+  }
+
   try {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -52,8 +68,8 @@ exports.handler = async (event) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'Climatisation Khalil <depannage06contact@gmail.com>',
-        to: ['depannage06contact@gmail.com'],
+        from: MAIL_FROM,
+        to: [MAIL_TO],
         reply_to: email,
         subject: `Nouvelle demande — ${s(prenom)} ${s(nom)} — ${s(ville)}`,
         html

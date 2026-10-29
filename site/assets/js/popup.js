@@ -47,24 +47,45 @@
   closeBtn && closeBtn.addEventListener('click', close);
   overlay && overlay.addEventListener('click', close);
 
-  // Form submit → Brevo via Netlify Function
+  // Form submit → boîte de l'entreprise via Netlify Function
   const form = document.getElementById('popup-form');
   form && form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const emailVal = form.querySelector('input[type="email"]').value.trim();
     const btn = form.querySelector('button[type="submit"]');
-    btn.textContent = '...';
+    const label = btn.textContent;
+    btn.textContent = 'Envoi...';
     btn.disabled = true;
 
+    let sent = false;
     try {
-      await fetch('/.netlify/functions/add-contact', {
+      const res = await fetch('/.netlify/functions/add-contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: emailVal }),
       });
-    } catch (_) { /* silently continue even if offline */ }
+      sent = res.ok;
+    } catch (_) { sent = false; }
 
-    // Thank you state
+    // Jamais de « c'est noté » si rien n'est parti : on renvoie le visiteur
+    // vers un canal qui marche plutôt que de perdre la demande en silence.
+    if (!sent) {
+      btn.textContent = label;
+      btn.disabled = false;
+      let err = form.querySelector('.email-popup__error');
+      if (!err) {
+        err = document.createElement('p');
+        err.className = 'email-popup__error';
+        err.style.cssText = 'margin-top:12px;font-size:14px;line-height:1.5;color:#b91c1c;';
+        form.appendChild(err);
+      }
+      err.innerHTML = 'L\'envoi a échoué. Appelez-nous au '
+        + '<a href="tel:+33766846856" style="color:#b91c1c;font-weight:700;">07 66 84 68 56</a>'
+        + ' ou écrivez sur <a href="https://wa.me/33766846856" target="_blank" rel="noopener" style="color:#b91c1c;font-weight:700;">WhatsApp</a>.';
+      return;
+    }
+
+    localStorage.setItem('brand_popup', '1');
     const body = popup.querySelector('.email-popup__body');
     body.innerHTML = `
       <div style="text-align:center;padding:28px 0 20px;">
@@ -73,26 +94,5 @@
         <p style="color:var(--text-dim);font-size:15px;line-height:1.6;">Vous recevrez votre estimation personnalisée sous 24h.<br>À très vite sur la Côte d'Azur 🌊</p>
       </div>`;
     setTimeout(close, 3000);
-  });
-})();
-
-// ── Contact Form ──
-(function() {
-  const form = document.getElementById('devis-form');
-  if (!form) return;
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = {};
-    new FormData(form).forEach((v, k) => data[k] = v);
-    // Store lead
-    const leads = JSON.parse(localStorage.getItem('brand_leads') || '[]');
-    leads.push({ ...data, date: new Date().toISOString(), source: 'form' });
-    localStorage.setItem('brand_leads', JSON.stringify(leads));
-    // Success state
-    const btn = form.querySelector('.form-submit');
-    btn.textContent = 'Demande envoyée !';
-    btn.style.background = '#15803d';
-    btn.disabled = true;
-    form.querySelectorAll('.form-input,.form-select,.form-textarea').forEach(i => i.disabled = true);
   });
 })();
