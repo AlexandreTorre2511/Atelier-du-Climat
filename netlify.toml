@@ -1,5 +1,8 @@
+# Le site est dans site/ : sans cette ligne Netlify publie la racine du depot,
+# qui ne contient pas d'index.html.
 [build]
-  functions = "netlify/functions"
+  publish = "site"
+  functions = "site/netlify/functions"
 
 [[headers]]
   for = "/.netlify/functions/*"
