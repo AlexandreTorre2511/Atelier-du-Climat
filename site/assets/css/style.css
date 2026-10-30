@@ -11,6 +11,10 @@
   --brand-dim:     #065E9F;
   --brand-glow:    rgba(8,119,201,0.10);
   --accent:        #E52430;   /* rouge : accents ponctuels, jamais dominant */
+  /* Filet tricolore du logo, relevé sur le fichier source */
+  --tri-bleu:      #0162BA;
+  --tri-blanc:     #E9E9E9;
+  --tri-rouge:     #DF161A;
   --white:         #FFFFFF;
   --gray:          #F4F6F8;
   --sand:          #F7F5F1;   /* neutre chaud : alternance des sections */
@@ -81,7 +85,14 @@ h1,h2,h3,h4,h5 {
   font-weight: 700;
   font-family: var(--font-head);
 }
-.label::before { content: ""; width: 24px; height: 2px; background: var(--brand); }
+.label::before {
+  content: "";
+  width: 30px; height: 3px;
+  background: linear-gradient(to right,
+    var(--tri-bleu) 0 33.33%, var(--tri-blanc) 33.33% 66.66%, var(--tri-rouge) 66.66%);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
 .section--brand-dark .label, .section--dark .label { color: rgba(255,255,255,0.55); }
 
 
@@ -142,7 +153,7 @@ h1,h2,h3,h4,h5 {
 
 .navbar.scrolled { box-shadow: var(--shadow-heavy); }
 
-.navbar__logo img { height: 40px; width: auto; display: block; }
+.navbar__logo img { height: 46px; width: auto; display: block; }
 
 .navbar__links {
   display: flex;
@@ -253,7 +264,7 @@ h1,h2,h3,h4,h5 {
   padding-bottom: 60px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-.footer__brand img { height: 42px; margin-bottom: 14px; display: block; }
+.footer__brand img { height: 56px; margin-bottom: 16px; display: block; }
 .footer__signature {
   font-family: var(--font-head);
   font-size: 10px;
@@ -1171,13 +1182,6 @@ h1,h2,h3,h4,h5 {
 }
 
 /* ── Prix promo ── */
-.price-original {
-  font-size: 13px;
-  color: var(--text-muted);
-  text-decoration: line-through;
-  font-weight: 500;
-  margin-bottom: 2px;
-}
 .promo-badge {
   display: inline-flex;
   align-items: center;
@@ -1368,14 +1372,14 @@ h1,h2,h3,h4,h5 {
 .sticky-mobile-cta__devis { background: var(--brand); color: white; }
 
 /* ── Calculateur de prix ── */
-.calc-section { background: var(--gray); padding: 76px 0; }
+.calc-section { background: var(--gray); padding: 72px 0 76px; }
 .calc-wrap {
   background: white;
   border-radius: var(--radius-card);
   padding: 48px;
   border: 1px solid var(--line);
   max-width: 760px;
-  margin: 0 auto;
+  margin: 0;
 }
 @media(max-width:768px) { .calc-wrap { padding: 28px 20px; } }
 .calc-step { display: none; }
@@ -1414,7 +1418,6 @@ h1,h2,h3,h4,h5 {
 }
 .calc-result__card--best { border-color: var(--brand); background: rgba(8,119,201,0.05); }
 .calc-result__brand { font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
-.calc-result__price-old { font-size: 12px; color: var(--text-muted); text-decoration: line-through; }
 .calc-result__price { font-family: var(--font-head); font-size: 26px; font-weight: 900; color: var(--brand-dark); letter-spacing: -0.02em; }
 .calc-result__badge { display: inline-block; background: var(--brand); color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 40px; margin-top: 6px; }
 .calc-reset { background: none; border: none; color: var(--brand); font-size: 13px; cursor: pointer; margin-top: 12px; text-decoration: underline; }
@@ -1591,18 +1594,18 @@ h1,h2,h3,h4,h5 {
    Ces photos illustrent des installations types ; elles ne documentent pas
    un chantier précis. La légende le dit, au lieu de laisser croire le
    contraire avec un nom de ville. */
-.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.gallery__item { position: relative; overflow: hidden; border-radius: var(--radius-card); aspect-ratio: 4 / 3; }
-.gallery__item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s var(--ease-out); }
-.gallery__item:hover img { transform: scale(1.04); }
-.gallery__caption {
+.illus { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.illus__item { position: relative; overflow: hidden; border-radius: var(--radius-card); aspect-ratio: 4 / 3; }
+.illus__item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s var(--ease-out); }
+.illus__item:hover img { transform: scale(1.04); }
+.illus__caption {
   position: absolute; left: 0; right: 0; bottom: 0;
   padding: 26px 16px 13px;
   background: linear-gradient(to top, rgba(3,35,75,0.85), transparent);
   color: var(--white); font-family: var(--font-head); font-size: 13px; font-weight: 600;
 }
-.gallery__legend { margin-top: 14px; font-size: 13px; color: var(--text-muted); }
-@media (max-width: 760px) { .gallery { grid-template-columns: 1fr; } }
+.illus__legend { margin-top: 14px; font-size: 13px; color: var(--text-muted); }
+@media (max-width: 760px) { .illus { grid-template-columns: 1fr; } }
 
 /* ============================================================
    PAGES VILLES
@@ -1682,4 +1685,659 @@ h1,h2,h3,h4,h5 {
 @media (max-width: 760px) {
   .specs-bar__item { flex: 1 1 100%; border-right: none; border-bottom: 1px solid var(--line); }
   .specs-bar__item:last-child { border-bottom: none; }
+}
+
+.calc-result__sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+/* ============================================================
+   ARTICLES DE BLOG
+   Ces règles vivaient en double dans le <style> des neuf articles.
+   ============================================================ */
+
+.article-body { max-width: 760px; margin: 0 auto; padding: 128px 40px 72px; }
+.article-body h2 {
+  font-family: var(--font-head); font-size: clamp(22px, 2.6vw, 30px); font-weight: 800;
+  color: var(--brand-dark); margin: 46px 0 16px; letter-spacing: -0.022em; line-height: 1.22;
+}
+.article-body h3 {
+  font-family: var(--font-head); font-size: 20px; font-weight: 700;
+  color: var(--brand-dark); margin: 32px 0 12px; letter-spacing: -0.015em;
+}
+.article-body p { font-size: 17px; color: var(--text-dim); line-height: 1.8; margin-bottom: 20px; }
+.article-body ul { padding-left: 22px; margin-bottom: 20px; }
+.article-body ul li { font-size: 17px; color: var(--text-dim); line-height: 1.8; margin-bottom: 8px; list-style: disc; }
+.article-body strong { color: var(--brand-dark); font-weight: 600; }
+.article-body > p:first-of-type { font-size: 19px; color: var(--text); line-height: 1.7; }
+
+.article-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 32px; }
+.article-meta span {
+  background: var(--gray); color: var(--text-dim); padding: 5px 12px;
+  border-radius: var(--radius-btn); font-weight: 600; font-size: 11px;
+  letter-spacing: 1px; text-transform: uppercase; font-family: var(--font-head);
+}
+
+.article-cta-box {
+  background: var(--brand-dark); border-radius: var(--radius-card);
+  padding: 34px; margin: 48px 0; color: white;
+}
+.article-cta-box h3 {
+  font-family: var(--font-head); font-size: 22px; font-weight: 800;
+  margin-bottom: 10px; letter-spacing: -0.022em; color: white;
+}
+.article-cta-box p { color: rgba(255,255,255,0.7); margin-bottom: 22px; }
+
+.article-img { width: 100%; border-radius: var(--radius-card); margin: 32px 0; object-fit: cover; max-height: 420px; }
+.article-related { background: var(--gray); padding: 60px 0; }
+.article-related .container { max-width: 900px; }
+
+/* Le tableau comparatif débordait sous 360px : il défile désormais
+   horizontalement au lieu d'élargir la page entière. */
+.verdict-table-wrap { overflow-x: auto; margin: 32px 0; -webkit-overflow-scrolling: touch; }
+.verdict-table { width: 100%; min-width: 440px; border-collapse: collapse; font-size: 15px; }
+.verdict-table th {
+  background: var(--brand-dark); color: white; padding: 13px 16px; text-align: left;
+  font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; font-family: var(--font-head);
+}
+.verdict-table td { padding: 13px 16px; border-bottom: 1px solid var(--line); color: var(--text); }
+.verdict-table tr:last-child td { border-bottom: none; }
+.verdict-table tr:nth-child(even) td { background: var(--gray); }
+.verdict-table .winner { font-weight: 700; color: var(--brand); }
+
+@media (max-width: 768px) {
+  .article-body { padding: 100px 20px 56px; }
+  .verdict-table { font-size: 14px; }
+}
+
+/* ============================================================
+   CONFORT TACTILE
+   Sur mobile, tout ce qui se touche doit faire au moins 44px :
+   en dessous, le doigt rate la cible. Ce bloc est placé en fin de
+   feuille pour passer devant les règles de composant.
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* Le téléphone de la barre : la cible la plus utilisée du site. */
+  .navbar__tel { min-height: 44px; padding: 6px 4px; }
+  .navbar__search-btn { width: 44px; height: 44px; }
+  .navbar__burger { min-width: 44px; min-height: 44px; justify-content: center; }
+
+  /* Fermetures des panneaux : une croix de 27px se rate. */
+  .mobile-menu__close,
+  .search-overlay__close,
+  .email-popup__close {
+    min-width: 44px; min-height: 44px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Menu plein écran et ses sous-listes. */
+  .mobile-menu > a,
+  .mobile-acc__trigger { min-height: 48px; display: flex; align-items: center; justify-content: center; }
+  .mobile-acc__body a { min-height: 42px; display: flex; align-items: center; justify-content: center; }
+
+  /* Listes de liens du pied de page et liens de lecture. */
+  .footer__col a,
+  .footer__legal a,
+  .read-more { display: inline-flex; align-items: center; min-height: 40px; }
+
+  .btn { min-height: 48px; }
+  .sticky-mobile-cta .btn { min-height: 46px; }
+}
+
+/* Sur les écrans les plus étroits, deux colonnes de villes ne peuvent
+   pas contenir « Roquebrune-Cap-Martin » : la page débordait de 32px. */
+@media (max-width: 400px) {
+  .zones__grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   PAGE RÉALISATIONS
+   Ces règles vivaient dans le <style> de la page.
+   ============================================================ */
+
+.gallery { padding: 72px 0; }
+.gallery__filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; }
+.filter-btn {
+  padding: 10px 20px; border-radius: var(--radius-btn);
+  border: 1px solid var(--line-strong); background: var(--white);
+  font-family: var(--font-head); font-size: 14px; font-weight: 600;
+  color: var(--text); cursor: pointer; transition: background .2s, color .2s, border-color .2s;
+}
+.filter-btn:hover { border-color: var(--brand-dark); }
+.filter-btn.active { background: var(--brand-dark); border-color: var(--brand-dark); color: var(--white); }
+
+.gallery__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .gallery__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .gallery__grid { grid-template-columns: 1fr; } }
+
+.gallery-item {
+  border-radius: var(--radius-card); overflow: hidden; position: relative;
+  aspect-ratio: 4 / 3; background: var(--gray);
+}
+.gallery-item[hidden] { display: none; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease-out); display: block; }
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-item__label {
+  position: absolute; inset: auto 0 0 0;
+  background: linear-gradient(transparent, rgba(3,35,75,0.88));
+  color: #fff; padding: 36px 16px 14px;
+  font-family: var(--font-head); font-size: 14px; font-weight: 600;
+}
+.gallery-item__tag {
+  display: inline-block; background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(4px); color: #fff; padding: 3px 9px;
+  border-radius: var(--radius-btn); font-size: 10px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px;
+}
+.gallery__legend { margin-top: 28px; font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 700px; }
+
+/* ============================================================
+   PAGE CONTACT
+   Ces règles vivaient dans le <style> de la page.
+   ============================================================ */
+
+.contact-main { padding: 72px 0; background: var(--gray); }
+.contact-grid { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 28px; align-items: start; }
+@media (max-width: 1024px) { .contact-grid { grid-template-columns: 1fr; } }
+
+.contact-form-wrap {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 40px;
+}
+@media (max-width: 600px) { .contact-form-wrap { padding: 26px 20px; } }
+.contact-form-wrap h2 {
+  font-family: var(--font-head); font-size: 26px; font-weight: 800;
+  color: var(--brand-dark); letter-spacing: -0.022em; margin-bottom: 6px;
+}
+.form-sub { font-size: 15px; color: var(--text-dim); margin-bottom: 28px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block; font-family: var(--font-head); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 7px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 13px 15px; font-family: var(--font-body); font-size: 16px;
+  color: var(--text); background: var(--white);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-btn);
+  transition: border-color .2s, box-shadow .2s;
+}
+.form-group textarea { min-height: 120px; resize: vertical; }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-glow);
+}
+.form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-muted); }
+.form-submit { margin-top: 24px; }
+.form-submit .btn { width: 100%; }
+.form-legal { margin-top: 14px; font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+.form-legal a { color: var(--brand); text-decoration: underline; }
+.form-success {
+  display: none; padding: 26px; border-radius: var(--radius-card);
+  background: rgba(16,145,86,0.07); border: 1px solid rgba(16,145,86,0.3); color: #0C6B41;
+}
+.form-success.show { display: block; }
+
+.contact-aside { display: flex; flex-direction: column; gap: 14px; }
+.whatsapp-card {
+  display: flex; align-items: center; gap: 14px;
+  background: #25D366; color: var(--white);
+  padding: 18px 20px; border-radius: var(--radius-card);
+  transition: background .2s;
+}
+.whatsapp-card:hover { background: #1FB955; }
+.whatsapp-card svg { flex-shrink: 0; }
+.whatsapp-card span { display: block; font-family: var(--font-head); font-weight: 700; font-size: 15px; }
+.whatsapp-card small { display: block; font-size: 13px; opacity: 0.85; margin-top: 2px; }
+
+/* Les pastilles pastel qui encadraient chaque icône sont de la décoration :
+   le titre de la carte porte déjà l'information. */
+.contact-card {
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--radius-card); padding: 20px 22px;
+}
+.contact-card__body h3 {
+  font-family: var(--font-head); font-size: 15px; font-weight: 800;
+  color: var(--brand-dark); margin-bottom: 4px; letter-spacing: -0.01em;
+}
+.contact-card__body p { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin-bottom: 6px; }
+.contact-card__body a {
+  font-family: var(--font-head); font-size: 16px; font-weight: 700;
+  color: var(--brand); word-break: break-word;
+}
+.contact-card__body a:hover { color: var(--brand-dim); }
+
+.contact-promises {
+  background: var(--brand-dark); color: var(--white);
+  border-radius: var(--radius-card); padding: 24px 22px;
+}
+.contact-promises h4 {
+  font-family: var(--font-head); font-size: 12px; font-weight: 700;
+  letter-spacing: 1.3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); margin-bottom: 14px;
+}
+.promise-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; line-height: 1.55; color: rgba(255,255,255,0.88);
+  padding: 9px 0; border-top: 1px solid rgba(255,255,255,0.1);
+}
+.promise-item:first-of-type { border-top: none; padding-top: 0; }
+.promise-item svg { flex-shrink: 0; margin-top: 3px; stroke: var(--brand-light); }
+
+/* ============================================================
+   PAGE BLOG
+   Ces règles vivaient dans le <style> de la page.
+   ============================================================ */
+
+.blog-main { padding: 72px 0; background: var(--gray); }
+.blog-section-title {
+  font-family: var(--font-head); font-size: 12px; font-weight: 700;
+  letter-spacing: 1.3px; text-transform: uppercase; color: var(--text-muted);
+  padding-bottom: 12px; border-bottom: 2px solid var(--brand); display: inline-block;
+  margin-bottom: 32px;
+}
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+@media (max-width: 1024px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 680px)  { .blog-grid { grid-template-columns: 1fr; } }
+
+.blog-card-full {
+  display: flex; flex-direction: column;
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--radius-card); overflow: hidden;
+  transition: border-color .2s, transform .25s var(--ease-out);
+}
+.blog-card-full:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+
+/* L'image remplace les grandes icônes au trait qui servaient de vignette,
+   dont un symbole dollar sur un site qui facture en euros. */
+.blog-card-full__img { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--gray); }
+.blog-card-full__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s var(--ease-out); }
+.blog-card-full:hover .blog-card-full__img img { transform: scale(1.04); }
+.blog-card-full__cat {
+  position: absolute; left: 12px; bottom: 12px;
+  background: rgba(3,35,75,0.86); backdrop-filter: blur(4px); color: #fff;
+  padding: 4px 10px; border-radius: var(--radius-btn);
+  font-family: var(--font-head); font-size: 10px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.blog-card-full__body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+.blog-card-full__body h2 {
+  font-family: var(--font-head); font-size: 18px; font-weight: 800; line-height: 1.3;
+  color: var(--brand-dark); letter-spacing: -0.018em; margin-bottom: 10px; text-wrap: balance;
+}
+.blog-card-full__body p { font-size: 15px; color: var(--text-dim); line-height: 1.65; margin-bottom: 18px; flex: 1; }
+.read-more {
+  font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--brand);
+  display: inline-flex; align-items: center; gap: 7px; margin-top: auto;
+}
+.read-more:hover { color: var(--brand-dim); gap: 11px; }
+.read-more svg { transition: transform .2s; }
+
+/* L'article en tête occupe toute la largeur, image à gauche. */
+.blog-card-full.featured { grid-column: span 3; flex-direction: row; }
+.blog-card-full.featured .blog-card-full__img { width: 44%; aspect-ratio: auto; flex-shrink: 0; }
+.blog-card-full.featured .blog-card-full__body { padding: 34px; justify-content: center; }
+.blog-card-full.featured .blog-card-full__body h2 { font-size: clamp(21px, 2.1vw, 27px); }
+.blog-card-full.featured .blog-card-full__body p { font-size: 16px; flex: 0; }
+@media (max-width: 1024px) { .blog-card-full.featured { grid-column: span 2; } }
+@media (max-width: 760px) {
+  .blog-card-full.featured { grid-column: span 1; flex-direction: column; }
+  .blog-card-full.featured .blog-card-full__img { width: 100%; aspect-ratio: 16 / 9; }
+  .blog-card-full.featured .blog-card-full__body { padding: 22px; }
+}
+
+.blog-cta { background: var(--brand-dark); padding: 56px 0; }
+
+/* ============================================================
+   PAGES DE CONTENU LONG (certifications, pages éditoriales)
+   Ces règles vivaient dans le <style> de la page et redéfinissaient
+   .page-hero et .faq-*, déjà présents ici.
+   ============================================================ */
+
+.page-content { padding: 72px 0; }
+.page-inner { max-width: 820px; margin: 0 auto; }
+.page-content h2 {
+  font-family: var(--font-head); font-size: clamp(24px, 2.5vw, 32px); font-weight: 800;
+  color: var(--brand-dark); letter-spacing: -0.022em; margin: 52px 0 18px; line-height: 1.2;
+}
+.page-content h3 {
+  font-family: var(--font-head); font-size: 21px; font-weight: 700;
+  color: var(--brand-dark); margin: 34px 0 13px; letter-spacing: -0.015em;
+}
+.page-content p { font-size: 17px; color: var(--text-dim); line-height: 1.8; margin-bottom: 18px; }
+.page-content ul { padding-left: 22px; margin-bottom: 20px; }
+.page-content ul li { font-size: 17px; color: var(--text-dim); line-height: 1.8; margin-bottom: 8px; list-style: disc; }
+.page-content strong { color: var(--brand-dark); font-weight: 600; }
+
+.cert-card {
+  background: var(--sand); border-radius: var(--radius-card);
+  padding: 30px 32px; margin-bottom: 22px; border-left: 3px solid var(--brand);
+}
+.cert-card h3 { margin-top: 0; }
+.cert-card p:last-child { margin-bottom: 0; }
+
+.badge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin: 30px 0; }
+@media (max-width: 600px) { .badge-grid { grid-template-columns: 1fr; } }
+.badge { background: var(--white); padding: 22px; }
+.badge__name { font-family: var(--font-head); font-size: 16px; font-weight: 800; color: var(--brand-dark); margin-bottom: 5px; letter-spacing: -0.015em; }
+.badge__sub { font-size: 14px; color: var(--text-dim); line-height: 1.55; }
+
+.cta-box {
+  background: var(--brand-dark); border-radius: var(--radius-card);
+  padding: 36px; margin: 46px 0;
+}
+.cta-box h3 { font-family: var(--font-head); font-size: 23px; font-weight: 800; color: #fff; margin: 0 0 10px; letter-spacing: -0.022em; }
+.cta-box p { color: rgba(255,255,255,0.7); margin-bottom: 22px; }
+
+/* ============================================================
+   PAGES LÉGALES
+   Ces règles vivaient en triple dans le <style> des trois pages.
+   ============================================================ */
+
+.legal-hero { background: var(--brand-dark); padding: 140px 0 56px; }
+.legal-hero h1 {
+  font-family: var(--font-head); font-size: clamp(28px, 3vw, 42px); font-weight: 800;
+  color: var(--white); letter-spacing: -0.025em; margin-bottom: 10px; line-height: 1.15;
+}
+.legal-hero p { color: rgba(255,255,255,0.55); font-size: 15px; }
+.legal-body { padding: 64px 0 80px; background: var(--gray); }
+.legal-content {
+  max-width: 760px; margin: 0 auto; background: var(--white);
+  border: 1px solid var(--line); border-radius: var(--radius-card); padding: 48px;
+}
+@media (max-width: 768px) { .legal-content { padding: 28px 20px; } }
+.legal-content h2 {
+  font-family: var(--font-head); font-size: 19px; font-weight: 800; color: var(--brand-dark);
+  letter-spacing: -0.015em; margin: 38px 0 12px;
+  border-bottom: 1px solid var(--line); padding-bottom: 10px;
+}
+.legal-content h2:first-child { margin-top: 0; }
+.legal-content p { font-size: 15px; color: var(--text-dim); line-height: 1.75; margin-bottom: 12px; }
+.legal-content a { color: var(--brand); text-decoration: underline; }
+
+/* ── Derniers ajustements qui vivaient en attribut style= ── */
+.offre-card--mis-en-avant { border-color: var(--brand); }
+.offre-card__desc { font-size: 14px; color: var(--text-dim); margin-bottom: 16px; }
+.btn--pleine-largeur { width: 100%; }
+.footer__ligne { margin-top: 12px; }
+.footer__lien-discret { color: rgba(255,255,255,0.55); }
+.article-related__titre {
+  font-family: var(--font-head); font-size: clamp(22px, 2.4vw, 30px); font-weight: 800;
+  color: var(--brand-dark); letter-spacing: -0.022em; margin-bottom: 30px;
+}
+.bloc-espace { margin-bottom: 40px; }
+.btn + .btn { margin-left: 12px; }
+@media (max-width: 560px) { .btn + .btn { margin-left: 0; } }
+
+/* ============================================================
+   SIGNES DE LA MARQUE
+   Le logo tient en trois signes : le toit, le flocon et le filet
+   tricolore. Ils reviennent ici en éléments de page, pour que la
+   marque soit présente ailleurs que dans la barre de navigation.
+   ============================================================ */
+
+/* ── Filet tricolore ── */
+.tricolore {
+  display: block;
+  width: 72px; height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right,
+    var(--tri-bleu) 0 33.33%, var(--tri-blanc) 33.33% 66.66%, var(--tri-rouge) 66.66%);
+}
+.tricolore--large { width: 110px; }
+.section--brand-dark .tricolore, .page-hero .tricolore, .cta-banner .tricolore,
+.legal-hero .tricolore, .footer .tricolore { opacity: 0.95; }
+
+/* ── Filigrane du toit ──
+   La silhouette du logo, posée très discrètement sur les aplats marine.
+   Purement décorative : elle reste hors du flux et hors de l'arbre
+   d'accessibilité. */
+/* Appliqué directement aux aplats marine du site : aucune classe à
+   ajouter dans les 28 pages. */
+.page-hero, .cta-banner, .legal-hero {
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.page-hero > *, .cta-banner > *, .legal-hero > * { position: relative; z-index: 1; }
+
+.page-hero::after, .cta-banner::after, .legal-hero::after {
+  content: "";
+  position: absolute;
+  right: -70px;
+  bottom: -34px;
+  width: min(620px, 52%);
+  aspect-ratio: 1200 / 237;
+  background: url('../img/marque-toit-atelier-du-climat.png') right bottom / contain no-repeat;
+  opacity: 0.045;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+  z-index: 0;
+}
+@media (max-width: 760px) { .page-hero::after, .cta-banner::after, .legal-hero::after { width: 320px; right: -70px; opacity: 0.035; } }
+
+/* ── Flocon ── */
+.flocon {
+  display: inline-block;
+  background: url('../img/flocon.svg') center / contain no-repeat;
+  flex-shrink: 0;
+}
+.flocon--blanc { background-image: url('../img/flocon-blanc.svg'); }
+
+/* Séparateur : filet, flocon, filet. */
+.separateur-marque {
+  display: flex; align-items: center; justify-content: center; gap: 22px;
+  padding: 30px 0;
+}
+.separateur-marque::before, .separateur-marque::after {
+  content: ""; height: 1px; flex: 1 1 0; max-width: 180px; background: var(--line);
+}
+.separateur-marque .flocon { width: 38px; height: 38px; opacity: 0.85; }
+.section--brand-dark .separateur-marque::before,
+.section--brand-dark .separateur-marque::after { background: rgba(255,255,255,0.18); }
+.footer__brand .tricolore { margin: 0 0 14px; }
+.hero__col .tricolore { margin-bottom: 22px; }
+.ville-hero .tricolore { margin-bottom: 20px; }
+
+/* ============================================================
+   PAGE D'ACCUEIL — SECTIONS DE LA MAQUETTE
+   ============================================================ */
+
+/* ── Hero : bandeau de réassurance sous les boutons ── */
+.hero__reassurance {
+  display: flex; flex-wrap: wrap; gap: 14px 34px;
+  padding-top: 24px; border-top: 1px solid var(--line);
+}
+.hero__rea { display: flex; align-items: flex-start; gap: 11px; max-width: 230px; }
+.hero__rea svg { flex-shrink: 0; margin-top: 2px; stroke: var(--brand); }
+.hero__rea b {
+  display: block; font-family: var(--font-head); font-size: 14px;
+  font-weight: 700; color: var(--brand-dark); line-height: 1.3;
+}
+.hero__rea span { display: block; font-size: 13px; color: var(--text-dim); line-height: 1.45; margin-top: 2px; }
+
+/* ── Prestations : quatre cartes à icône ── */
+.prestations { padding: 56px 0; background: var(--white); }
+.prestations__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-card); overflow: hidden; }
+@media (max-width: 900px) { .prestations__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .prestations__grid { grid-template-columns: 1fr; } }
+.prestation { background: var(--white); padding: 28px 26px; display: block; transition: background .2s; }
+.prestation:hover { background: var(--gray); }
+.prestation__icone { width: 34px; height: 34px; margin-bottom: 16px; stroke: var(--brand); fill: none; stroke-width: 1.6; }
+.prestation h3 {
+  font-family: var(--font-head); font-size: 17px; font-weight: 800;
+  color: var(--brand-dark); letter-spacing: -0.015em; margin-bottom: 7px;
+}
+.prestation p { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+.prestation__lien {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 14px;
+  font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--brand);
+}
+.prestation:hover .prestation__lien { gap: 10px; }
+
+/* ── Offres : cartes produit comparables ── */
+.offres__entete { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 32px; flex-wrap: wrap; }
+.offres__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 980px) { .offres__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 660px) { .offres__grid { grid-template-columns: 1fr; } }
+
+.offre {
+  display: flex; flex-direction: column;
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--radius-card); overflow: hidden;
+  transition: border-color .2s, transform .25s var(--ease-out);
+}
+.offre:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+.offre--phare { border-color: var(--brand); }
+.offre__bandeau {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 10px 18px; background: var(--gray);
+  border-bottom: 1px solid var(--line);
+}
+.offre--phare .offre__bandeau { background: var(--brand); border-color: var(--brand); }
+.offre__tag {
+  font-family: var(--font-head); font-size: 10px; font-weight: 800;
+  letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-dim);
+}
+.offre--phare .offre__tag { color: var(--white); }
+.offre__marque {
+  font-family: var(--font-head); font-size: 12px; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-dark);
+}
+.offre--phare .offre__marque { color: rgba(255,255,255,0.9); }
+.offre__photo { background: var(--white); padding: 22px; }
+.offre__photo img { width: 100%; height: 170px; object-fit: contain; display: block; }
+.offre__corps { padding: 0 22px 22px; display: flex; flex-direction: column; flex: 1; }
+.offre__nom {
+  font-family: var(--font-head); font-size: 18px; font-weight: 800;
+  color: var(--brand-dark); letter-spacing: -0.018em; margin-bottom: 4px;
+}
+.offre__puissance { font-size: 13px; color: var(--text-dim); margin-bottom: 14px; }
+.offre__chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.offre__chip {
+  background: var(--gray); color: var(--text-dim);
+  padding: 4px 10px; border-radius: var(--radius-btn);
+  font-size: 12px; font-weight: 600;
+}
+.offre__prix-bloc { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+.offre__prix {
+  font-family: var(--font-head); font-size: 26px; font-weight: 800;
+  color: var(--brand-dark); letter-spacing: -0.03em; font-variant-numeric: tabular-nums;
+}
+.offre__prix small { font-size: 13px; font-weight: 600; color: var(--text-dim); letter-spacing: 0; }
+.offre__mention { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.offre__actions { display: flex; gap: 8px; margin-top: 14px; }
+.offre__actions .btn { flex: 1; padding: 12px 14px; font-size: 14px; }
+
+/* ── Pourquoi nous choisir ── */
+.pourquoi { padding: 76px 0; background: var(--gray); }
+.pourquoi__grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 28px; align-items: start; }
+@media (max-width: 900px) { .pourquoi__grid { grid-template-columns: 1fr; } }
+.pourquoi__bloc {
+  background: var(--brand-dark); color: var(--white);
+  border-radius: var(--radius-card); padding: 36px 32px;
+  position: relative; overflow: hidden;
+}
+.pourquoi__bloc h2 {
+  font-family: var(--font-head); font-size: clamp(23px, 2.3vw, 30px); font-weight: 800;
+  letter-spacing: -0.022em; line-height: 1.2; margin: 14px 0 14px; color: var(--white);
+}
+.pourquoi__bloc p { font-size: 15px; color: rgba(255,255,255,0.68); line-height: 1.7; }
+.pourquoi__args { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-card); overflow: hidden; }
+@media (max-width: 560px) { .pourquoi__args { grid-template-columns: 1fr; } }
+.pourquoi__arg { background: var(--white); padding: 22px 22px; display: flex; gap: 14px; align-items: flex-start; }
+.pourquoi__arg svg { flex-shrink: 0; width: 22px; height: 22px; stroke: var(--brand); fill: none; stroke-width: 1.7; margin-top: 2px; }
+.pourquoi__arg b { display: block; font-family: var(--font-head); font-size: 15px; font-weight: 800; color: var(--brand-dark); margin-bottom: 4px; letter-spacing: -0.012em; }
+.pourquoi__arg span { display: block; font-size: 14px; color: var(--text-dim); line-height: 1.55; }
+
+/* ── Aperçu des réalisations ── */
+.realisations-apercu { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 980px) { .realisations-apercu { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .realisations-apercu { grid-template-columns: 1fr; } }
+.rea-carte { border: 1px solid var(--line); border-radius: var(--radius-card); overflow: hidden; background: var(--white); }
+.rea-carte img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform .5s var(--ease-out); }
+.rea-carte:hover img { transform: scale(1.04); }
+.rea-carte__texte { padding: 14px 16px; }
+.rea-carte__texte b { display: block; font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--brand-dark); line-height: 1.35; }
+.rea-carte__texte span { display: block; font-size: 13px; color: var(--text-muted); margin-top: 3px; }
+
+/* ── Demande de devis ── */
+.devis { background: var(--brand-dark); padding: 72px 0; position: relative; overflow: hidden; }
+.devis > * { position: relative; z-index: 1; }
+.devis__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+@media (max-width: 900px) { .devis__grid { grid-template-columns: 1fr; gap: 34px; } }
+.devis__texte h2 {
+  font-family: var(--font-head); font-size: clamp(25px, 2.5vw, 34px); font-weight: 800;
+  color: var(--white); letter-spacing: -0.025em; line-height: 1.18; margin: 14px 0 14px;
+}
+.devis__texte p { font-size: 17px; color: rgba(255,255,255,0.68); line-height: 1.65; margin-bottom: 26px; }
+.devis__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.devis__carte {
+  background: var(--white); border-radius: var(--radius-card); padding: 30px;
+}
+@media (max-width: 540px) { .devis__carte { padding: 22px 18px; } }
+.devis__carte h3 {
+  font-family: var(--font-head); font-size: 19px; font-weight: 800;
+  color: var(--brand-dark); letter-spacing: -0.018em; margin-bottom: 18px;
+}
+.devis__rgpd { margin-top: 12px; font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+.devis__rgpd a { color: var(--brand); text-decoration: underline; }
+/* Champ leurre : invisible pour l'humain, rempli par les robots. */
+.champ-leurre { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-erreur { display: block; margin-top: 6px; font-size: 13px; color: var(--accent); }
+.form-group input[aria-invalid="true"],
+.form-group select[aria-invalid="true"],
+.form-group textarea[aria-invalid="true"] { border-color: var(--accent); }
+.section__head--compact { margin-bottom: 0; }
+
+/* ── Ajustements de la page d'accueil ── */
+/* Le titre du hero tombait sur quatre lignes : la colonne de texte
+   reprend un peu de largeur sur la photo. */
+@media (min-width: 981px) { .hero__grid { grid-template-columns: 1.12fr 0.88fr; } }
+.hero__title { font-size: clamp(30px, 3.6vw, 50px); }
+
+/* Les trois réassurances tenaient sur deux rangs inégaux. */
+.hero__reassurance { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.hero__rea { max-width: none; }
+@media (max-width: 1100px) { .hero__reassurance { grid-template-columns: 1fr; gap: 14px; } }
+
+.devis__texte .tricolore { margin-bottom: 26px; }
+.pourquoi__bloc .tricolore { margin-top: 22px; }
+
+/* ── Avis clients (gabarit, voir SNIPPETS.md) ── */
+.avis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .avis-grid { grid-template-columns: 1fr; } }
+.avis {
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--radius-card); padding: 26px; margin: 0;
+}
+.avis__note { color: #F5A623; font-size: 15px; letter-spacing: 2px; margin-bottom: 12px; }
+.avis blockquote { margin: 0 0 16px; }
+.avis blockquote p { font-size: 15px; color: var(--text-dim); line-height: 1.7; }
+.avis figcaption b { display: block; font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--brand-dark); }
+.avis figcaption span { display: block; font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+/* ── Bascule de la navigation ──
+   La barre compte sept entrées depuis la refonte : elles ne tiennent plus
+   à côté du logo, du téléphone et du bouton de devis en dessous de 1080px.
+   Le menu hamburger prend le relais plus tôt, et le confort tactile des
+   44px s'applique sur toute cette plage. */
+@media (max-width: 1080px) {
+  .navbar__links { display: none; }
+  .navbar__burger { display: flex; min-width: 44px; min-height: 44px; justify-content: center; }
+  .navbar { padding: 11px 20px; }
+  .navbar__cta { gap: 10px; }
+  .navbar__cta .btn { display: none; }
+  .navbar__tel { min-height: 44px; padding: 6px 4px; font-size: 15px; }
+  .navbar__search-btn { width: 44px; height: 44px; }
+  .mobile-menu__close, .search-overlay__close, .email-popup__close {
+    min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;
+  }
+  .mobile-menu > a, .mobile-acc__trigger { min-height: 48px; display: flex; align-items: center; justify-content: center; }
+  .mobile-acc__body a { min-height: 42px; display: flex; align-items: center; justify-content: center; }
+  .btn { min-height: 48px; }
 }

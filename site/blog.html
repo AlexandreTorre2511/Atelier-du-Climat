@@ -19,151 +19,27 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blog climatisation Côte d'Azur — Conseils, guides et prix</title>
-  <meta name="description" content="Conseils, guides et prix pour votre climatisation sur la Côte d'Azur : choix du modèle, entretien, économies, droits en location et tarifs 2026."/>
-  <meta property="og:title" content="Blog Climatisation — Atelier du Climat Côte d'Azur"/>
+  <meta name="description" content="Conseils, guides et prix pour votre climatisation sur la Côte d'Azur : choix du modèle, entretien annuel, économies, droits en location et tarifs posés."/>
+  <meta property="og:title" content="Blog climatisation Côte d'Azur — Conseils, guides et prix"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:image" content="https://atelierduclimat06.fr/assets/img/lifestyle-clim-salon-vue-mer.jpg"/>
+  <meta property="og:image" content="https://atelierduclimat06.fr/assets/img/partage/partage-lifestyle-clim-salon-vue-mer.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta name="twitter:card" content="summary_large_image"/>
   <meta property="og:url" content="https://atelierduclimat06.fr/blog.html"/>
   <meta property="og:site_name" content="Atelier du Climat"/>
   <link rel="canonical" href="https://atelierduclimat06.fr/blog.html"/>
   <link rel="icon" type="image/png" href="assets/img/favicon-atelier-du-climat.png"/>
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/icone-192.png"/>
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/img/icone-512.png"/>
+  <meta name="theme-color" content="#03234B"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"/>
   <!-- Google Analytics GA4 → Remplacer G-XXXXXXXXXX -->
   <script>if('IntersectionObserver' in window)document.documentElement.className+=' js';</script>
   <link rel="stylesheet" href="assets/css/style.css"/>
-  <style>
-    .blog-hero {
-      background: var(--brand-dark);
-      padding: 140px 0 80px;
-      text-align: center;
-    }
-    .blog-hero .label { color: var(--brand); margin-bottom: 16px; display: block; }
-    .blog-hero h1 {
-      font-size: clamp(38px, 5vw, 64px);
-      color: var(--white);
-      letter-spacing: -0.03em;
-      line-height: 0.98;
-      margin-bottom: 20px;
-    }
-    .blog-hero p {
-      color: rgba(255,255,255,0.6);
-      font-size: 18px;
-      max-width: 480px;
-      margin: 0 auto;
-    }
-    .blog-main {
-      padding: 110px 0 100px;
-      background: var(--gray);
-    }
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    @media(max-width:1024px){ .blog-grid { grid-template-columns: repeat(2,1fr); } }
-    @media(max-width:640px){ .blog-grid { grid-template-columns: 1fr; } }
-
-    .blog-card-full {
-      background: var(--white);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .blog-card-full:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.10); }
-    .blog-card-full__img {
-      height: 200px;
-      background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-dark) 100%);
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      padding: 20px;
-    }
-    .blog-card-full__img svg { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0.15; }
-    .blog-card-full__cat {
-      display: inline-block;
-      background: var(--brand);
-      color: white;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 20px;
-      position: relative;
-      z-index: 1;
-    }
-    .blog-card-full__body {
-      padding: 24px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .blog-card-full__date {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-    .blog-card-full h2 {
-      font-size: 18px;
-      color: var(--brand-dark);
-      letter-spacing: -0.015em;
-      line-height: 1.3;
-      margin-bottom: 10px;
-    }
-    .blog-card-full p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      flex: 1;
-      margin-bottom: 20px;
-    }
-    .blog-card-full a.read-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--brand);
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: gap 0.2s;
-    }
-    .blog-card-full a.read-more:hover { gap: 10px; }
-    .blog-card-full a.read-more svg { transition: transform 0.2s; }
-    .blog-card-full a.read-more:hover svg { transform: translateX(3px); }
-
-    /* Featured card spanning 2 cols */
-    .blog-card-full.featured {
-      grid-column: span 2;
-      flex-direction: row;
-    }
-    .blog-card-full.featured .blog-card-full__img { height: auto; min-height: 240px; width: 320px; flex-shrink: 0; }
-    @media(max-width:1024px){ .blog-card-full.featured { grid-column: span 2; flex-direction: column; } .blog-card-full.featured .blog-card-full__img { width: 100%; height: 200px; } }
-    @media(max-width:640px){ .blog-card-full.featured { grid-column: span 1; flex-direction: column; } }
-
-    .blog-section-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--brand-dark);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 28px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--brand);
-      display: inline-block;
-    }
-    .blog-cta {
-      background: var(--brand-dark);
-      padding: 80px 0;
-      text-align: center;
-    }
-    .blog-cta h2 { color: var(--white); font-size: clamp(28px,4vw,44px); letter-spacing:-0.025em; margin-bottom:16px; }
-    .blog-cta p { color: rgba(255,255,255,0.6); max-width:480px; margin: 0 auto 32px; }
-  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -196,9 +72,11 @@
   <a href="index.html" class="navbar__logo"><img src="assets/img/logo-atelier-du-climat.png" alt="Atelier du Climat — climatisation, pompes à chaleur et ventilation" width="480" height="160"/></a>
   <div class="navbar__links">
     <a href="index.html">Accueil</a>
-    <div class="nav-drop"><button class="nav-drop__btn">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="entree-de-gamme.html"><span><strong>One Clima</strong><small>Entrée de gamme · dès 899 €</small></span></a><a href="bosch.html"><span><strong>Bosch</strong><small>Milieu de gamme · dès 1 199 €</small></span></a><a href="daikin-premium.html"><span><strong>Daikin</strong><small>Haut de gamme · dès 1 699 €</small></span></a></div></div>
+    <a href="index.html#prestations">Prestations</a>
+    <div class="nav-drop"><button class="nav-drop__btn">Nos offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="entree-de-gamme.html"><span><strong>One Clima</strong><small>Entrée de gamme · dès 899 €</small></span></a><a href="bosch.html"><span><strong>Bosch</strong><small>Milieu de gamme · dès 1 199 €</small></span></a><a href="daikin-premium.html"><span><strong>Daikin</strong><small>Haut de gamme · dès 1 699 €</small></span></a></div></div>
+    <a href="realisations.html">Réalisations</a>
     <div class="nav-drop"><button class="nav-drop__btn">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel nav-drop__panel--grid"><a href="climatisation-nice.html">Nice</a><a href="climatisation-antibes.html">Antibes</a><a href="climatisation-cannes.html">Cannes</a><a href="climatisation-monaco.html">Monaco</a><a href="climatisation-menton.html">Menton</a><a href="climatisation-grasse.html">Grasse</a><a href="climatisation-sophia-antipolis.html">Sophia Antipolis</a><a href="climatisation-cagnes-sur-mer.html">Cagnes-sur-Mer</a></div></div>
-    <div class="nav-drop"><button class="nav-drop__btn">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="certifications-climatisation.html"><span><strong>Certifications</strong><small>F-Gaz, normes et réglementation</small></span></a><a href="realisations.html"><span><strong>Réalisations</strong><small>Nos installations en photos</small></span></a><a href="blog.html"><span><strong>Blog</strong><small>Conseils &amp; guides</small></span></a></div></div>
+    <div class="nav-drop"><button class="nav-drop__btn">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="certifications-climatisation.html"><span><strong>Certifications</strong><small>F-Gaz, normes et réglementation</small></span></a><a href="blog.html"><span><strong>Blog</strong><small>Conseils &amp; guides</small></span></a></div></div>
     <a href="contact.html">Contact</a>
 </div>
   <div class="navbar__cta">
@@ -211,9 +89,11 @@
 <div class="mobile-menu" id="mobile-menu">
   <button class="mobile-menu__close" id="menu-close">&#x2715;</button>
   <a href="index.html">Accueil</a>
-  <div class="mobile-acc"><button class="mobile-acc__trigger">Nos Offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="entree-de-gamme.html">One Clima</a><a href="bosch.html">Bosch</a><a href="daikin-premium.html">Daikin</a></div></div>
+  <a href="index.html#prestations">Prestations</a>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Nos offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="entree-de-gamme.html">One Clima</a><a href="bosch.html">Bosch</a><a href="daikin-premium.html">Daikin</a></div></div>
+  <a href="realisations.html">Réalisations</a>
   <div class="mobile-acc"><button class="mobile-acc__trigger">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="climatisation-nice.html">Nice</a><a href="climatisation-antibes.html">Antibes</a><a href="climatisation-cannes.html">Cannes</a><a href="climatisation-monaco.html">Monaco</a><a href="climatisation-menton.html">Menton</a><a href="climatisation-grasse.html">Grasse</a><a href="climatisation-sophia-antipolis.html">Sophia Antipolis</a><a href="climatisation-cagnes-sur-mer.html">Cagnes-sur-Mer</a></div></div>
-  <div class="mobile-acc"><button class="mobile-acc__trigger">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="certifications-climatisation.html">Certifications</a><a href="realisations.html">Réalisations</a><a href="blog.html">Blog</a></div></div>
+  <div class="mobile-acc"><button class="mobile-acc__trigger">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="mobile-acc__body"><a href="certifications-climatisation.html">Certifications</a><a href="blog.html">Blog</a></div></div>
   <a href="contact.html">Contact</a>
   <div class="mobile-menu__cta"><a href="contact.html" class="btn btn--primary">Devis Gratuit</a></div>
 </div>
@@ -234,23 +114,23 @@
 
 
 
-<section class="blog-hero">
+<section class="page-hero">
   <div class="container">
-    <span class="label">Conseils &amp; guides</span>
-    <h1>Le blog Atelier du Climat</h1>
-    <p>Prix, comparatifs, réglementation : tout ce qu'il faut savoir avant de se lancer.</p>
+    <span class="label">Conseils et guides</span>
+    <h1 class="page-hero__title">Comprendre la climatisation avant de l'acheter</h1>
+    <p class="page-hero__sub">Prix réels, différences entre gammes, entretien, réglementation en copropriété et en location : ce qu'il faut savoir pour décider sans se tromper.</p>
 </div>
 </section>
 
 <section class="blog-main">
   <div class="container">
-    <div style="margin-bottom:40px;"><span class="blog-section-title reveal">Tous les articles</span></div>
+    <div class="bloc-espace"><span class="blog-section-title reveal">Tous les articles</span></div>
     <div class="blog-grid">
 
       <!-- Article 1 — Featured -->
       <div class="blog-card-full featured reveal">
         <div class="blog-card-full__img">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="0.5" width="160" height="160"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+          <img src="assets/img/lifestyle-clim-salon-vue-mer.jpg" alt="Séjour d'appartement niçois climatisé, vue sur la baie" width="1200" height="675" loading="lazy" decoding="async"/>
           <span class="blog-card-full__cat">Guide complet</span>
 </div>
         <div class="blog-card-full__body">
@@ -262,8 +142,8 @@
 
       <!-- Article 2 -->
       <div class="blog-card-full reveal">
-        <div class="blog-card-full__img" style="background:var(--brand-dark);">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="0.5" width="120" height="120"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <div class="blog-card-full__img">
+          <img src="assets/img/lifestyle-clim-salon-contemporain.jpg" alt="Climatiseur mural dans un salon contemporain" width="1200" height="675" loading="lazy" decoding="async"/>
           <span class="blog-card-full__cat">Prix &amp; Tarifs</span>
 </div>
         <div class="blog-card-full__body">
@@ -275,8 +155,8 @@
 
       <!-- Article 3 -->
       <div class="blog-card-full reveal">
-        <div class="blog-card-full__img" style="background:var(--brand-dark);">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="0.5" width="120" height="120"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/></svg>
+        <div class="blog-card-full__img">
+          <img src="assets/img/lifestyle-multisplit-3-chambres.jpg" alt="Plusieurs pièces climatisées par un seul groupe extérieur" width="1200" height="675" loading="lazy" decoding="async"/>
           <span class="blog-card-full__cat">Comparatif</span>
 </div>
         <div class="blog-card-full__body">
@@ -288,8 +168,8 @@
 
       <!-- Article 4 -->
       <div class="blog-card-full reveal">
-        <div class="blog-card-full__img" style="background:var(--brand-dark);">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="0.5" width="120" height="120"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+        <div class="blog-card-full__img">
+          <img src="assets/img/daikin-modele-1---clean.jpg" alt="Unité murale de climatisation sur fond neutre" width="1200" height="675" loading="lazy" decoding="async"/>
           <span class="blog-card-full__cat">Comparatif</span>
 </div>
         <div class="blog-card-full__body">
@@ -301,8 +181,8 @@
 
       <!-- Article 5 -->
       <div class="blog-card-full reveal">
-        <div class="blog-card-full__img" style="background:var(--brand-dark);">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="0.5" width="120" height="120"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>
+        <div class="blog-card-full__img">
+          <img src="assets/img/lifestyle-clim-unite-exterieure.jpg" alt="Groupe extérieur de climatisation fixé en façade" width="1200" height="675" loading="lazy" decoding="async"/>
           <span class="blog-card-full__cat">Entretien</span>
 </div>
         <div class="blog-card-full__body">
@@ -314,8 +194,8 @@
 
       <!-- Article 6 -->
       <div class="blog-card-full reveal">
-        <div class="blog-card-full__img" style="background:var(--brand-dark);">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="0.5" width="120" height="120"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>
+        <div class="blog-card-full__img">
+          <img src="assets/img/lifestyle-clim-salle-a-manger.jpg" alt="Salle à manger chauffée par une climatisation réversible" width="1200" height="675" loading="lazy" decoding="async"/>
           <span class="blog-card-full__cat">Économies</span>
 </div>
         <div class="blog-card-full__body">
@@ -327,8 +207,8 @@
 
       <!-- Article 7 -->
       <div class="blog-card-full reveal">
-        <div class="blog-card-full__img" style="background:var(--brand-dark);">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="0.5" width="120" height="120"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+        <div class="blog-card-full__img">
+          <img src="assets/img/lifestyle-clim-terrasse-couverte.jpg" alt="Pièce de vie ouverte sur une terrasse, à Cannes" width="1200" height="675" loading="lazy" decoding="async"/>
           <span class="blog-card-full__cat">Local</span>
 </div>
         <div class="blog-card-full__body">
@@ -340,8 +220,8 @@
 
       <!-- Article 8 -->
       <div class="blog-card-full reveal">
-        <div class="blog-card-full__img" style="background:var(--brand-dark);">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="0.5" width="120" height="120"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/></svg>
+        <div class="blog-card-full__img">
+          <img src="assets/img/lifestyle-clim-chambre-parentale.jpg" alt="Chambre d'un logement en location équipée d'un climatiseur" width="1200" height="675" loading="lazy" decoding="async"/>
           <span class="blog-card-full__cat">Locataires</span>
 </div>
         <div class="blog-card-full__body">
@@ -353,8 +233,8 @@
 
       <!-- Article 9 -->
       <div class="blog-card-full reveal">
-        <div class="blog-card-full__img" style="background:var(--brand-dark);">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="0.5" width="120" height="120"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
+        <div class="blog-card-full__img">
+          <img src="assets/img/lifestyle-clim-bureau-home-office.jpg" alt="Climatiseur mural fonctionnant au gaz R-32" width="1200" height="675" loading="lazy" decoding="async"/>
           <span class="blog-card-full__cat">Environnement</span>
 </div>
         <div class="blog-card-full__body">
@@ -373,20 +253,23 @@
     <h2 class="reveal">Une question ? On est là.</h2>
     <p class="reveal">Nos experts répondent à toutes vos questions sur la climatisation — gratuitement, sans engagement.</p>
     <div class="reveal">
-      <a href="contact.html" class="btn btn--primary" style="margin-right:12px;">Demander un devis</a>
+      <a href="contact.html" class="btn btn--primary">Demander un devis</a>
       <a href="https://wa.me/33766846856" class="btn btn--outline-white" target="_blank" rel="noopener">WhatsApp</a>
 </div>
 </div>
 </section>
 
-<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><img src="assets/img/logo-atelier-du-climat-blanc.png" alt="Atelier du Climat" width="480" height="160"/><p class="footer__signature">Climatisation • Pompes à chaleur • Ventilation</p><p>L'expert climatisation de la Côte d'Azur. Installation rapide, prix transparents, service premium.</p><div class="footer__socials"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a></div></div><div class="footer__col"><h4>Nos offres</h4><ul><li><a href="entree-de-gamme.html">Entrée de gamme — One Clima</a></li><li><a href="bosch.html">Milieu de gamme — Bosch</a></li><li><a href="daikin-premium.html">Premium — Daikin</a></li><li><a href="contact.html">Demander un devis</a></li></ul></div><div class="footer__col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li>
+<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><img src="assets/img/logo-atelier-du-climat-blanc.png" alt="Atelier du Climat" width="480" height="160" loading="lazy" decoding="async"/><span class="tricolore tricolore--large"></span><p class="footer__signature">Climatisation • Pompes à chaleur • Ventilation</p><p>Installation de climatisation dans les Alpes-Maritimes. Trois gammes, prix affichés, pose comprise.</p>        <!-- Réseaux sociaux : retirés tant que les comptes ne sont pas
+             fournis. Remettre ce bloc en remplaçant les href="#" par
+             les vraies adresses ; le CSS .footer__socials est en place.
+<div class="footer__socials"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a></div></div><div class="footer__col"><h4>Nos offres</h4><ul><li><a href="entree-de-gamme.html">Entrée de gamme — One Clima</a></li><li><a href="bosch.html">Milieu de gamme — Bosch</a></li><li><a href="daikin-premium.html">Premium — Daikin</a></li><li><a href="contact.html">Demander un devis</a></li></ul></div><div class="footer__col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li>
           <li><a href="realisations.html">Réalisations</a></li>
           <li><a href="certifications-climatisation.html">Certifications</a></li>
-          <li></li><li><a href="blog.html">Blog &amp; Conseils</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="politique-confidentialite.html">Confidentialité</a></li><li><a href="cgv.html">Conditions générales</a></li></ul></div><div class="footer__col"><h4>Contact</h4><p>Nice, Côte d'Azur — Département 06</p><p style="margin-top:12px;"><a href="mailto:depannage06contact@gmail.com" style="color:rgba(255,255,255,0.55);">depannage06contact@gmail.com</a></p><p style="margin-top:8px;">Lun–Sam 8h à 19h</p></div></div><div class="footer__bottom"><span>&copy; 2026 Atelier du Climat. Tous droits réservés.</span><span><a href="mentions-legales.html">Mentions légales</a> &nbsp;|&nbsp; <a href="politique-confidentialite.html">Confidentialité</a> &nbsp;|&nbsp; <a href="cgv.html">CGV</a></span></div></div></footer>
+          <li></li><li><a href="blog.html">Blog &amp; Conseils</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="politique-confidentialite.html">Confidentialité</a></li><li><a href="cgv.html">Conditions générales</a></li></ul></div><div class="footer__col"><h4>Contact</h4><p>Nice, Côte d'Azur — Département 06</p><p class="footer__ligne"><a href="mailto:depannage06contact@gmail.com" class="footer__lien-discret">depannage06contact@gmail.com</a></p><p class="footer__ligne">Lun–Sam 8h à 19h</p></div></div><div class="footer__bottom"><span>&copy; 2026 Atelier du Climat. Tous droits réservés.</span><span><a href="mentions-legales.html">Mentions légales</a> &nbsp;|&nbsp; <a href="politique-confidentialite.html">Confidentialité</a> &nbsp;|&nbsp; <a href="cgv.html">CGV</a></span></div></div></footer>
 
 <a class="whatsapp-float" href="https://wa.me/33766846856" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
-<!-- EMAIL POPUP -->
+<!- - EMAIL POPUP - ->
 <div class="email-popup" id="email-popup">
   <div class="email-popup__overlay"></div>
   <div class="email-popup__box">
@@ -399,7 +282,7 @@
     <div class="email-popup__body">
       <form class="email-popup__form" id="popup-form">
         <input type="email" name="email" placeholder="Votre adresse email" required/>
-        <button type="submit" class="btn btn--primary">Recevoir mon estimation gratuite →</button>
+        <button type="submit" class="btn btn- -primary">Recevoir mon estimation gratuite →</button>
       </form>
       <div class="email-popup__trust">
         <span>Gratuit</span>
@@ -411,6 +294,7 @@
 </div>
       <p class="email-popup__legal">En soumettant, vous acceptez notre <a href="politique-confidentialite.html">politique de confidentialité</a>. Zéro spam.</p>
 </div>
+        -->
 </div>
 </div>
 

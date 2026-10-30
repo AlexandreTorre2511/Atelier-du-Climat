@@ -27,16 +27,15 @@
 ───────────────────────────────────────────────────────────── */
 
 const CALC_PRICES = {
-  // clé = valeur de l'option choisie
-  1: { old: { offre1: 1099, offre2: 1499, offre3: 1999 }, promo: { offre1: 899,  offre2: 1199, offre3: 1699 } },
-  2: { old: { offre1: 2399, offre2: 3199, offre3: 4299 }, promo: { offre1: 1999, offre2: 2699, offre3: 3599 } },
-  3: { old: { offre1: 3499, offre2: 4499, offre3: 5999 }, promo: { offre1: 2999, offre2: 3799, offre3: 4999 } },
+  // clé = nombre de pièces → prix affiché par gamme, pose comprise
+  1: { offre1: 899,  offre2: 1199, offre3: 1699 },
+  2: { offre1: 1999, offre2: 2699, offre3: 3599 },
+  3: { offre1: 2999, offre2: 3799, offre3: 4999 },
 };
 
 const CALC_LABELS  = { 1: '1 pièce', 2: '2 pièces', 3: '3 pièces' };
 const OFFRE_NAMES  = { offre1: 'One Clima', offre2: 'Bosch', offre3: 'Daikin' };
 const OFFRE_SUBS   = { offre1: 'Formule essentielle', offre2: '', offre3: 'Formule premium' };
-const SHOW_OLD_PRICE = false; // true SEULEMENT si le prix barré a réellement été pratiqué
 
 let calcChoice = null;
 
@@ -61,11 +60,10 @@ function showCalcResult() {
   const card = (key, best) => `
     <div class="calc-result__card${best ? ' calc-result__card--best' : ''}">
       <div class="calc-result__brand">${OFFRE_NAMES[key]}</div>
-      ${SHOW_OLD_PRICE ? `<div class="calc-result__price-old">${prices.old[key].toLocaleString('fr-FR')} €</div>` : ''}
-      <div class="calc-result__price">${prices.promo[key].toLocaleString('fr-FR')} €</div>
+      <div class="calc-result__price">${prices[key].toLocaleString('fr-FR')} €</div>
       ${best
         ? '<div class="calc-result__badge">Le + demandé</div>'
-        : `<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">${OFFRE_SUBS[key]}</div>`}
+        : `<div class="calc-result__sub">${OFFRE_SUBS[key]}</div>`}
     </div>`;
 
   result.innerHTML = `
