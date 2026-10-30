@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://climatisationkhalil.fr/sitemap.xml
+Sitemap: https://atelierduclimat06.fr/sitemap.xml

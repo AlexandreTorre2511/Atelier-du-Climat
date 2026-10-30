@@ -3,8 +3,8 @@
    MAIL_FROM doit être une adresse sur un domaine vérifié dans Resend.
    Par défaut on utilise onboarding@resend.dev, qui fonctionne sans aucune
    configuration DNS mais n'envoie QUE vers l'adresse du compte Resend.
-   Une fois climatisationkhalil.fr vérifié chez Resend, définir dans Netlify :
-     MAIL_FROM = Atelier du Climat <contact@climatisationkhalil.fr>
+   Une fois atelierduclimat06.fr vérifié chez Resend, définir dans Netlify :
+     MAIL_FROM = Atelier du Climat <contact@atelierduclimat06.fr>
 */
 
 const MAIL_FROM = process.env.MAIL_FROM || 'Atelier du Climat <onboarding@resend.dev>';
@@ -51,7 +51,7 @@ exports.handler = async (event) => {
         </div>
       </div>
       <div style="padding:16px 32px;background:#F5F7FA;text-align:center;font-size:12px;color:#999;">
-        Atelier du Climat — climatisationkhalil.fr
+        Atelier du Climat — atelierduclimat06.fr
       </div>
     </div>
   `;

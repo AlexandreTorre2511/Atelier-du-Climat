@@ -46,7 +46,7 @@ exports.handler = async (event) => {
         </div>
       </div>
       <div style="padding:16px 32px;background:#F5F7FA;text-align:center;font-size:12px;color:#999;">
-        Atelier du Climat — climatisationkhalil.fr
+        Atelier du Climat — atelierduclimat06.fr
       </div>
     </div>
   `;
