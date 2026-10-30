@@ -1497,3 +1497,20 @@ h1,h2,h3,h4,h5 {
   letter-spacing: normal !important; font-family: var(--font-head) !important;
 }
 .mobile-acc__body a:hover { color: var(--brand) !important; }
+
+/* ── FAQ (pages villes + pages offres) ── */
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+.faq-q {
+  width: 100%; text-align: left; background: none; border: none;
+  padding: 20px 48px 20px 0; font-family: var(--font-head); font-size: 17px;
+  font-weight: 700; color: var(--brand-dark); cursor: pointer; position: relative;
+}
+.faq-q::after {
+  content: "＋"; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  font-size: 20px; color: var(--brand); transition: .25s;
+}
+.faq-q.open::after { content: "－"; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+/* Plafond large : une réponse longue sur mobile dépasse vite 300px et se retrouve coupée. */
+.faq-a.open { max-height: 600px; }
+.faq-a p { padding: 0 0 20px; font-size: 15px; color: var(--text-dim); line-height: 1.8; }
