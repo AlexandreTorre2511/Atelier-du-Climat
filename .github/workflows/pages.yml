@@ -1,0 +1,47 @@
+# Publie le dossier site/ sur GitHub Pages.
+# Le site est statique : rien n'est construit, les fichiers sont servis tels quels.
+#
+# Aperçu de secours : l'aperçu courant est Cloudflare Pages (voir wrangler.toml).
+# Ce workflow est prêt pour le jour où le dépôt deviendra public.
+name: Publier le site sur GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Jetons nécessaires au déploiement Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Une seule publication à la fois ; on ne coupe pas celle qui est en cours.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    # GitHub Pages ne publie les dépôts privés que sur les offres payantes.
+    # Tant que ce dépôt est privé, le travail est ignoré plutôt qu'échoué :
+    # pas de mail d'échec à chaque push. Il se déclenchera tout seul le jour
+    # où le dépôt passera en public. Un lancement manuel passe toujours.
+    if: github.event_name == 'workflow_dispatch' || github.event.repository.private == false
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/configure-pages@v5
+
+      # site/.nojekyll est versionné : il empêche GitHub d'ignorer les
+      # fichiers commençant par « _ ».
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - id: deploiement
+        uses: actions/deploy-pages@v4

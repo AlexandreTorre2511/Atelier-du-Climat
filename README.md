@@ -31,6 +31,21 @@ en particulier.
 Chaque branche autre que `main` reçoit sa propre adresse de prévisualisation,
 pratique pour faire relire un changement avant de le fusionner.
 
+### GitHub Pages, en veille
+
+[`.github/workflows/pages.yml`](.github/workflows/pages.yml) sait aussi
+publier le site, à l'adresse `https://alexandretorre2511.github.io/Atelier-du-Climat/`.
+
+Il reste **en sommeil tant que le dépôt est privé** : GitHub Pages ne publie
+les dépôts privés que sur les offres payantes, et un workflow qui s'exécuterait
+quand même enverrait un mail d'échec à chaque push. Le travail est donc ignoré,
+pas échoué.
+
+Il se déclenchera de lui-même si le dépôt passe en public — il faudra alors
+choisir **Source : GitHub Actions** dans *Settings → Pages*. On peut aussi le
+lancer à la main depuis l'onglet *Actions*, auquel cas la condition est
+contournée.
+
 ### Ce qui ne marche pas sur cet aperçu
 
 Les formulaires reposent sur des fonctions Netlify, absentes de Cloudflare
