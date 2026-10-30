@@ -31,24 +31,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"/>
   <script>if('IntersectionObserver' in window)document.documentElement.className+=' js';</script>
   <link rel="stylesheet" href="assets/css/style.css"/>
-  <style>
-    .real-hero { background:var(--brand-dark); padding:120px 0 60px; }
-    .real-hero h1 { font-family:var(--font-head); font-size:clamp(32px,5vw,52px); font-weight:900; color:#fff; letter-spacing:-0.03em; margin-bottom:16px; }
-    .real-hero p { font-size:18px; color:rgba(255,255,255,0.75); max-width:600px; line-height:1.7; }
-    .real-hero__tag { display:inline-flex; align-items:center; gap:8px; background:rgba(8,119,201,0.18); border:1px solid rgba(8,119,201,0.35); color:var(--brand); padding:8px 18px; border-radius:40px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:24px; }
-    .gallery { padding:80px 0; }
-    .gallery__filter { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:48px; }
-    .filter-btn { padding:8px 20px; border-radius:40px; border:2px solid rgba(0,0,0,0.1); background:transparent; font-family:var(--font-head); font-size:13px; font-weight:700; cursor:pointer; transition:.2s; }
-    .filter-btn.active, .filter-btn:hover { background:var(--brand); border-color:var(--brand); color:#fff; }
-    .gallery__grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-    @media(max-width:900px){ .gallery__grid{ grid-template-columns:repeat(2,1fr); } }
-    @media(max-width:600px){ .gallery__grid{ grid-template-columns:1fr; } }
-    .gallery-item { border-radius:16px; overflow:hidden; position:relative; aspect-ratio:4/3; background:var(--gray); }
-    .gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
-    .gallery-item:hover img { transform:scale(1.05); }
-    .gallery-item__label { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent,rgba(3,35,75,0.85)); color:#fff; padding:24px 16px 16px; font-family:var(--font-head); font-size:13px; font-weight:700; }
-    .gallery-item__tag { display:inline-block; background:var(--brand); color:#fff; padding:3px 10px; border-radius:40px; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }
-  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -116,76 +98,81 @@
     <p class="search-overlay__hint">Appuyez sur <kbd>Echap</kbd> pour fermer</p>
 </div>
 </div>
-<section class="real-hero">
+<section class="page-hero">
   <div class="container">
-    <div class="real-hero__tag">Nos Réalisations</div>
-    <h1>Installations réalisées<br>sur la Côte d'Azur</h1>
-    <p>Chaque installation est unique. Découvrez nos réalisations chez nos clients — appartements, maisons, villas et locaux professionnels.</p>
+    <span class="label">Configurations types</span>
+    <h1 class="page-hero__title">Installations de climatisation en images</h1>
+    <p class="page-hero__sub">Douze configurations courantes sur la Côte d'Azur, du mono-split de chambre au multi-split de villa, pour situer la vôtre avant de demander un devis.</p>
+    <div class="page-hero__bar">
+      <div class="page-hero__price"><b>899 €</b><span>à partir de, pose comprise</span></div>
+      <div class="page-hero__actions">
+        <a href="contact.html" class="btn btn--primary">Demander un devis</a>
+        <a href="tel:+33766846856" class="btn btn--outline-white">07 66 84 68 56</a>
+</div>
+</div>
 </div>
 </section>
 
 <section class="gallery">
   <div class="container">
-
     <div class="gallery__filter">
-      <button class="filter-btn active">Tout voir</button>
-      <button class="filter-btn">Salons</button>
-      <button class="filter-btn">Chambres</button>
-      <button class="filter-btn">Villas</button>
-      <button class="filter-btn">Professionnels</button>
+      <button class="filter-btn active" data-filtre="tous">Tout voir</button>
+      <button class="filter-btn" data-filtre="salon">Pièces de vie</button>
+      <button class="filter-btn" data-filtre="chambre">Chambres</button>
+      <button class="filter-btn" data-filtre="villa">Villas et multi-split</button>
+      <button class="filter-btn" data-filtre="pro">Bureaux et technique</button>
 </div>
-
-    <div class="gallery__grid">
-      <div class="gallery-item">
-        <img src="assets/img/lifestyle-clim-salon-vue-mer.jpg" alt="Installation climatisation salon vue mer Nice" loading="lazy" width="1600" height="900"/>
-        <div class="gallery-item__label"><span class="gallery-item__tag">Daikin</span><br>Salon — Nice, vue mer</div>
+    <div class="gallery__grid" id="gallery-grid">
+      <div class="gallery-item" data-cat="salon">
+        <img src="assets/img/lifestyle-clim-salon-vue-mer.jpg" alt="Unité murale posée en hauteur dans un séjour ouvert sur la mer" width="1200" height="675" loading="lazy" decoding="async"/>
+        <div class="gallery-item__label"><span class="gallery-item__tag">Mono-split</span><br>Séjour ouvert sur la mer</div>
 </div>
-      <div class="gallery-item">
-        <img src="assets/img/lifestyle-clim-chambre-parentale.jpg" alt="Climatisation chambre parentale appartement" loading="lazy" width="1200" height="675"/>
-        <div class="gallery-item__label"><span class="gallery-item__tag">Bosch</span><br>Chambre — Antibes</div>
+      <div class="gallery-item" data-cat="chambre">
+        <img src="assets/img/lifestyle-clim-chambre-parentale.jpg" alt="Climatisation murale au-dessus de la porte d'une chambre parentale" width="1200" height="675" loading="lazy" decoding="async"/>
+        <div class="gallery-item__label"><span class="gallery-item__tag">Bi-split</span><br>Chambre parentale</div>
 </div>
-      <div class="gallery-item">
-        <img src="assets/img/lifestyle-clim-salon-contemporain.jpg" alt="Climatisation salon contemporain Cannes" loading="lazy" width="1200" height="675"/>
-        <div class="gallery-item__label"><span class="gallery-item__tag">Bosch</span><br>Salon contemporain — Cannes</div>
+      <div class="gallery-item" data-cat="salon">
+        <img src="assets/img/lifestyle-clim-salon-contemporain.jpg" alt="Climatiseur mural dans un salon contemporain largement vitré" width="1200" height="675" loading="lazy" decoding="async"/>
+        <div class="gallery-item__label"><span class="gallery-item__tag">Mono-split</span><br>Salon contemporain</div>
 </div>
-      <div class="gallery-item">
-        <img src="assets/img/lifestyle-clim-villa-provencale.jpg" alt="Climatisation villa provençale Grasse" loading="lazy" width="1200" height="675"/>
-        <div class="gallery-item__label"><span class="gallery-item__tag">Daikin</span><br>Villa — Pays de Grasse</div>
+      <div class="gallery-item" data-cat="villa">
+        <img src="assets/img/lifestyle-clim-villa-provencale.jpg" alt="Climatisation posée dans le séjour d'une villa provençale" width="1200" height="675" loading="lazy" decoding="async"/>
+        <div class="gallery-item__label"><span class="gallery-item__tag">Tri-split</span><br>Villa provençale</div>
 </div>
-      <div class="gallery-item">
-        <img src="assets/img/lifestyle-clim-chambre-enfant.jpg" alt="Climatisation chambre enfant appartement" loading="lazy" width="1200" height="675"/>
-        <div class="gallery-item__label"><span class="gallery-item__tag">One Clima</span><br>Chambre enfant — Nice</div>
+      <div class="gallery-item" data-cat="chambre">
+        <img src="assets/img/lifestyle-clim-chambre-enfant.jpg" alt="Unité murale discrète dans une chambre d'enfant" width="1200" height="675" loading="lazy" decoding="async"/>
+        <div class="gallery-item__label"><span class="gallery-item__tag">Mono-split</span><br>Chambre d'enfant</div>
 </div>
-      <div class="gallery-item">
-        <img src="assets/img/lifestyle-clim-bureau-home-office.jpg" alt="Climatisation bureau home office Sophia Antipolis" loading="lazy" width="1200" height="675"/>
-        <div class="gallery-item__label"><span class="gallery-item__tag">Bosch</span><br>Bureau — Sophia Antipolis</div>
+      <div class="gallery-item" data-cat="pro">
+        <img src="assets/img/lifestyle-clim-bureau-home-office.jpg" alt="Climatisation d'un bureau équipé pour le travail à domicile" width="1200" height="675" loading="lazy" decoding="async"/>
+        <div class="gallery-item__label"><span class="gallery-item__tag">Mono-split</span><br>Bureau</div>
 </div>
-      <div class="gallery-item">
-        <img src="assets/img/lifestyle-clim-cuisine-moderne.jpg" alt="Climatisation cuisine moderne appartement" loading="lazy" width="1200" height="675"/>
-        <div class="gallery-item__label"><span class="gallery-item__tag">One Clima</span><br>Cuisine — Nice Est</div>
+      <div class="gallery-item" data-cat="salon">
+        <img src="assets/img/lifestyle-clim-cuisine-moderne.jpg" alt="Climatiseur mural dans une cuisine ouverte sur le séjour" width="1200" height="675" loading="lazy" decoding="async"/>
+        <div class="gallery-item__label"><span class="gallery-item__tag">Mono-split</span><br>Cuisine ouverte</div>
 </div>
-      <div class="gallery-item">
-        <img src="assets/img/lifestyle-clim-terrasse-couverte.jpg" alt="Climatisation terrasse couverte villa" loading="lazy" width="1200" height="675"/>
-        <div class="gallery-item__label"><span class="gallery-item__tag">Daikin</span><br>Terrasse couverte — Menton</div>
+      <div class="gallery-item" data-cat="villa">
+        <img src="assets/img/lifestyle-clim-terrasse-couverte.jpg" alt="Pièce de vie ouverte sur une terrasse couverte, climatisée" width="1200" height="675" loading="lazy" decoding="async"/>
+        <div class="gallery-item__label"><span class="gallery-item__tag">Mono-split</span><br>Pièce sur terrasse</div>
 </div>
-      <div class="gallery-item">
-        <img src="assets/img/lifestyle-multisplit-3-chambres.jpg" alt="Climatisation multisplit 3 chambres villa" loading="lazy" width="1200" height="675"/>
-        <div class="gallery-item__label"><span class="gallery-item__tag">Daikin tri-split</span><br>Villa 3 chambres — Cagnes</div>
+      <div class="gallery-item" data-cat="villa">
+        <img src="assets/img/lifestyle-multisplit-3-chambres.jpg" alt="Trois chambres climatisées par un seul groupe extérieur" width="1200" height="675" loading="lazy" decoding="async"/>
+        <div class="gallery-item__label"><span class="gallery-item__tag">Tri-split</span><br>Trois chambres, un groupe</div>
 </div>
-      <div class="gallery-item">
-        <img src="assets/img/lifestyle-installation-complete-villa.jpg" alt="Installation complète climatisation villa 06" loading="lazy" width="1200" height="675"/>
-        <div class="gallery-item__label"><span class="gallery-item__tag">Daikin</span><br>Installation complète — Monaco</div>
+      <div class="gallery-item" data-cat="villa">
+        <img src="assets/img/lifestyle-installation-complete-villa.jpg" alt="Installation multi-split couvrant l'ensemble d'une villa" width="1200" height="675" loading="lazy" decoding="async"/>
+        <div class="gallery-item__label"><span class="gallery-item__tag">Multi-split</span><br>Villa complète</div>
 </div>
-      <div class="gallery-item">
-        <img src="assets/img/lifestyle-clim-salle-a-manger.jpg" alt="Climatisation salle à manger Côte d'Azur" loading="lazy" width="1200" height="675"/>
-        <div class="gallery-item__label"><span class="gallery-item__tag">Bosch</span><br>Salle à manger — Juan-les-Pins</div>
+      <div class="gallery-item" data-cat="salon">
+        <img src="assets/img/lifestyle-clim-salle-a-manger.jpg" alt="Unité murale de climatisation dans une salle à manger" width="1200" height="675" loading="lazy" decoding="async"/>
+        <div class="gallery-item__label"><span class="gallery-item__tag">Bi-split</span><br>Salle à manger</div>
 </div>
-      <div class="gallery-item">
-        <img src="assets/img/lifestyle-clim-unite-exterieure.jpg" alt="Unité extérieure climatisation installation" loading="lazy" width="1200" height="675"/>
-        <div class="gallery-item__label"><span class="gallery-item__tag">Technique</span><br>Groupe extérieur — Nice Ouest</div>
+      <div class="gallery-item" data-cat="pro">
+        <img src="assets/img/lifestyle-clim-unite-exterieure.jpg" alt="Groupe extérieur de climatisation fixé sur un mur, hors des pièces de vie" width="1200" height="675" loading="lazy" decoding="async"/>
+        <div class="gallery-item__label"><span class="gallery-item__tag">Technique</span><br>Groupe extérieur</div>
 </div>
 </div>
-
+    <p class="gallery__legend">Ces photos illustrent des configurations types, elles ne documentent pas un chantier précis. Nous publierons ici nos propres installations au fur et à mesure, avec l'accord des clients concernés.</p>
 </div>
 </section>
 
@@ -220,9 +207,9 @@
       </ul></div>
       <div class="footer__col"><h4>Contact</h4>
         <p>Nice, Côte d'Azur<br>Département 06</p>
-        <p style="margin-top:12px;"><a href="tel:+33766846856" style="color:rgba(255,255,255,0.55);">07 66 84 68 56</a></p>
-        <p style="margin-top:4px;"><a href="mailto:depannage06contact@gmail.com" style="color:rgba(255,255,255,0.55);">depannage06contact@gmail.com</a></p>
-        <p style="margin-top:8px;">Lun–Sam 8h à 19h</p>
+        <p class="footer__ligne"><a href="tel:+33766846856" class="footer__lien-discret">07 66 84 68 56</a></p>
+        <p class="footer__ligne"><a href="mailto:depannage06contact@gmail.com" class="footer__lien-discret">depannage06contact@gmail.com</a></p>
+        <p class="footer__ligne">Lun–Sam 8h à 19h</p>
 </div>
 </div>
     <div class="footer__bottom">
@@ -236,5 +223,6 @@
 </a>
 <script src="assets/js/nav.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/galerie.js"></script>
 </body>
 </html>

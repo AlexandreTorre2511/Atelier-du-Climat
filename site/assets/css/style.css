@@ -1583,18 +1583,18 @@ h1,h2,h3,h4,h5 {
    Ces photos illustrent des installations types ; elles ne documentent pas
    un chantier précis. La légende le dit, au lieu de laisser croire le
    contraire avec un nom de ville. */
-.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.gallery__item { position: relative; overflow: hidden; border-radius: var(--radius-card); aspect-ratio: 4 / 3; }
-.gallery__item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s var(--ease-out); }
-.gallery__item:hover img { transform: scale(1.04); }
-.gallery__caption {
+.illus { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.illus__item { position: relative; overflow: hidden; border-radius: var(--radius-card); aspect-ratio: 4 / 3; }
+.illus__item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s var(--ease-out); }
+.illus__item:hover img { transform: scale(1.04); }
+.illus__caption {
   position: absolute; left: 0; right: 0; bottom: 0;
   padding: 26px 16px 13px;
   background: linear-gradient(to top, rgba(3,35,75,0.85), transparent);
   color: var(--white); font-family: var(--font-head); font-size: 13px; font-weight: 600;
 }
-.gallery__legend { margin-top: 14px; font-size: 13px; color: var(--text-muted); }
-@media (max-width: 760px) { .gallery { grid-template-columns: 1fr; } }
+.illus__legend { margin-top: 14px; font-size: 13px; color: var(--text-muted); }
+@media (max-width: 760px) { .illus { grid-template-columns: 1fr; } }
 
 /* ============================================================
    PAGES VILLES
@@ -1777,3 +1777,289 @@ h1,h2,h3,h4,h5 {
 @media (max-width: 400px) {
   .zones__grid { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   PAGE RÉALISATIONS
+   Ces règles vivaient dans le <style> de la page.
+   ============================================================ */
+
+.gallery { padding: 72px 0; }
+.gallery__filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; }
+.filter-btn {
+  padding: 10px 20px; border-radius: var(--radius-btn);
+  border: 1px solid var(--line-strong); background: var(--white);
+  font-family: var(--font-head); font-size: 14px; font-weight: 600;
+  color: var(--text); cursor: pointer; transition: background .2s, color .2s, border-color .2s;
+}
+.filter-btn:hover { border-color: var(--brand-dark); }
+.filter-btn.active { background: var(--brand-dark); border-color: var(--brand-dark); color: var(--white); }
+
+.gallery__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .gallery__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .gallery__grid { grid-template-columns: 1fr; } }
+
+.gallery-item {
+  border-radius: var(--radius-card); overflow: hidden; position: relative;
+  aspect-ratio: 4 / 3; background: var(--gray);
+}
+.gallery-item[hidden] { display: none; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease-out); display: block; }
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-item__label {
+  position: absolute; inset: auto 0 0 0;
+  background: linear-gradient(transparent, rgba(3,35,75,0.88));
+  color: #fff; padding: 36px 16px 14px;
+  font-family: var(--font-head); font-size: 14px; font-weight: 600;
+}
+.gallery-item__tag {
+  display: inline-block; background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(4px); color: #fff; padding: 3px 9px;
+  border-radius: var(--radius-btn); font-size: 10px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px;
+}
+.gallery__legend { margin-top: 28px; font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 700px; }
+
+/* ============================================================
+   PAGE CONTACT
+   Ces règles vivaient dans le <style> de la page.
+   ============================================================ */
+
+.contact-main { padding: 72px 0; background: var(--gray); }
+.contact-grid { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 28px; align-items: start; }
+@media (max-width: 1024px) { .contact-grid { grid-template-columns: 1fr; } }
+
+.contact-form-wrap {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 40px;
+}
+@media (max-width: 600px) { .contact-form-wrap { padding: 26px 20px; } }
+.contact-form-wrap h2 {
+  font-family: var(--font-head); font-size: 26px; font-weight: 800;
+  color: var(--brand-dark); letter-spacing: -0.022em; margin-bottom: 6px;
+}
+.form-sub { font-size: 15px; color: var(--text-dim); margin-bottom: 28px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block; font-family: var(--font-head); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 7px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 13px 15px; font-family: var(--font-body); font-size: 16px;
+  color: var(--text); background: var(--white);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-btn);
+  transition: border-color .2s, box-shadow .2s;
+}
+.form-group textarea { min-height: 120px; resize: vertical; }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-glow);
+}
+.form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-muted); }
+.form-submit { margin-top: 24px; }
+.form-submit .btn { width: 100%; }
+.form-legal { margin-top: 14px; font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+.form-legal a { color: var(--brand); text-decoration: underline; }
+.form-success {
+  display: none; padding: 26px; border-radius: var(--radius-card);
+  background: rgba(16,145,86,0.07); border: 1px solid rgba(16,145,86,0.3); color: #0C6B41;
+}
+.form-success.show { display: block; }
+
+.contact-aside { display: flex; flex-direction: column; gap: 14px; }
+.whatsapp-card {
+  display: flex; align-items: center; gap: 14px;
+  background: #25D366; color: var(--white);
+  padding: 18px 20px; border-radius: var(--radius-card);
+  transition: background .2s;
+}
+.whatsapp-card:hover { background: #1FB955; }
+.whatsapp-card svg { flex-shrink: 0; }
+.whatsapp-card span { display: block; font-family: var(--font-head); font-weight: 700; font-size: 15px; }
+.whatsapp-card small { display: block; font-size: 13px; opacity: 0.85; margin-top: 2px; }
+
+/* Les pastilles pastel qui encadraient chaque icône sont de la décoration :
+   le titre de la carte porte déjà l'information. */
+.contact-card {
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--radius-card); padding: 20px 22px;
+}
+.contact-card__body h3 {
+  font-family: var(--font-head); font-size: 15px; font-weight: 800;
+  color: var(--brand-dark); margin-bottom: 4px; letter-spacing: -0.01em;
+}
+.contact-card__body p { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin-bottom: 6px; }
+.contact-card__body a {
+  font-family: var(--font-head); font-size: 16px; font-weight: 700;
+  color: var(--brand); word-break: break-word;
+}
+.contact-card__body a:hover { color: var(--brand-dim); }
+
+.contact-promises {
+  background: var(--brand-dark); color: var(--white);
+  border-radius: var(--radius-card); padding: 24px 22px;
+}
+.contact-promises h4 {
+  font-family: var(--font-head); font-size: 12px; font-weight: 700;
+  letter-spacing: 1.3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); margin-bottom: 14px;
+}
+.promise-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; line-height: 1.55; color: rgba(255,255,255,0.88);
+  padding: 9px 0; border-top: 1px solid rgba(255,255,255,0.1);
+}
+.promise-item:first-of-type { border-top: none; padding-top: 0; }
+.promise-item svg { flex-shrink: 0; margin-top: 3px; stroke: var(--brand-light); }
+
+/* ============================================================
+   PAGE BLOG
+   Ces règles vivaient dans le <style> de la page.
+   ============================================================ */
+
+.blog-main { padding: 72px 0; background: var(--gray); }
+.blog-section-title {
+  font-family: var(--font-head); font-size: 12px; font-weight: 700;
+  letter-spacing: 1.3px; text-transform: uppercase; color: var(--text-muted);
+  padding-bottom: 12px; border-bottom: 2px solid var(--brand); display: inline-block;
+  margin-bottom: 32px;
+}
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+@media (max-width: 1024px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 680px)  { .blog-grid { grid-template-columns: 1fr; } }
+
+.blog-card-full {
+  display: flex; flex-direction: column;
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--radius-card); overflow: hidden;
+  transition: border-color .2s, transform .25s var(--ease-out);
+}
+.blog-card-full:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+
+/* L'image remplace les grandes icônes au trait qui servaient de vignette,
+   dont un symbole dollar sur un site qui facture en euros. */
+.blog-card-full__img { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--gray); }
+.blog-card-full__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s var(--ease-out); }
+.blog-card-full:hover .blog-card-full__img img { transform: scale(1.04); }
+.blog-card-full__cat {
+  position: absolute; left: 12px; bottom: 12px;
+  background: rgba(3,35,75,0.86); backdrop-filter: blur(4px); color: #fff;
+  padding: 4px 10px; border-radius: var(--radius-btn);
+  font-family: var(--font-head); font-size: 10px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.blog-card-full__body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+.blog-card-full__body h2 {
+  font-family: var(--font-head); font-size: 18px; font-weight: 800; line-height: 1.3;
+  color: var(--brand-dark); letter-spacing: -0.018em; margin-bottom: 10px; text-wrap: balance;
+}
+.blog-card-full__body p { font-size: 15px; color: var(--text-dim); line-height: 1.65; margin-bottom: 18px; flex: 1; }
+.read-more {
+  font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--brand);
+  display: inline-flex; align-items: center; gap: 7px; margin-top: auto;
+}
+.read-more:hover { color: var(--brand-dim); gap: 11px; }
+.read-more svg { transition: transform .2s; }
+
+/* L'article en tête occupe toute la largeur, image à gauche. */
+.blog-card-full.featured { grid-column: span 3; flex-direction: row; }
+.blog-card-full.featured .blog-card-full__img { width: 44%; aspect-ratio: auto; flex-shrink: 0; }
+.blog-card-full.featured .blog-card-full__body { padding: 34px; justify-content: center; }
+.blog-card-full.featured .blog-card-full__body h2 { font-size: clamp(21px, 2.1vw, 27px); }
+.blog-card-full.featured .blog-card-full__body p { font-size: 16px; flex: 0; }
+@media (max-width: 1024px) { .blog-card-full.featured { grid-column: span 2; } }
+@media (max-width: 760px) {
+  .blog-card-full.featured { grid-column: span 1; flex-direction: column; }
+  .blog-card-full.featured .blog-card-full__img { width: 100%; aspect-ratio: 16 / 9; }
+  .blog-card-full.featured .blog-card-full__body { padding: 22px; }
+}
+
+.blog-cta { background: var(--brand-dark); padding: 56px 0; }
+
+/* ============================================================
+   PAGES DE CONTENU LONG (certifications, pages éditoriales)
+   Ces règles vivaient dans le <style> de la page et redéfinissaient
+   .page-hero et .faq-*, déjà présents ici.
+   ============================================================ */
+
+.page-content { padding: 72px 0; }
+.page-inner { max-width: 820px; margin: 0 auto; }
+.page-content h2 {
+  font-family: var(--font-head); font-size: clamp(24px, 2.5vw, 32px); font-weight: 800;
+  color: var(--brand-dark); letter-spacing: -0.022em; margin: 52px 0 18px; line-height: 1.2;
+}
+.page-content h3 {
+  font-family: var(--font-head); font-size: 21px; font-weight: 700;
+  color: var(--brand-dark); margin: 34px 0 13px; letter-spacing: -0.015em;
+}
+.page-content p { font-size: 17px; color: var(--text-dim); line-height: 1.8; margin-bottom: 18px; }
+.page-content ul { padding-left: 22px; margin-bottom: 20px; }
+.page-content ul li { font-size: 17px; color: var(--text-dim); line-height: 1.8; margin-bottom: 8px; list-style: disc; }
+.page-content strong { color: var(--brand-dark); font-weight: 600; }
+
+.cert-card {
+  background: var(--sand); border-radius: var(--radius-card);
+  padding: 30px 32px; margin-bottom: 22px; border-left: 3px solid var(--brand);
+}
+.cert-card h3 { margin-top: 0; }
+.cert-card p:last-child { margin-bottom: 0; }
+
+.badge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin: 30px 0; }
+@media (max-width: 600px) { .badge-grid { grid-template-columns: 1fr; } }
+.badge { background: var(--white); padding: 22px; }
+.badge__name { font-family: var(--font-head); font-size: 16px; font-weight: 800; color: var(--brand-dark); margin-bottom: 5px; letter-spacing: -0.015em; }
+.badge__sub { font-size: 14px; color: var(--text-dim); line-height: 1.55; }
+
+.cta-box {
+  background: var(--brand-dark); border-radius: var(--radius-card);
+  padding: 36px; margin: 46px 0;
+}
+.cta-box h3 { font-family: var(--font-head); font-size: 23px; font-weight: 800; color: #fff; margin: 0 0 10px; letter-spacing: -0.022em; }
+.cta-box p { color: rgba(255,255,255,0.7); margin-bottom: 22px; }
+
+/* ============================================================
+   PAGES LÉGALES
+   Ces règles vivaient en triple dans le <style> des trois pages.
+   ============================================================ */
+
+.legal-hero { background: var(--brand-dark); padding: 140px 0 56px; }
+.legal-hero h1 {
+  font-family: var(--font-head); font-size: clamp(28px, 3vw, 42px); font-weight: 800;
+  color: var(--white); letter-spacing: -0.025em; margin-bottom: 10px; line-height: 1.15;
+}
+.legal-hero p { color: rgba(255,255,255,0.55); font-size: 15px; }
+.legal-body { padding: 64px 0 80px; background: var(--gray); }
+.legal-content {
+  max-width: 760px; margin: 0 auto; background: var(--white);
+  border: 1px solid var(--line); border-radius: var(--radius-card); padding: 48px;
+}
+@media (max-width: 768px) { .legal-content { padding: 28px 20px; } }
+.legal-content h2 {
+  font-family: var(--font-head); font-size: 19px; font-weight: 800; color: var(--brand-dark);
+  letter-spacing: -0.015em; margin: 38px 0 12px;
+  border-bottom: 1px solid var(--line); padding-bottom: 10px;
+}
+.legal-content h2:first-child { margin-top: 0; }
+.legal-content p { font-size: 15px; color: var(--text-dim); line-height: 1.75; margin-bottom: 12px; }
+.legal-content a { color: var(--brand); text-decoration: underline; }
+
+/* ── Derniers ajustements qui vivaient en attribut style= ── */
+.offre-card--mis-en-avant { border-color: var(--brand); }
+.offre-card__desc { font-size: 14px; color: var(--text-dim); margin-bottom: 16px; }
+.btn--pleine-largeur { width: 100%; }
+.footer__ligne { margin-top: 12px; }
+.footer__lien-discret { color: rgba(255,255,255,0.55); }
+.article-related__titre {
+  font-family: var(--font-head); font-size: clamp(22px, 2.4vw, 30px); font-weight: 800;
+  color: var(--brand-dark); letter-spacing: -0.022em; margin-bottom: 30px;
+}
+.bloc-espace { margin-bottom: 40px; }
+.btn + .btn { margin-left: 12px; }
+@media (max-width: 560px) { .btn + .btn { margin-left: 0; } }
