@@ -1,22 +1,9 @@
-/* Climatisation Khalil — Email Popup + Cookie Banner */
+/* Climatisation Khalil — Email Popup */
 
-// ── Cookie Banner ──
-(function() {
-  const banner = document.getElementById('cookie-banner');
-  if (!banner) return;
-  if (localStorage.getItem('brand_cookies')) { banner.remove(); return; }
-  setTimeout(() => banner.classList.add('show'), 1500);
-  document.getElementById('cookie-accept') && document.getElementById('cookie-accept').addEventListener('click', () => {
-    localStorage.setItem('brand_cookies', '1');
-    banner.classList.remove('show');
-    setTimeout(() => banner.remove(), 600);
-  });
-  document.getElementById('cookie-decline') && document.getElementById('cookie-decline').addEventListener('click', () => {
-    localStorage.setItem('brand_cookies', '0');
-    banner.classList.remove('show');
-    setTimeout(() => banner.remove(), 600);
-  });
-})();
+// Le bandeau de consentement a été retiré : la mesure d'audience passe par
+// Cloudflare Web Analytics, qui ne dépose aucun cookie. Si un outil à cookie
+// est installé un jour, il faudra le rétablir ET bloquer son script tant que
+// le visiteur n'a pas accepté. Voir section 6 de politique-confidentialite.html.
 
 // ── Email Popup ──
 (function() {

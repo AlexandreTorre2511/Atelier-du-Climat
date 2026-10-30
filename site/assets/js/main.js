@@ -1,5 +1,23 @@
 /* Climatisation Khalil — Main JS */
 
+// ── Mesure d'audience : Cloudflare Web Analytics ──
+// À CHANGER : coller ici le token du site, trouvé dans le tableau de bord
+// Cloudflare → Analytics & Logs → Web Analytics → Manage site. C'est le
+// seul endroit à modifier : ce fichier est chargé par les 28 pages.
+// Tant que le token est vide, rien n'est chargé et rien n'est mesuré.
+// Cet outil ne pose aucun cookie : ne pas réintroduire de bandeau de consentement
+// sans changer d'abord la section 6 de politique-confidentialite.html.
+const CF_ANALYTICS_TOKEN = '';
+
+(function() {
+  if (!CF_ANALYTICS_TOKEN) return;
+  const beacon = document.createElement('script');
+  beacon.defer = true;
+  beacon.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  beacon.setAttribute('data-cf-beacon', JSON.stringify({ token: CF_ANALYTICS_TOKEN }));
+  document.head.appendChild(beacon);
+})();
+
 // ── Navbar scroll ──
 (function() {
   const nav = document.querySelector('.navbar');
