@@ -1171,13 +1171,6 @@ h1,h2,h3,h4,h5 {
 }
 
 /* ── Prix promo ── */
-.price-original {
-  font-size: 13px;
-  color: var(--text-muted);
-  text-decoration: line-through;
-  font-weight: 500;
-  margin-bottom: 2px;
-}
 .promo-badge {
   display: inline-flex;
   align-items: center;
@@ -1414,7 +1407,6 @@ h1,h2,h3,h4,h5 {
 }
 .calc-result__card--best { border-color: var(--brand); background: rgba(8,119,201,0.05); }
 .calc-result__brand { font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
-.calc-result__price-old { font-size: 12px; color: var(--text-muted); text-decoration: line-through; }
 .calc-result__price { font-family: var(--font-head); font-size: 26px; font-weight: 900; color: var(--brand-dark); letter-spacing: -0.02em; }
 .calc-result__badge { display: inline-block; background: var(--brand); color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 40px; margin-top: 6px; }
 .calc-reset { background: none; border: none; color: var(--brand); font-size: 13px; cursor: pointer; margin-top: 12px; text-decoration: underline; }
@@ -1682,4 +1674,106 @@ h1,h2,h3,h4,h5 {
 @media (max-width: 760px) {
   .specs-bar__item { flex: 1 1 100%; border-right: none; border-bottom: 1px solid var(--line); }
   .specs-bar__item:last-child { border-bottom: none; }
+}
+
+.calc-result__sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+/* ============================================================
+   ARTICLES DE BLOG
+   Ces règles vivaient en double dans le <style> des neuf articles.
+   ============================================================ */
+
+.article-body { max-width: 760px; margin: 0 auto; padding: 128px 40px 72px; }
+.article-body h2 {
+  font-family: var(--font-head); font-size: clamp(22px, 2.6vw, 30px); font-weight: 800;
+  color: var(--brand-dark); margin: 46px 0 16px; letter-spacing: -0.022em; line-height: 1.22;
+}
+.article-body h3 {
+  font-family: var(--font-head); font-size: 20px; font-weight: 700;
+  color: var(--brand-dark); margin: 32px 0 12px; letter-spacing: -0.015em;
+}
+.article-body p { font-size: 17px; color: var(--text-dim); line-height: 1.8; margin-bottom: 20px; }
+.article-body ul { padding-left: 22px; margin-bottom: 20px; }
+.article-body ul li { font-size: 17px; color: var(--text-dim); line-height: 1.8; margin-bottom: 8px; list-style: disc; }
+.article-body strong { color: var(--brand-dark); font-weight: 600; }
+.article-body > p:first-of-type { font-size: 19px; color: var(--text); line-height: 1.7; }
+
+.article-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 32px; }
+.article-meta span {
+  background: var(--gray); color: var(--text-dim); padding: 5px 12px;
+  border-radius: var(--radius-btn); font-weight: 600; font-size: 11px;
+  letter-spacing: 1px; text-transform: uppercase; font-family: var(--font-head);
+}
+
+.article-cta-box {
+  background: var(--brand-dark); border-radius: var(--radius-card);
+  padding: 34px; margin: 48px 0; color: white;
+}
+.article-cta-box h3 {
+  font-family: var(--font-head); font-size: 22px; font-weight: 800;
+  margin-bottom: 10px; letter-spacing: -0.022em; color: white;
+}
+.article-cta-box p { color: rgba(255,255,255,0.7); margin-bottom: 22px; }
+
+.article-img { width: 100%; border-radius: var(--radius-card); margin: 32px 0; object-fit: cover; max-height: 420px; }
+.article-related { background: var(--gray); padding: 60px 0; }
+.article-related .container { max-width: 900px; }
+
+/* Le tableau comparatif débordait sous 360px : il défile désormais
+   horizontalement au lieu d'élargir la page entière. */
+.verdict-table-wrap { overflow-x: auto; margin: 32px 0; -webkit-overflow-scrolling: touch; }
+.verdict-table { width: 100%; min-width: 440px; border-collapse: collapse; font-size: 15px; }
+.verdict-table th {
+  background: var(--brand-dark); color: white; padding: 13px 16px; text-align: left;
+  font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; font-family: var(--font-head);
+}
+.verdict-table td { padding: 13px 16px; border-bottom: 1px solid var(--line); color: var(--text); }
+.verdict-table tr:last-child td { border-bottom: none; }
+.verdict-table tr:nth-child(even) td { background: var(--gray); }
+.verdict-table .winner { font-weight: 700; color: var(--brand); }
+
+@media (max-width: 768px) {
+  .article-body { padding: 100px 20px 56px; }
+  .verdict-table { font-size: 14px; }
+}
+
+/* ============================================================
+   CONFORT TACTILE
+   Sur mobile, tout ce qui se touche doit faire au moins 44px :
+   en dessous, le doigt rate la cible. Ce bloc est placé en fin de
+   feuille pour passer devant les règles de composant.
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* Le téléphone de la barre : la cible la plus utilisée du site. */
+  .navbar__tel { min-height: 44px; padding: 6px 4px; }
+  .navbar__search-btn { width: 44px; height: 44px; }
+  .navbar__burger { min-width: 44px; min-height: 44px; justify-content: center; }
+
+  /* Fermetures des panneaux : une croix de 27px se rate. */
+  .mobile-menu__close,
+  .search-overlay__close,
+  .email-popup__close {
+    min-width: 44px; min-height: 44px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Menu plein écran et ses sous-listes. */
+  .mobile-menu > a,
+  .mobile-acc__trigger { min-height: 48px; display: flex; align-items: center; justify-content: center; }
+  .mobile-acc__body a { min-height: 42px; display: flex; align-items: center; justify-content: center; }
+
+  /* Listes de liens du pied de page et liens de lecture. */
+  .footer__col a,
+  .footer__legal a,
+  .read-more { display: inline-flex; align-items: center; min-height: 40px; }
+
+  .btn { min-height: 48px; }
+  .sticky-mobile-cta .btn { min-height: 46px; }
+}
+
+/* Sur les écrans les plus étroits, deux colonnes de villes ne peuvent
+   pas contenir « Roquebrune-Cap-Martin » : la page débordait de 32px. */
+@media (max-width: 400px) {
+  .zones__grid { grid-template-columns: 1fr; }
 }
