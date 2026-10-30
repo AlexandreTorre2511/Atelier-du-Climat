@@ -278,3 +278,41 @@ async function handleDevisSubmit(e) {
 **Variables de couleur** (dans `:root`, les 6 seules à changer) :
 `--brand-dark`, `--brand-darker`, `--brand`, `--brand-light`, `--brand-dim`, `--brand-glow`
 **Polices** : `--font-head` (titres) et `--font-body` (texte) — à changer dans le `@import` en haut du CSS.
+
+---
+
+## Avis clients — gabarit prêt à remplir
+
+La section Avis est volontairement absente de la page d'accueil : aucun avis
+vérifié n'est disponible aujourd'hui. Ne pas publier de témoignage inventé,
+même « inspiré » d'un vrai — un prospect vérifie une fiche Google en dix
+secondes.
+
+**Pour publier de vrais avis**, coller le bloc ci-dessous dans `index.html`
+à l'emplacement du commentaire `<!-- AVIS CLIENTS`, en remplaçant les
+`{{ }}`. N'inclure que des avis dont l'auteur a donné son accord.
+
+```html
+<section class="section section--sand">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="label">Avis clients</span>
+      <h2 class="section__title">Ils nous font confiance</h2>
+    </div>
+    <div class="avis-grid reveal">
+      <figure class="avis">
+        <div class="avis__note" aria-label="{{NOTE}} étoiles sur 5">{{ÉTOILES}}</div>
+        <blockquote><p>{{TEXTE DE L'AVIS, MOT POUR MOT}}</p></blockquote>
+        <figcaption><b>{{PRÉNOM + INITIALE}}</b><span>{{VILLE}} — {{MOIS ANNÉE}}</span></figcaption>
+      </figure>
+      <!-- répéter -->
+    </div>
+  </div>
+</section>
+```
+
+Le CSS `.avis-grid`, `.avis`, `.avis__note` est déjà dans `style.css`.
+
+**Si une fiche Google existe**, ajouter aussi la note globale dans le hero
+(`.hero__note`) — mais uniquement la note réellement affichée sur la fiche,
+et le nombre réel d'avis.

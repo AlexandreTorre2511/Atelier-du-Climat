@@ -2142,3 +2142,181 @@ h1,h2,h3,h4,h5 {
 .footer__brand .tricolore { margin: 0 0 14px; }
 .hero__col .tricolore { margin-bottom: 22px; }
 .ville-hero .tricolore { margin-bottom: 20px; }
+
+/* ============================================================
+   PAGE D'ACCUEIL — SECTIONS DE LA MAQUETTE
+   ============================================================ */
+
+/* ── Hero : bandeau de réassurance sous les boutons ── */
+.hero__reassurance {
+  display: flex; flex-wrap: wrap; gap: 14px 34px;
+  padding-top: 24px; border-top: 1px solid var(--line);
+}
+.hero__rea { display: flex; align-items: flex-start; gap: 11px; max-width: 230px; }
+.hero__rea svg { flex-shrink: 0; margin-top: 2px; stroke: var(--brand); }
+.hero__rea b {
+  display: block; font-family: var(--font-head); font-size: 14px;
+  font-weight: 700; color: var(--brand-dark); line-height: 1.3;
+}
+.hero__rea span { display: block; font-size: 13px; color: var(--text-dim); line-height: 1.45; margin-top: 2px; }
+
+/* ── Prestations : quatre cartes à icône ── */
+.prestations { padding: 56px 0; background: var(--white); }
+.prestations__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-card); overflow: hidden; }
+@media (max-width: 900px) { .prestations__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .prestations__grid { grid-template-columns: 1fr; } }
+.prestation { background: var(--white); padding: 28px 26px; display: block; transition: background .2s; }
+.prestation:hover { background: var(--gray); }
+.prestation__icone { width: 34px; height: 34px; margin-bottom: 16px; stroke: var(--brand); fill: none; stroke-width: 1.6; }
+.prestation h3 {
+  font-family: var(--font-head); font-size: 17px; font-weight: 800;
+  color: var(--brand-dark); letter-spacing: -0.015em; margin-bottom: 7px;
+}
+.prestation p { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+.prestation__lien {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 14px;
+  font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--brand);
+}
+.prestation:hover .prestation__lien { gap: 10px; }
+
+/* ── Offres : cartes produit comparables ── */
+.offres__entete { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 32px; flex-wrap: wrap; }
+.offres__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 980px) { .offres__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 660px) { .offres__grid { grid-template-columns: 1fr; } }
+
+.offre {
+  display: flex; flex-direction: column;
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--radius-card); overflow: hidden;
+  transition: border-color .2s, transform .25s var(--ease-out);
+}
+.offre:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+.offre--phare { border-color: var(--brand); }
+.offre__bandeau {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 10px 18px; background: var(--gray);
+  border-bottom: 1px solid var(--line);
+}
+.offre--phare .offre__bandeau { background: var(--brand); border-color: var(--brand); }
+.offre__tag {
+  font-family: var(--font-head); font-size: 10px; font-weight: 800;
+  letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-dim);
+}
+.offre--phare .offre__tag { color: var(--white); }
+.offre__marque {
+  font-family: var(--font-head); font-size: 12px; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-dark);
+}
+.offre--phare .offre__marque { color: rgba(255,255,255,0.9); }
+.offre__photo { background: var(--white); padding: 22px; }
+.offre__photo img { width: 100%; height: 170px; object-fit: contain; display: block; }
+.offre__corps { padding: 0 22px 22px; display: flex; flex-direction: column; flex: 1; }
+.offre__nom {
+  font-family: var(--font-head); font-size: 18px; font-weight: 800;
+  color: var(--brand-dark); letter-spacing: -0.018em; margin-bottom: 4px;
+}
+.offre__puissance { font-size: 13px; color: var(--text-dim); margin-bottom: 14px; }
+.offre__chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.offre__chip {
+  background: var(--gray); color: var(--text-dim);
+  padding: 4px 10px; border-radius: var(--radius-btn);
+  font-size: 12px; font-weight: 600;
+}
+.offre__prix-bloc { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+.offre__prix {
+  font-family: var(--font-head); font-size: 26px; font-weight: 800;
+  color: var(--brand-dark); letter-spacing: -0.03em; font-variant-numeric: tabular-nums;
+}
+.offre__prix small { font-size: 13px; font-weight: 600; color: var(--text-dim); letter-spacing: 0; }
+.offre__mention { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.offre__actions { display: flex; gap: 8px; margin-top: 14px; }
+.offre__actions .btn { flex: 1; padding: 12px 14px; font-size: 14px; }
+
+/* ── Pourquoi nous choisir ── */
+.pourquoi { padding: 76px 0; background: var(--gray); }
+.pourquoi__grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 28px; align-items: start; }
+@media (max-width: 900px) { .pourquoi__grid { grid-template-columns: 1fr; } }
+.pourquoi__bloc {
+  background: var(--brand-dark); color: var(--white);
+  border-radius: var(--radius-card); padding: 36px 32px;
+  position: relative; overflow: hidden;
+}
+.pourquoi__bloc h2 {
+  font-family: var(--font-head); font-size: clamp(23px, 2.3vw, 30px); font-weight: 800;
+  letter-spacing: -0.022em; line-height: 1.2; margin: 14px 0 14px; color: var(--white);
+}
+.pourquoi__bloc p { font-size: 15px; color: rgba(255,255,255,0.68); line-height: 1.7; }
+.pourquoi__args { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-card); overflow: hidden; }
+@media (max-width: 560px) { .pourquoi__args { grid-template-columns: 1fr; } }
+.pourquoi__arg { background: var(--white); padding: 22px 22px; display: flex; gap: 14px; align-items: flex-start; }
+.pourquoi__arg svg { flex-shrink: 0; width: 22px; height: 22px; stroke: var(--brand); fill: none; stroke-width: 1.7; margin-top: 2px; }
+.pourquoi__arg b { display: block; font-family: var(--font-head); font-size: 15px; font-weight: 800; color: var(--brand-dark); margin-bottom: 4px; letter-spacing: -0.012em; }
+.pourquoi__arg span { display: block; font-size: 14px; color: var(--text-dim); line-height: 1.55; }
+
+/* ── Aperçu des réalisations ── */
+.realisations-apercu { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 980px) { .realisations-apercu { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .realisations-apercu { grid-template-columns: 1fr; } }
+.rea-carte { border: 1px solid var(--line); border-radius: var(--radius-card); overflow: hidden; background: var(--white); }
+.rea-carte img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform .5s var(--ease-out); }
+.rea-carte:hover img { transform: scale(1.04); }
+.rea-carte__texte { padding: 14px 16px; }
+.rea-carte__texte b { display: block; font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--brand-dark); line-height: 1.35; }
+.rea-carte__texte span { display: block; font-size: 13px; color: var(--text-muted); margin-top: 3px; }
+
+/* ── Demande de devis ── */
+.devis { background: var(--brand-dark); padding: 72px 0; position: relative; overflow: hidden; }
+.devis > * { position: relative; z-index: 1; }
+.devis__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+@media (max-width: 900px) { .devis__grid { grid-template-columns: 1fr; gap: 34px; } }
+.devis__texte h2 {
+  font-family: var(--font-head); font-size: clamp(25px, 2.5vw, 34px); font-weight: 800;
+  color: var(--white); letter-spacing: -0.025em; line-height: 1.18; margin: 14px 0 14px;
+}
+.devis__texte p { font-size: 17px; color: rgba(255,255,255,0.68); line-height: 1.65; margin-bottom: 26px; }
+.devis__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.devis__carte {
+  background: var(--white); border-radius: var(--radius-card); padding: 30px;
+}
+@media (max-width: 540px) { .devis__carte { padding: 22px 18px; } }
+.devis__carte h3 {
+  font-family: var(--font-head); font-size: 19px; font-weight: 800;
+  color: var(--brand-dark); letter-spacing: -0.018em; margin-bottom: 18px;
+}
+.devis__rgpd { margin-top: 12px; font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+.devis__rgpd a { color: var(--brand); text-decoration: underline; }
+/* Champ leurre : invisible pour l'humain, rempli par les robots. */
+.champ-leurre { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-erreur { display: block; margin-top: 6px; font-size: 13px; color: var(--accent); }
+.form-group input[aria-invalid="true"],
+.form-group select[aria-invalid="true"],
+.form-group textarea[aria-invalid="true"] { border-color: var(--accent); }
+.section__head--compact { margin-bottom: 0; }
+
+/* ── Ajustements de la page d'accueil ── */
+/* Le titre du hero tombait sur quatre lignes : la colonne de texte
+   reprend un peu de largeur sur la photo. */
+.hero__grid { grid-template-columns: 1.12fr 0.88fr; }
+.hero__title { font-size: clamp(32px, 3.6vw, 50px); }
+
+/* Les trois réassurances tenaient sur deux rangs inégales. */
+.hero__reassurance { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.hero__rea { max-width: none; }
+@media (max-width: 1100px) { .hero__reassurance { grid-template-columns: 1fr; gap: 14px; } }
+
+.devis__texte .tricolore { margin-bottom: 26px; }
+.pourquoi__bloc .tricolore { margin-top: 22px; }
+
+/* ── Avis clients (gabarit, voir SNIPPETS.md) ── */
+.avis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .avis-grid { grid-template-columns: 1fr; } }
+.avis {
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--radius-card); padding: 26px; margin: 0;
+}
+.avis__note { color: #F5A623; font-size: 15px; letter-spacing: 2px; margin-bottom: 12px; }
+.avis blockquote { margin: 0 0 16px; }
+.avis blockquote p { font-size: 15px; color: var(--text-dim); line-height: 1.7; }
+.avis figcaption b { display: block; font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--brand-dark); }
+.avis figcaption span { display: block; font-size: 13px; color: var(--text-muted); margin-top: 2px; }
