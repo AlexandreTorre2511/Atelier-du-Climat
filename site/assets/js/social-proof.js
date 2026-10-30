@@ -93,31 +93,7 @@ function resetCalc() {
 
 
 /* ─────────────────────────────────────────────────────────────
-   2. VILLE ROTATIVE (bandeau "zone couverte")
-   ─────────────────────────────────────────────────────────────
-   Fait défiler les villes réellement desservies. 100% factuel :
-   ça prouve la couverture géographique, sans rien inventer.
-   À ADAPTER : la liste des villes.
-───────────────────────────────────────────────────────────── */
-
-const COUNTER_CITIES = ['Nice', 'Antibes', 'Cannes', 'Monaco', 'Menton'];
-let counterCity = 0;
-
-function initLiveCounter() {
-  const els = document.querySelectorAll('[data-live-city]');
-  if (!els.length) return;
-  setInterval(() => {
-    counterCity = (counterCity + 1) % COUNTER_CITIES.length;
-    els.forEach(el => {
-      el.style.opacity = '0';
-      setTimeout(() => { el.textContent = COUNTER_CITIES[counterCity]; el.style.opacity = '1'; }, 300);
-    });
-  }, 3000);
-}
-
-
-/* ─────────────────────────────────────────────────────────────
-   3. NOTIFICATIONS DE PREUVE SOCIALE  ⚠️  DÉSACTIVÉ PAR DÉFAUT
+   2. NOTIFICATIONS DE PREUVE SOCIALE  ⚠️  DÉSACTIVÉ PAR DÉFAUT
    ─────────────────────────────────────────────────────────────
    Les petites bulles "Julien (Nice) vient de demander un devis".
 
@@ -176,5 +152,4 @@ function initSocialProof() {
 /* ── Init ── */
 document.addEventListener('DOMContentLoaded', () => {
   initSocialProof();
-  initLiveCounter();
 });
