@@ -1,4 +1,6 @@
-# Site Climatisation — Alpes-Maritimes
+# ATELIER DU CLIMAT — site vitrine
+
+Climatisation • Pompes à chaleur • Ventilation — Alpes-Maritimes.
 
 Site vitrine statique : HTML, CSS et JavaScript sans framework ni dépendance.
 Les pages sont dans [`site/`](site/).

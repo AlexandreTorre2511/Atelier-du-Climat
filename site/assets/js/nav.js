@@ -1,4 +1,4 @@
-/* Climatisation Khalil — Nav Dropdowns + Recherche interne */
+/* Atelier du Climat — Nav Dropdowns + Recherche interne */
 (function () {
 
   // ── Navbar position: push down when promo banner is present ──

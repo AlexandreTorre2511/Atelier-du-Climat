@@ -1,5 +1,5 @@
 /* ============================================================
-   COMPTE À REBOURS D'OFFRE — Climatisation Khalil
+   COMPTE À REBOURS D'OFFRE — Atelier du Climat
    ------------------------------------------------------------
    À CHANGER : la date de fin ci-dessous (format ISO).
    RÈGLE D'HONNÊTETÉ : mettre une vraie date de fin, et tenir

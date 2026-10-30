@@ -1,4 +1,4 @@
-/* Climatisation Khalil — Email Popup */
+/* Atelier du Climat — Email Popup */
 
 // Le bandeau de consentement a été retiré : la mesure d'audience passe par
 // Cloudflare Web Analytics, qui ne dépose aucun cookie. Si un outil à cookie

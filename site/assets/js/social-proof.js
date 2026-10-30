@@ -1,5 +1,5 @@
 /* ============================================================
-   CALCULATEUR DE PRIX + VILLE ROTATIVE — Climatisation Khalil
+   CALCULATEUR DE PRIX + VILLE ROTATIVE — Atelier du Climat
    ------------------------------------------------------------
    CE FICHIER CONTIENT 3 MÉCANIQUES. Lire les avertissements.
    ============================================================ */

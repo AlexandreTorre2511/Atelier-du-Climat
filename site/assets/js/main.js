@@ -1,4 +1,4 @@
-/* Climatisation Khalil — Main JS */
+/* Atelier du Climat — Main JS */
 
 // ── Mesure d'audience : Cloudflare Web Analytics ──
 // À CHANGER : coller ici le token du site, trouvé dans le tableau de bord
