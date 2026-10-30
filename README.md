@@ -3,23 +3,40 @@
 Site vitrine statique : HTML, CSS et JavaScript sans framework ni dépendance.
 Les pages sont dans [`site/`](site/).
 
-## Aperçu en ligne
+## Aperçu en ligne — Cloudflare Pages
 
-**https://alexandretorre2511.github.io/Climatisation/**
+L'aperçu est publié par **Cloudflare Pages**, qui accepte les dépôts privés
+sans frais et republie à chaque push sur `main`.
 
-Publié automatiquement par GitHub Pages à chaque push sur `main`
-(workflow : [`.github/workflows/pages.yml`](.github/workflows/pages.yml)).
-L'avancement de la publication se suit dans l'onglet **Actions** du dépôt.
+Adresse une fois le projet créé : `https://atelier-du-climat.pages.dev`
 
-> **À activer une seule fois** : dans *Settings → Pages*, choisir
-> **Source : GitHub Actions**. Sans cela le workflow échoue au dernier pas.
+### Création du projet, une seule fois
+
+Dans le tableau de bord Cloudflare, *Workers & Pages → Create → Pages →
+Connect to Git*, choisir ce dépôt, puis :
+
+| Réglage | Valeur |
+|---|---|
+| Nom du projet | `atelier-du-climat` — doit être identique au `name` de [`wrangler.toml`](wrangler.toml) |
+| Branche de production | `main` |
+| Preset de framework | *None* |
+| Commande de build | `exit 0` — rien à construire |
+| Dossier de sortie | `site` |
+
+[`wrangler.toml`](wrangler.toml) reprend ces réglages et les versionne.
+Dès qu'il existe, Cloudflare s'y fie et ignore ce qui est saisi dans
+l'interface : les deux doivent donc rester cohérents, le nom du projet
+en particulier.
+
+Chaque branche autre que `main` reçoit sa propre adresse de prévisualisation,
+pratique pour faire relire un changement avant de le fusionner.
 
 ### Ce qui ne marche pas sur cet aperçu
 
-Les formulaires reposent sur des fonctions Netlify, qui n'existent pas sur
-GitHub Pages. Le formulaire de contact et la fenêtre d'estimation affichent
-donc leur message de repli, avec le téléphone et WhatsApp. C'est le
-comportement attendu : aucune demande n'est perdue en silence.
+Les formulaires reposent sur des fonctions Netlify, absentes de Cloudflare
+Pages. Le formulaire de contact et la fenêtre d'estimation affichent donc
+leur message de repli, avec le téléphone et WhatsApp. C'est le comportement
+voulu : aucune demande n'est perdue en silence.
 
 Tout le reste — navigation, estimateur de budget, galerie, pages villes,
 blog — fonctionne à l'identique.
@@ -37,8 +54,8 @@ Puis ouvrir http://127.0.0.1:8788.
 ## Mise en production
 
 L'hébergement de production est Netlify, configuré par
-[`netlify.toml`](netlify.toml) : il publie `site/` et les fonctions
-d'envoi d'email de `site/netlify/functions/`.
+[`netlify.toml`](netlify.toml) : il publie `site/` et les fonctions d'envoi
+d'email de `site/netlify/functions/`.
 
 Deux variables d'environnement sont à définir dans Netlify :
 

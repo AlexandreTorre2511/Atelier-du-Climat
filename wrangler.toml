@@ -1,0 +1,15 @@
+# Configuration Cloudflare Pages.
+#
+# « name » doit être EXACTEMENT le nom du projet Pages créé dans le tableau
+# de bord Cloudflare. S'ils diffèrent, le déploiement échoue.
+#
+# Attention : dès que ce fichier existe, Cloudflare le considère comme la
+# source de vérité et ignore les réglages de build saisis dans l'interface.
+#
+# Le site est statique : rien n'est construit, le dossier site/ est publié
+# tel quel. Dans le tableau de bord, la commande de build correspondante
+# est « exit 0 ».
+
+name = "atelier-du-climat"
+pages_build_output_dir = "site"
+compatibility_date = "2026-10-30"
