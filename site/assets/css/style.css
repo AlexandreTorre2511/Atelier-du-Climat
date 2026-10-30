@@ -11,6 +11,10 @@
   --brand-dim:     #065E9F;
   --brand-glow:    rgba(8,119,201,0.10);
   --accent:        #E52430;   /* rouge : accents ponctuels, jamais dominant */
+  /* Filet tricolore du logo, relevé sur le fichier source */
+  --tri-bleu:      #0162BA;
+  --tri-blanc:     #E9E9E9;
+  --tri-rouge:     #DF161A;
   --white:         #FFFFFF;
   --gray:          #F4F6F8;
   --sand:          #F7F5F1;   /* neutre chaud : alternance des sections */
@@ -81,7 +85,14 @@ h1,h2,h3,h4,h5 {
   font-weight: 700;
   font-family: var(--font-head);
 }
-.label::before { content: ""; width: 24px; height: 2px; background: var(--brand); }
+.label::before {
+  content: "";
+  width: 30px; height: 3px;
+  background: linear-gradient(to right,
+    var(--tri-bleu) 0 33.33%, var(--tri-blanc) 33.33% 66.66%, var(--tri-rouge) 66.66%);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
 .section--brand-dark .label, .section--dark .label { color: rgba(255,255,255,0.55); }
 
 
@@ -142,7 +153,7 @@ h1,h2,h3,h4,h5 {
 
 .navbar.scrolled { box-shadow: var(--shadow-heavy); }
 
-.navbar__logo img { height: 40px; width: auto; display: block; }
+.navbar__logo img { height: 46px; width: auto; display: block; }
 
 .navbar__links {
   display: flex;
@@ -253,7 +264,7 @@ h1,h2,h3,h4,h5 {
   padding-bottom: 60px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-.footer__brand img { height: 42px; margin-bottom: 14px; display: block; }
+.footer__brand img { height: 56px; margin-bottom: 16px; display: block; }
 .footer__signature {
   font-family: var(--font-head);
   font-size: 10px;
@@ -2063,3 +2074,71 @@ h1,h2,h3,h4,h5 {
 .bloc-espace { margin-bottom: 40px; }
 .btn + .btn { margin-left: 12px; }
 @media (max-width: 560px) { .btn + .btn { margin-left: 0; } }
+
+/* ============================================================
+   SIGNES DE LA MARQUE
+   Le logo tient en trois signes : le toit, le flocon et le filet
+   tricolore. Ils reviennent ici en éléments de page, pour que la
+   marque soit présente ailleurs que dans la barre de navigation.
+   ============================================================ */
+
+/* ── Filet tricolore ── */
+.tricolore {
+  display: block;
+  width: 72px; height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right,
+    var(--tri-bleu) 0 33.33%, var(--tri-blanc) 33.33% 66.66%, var(--tri-rouge) 66.66%);
+}
+.tricolore--large { width: 110px; }
+.section--brand-dark .tricolore, .page-hero .tricolore, .cta-banner .tricolore,
+.legal-hero .tricolore, .footer .tricolore { opacity: 0.95; }
+
+/* ── Filigrane du toit ──
+   La silhouette du logo, posée très discrètement sur les aplats marine.
+   Purement décorative : elle reste hors du flux et hors de l'arbre
+   d'accessibilité. */
+/* Appliqué directement aux aplats marine du site : aucune classe à
+   ajouter dans les 28 pages. */
+.page-hero, .cta-banner, .legal-hero {
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.page-hero > *, .cta-banner > *, .legal-hero > * { position: relative; z-index: 1; }
+
+.page-hero::after, .cta-banner::after, .legal-hero::after {
+  content: "";
+  position: absolute;
+  right: -70px;
+  bottom: -34px;
+  width: min(620px, 52%);
+  aspect-ratio: 1200 / 237;
+  background: url('../img/marque-toit-atelier-du-climat.png') right bottom / contain no-repeat;
+  opacity: 0.045;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+  z-index: 0;
+}
+@media (max-width: 760px) { .page-hero::after, .cta-banner::after, .legal-hero::after { width: 320px; right: -70px; opacity: 0.035; } }
+
+/* ── Flocon ── */
+.flocon {
+  display: inline-block;
+  background: url('../img/flocon.svg') center / contain no-repeat;
+  flex-shrink: 0;
+}
+.flocon--blanc { background-image: url('../img/flocon-blanc.svg'); }
+
+/* Séparateur : filet, flocon, filet. */
+.separateur-marque {
+  display: flex; align-items: center; justify-content: center; gap: 22px;
+  padding: 30px 0;
+}
+.separateur-marque::before, .separateur-marque::after {
+  content: ""; height: 1px; flex: 1 1 0; max-width: 180px; background: var(--line);
+}
+.separateur-marque .flocon { width: 38px; height: 38px; opacity: 0.85; }
+.section--brand-dark .separateur-marque::before,
+.section--brand-dark .separateur-marque::after { background: rgba(255,255,255,0.18); }
+.footer__brand .tricolore { margin: 0 0 14px; }
+.hero__col .tricolore { margin-bottom: 22px; }
+.ville-hero .tricolore { margin-bottom: 20px; }
