@@ -64,7 +64,7 @@ function showCalcResult() {
       ${SHOW_OLD_PRICE ? `<div class="calc-result__price-old">${prices.old[key].toLocaleString('fr-FR')} €</div>` : ''}
       <div class="calc-result__price">${prices.promo[key].toLocaleString('fr-FR')} €</div>
       ${best
-        ? '<div class="calc-result__badge">⭐ Le + demandé</div>'
+        ? '<div class="calc-result__badge">Le + demandé</div>'
         : `<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">${OFFRE_SUBS[key]}</div>`}
     </div>`;
 

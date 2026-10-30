@@ -20,7 +20,7 @@ function updateCountdowns() {
   // Tant que {{DATE_FIN_OFFRE}} n'est pas renseignée, aucune offre ne s'affiche :
   // un compte à rebours sans échéance réelle est une pratique commerciale trompeuse.
   if (isNaN(PROMO_END) || dist <= 0) {
-    document.querySelectorAll('.promo-banner, .promo-section, .promo-encart')
+    document.querySelectorAll('.promo-banner, .promo-section, .promo-encart, .promo-badge')
       .forEach(el => el.remove());
     return;
   }

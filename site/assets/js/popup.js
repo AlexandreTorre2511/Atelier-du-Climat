@@ -76,9 +76,8 @@
     const body = popup.querySelector('.email-popup__body');
     body.innerHTML = `
       <div style="text-align:center;padding:28px 0 20px;">
-        <div style="font-size:48px;margin-bottom:16px;">🎉</div>
         <p style="font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--brand-dark);margin-bottom:10px;letter-spacing:-0.02em;">C'est noté !</p>
-        <p style="color:var(--text-dim);font-size:15px;line-height:1.6;">Vous recevrez votre estimation personnalisée sous 24h.<br>À très vite sur la Côte d'Azur 🌊</p>
+        <p style="color:var(--text-dim);font-size:15px;line-height:1.6;">Vous recevrez votre estimation personnalisée sous 24h.<br>À très vite sur la Côte d'Azur.</p>
       </div>`;
     setTimeout(close, 3000);
   });

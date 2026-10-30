@@ -39,7 +39,11 @@ const CF_ANALYTICS_TOKEN = '';
 })();
 
 // ── Reveal on scroll ──
+// La classe .js n'est posée que si l'observateur existe : sans elle, le CSS
+// laisse tout le contenu visible. Un site qui disparaît quand le JS échoue
+// est un site qui ne convertit pas.
 (function() {
+  if (!('IntersectionObserver' in window)) return;
   const els = document.querySelectorAll('.reveal');
   if (!els.length) return;
   const io = new IntersectionObserver((entries) => {
