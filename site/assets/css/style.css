@@ -1361,14 +1361,14 @@ h1,h2,h3,h4,h5 {
 .sticky-mobile-cta__devis { background: var(--brand); color: white; }
 
 /* ── Calculateur de prix ── */
-.calc-section { background: var(--gray); padding: 76px 0; }
+.calc-section { background: var(--gray); padding: 72px 0 76px; }
 .calc-wrap {
   background: white;
   border-radius: var(--radius-card);
   padding: 48px;
   border: 1px solid var(--line);
   max-width: 760px;
-  margin: 0 auto;
+  margin: 0;
 }
 @media(max-width:768px) { .calc-wrap { padding: 28px 20px; } }
 .calc-step { display: none; }
