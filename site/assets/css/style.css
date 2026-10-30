@@ -1072,9 +1072,15 @@ h1,h2,h3,h4,h5 {
 
 @media (max-width: 768px) {
   .container, .container--wide { padding: 0 20px; }
-  .navbar { width: calc(100% - 40px); top: 12px; padding: 12px 20px; }
-  .navbar__links, .navbar__cta { display: none; }
+  .navbar { padding: 11px 20px; }
+  .navbar__links { display: none; }
   .navbar__burger { display: flex; }
+  /* Le téléphone reste visible : c'est le geste le plus courant sur mobile,
+     d'où vient l'essentiel du trafic local. Le bouton de devis, lui, passe
+     dans le menu et dans la barre collante du bas. */
+  .navbar__cta { gap: 10px; }
+  .navbar__cta .btn { display: none; }
+  .navbar__tel { font-size: 15px; }
   .packs__grid { grid-template-columns: 1fr; }
   .process__grid { grid-template-columns: repeat(2, 1fr); }
   .process__grid::before { display: none; }
