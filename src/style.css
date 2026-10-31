@@ -184,3 +184,5 @@
 .trust-card .tricolore i:first-child,.contact-hero .tricolore i:first-child,.cta .tricolore i:first-child{background:#3a86e0}.trust-card .tricolore i:nth-child(2),.contact-hero .tricolore i:nth-child(2),.cta .tricolore i:nth-child(2){background:#fff}
 .cta .tricolore{justify-content:center}
 .drapeau-mention{display:inline-flex;align-items:center;gap:8px;color:#c9d7e8}.drapeau{display:inline-flex;width:15px;height:10px;border-radius:2px;overflow:hidden;flex:none}.drapeau i{flex:1;background:#0055a4}.drapeau i:nth-child(2){background:#fff}.drapeau i:nth-child(3){background:#ef4135}
+@media(max-width:900px) and (min-width:621px){.footer-main{grid-template-columns:repeat(3,minmax(0,1fr))}.footer-brand{grid-column:1/-1}}
+.footer-main a,.footer-main span{overflow-wrap:anywhere}
