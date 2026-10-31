@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowRight, ArrowUpRight, Phone, Snowflake, Thermometer, Wind, Wrench,
@@ -54,7 +54,62 @@ const faqs = [
 const villes = [["Nice", "nice"], ["Cannes", "cannes"], ["Antibes", "antibes"], ["Cagnes-sur-Mer", "cagnes-sur-mer"], ["Grasse", "grasse"], ["Menton", "menton"], ["Monaco", "monaco"], ["Sophia Antipolis", "sophia-antipolis"]];
 const nav = [["Accueil", "#accueil"], ["Prestations", "#prestations"], ["Nos offres", "#offres"], ["Réalisations", "#realisations"], ["À propos", "#apropos"], ["Contact", "#contact"]];
 
+const teintes = ["#e8761a", "#e39a1c", "#5aa6e6", "#2f8de8", "#087df0"];   // du chaud au froid
+const etapes = [
+  [Phone, 32, "Premier échange", "Vous nous présentez votre besoin et vos attentes."],
+  [ClipboardCheck, 29, "Étude du projet", "Nous étudions vos espaces et les solutions possibles."],
+  [FileText, 27, "Devis clair", "Le prix est fixé avant le début des travaux."],
+  [Wrench, 24, "Installation", "La pose est réalisée avec soin et méthode."],
+  [Check, 22, "Mise en service", "Nous vérifions tout et vous expliquons l’utilisation."]
+];
+
+// Le déroulé se lit comme un thermostat : la température baisse à mesure que l'on fait défiler la section.
+function Deroule() {
+  const section = useRef(null);
+  const [avance, setAvance] = useState(0);
+  useEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { setAvance(1); return; }
+    const mesurer = () => {
+      const r = section.current.getBoundingClientRect();
+      setAvance(Math.min(1, Math.max(0, (innerHeight * 0.75 - r.top) / (r.height * 0.75))));
+    };
+    mesurer();
+    addEventListener("scroll", mesurer, { passive: true });
+    addEventListener("resize", mesurer);
+    return () => { removeEventListener("scroll", mesurer); removeEventListener("resize", mesurer); };
+  }, []);
+  const temperature = Math.round(32 - 10 * avance);
+  return <section className="process section" ref={section} style={{"--avance": avance}}>
+    <div className="section-heading"><h2>Simple, du premier appel à la mise en route</h2><p>Suivez le thermomètre : de la canicule à la bonne température, en cinq étapes.</p></div>
+    <div className="deroule">
+      <div className="deroule-piste" aria-hidden="true"><div className="deroule-remplissage"/><div className="deroule-curseur">{temperature}°C</div></div>
+      <ol className="deroule-etapes">{etapes.map(([Icon, degres, titre, texte], i) => <li key={titre} className={avance >= i / 4 - 0.02 ? "active" : ""} style={{"--teinte": teintes[i]}}><span className="deroule-point"><Icon/></span><span className="deroule-temp">{degres}°C</span><h3>{titre}</h3><p>{texte}</p></li>)}</ol>
+    </div>
+  </section>;
+}
+
+// Apparition au défilement : la classe est posée ici pour ne rien masquer si le JS ne tourne pas.
+function useApparitions() {
+  useEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+    const cibles = document.querySelectorAll(".section-heading, .section-top, .service-explorer, .offer-card, .offer-note, .technician-photo, .technician-copy, .trust-card, .reason, .deroule, .project-card, .faq-heading, .faq-list, .contact-hero-content, .footer-main > div");
+    const observateur = new IntersectionObserver(entrees => entrees.forEach(entree => {
+      if (!entree.isIntersecting) return;
+      entree.target.classList.add("visible");
+      observateur.unobserve(entree.target);
+    }), { rootMargin: "0px 0px -8% 0px" });
+    cibles.forEach(el => {
+      const rang = [...el.parentElement.children].indexOf(el);
+      el.style.setProperty("--delai", `${Math.min(rang, 5) * 70}ms`);
+      el.classList.add("apparition");
+      observateur.observe(el);
+    });
+    return () => observateur.disconnect();
+  }, []);
+}
+
 function App() {
+  useApparitions();
   const [menuOpen, setMenuOpen] = useState(false);
   const [offerIndex, setOfferIndex] = useState(0);
   const [modal, setModal] = useState(false);
@@ -139,7 +194,7 @@ function App() {
 
       <section className="trust-section" id="apropos"><div className="trust-inner"><div className="trust-card"><span className="eyebrow pill">POURQUOI NOUS CHOISIR</span><h2>Pourquoi nous appeler</h2><p>Un interlocuteur joignable 7j/7, un devis clair avant toute intervention, et des marques qui ont fait leurs preuves.</p><a className="btn btn-light" href={TEL_LIEN}><Phone size={16}/> Nous appeler <ArrowRight size={16}/></a></div><div className="reason-grid">{reasons.map(([Icon, title, text]) => <div className="reason" key={title}><span className="round-icon"><Icon/></span><span><b>{title}</b><small>{text}</small></span></div>)}</div></div></section>
 
-      <section className="process section"><div className="section-heading"><h2>Simple, du premier appel à la mise en route</h2><p>Vous savez toujours où en est votre projet.</p></div><div className="steps steps-five">{[[Phone,"01","Premier échange","Vous nous présentez votre besoin et vos attentes."],[ClipboardCheck,"02","Étude du projet","Nous étudions vos espaces et les solutions possibles."],[FileText,"03","Devis détaillé","Vous recevez une proposition claire et personnalisée."],[Wrench,"04","Installation","La pose est réalisée avec soin et méthode."],[Check,"05","Mise en service","Nous vérifions l’installation et vous expliquons son fonctionnement."]].map(([Icon, n, title, text], i) => <div className="step" key={n}><div className="step-icon"><Icon/></div><span className="step-number">{n}</span><h3>{title}</h3><p>{text}</p></div>)}</div></section>
+      <Deroule/>
 
 
       <section className="projects section" id="realisations"><div className="section-top"><div><h2>Des projets qui prennent forme</h2><p className="section-subtitle">Quelques exemples de projets et d’environnements à équiper.</p></div><a href={TEL_LIEN}><Phone size={15}/> Présenter mon projet <ArrowRight size={16}/></a></div><div className="project-grid">{projects.map(p => <article className="project-card" key={p.title}><img src={p.image} alt={p.title}/><div><b>{p.title}</b><span>{p.city}</span></div></article>)}</div></section>

@@ -147,3 +147,34 @@
 @media(max-width:620px){.call-bar{position:fixed;z-index:40;left:12px;right:12px;bottom:12px;display:flex;align-items:center;justify-content:center;gap:9px;min-height:52px;border-radius:12px;background:var(--brand);color:#fff;font-weight:800;font-size:15px;box-shadow:0 10px 30px #05254e40}.footer{padding-bottom:84px}}
 .wa{position:fixed;z-index:41;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 28px #0b3d2240;transition:transform .2s}.wa:hover{transform:scale(1.06)}.wa svg{width:30px;height:30px}
 @media(max-width:620px){.wa{right:12px;bottom:12px;width:52px;height:52px;border-radius:12px}.wa svg{width:27px;height:27px}.call-bar{right:72px}}
+
+/* Animations */
+.apparition{opacity:0;transform:translateY(24px);transition:opacity .7s ease var(--delai,0s),transform .8s cubic-bezier(.2,.7,.2,1) var(--delai,0s)}
+.apparition.visible{opacity:1;transform:none}
+@keyframes monter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes zoomFond{from{transform:scale(1.08)}to{transform:scale(1.01)}}
+@keyframes surgir{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.hero-image{animation:zoomFond 1.8s cubic-bezier(.2,.7,.2,1) both}
+.hero-content>*{animation:monter .8s cubic-bezier(.2,.7,.2,1) both}
+.hero-content>:nth-child(2){animation-delay:.08s}.hero-content>:nth-child(3){animation-delay:.16s}.hero-content>:nth-child(4){animation-delay:.24s}.hero-content>:nth-child(5){animation-delay:.32s}
+.rating-card{animation:monter .8s .5s cubic-bezier(.2,.7,.2,1) both}
+.wa{animation:surgir .5s 1.2s cubic-bezier(.3,1.6,.5,1) both}
+.btn svg{transition:transform .25s}.btn:hover svg{transform:translateX(3px)}
+/* Déroulé thermostat */
+.deroule{position:relative;margin-top:30px;padding-top:46px}
+.deroule-piste{position:absolute;top:calc(46px + 35px);left:10%;right:10%;height:6px;border-radius:6px;background:#e6eef6}
+.deroule-remplissage{position:absolute;inset:0;border-radius:inherit;background:linear-gradient(90deg,#f08a24,#f2b33d 30%,#58b4f2 65%,#087df0);clip-path:inset(0 calc((1 - var(--avance)) * 100%) 0 0)}
+.deroule-curseur{position:absolute;top:-46px;left:calc(var(--avance) * 100%);transform:translateX(-50%);padding:5px 11px;border-radius:20px;background:var(--brand);color:#fff;font:800 13px Manrope,sans-serif;white-space:nowrap;box-shadow:0 6px 16px #05254e33}
+.deroule-curseur:after{content:"";position:absolute;left:50%;bottom:-5px;width:10px;height:10px;background:inherit;transform:translateX(-50%) rotate(45deg);z-index:-1}
+.deroule-etapes{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.deroule-etapes li{text-align:center;min-width:0}
+.deroule-point{width:76px;height:76px;margin:0 auto 14px;border-radius:50%;border:2px solid #e2ebf4;background:#fff;color:#9db0c6;display:grid;place-items:center;transition:background .45s,color .45s,border-color .45s,transform .45s}
+.deroule-point svg{width:28px;height:28px}
+.deroule-temp{display:inline-block;font:800 12px Manrope,sans-serif;letter-spacing:.06em;color:#9db0c6;transition:color .45s}
+.deroule-etapes h3{font:800 15px Manrope,sans-serif;color:var(--navy);margin:6px 0;opacity:.55;transition:opacity .45s}
+.deroule-etapes p{font-size:13px;line-height:1.6;color:var(--muted);max-width:200px;margin:0 auto;opacity:.55;transition:opacity .45s}
+.deroule-etapes li.active .deroule-point{background:var(--brand);border-color:var(--brand);color:#fff;transform:scale(1.06)}
+.deroule-etapes li.active .deroule-temp{color:var(--teinte)}
+.deroule-etapes li.active h3,.deroule-etapes li.active p{opacity:1}
+@media(max-width:760px){.deroule{padding-top:0}.deroule-curseur{display:none}.deroule-piste{top:28px;bottom:48px;left:26px;right:auto;width:5px;height:auto}.deroule-remplissage{background:linear-gradient(180deg,#f08a24,#f2b33d 30%,#58b4f2 65%,#087df0);clip-path:inset(0 0 calc((1 - var(--avance)) * 100%) 0)}.deroule-etapes{grid-template-columns:1fr;gap:26px}.deroule-etapes li{display:grid;grid-template-columns:56px 1fr;column-gap:16px;text-align:left}.deroule-point{grid-row:span 3;width:56px;height:56px;margin:0}.deroule-point svg{width:22px;height:22px}.deroule-etapes h3{margin:2px 0 4px;font-size:15px}.deroule-etapes p{max-width:none;margin:0;font-size:13px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}

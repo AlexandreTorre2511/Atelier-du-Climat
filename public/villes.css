@@ -109,3 +109,13 @@ h1,h2,h3{font-family:Manrope,sans-serif;color:var(--brand);letter-spacing:-.035e
 .carte-blog h2,.carte-blog h3{font-size:19px;line-height:1.25;margin:0}
 .carte-blog p{font-size:14px;color:var(--muted);margin:0}
 .carte-blog .lire{margin-top:auto;font-weight:700;color:var(--blue);font-size:14px}
+/* Animations */
+.apparition{opacity:0;transform:translateY(22px);transition:opacity .7s ease var(--delai,0s),transform .8s cubic-bezier(.2,.7,.2,1) var(--delai,0s)}
+.apparition.visible{opacity:1;transform:none}
+@keyframes monter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes surgir{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.hero>*,.article>.fil,.article>.eyebrow,.article>h1{animation:monter .8s cubic-bezier(.2,.7,.2,1) both}
+.hero>:nth-child(2),.article>.eyebrow{animation-delay:.08s}.hero>:nth-child(3),.article>h1{animation-delay:.16s}.hero>:nth-child(4){animation-delay:.24s}.hero>:nth-child(5){animation-delay:.32s}.hero>:nth-child(6){animation-delay:.4s}
+.wa{animation:surgir .5s 1.2s cubic-bezier(.3,1.6,.5,1) both}
+.btn svg{transition:transform .25s}.btn:hover svg{transform:translateX(3px)}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
