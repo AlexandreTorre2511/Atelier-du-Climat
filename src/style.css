@@ -161,10 +161,10 @@
 .wa{animation:surgir .5s 1.2s cubic-bezier(.3,1.6,.5,1) both}
 .btn svg{transition:transform .25s}.btn:hover svg{transform:translateX(3px)}
 /* Déroulé thermostat */
-.deroule{position:relative;margin-top:30px;padding-top:46px}
-.deroule-piste{position:absolute;top:calc(46px + 35px);left:10%;right:10%;height:6px;border-radius:6px;background:#e6eef6}
+.deroule{position:relative;margin-top:30px;padding-top:58px}
+.deroule-piste{position:absolute;top:calc(58px + 35px);left:10%;right:10%;height:6px;border-radius:6px;background:#e6eef6}
 .deroule-remplissage{position:absolute;inset:0;border-radius:inherit;background:linear-gradient(90deg,#f08a24,#f2b33d 30%,#58b4f2 65%,#087df0);clip-path:inset(0 calc((1 - var(--avance)) * 100%) 0 0)}
-.deroule-curseur{position:absolute;top:-46px;left:calc(var(--avance) * 100%);transform:translateX(-50%);padding:5px 11px;border-radius:20px;background:var(--brand);color:#fff;font:800 13px Manrope,sans-serif;white-space:nowrap;box-shadow:0 6px 16px #05254e33}
+.deroule-curseur{position:absolute;z-index:2;top:-80px;left:calc(var(--avance) * 100%);transform:translateX(-50%);padding:5px 11px;border-radius:20px;background:var(--brand);color:#fff;font:800 13px Manrope,sans-serif;white-space:nowrap;box-shadow:0 6px 16px #05254e33}
 .deroule-curseur:after{content:"";position:absolute;left:50%;bottom:-5px;width:10px;height:10px;background:inherit;transform:translateX(-50%) rotate(45deg);z-index:-1}
 .deroule-etapes{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
 .deroule-etapes li{text-align:center;min-width:0}
