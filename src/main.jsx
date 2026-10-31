@@ -103,7 +103,7 @@ function App() {
         <div className="hero-fade" />
         <div className="hero-content">
           <span className="eyebrow pill">VOTRE CONFORT, NOTRE EXPERTISE</span>
-          <h1>Des solutions de<br/> climatisation adaptées<br/> à <em>votre quotidien</em></h1>
+          <h1><span>Des solutions de</span> <span>climatisation adaptées</span> <span>à <em>votre quotidien</em></span></h1>
           <p>Installation, remplacement, entretien et dépannage de climatisation, pompes à chaleur et ventilation sur la Côte d’Azur.</p>
           <div className="hero-actions"><button className="btn btn-primary" onClick={openQuote}>Demander un devis gratuit <ArrowRight size={18}/></button><a className="btn btn-outline" href="#prestations">Découvrir nos solutions</a></div>
           <div className="hero-benefits">
@@ -113,7 +113,6 @@ function App() {
           </div>
         </div>
         <div className="rating-card"><div className="stars">★★★★★</div><b>Votre confort, notre priorité</b><small>Un accompagnement de proximité</small></div>
-        <div className="hero-service-strip">{services.slice(0, 3).map(({icon: Icon, title}, i) => <a href="#prestations" key={title} onClick={() => setActiveService(i)}><span className="round-icon"><Icon/></span><span><b>{title}</b><small>{["Confort en toute saison", "Économies d’énergie", "Un air plus sain"][i]}</small></span></a>)}</div>
       </section>
 
       <section className="service-section section" id="prestations">
