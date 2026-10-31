@@ -2580,3 +2580,36 @@ h1,h2,h3,h4,h5 {
 .devis__actions .btn--white:hover { background: #000; border-color: #000; }
 .devis__actions .btn--outline-white { color: var(--brand-dark); border-color: var(--line-strong); }
 .devis__actions .btn--outline-white:hover { border-color: var(--brand-dark); background: transparent; }
+
+/* ── Barre de navigation sur petit écran ──
+   Le logo centré en absolu passait sous le téléphone : il n'y a pas la
+   place pour deux boutons ronds, une enseigne centrée et une pilule.
+   Le logo revient dans le flux, la recherche passe dans le menu, et le
+   téléphone devient un bouton rond — comme sur la référence. */
+@media (max-width: 900px) {
+  .navbar { gap: 8px; padding: 10px 16px; }
+  .navbar__logo { position: static; transform: none; margin-right: auto; }
+  .navbar__logo img { height: 38px; }
+  .navbar__gauche #search-btn { display: none; }
+  .navbar__cta { gap: 8px; }
+  .navbar__tel {
+    width: 44px; height: 44px; padding: 0; border-radius: 999px;
+    justify-content: center; font-size: 0; gap: 0;
+  }
+  .navbar__tel svg { width: 18px; height: 18px; }
+  .navbar__cta .btn { display: inline-flex; padding: 12px 16px; font-size: 14px; min-height: 44px; }
+}
+@media (max-width: 420px) {
+  .navbar__logo img { height: 32px; }
+  .navbar__cta .btn { padding: 12px 13px; font-size: 13px; }
+}
+
+/* Le hero laisse la place à l'appareil au-dessus du titre. */
+@media (max-width: 760px) {
+  .ciel-hero { padding: 272px 0 48px; }
+  .ciel-hero__visuel { width: 104%; top: 92px; }
+}
+@media (max-width: 420px) {
+  .ciel-hero { padding: 232px 0 44px; }
+  .ciel-hero__visuel { top: 84px; }
+}
