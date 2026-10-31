@@ -89,7 +89,7 @@ function App() {
       <a className="brand" href="#accueil" aria-label="Atelier du Climat - accueil"><img src={asset("logo.png")} alt="Atelier du Climat" width="900" height="335" /></a>
       <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Ouvrir le menu">{menuOpen ? <X/> : <Menu/>}</button>
       <nav className={menuOpen ? "nav open" : "nav"}>{nav.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}</nav>
-      <a className="phone" href="tel:+33766846856"><span className="phone-icon"><Phone size={19}/></span><span><b>07 66 84 68 56</b><small>Lun - Sam : 8h - 19h</small></span></a>
+      <a className="phone" href="tel:+33766846856"><span className="phone-icon"><Phone size={19}/></span><span><b>07 66 84 68 56</b><small>7j/7 · 8h - 20h</small></span></a>
       <button className="btn btn-primary header-cta" onClick={openQuote}>Demander un devis <ArrowRight size={17}/></button>
     </header>
 
