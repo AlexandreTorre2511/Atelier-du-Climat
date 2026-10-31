@@ -19,7 +19,7 @@ h1,h2,h3{font-family:Manrope,sans-serif;color:var(--brand);letter-spacing:-.035e
 .hero{background:linear-gradient(180deg,#f2f8ff,#fff);padding:var(--rythme) var(--marge) calc(var(--rythme)*.8)}
 .fil{font-size:13px;color:var(--muted);margin-bottom:22px}
 .fil a{text-decoration:underline}
-.eyebrow{display:inline-block;padding:7px 13px;border-radius:30px;background:#dfefff;color:#1680ed;font-size:12px;font-weight:800;letter-spacing:.055em}
+.eyebrow{display:inline-block;padding:7px 13px;border-radius:30px;background:#dfefff;color:#0b63c4;font-size:12px;font-weight:800;letter-spacing:.055em}
 .hero h1{font-size:clamp(34px,5vw,60px);line-height:1.06;letter-spacing:-.05em;margin:20px 0 16px;max-width:820px}
 .hero h1 em{color:var(--blue);font-style:normal}
 .hero p.lead{font-size:clamp(16px,1.6vw,18px);color:#344f70;max-width:680px;margin:0}
@@ -105,7 +105,7 @@ h1,h2,h3{font-family:Manrope,sans-serif;color:var(--brand);letter-spacing:-.035e
 .cartes-blog{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:30px}
 .carte-blog{display:flex;flex-direction:column;gap:10px;border:1px solid var(--line);border-radius:14px;padding:24px;background:#fff;transition:transform .2s,box-shadow .2s}
 .carte-blog:hover{transform:translateY(-3px);box-shadow:0 12px 30px #092c5512}
-.carte-blog .cat{font-size:12px;font-weight:800;letter-spacing:.06em;color:#1680ed;text-transform:uppercase}
+.carte-blog .cat{font-size:12px;font-weight:800;letter-spacing:.06em;color:#0b63c4;text-transform:uppercase}
 .carte-blog h2,.carte-blog h3{font-size:19px;line-height:1.25;margin:0}
 .carte-blog p{font-size:14px;color:var(--muted);margin:0}
 .carte-blog .lire{margin-top:auto;font-weight:700;color:var(--blue);font-size:14px}
