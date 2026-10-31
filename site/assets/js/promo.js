@@ -22,6 +22,11 @@ function updateCountdowns() {
   if (isNaN(PROMO_END) || dist <= 0) {
     document.querySelectorAll('.promo-banner, .promo-section, .promo-encart, .promo-badge')
       .forEach(el => el.remove());
+    // nav.js décale la barre de navigation tant qu'un bandeau promo existe.
+    // Sans cette remise à zéro, la barre reste poussée de 68px avec un vide
+    // au-dessus d'elle.
+    const nav = document.getElementById('navbar');
+    if (nav) nav.style.top = '';
     return;
   }
 

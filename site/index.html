@@ -37,10 +37,10 @@
   <meta name="theme-color" content="#03234B"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap"/>
   <!-- Google Analytics GA4 → Remplacer G-XXXXXXXXXX par votre ID -->
   <script>if('IntersectionObserver' in window)document.documentElement.className+=' js';</script>
-  <link rel="preload" as="image" href="assets/img/lifestyle-clim-salon-vue-mer.jpg" fetchpriority="high"/>
+  <link rel="preload" as="image" href="assets/img/hero-unite-murale.webp" fetchpriority="high"/>
   <link rel="stylesheet" href="assets/css/style.css"/>
   <script type="application/ld+json">
   {
@@ -68,6 +68,54 @@
     }]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Combien coûte une installation de climatisation ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "De 899 € pour un mono-split 9 000 BTU à 4 999 € pour un tri-split Daikin, matériel et pose compris. Les trois gammes sont affichées sur le site : vous connaissez le tarif avant de nous appeler."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Faut-il une autorisation pour poser une climatisation ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En copropriété, l'accord de l'assemblée générale ou du syndic est généralement requis pour l'unité extérieure, selon le règlement. En maison individuelle, aucune autorisation n'est nécessaire."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle puissance pour quelle surface ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Comptez environ 1 kW pour 10 m². Un mono-split 9 000 BTU couvre une pièce jusqu'à 25 m², le 12 000 BTU de la gamme Daikin monte à 35 m². Au-delà, un bi-split ou un tri-split est plus adapté."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Intervenez-vous aussi pour l'entretien et le dépannage ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Nettoyage des filtres, contrôle du circuit et de la charge en fluide, et intervention lorsqu'un appareil ne refroidit plus ou ne démarre plus."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qui a le droit de manipuler le fluide frigorigène ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Brancher un climatiseur suppose de manipuler du R-32. En France, cette opération est réservée aux entreprises titulaires de l'attestation de capacité fluides frigorigènes. Nos techniciens en sont titulaires, catégorie I."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -91,25 +139,16 @@
 
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
-  <a href="index.html" class="navbar__logo">
+  <div class="navbar__gauche">
+    <button class="navbar__rond" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h10" stroke-linecap="round"/></svg></button>
+    <button class="navbar__rond" id="search-btn" aria-label="Rechercher une page"><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke-linecap="round"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg></button>
+</div>
+  <a href="index.html" class="navbar__logo" aria-label="Atelier du Climat — accueil">
     <img src="assets/img/logo-atelier-du-climat.png" alt="Atelier du Climat — climatisation, pompes à chaleur et ventilation" width="480" height="160"/>
   </a>
-  <div class="navbar__links">
-    <a href="index.html">Accueil</a>
-    <a href="index.html#prestations">Prestations</a>
-    <div class="nav-drop"><button class="nav-drop__btn">Nos offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="entree-de-gamme.html"><span><strong>One Clima</strong><small>Entrée de gamme · dès 899 €</small></span></a><a href="bosch.html"><span><strong>Bosch</strong><small>Milieu de gamme · dès 1 199 €</small></span></a><a href="daikin-premium.html"><span><strong>Daikin</strong><small>Haut de gamme · dès 1 699 €</small></span></a></div></div>
-    <a href="realisations.html">Réalisations</a>
-    <div class="nav-drop"><button class="nav-drop__btn">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel nav-drop__panel--grid"><a href="climatisation-nice.html">Nice</a><a href="climatisation-antibes.html">Antibes</a><a href="climatisation-cannes.html">Cannes</a><a href="climatisation-monaco.html">Monaco</a><a href="climatisation-menton.html">Menton</a><a href="climatisation-grasse.html">Grasse</a><a href="climatisation-sophia-antipolis.html">Sophia Antipolis</a><a href="climatisation-cagnes-sur-mer.html">Cagnes-sur-Mer</a></div></div>
-    <div class="nav-drop"><button class="nav-drop__btn">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="certifications-climatisation.html"><span><strong>Certifications</strong><small>F-Gaz, normes et réglementation</small></span></a><a href="blog.html"><span><strong>Blog</strong><small>Conseils &amp; guides</small></span></a></div></div>
-    <a href="contact.html">Contact</a>
-</div>
   <div class="navbar__cta">
     <a href="tel:+33766846856" class="navbar__tel"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>07 66 84 68 56</a>
-    <button class="navbar__search-btn" id="search-btn" aria-label="Rechercher une page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-    <a href="contact.html" class="btn btn--primary">Devis Gratuit</a>
-</div>
-  <div class="navbar__burger" id="burger">
-    <span></span><span></span><span></span>
+    <a href="contact.html" class="btn btn--primary">Demander un devis</a>
 </div>
 </nav>
 
@@ -141,76 +180,79 @@
 </div>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <div class="hero__grid">
-      <div class="hero__col">
-        <div class="hero__eyebrow anim-fade-up">Votre confort, notre métier</div>
-        <h1 class="hero__title anim-fade-up anim-delay-1">
-          Des solutions de climatisation adaptées à <em>votre quotidien</em>
-        </h1>
-        <span class="tricolore tricolore--large anim-fade-up anim-delay-1"></span>
-        <p class="hero__sub anim-fade-up anim-delay-2">
-          Installation, remplacement, entretien et dépannage de climatisation,
-          pompes à chaleur et ventilation sur la Côte d'Azur.
-        </p>
-        <div class="hero__actions anim-fade-up anim-delay-3">
-          <a href="#devis" class="btn btn--primary">Demander un devis gratuit</a>
-          <a href="#prestations" class="btn btn--outline">Découvrir nos solutions</a>
-        </div>
-        <div class="hero__reassurance anim-fade-up anim-delay-3">
-          <div class="hero__rea">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg>
-            <div><b>Réponse sous 24 h</b><span>Devis gratuit, sans engagement</span></div>
-          </div>
-          <div class="hero__rea">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <div><b>Prix affiché, pose comprise</b><span>Le tarif du devis est celui de la facture</span></div>
-          </div>
-          <div class="hero__rea">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            <div><b>Particuliers et professionnels</b><span>Logements, bureaux et commerces</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="hero__media anim-fade-up anim-delay-2">
-        <img src="assets/img/lifestyle-clim-salon-vue-mer.jpg" alt="Climatisation murale installée dans un séjour contemporain ouvert sur la Méditerranée" width="1600" height="900" fetchpriority="high" decoding="async"/>
-        <div class="hero__media-note">Mono-split 9 000 BTU — dès 899 €</div>
-      </div>
-    </div>
-  </div>
+<section class="ciel-hero">
+  <div class="ciel-hero__visuel">
+    <img src="assets/img/hero-unite-murale.webp" alt="Unité murale de climatisation" width="1000" height="446" fetchpriority="high" decoding="async"/>
+</div>
+  <div class="ciel-hero__contenu">
+    <h1 class="ciel-hero__titre anim-fade-up">Climatisation posée vite — au prix affiché.</h1>
+    <p class="ciel-hero__sous anim-fade-up anim-delay-1">
+      Installation, remplacement, entretien et dépannage dans les Alpes-Maritimes.
+      Devis gratuit sous 24 h, pose comprise dans le prix.
+    </p>
+    <div class="ciel-hero__actions anim-fade-up anim-delay-2">
+      <a href="contact.html" class="btn btn--primary">Demander un devis</a>
+      <a href="#offres" class="btn btn--verre">Voir les tarifs</a>
+</div>
+</div>
 </section>
 
-<!-- PRESTATIONS -->
-<section class="prestations" id="prestations">
+<!-- NOS PRESTATIONS -->
+<section class="ciel-services" id="prestations">
   <div class="container">
-    <div class="prestations__grid reveal">
-      <a class="prestation" href="#offres">
-        <svg class="prestation__icone" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M12 2 9 5m3-3 3 3M12 22l-3-3m3 3 3-3M3.3 7l17.4 10M3.3 7l.9 4.1M3.3 7l4.1-.9M20.7 17l-4.1.9m4.1-.9-.9-4.1M3.3 17 20.7 7M3.3 17l4.1.9M3.3 17l.9-4.1M20.7 7l-4.1-.9M20.7 7l-.9 4.1"/></svg>
-        <h3>Climatisation</h3>
-        <p>Installation et remplacement de climatisation réversible, du mono-split à la villa complète.</p>
-        <span class="prestation__lien">Voir les gammes et les prix →</span>
-      </a>
-      <a class="prestation" href="contact.html">
-        <svg class="prestation__icone" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
-        <h3>Pompes à chaleur</h3>
-        <p>Chauffer et rafraîchir avec un seul équipement, pour remplacer un chauffage électrique.</p>
-        <span class="prestation__lien">Demander une étude →</span>
-      </a>
-      <a class="prestation" href="contact.html">
-        <svg class="prestation__icone" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.6 4.6A2 2 0 1 1 11 8H2M12.6 19.4A2 2 0 1 0 14 16H2M17.7 7.7A2.5 2.5 0 1 1 19.5 12H2"/></svg>
-        <h3>Ventilation</h3>
-        <p>Renouveler l'air d'un logement ou d'un local professionnel, et limiter l'humidité.</p>
-        <span class="prestation__lien">Demander une étude →</span>
-      </a>
-      <a class="prestation" href="contact.html">
-        <svg class="prestation__icone" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-        <h3>Entretien et dépannage</h3>
-        <p>Nettoyage des filtres, contrôle du circuit et intervention quand l'appareil ne répond plus.</p>
-        <span class="prestation__lien">Nous décrire la panne →</span>
-      </a>
-    </div>
-  </div>
+    <div class="ciel-services__grid">
+      <div class="ciel-services__visuel reveal">
+        <img src="assets/img/lifestyle-clim-salon-vue-mer.jpg" alt="Climatisation murale installée dans un séjour ouvert sur la Méditerranée" width="1600" height="900" loading="lazy" decoding="async"/>
+</div>
+      <div class="reveal">
+        <span class="pastille">Nos prestations</span>
+        <h2 class="ciel-titre">Tout ce que votre climatisation demande</h2>
+        <p class="ciel-intro">De la panne soudaine à l'entretien de saison, en passant par la pose complète — nous prenons le sujet de bout en bout.</p>
+        <div class="accordeon" id="accordeon-services">
+        <div class="accordeon__item accordeon__item--ouvert">
+          <button class="accordeon__tete" aria-expanded="true" aria-controls="svc-0">
+            <span class="accordeon__titre">Installation et remplacement</span>
+            <span class="accordeon__fleche"><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+          <div class="accordeon__corps" id="svc-0">
+            <p>Du mono-split pour une chambre au multi-split qui couvre une villa entière. Trois gammes affichées de 899 € à 4 999 €, pose comprise, et un tarif qui se fige à la visite technique.</p>
+            <a href="#offres" class="btn btn--outline">Voir les gammes et les prix</a>
+</div>
+</div>
+        <div class="accordeon__item">
+          <button class="accordeon__tete" aria-expanded="false" aria-controls="svc-1">
+            <span class="accordeon__titre">Pompes à chaleur</span>
+            <span class="accordeon__fleche"><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+          <div class="accordeon__corps" id="svc-1">
+            <p>Chauffer et rafraîchir avec un seul appareil. La solution quand un chauffage électrique coûte trop cher à faire tourner l'hiver.</p>
+            <a href="contact.html" class="btn btn--outline">Demander une étude</a>
+</div>
+</div>
+        <div class="accordeon__item">
+          <button class="accordeon__tete" aria-expanded="false" aria-controls="svc-2">
+            <span class="accordeon__titre">Ventilation</span>
+            <span class="accordeon__fleche"><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+          <div class="accordeon__corps" id="svc-2">
+            <p>Renouveler l'air d'un logement ou d'un local professionnel, et tenir l'humidité à distance — un sujet récurrent en bord de mer.</p>
+            <a href="contact.html" class="btn btn--outline">Demander une étude</a>
+</div>
+</div>
+        <div class="accordeon__item">
+          <button class="accordeon__tete" aria-expanded="false" aria-controls="svc-3">
+            <span class="accordeon__titre">Entretien et dépannage</span>
+            <span class="accordeon__fleche"><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+          <div class="accordeon__corps" id="svc-3">
+            <p>Nettoyage des filtres, contrôle du circuit et de la charge, et intervention quand l'appareil ne répond plus ou ne refroidit plus.</p>
+            <a href="contact.html" class="btn btn--outline">Nous décrire la panne</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- OFFRES -->
@@ -367,80 +409,66 @@
 </div>
 </section>
 
-<!-- POURQUOI NOUS CHOISIR -->
-<section class="pourquoi">
+<!-- CHIFFRES -->
+<section class="ciel-chiffres">
   <div class="container">
-    <div class="pourquoi__grid">
-      <div class="pourquoi__bloc reveal">
-        <span class="label">Pourquoi nous choisir</span>
-        <h2>Un partenaire de confiance pour votre confort thermique</h2>
-        <p>Nous vous accompagnons du choix de l'équipement jusqu'à la mise en service. Rien n'est affirmé ici qui ne puisse être prouvé sur demande.</p>
-        <span class="tricolore tricolore--large"></span>
+    <div class="ciel-chiffres__grid">
+      <div class="reveal">
+        <span class="pastille">En quelques chiffres</span>
+        <h2 class="ciel-titre">Ce que vous savez avant même d'appeler</h2>
+        <p class="ciel-intro">Pas de promesse invérifiable : seulement ce que le site affiche noir sur blanc et que nous tenons.</p>
+        <a href="certifications-climatisation.html" class="btn btn--outline">Nos certifications</a>
 </div>
-      <div class="pourquoi__args reveal">
-      <div class="pourquoi__arg"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><div><b>Expertise technique</b><span>Chaque installation suppose de manipuler du fluide R-32 : une opération réservée aux entreprises titulaires de l'attestation de capacité. Nos techniciens en sont titulaires, catégorie I.</span></div></div>
-      <div class="pourquoi__arg"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg><div><b>Matériel de marque</b><span>Trois gammes seulement, choisies pour couvrir tous les budgets : One Clima, Bosch Climate et Daikin Sensira. Pas de catalogue interminable.</span></div></div>
-      <div class="pourquoi__arg"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg><div><b>Garanties légales</b><span>Garantie légale de conformité et garantie des vices cachés sur chaque installation, auxquelles s'ajoutent les garanties constructeur de l'équipement posé.</span></div></div>
-      <div class="pourquoi__arg"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><div><b>Proximité locale</b><span>Nous intervenons dans tout le département 06, de Menton à Mandelieu, Monaco compris. Chaque ville a sa page, avec ses contraintes propres.</span></div></div>
-      <div class="pourquoi__arg"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg><div><b>Devis transparent</b><span>Les prix des trois gammes sont écrits sur le site, pose comprise. La visite technique fixe le tarif définitif, et c'est celui-là qui figure sur la facture.</span></div></div>
-      <div class="pourquoi__arg"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div><b>Accompagnement</b><span>Nous vous montrons les réglages utiles, la télécommande et l'entretien courant des filtres avant de quitter les lieux.</span></div></div>
+      <div class="reveal">
+        <div class="ciel-chiffre"><div class="ciel-chiffre__valeur">899 €</div><div class="ciel-chiffre__label">Prix de départ, matériel et pose compris</div></div>
+        <div class="ciel-chiffre"><div class="ciel-chiffre__valeur">3</div><div class="ciel-chiffre__label">Gammes au catalogue : One Clima, Bosch, Daikin</div></div>
+        <div class="ciel-chiffre"><div class="ciel-chiffre__valeur">24 h</div><div class="ciel-chiffre__label">Délai de réponse à toute demande de devis</div></div>
+        <div class="ciel-chiffre"><div class="ciel-chiffre__valeur">06</div><div class="ciel-chiffre__label">Tout le département, de Menton à Mandelieu</div></div>
 </div>
 </div>
 </div>
 </section>
 
-<!-- NOTRE PROCESSUS -->
-<section class="section">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="label">Notre processus</span>
-      <h2 class="section__title">Un accompagnement simple et efficace</h2>
-      <p class="section__sub">Quatre étapes, et un tarif qui se fige à la deuxième.</p>
-</div>
-    <div class="process__grid">
-      <div class="process__step reveal reveal-delay-0">
-        <div class="process__num">ÉTAPE 1</div>
-        <div class="process__title">Prise de contact</div>
-        <p class="process__desc">Vous nous expliquez votre besoin en quelques minutes, par formulaire, téléphone ou WhatsApp.</p>
-</div>
-      <div class="process__step reveal reveal-delay-1">
-        <div class="process__num">ÉTAPE 2</div>
-        <div class="process__title">Étude de votre projet</div>
-        <p class="process__desc">Une visite technique valide la faisabilité, l'emplacement des unités et le passage des liaisons. Le tarif définitif est arrêté là.</p>
-</div>
-      <div class="process__step reveal reveal-delay-2">
-        <div class="process__num">ÉTAPE 3</div>
-        <div class="process__title">Installation</div>
-        <p class="process__desc">Fixation des unités, liaisons frigorifiques, évacuation des condensats, raccordement électrique et tirage au vide.</p>
-</div>
-      <div class="process__step reveal reveal-delay-3">
-        <div class="process__num">ÉTAPE 4</div>
-        <div class="process__title">Mise en service</div>
-        <p class="process__desc">Mise en route, vérification du fonctionnement et prise en main avec vous. Chantier nettoyé, emballages emportés.</p>
-</div>
-</div>
-</div>
+<!-- BANDE PHOTO -->
+<section class="ciel-bande reveal">
+  <img src="assets/img/lifestyle-clim-unite-exterieure.jpg" alt="Technicien raccordant le groupe extérieur d'une climatisation" width="1200" height="675" loading="lazy" decoding="async"/>
+  <span class="ciel-bande__legende">Le groupe extérieur se pose hors des pièces de vie</span>
 </section>
 
-<!-- CHIFFRES CLÉS -->
-<section class="stats">
+<!-- LES CINQ ÉTAPES -->
+<section class="ciel-etapes">
   <div class="container">
-    <div class="stats__grid">
-      <div class="stats__item">
-        <div class="stats__num">899 € – 4 999 €</div>
-        <div class="stats__label">Tarifs affichés, pose comprise</div>
+    <div class="reveal">
+      <span class="pastille">Comment ça se passe</span>
+      <h2 class="ciel-titre">Du premier appel à la mise en route, en 5 étapes</h2>
+      <p class="ciel-intro">Cinq étapes, et un tarif qui ne bouge plus à partir de la troisième.</p>
 </div>
-      <div class="stats__item">
-        <div class="stats__num">3 gammes</div>
-        <div class="stats__label">One Clima, Bosch, Daikin</div>
+    <div class="ciel-etapes__grid">
+        <div class="etape reveal">
+          <div class="etape__rang"><b>01</b><span>VOTRE DEMANDE</span></div>
+          <h3>Dites-nous ce que vous voulez climatiser</h3>
+          <p>Formulaire, téléphone ou WhatsApp. Deux minutes suffisent pour nous dire ce que vous voulez climatiser.</p>
 </div>
-      <div class="stats__item">
-        <div class="stats__num">24 h</div>
-        <div class="stats__label">Délai de réponse à votre demande</div>
+        <div class="etape reveal">
+          <div class="etape__rang"><b>02</b><span>VISITE TECHNIQUE</span></div>
+          <h3>Nous venons voir les lieux</h3>
+          <p>Nous venons voir les lieux : emplacement des unités, passage des liaisons, alimentation électrique.</p>
 </div>
-      <div class="stats__item">
-        <div class="stats__num">Tout le 06</div>
-        <div class="stats__label">De Menton à Mandelieu, Monaco compris</div>
+        <div class="etape reveal">
+          <div class="etape__rang"><b>03</b><span>DEVIS DÉFINITIF</span></div>
+          <h3>Le prix se fige ici</h3>
+          <p>Le tarif est arrêté à cette étape. C'est ce chiffre-là qui figurera sur la facture, pas un autre.</p>
+</div>
+        <div class="etape etape--bleu reveal">
+          <div class="etape__rang"><b>04</b><span>POSE</span></div>
+          <h3>Nos équipes installent</h3>
+          <p>Fixation, liaisons frigorifiques, évacuation des condensats, raccordement, tirage au vide et mise en service.</p>
+</div>
+        <div class="etape etape--plein reveal">
+          <div class="etape__rang"><b>05</b><span>PRISE EN MAIN</span></div>
+          <h3>Vous gardez la main</h3>
+          <p>Nous vous montrons les réglages utiles et l'entretien des filtres. Chantier nettoyé, emballages emportés.</p>
+          <a href="contact.html" class="btn btn--verre">Demander un devis</a>
 </div>
 </div>
 </div>
@@ -485,11 +513,11 @@
      réels et que leurs auteurs n'ont pas donné leur accord. -->
 
 <!-- ZONES -->
-<section class="section section--brand-dark">
+<section class="ciel-zones">
   <div class="container">
     <div class="section__head reveal">
-      <span class="label">Alpes-Maritimes</span>
-      <h2 class="section__title">Où nous intervenons</h2>
+      <span class="pastille">Alpes-Maritimes</span>
+      <h2 class="ciel-titre">Où nous intervenons</h2>
       <p class="section__sub">Du littoral à l'arrière-pays, Monaco compris. Chaque ville a sa page, avec les prix et les contraintes qui lui sont propres.</p>
 </div>
     <div class="zones__grid">
@@ -513,6 +541,58 @@
       <div class="zone-tag">Roquebrune-Cap-Martin</div>
       <div class="zone-tag">Théoule-sur-Mer</div>
       <div class="zone-tag">Peymeinade</div>
+</div>
+</div>
+</section>
+
+<!-- QUESTIONS FRÉQUENTES -->
+<section class="ciel-faq" id="faq">
+  <div class="container">
+    <div class="reveal">
+      <span class="pastille">Questions fréquentes</span>
+      <h2 class="ciel-titre">Ce qu'on nous demande le plus souvent</h2>
+</div>
+    <div class="ciel-faq__liste reveal" id="faq-liste">
+        <div class="ciel-faq__item">
+          <button class="ciel-faq__tete" aria-expanded="false" aria-controls="faq-0">
+            <span class="ciel-faq__num">01</span>
+            <span class="ciel-faq__q">Combien coûte une installation de climatisation ?</span>
+            <span class="ciel-faq__plus"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="ciel-faq__corps" id="faq-0"><p>De 899 € pour un mono-split 9 000 BTU à 4 999 € pour un tri-split Daikin, matériel et pose compris. Les trois gammes sont affichées sur le site : vous connaissez le tarif avant de nous appeler.</p></div>
+</div>
+        <div class="ciel-faq__item">
+          <button class="ciel-faq__tete" aria-expanded="false" aria-controls="faq-1">
+            <span class="ciel-faq__num">02</span>
+            <span class="ciel-faq__q">Faut-il une autorisation pour poser une climatisation ?</span>
+            <span class="ciel-faq__plus"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="ciel-faq__corps" id="faq-1"><p>En copropriété, l'accord de l'assemblée générale ou du syndic est généralement requis pour l'unité extérieure, selon le règlement. En maison individuelle, aucune autorisation n'est nécessaire.</p></div>
+</div>
+        <div class="ciel-faq__item">
+          <button class="ciel-faq__tete" aria-expanded="false" aria-controls="faq-2">
+            <span class="ciel-faq__num">03</span>
+            <span class="ciel-faq__q">Quelle puissance pour quelle surface ?</span>
+            <span class="ciel-faq__plus"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="ciel-faq__corps" id="faq-2"><p>Comptez environ 1 kW pour 10 m². Un mono-split 9 000 BTU couvre une pièce jusqu'à 25 m², le 12 000 BTU de la gamme Daikin monte à 35 m². Au-delà, un bi-split ou un tri-split est plus adapté.</p></div>
+</div>
+        <div class="ciel-faq__item">
+          <button class="ciel-faq__tete" aria-expanded="false" aria-controls="faq-3">
+            <span class="ciel-faq__num">04</span>
+            <span class="ciel-faq__q">Intervenez-vous aussi pour l'entretien et le dépannage ?</span>
+            <span class="ciel-faq__plus"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="ciel-faq__corps" id="faq-3"><p>Oui. Nettoyage des filtres, contrôle du circuit et de la charge en fluide, et intervention lorsqu'un appareil ne refroidit plus ou ne démarre plus.</p></div>
+</div>
+        <div class="ciel-faq__item">
+          <button class="ciel-faq__tete" aria-expanded="false" aria-controls="faq-4">
+            <span class="ciel-faq__num">05</span>
+            <span class="ciel-faq__q">Qui a le droit de manipuler le fluide frigorigène ?</span>
+            <span class="ciel-faq__plus"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
+          </button>
+          <div class="ciel-faq__corps" id="faq-4"><p>Brancher un climatiseur suppose de manipuler du R-32. En France, cette opération est réservée aux entreprises titulaires de l'attestation de capacité fluides frigorigènes. Nos techniciens en sont titulaires, catégorie I.</p></div>
+</div>
 </div>
 </div>
 </section>
@@ -645,6 +725,9 @@
         <p class="footer__ligne">Lun–Sam 8h à 19h</p>
 </div>
 </div>
+    <div class="footer__enseigne">
+      <img src="assets/img/logo-atelier-du-climat-blanc.png" alt="" width="480" height="160" loading="lazy" decoding="async" aria-hidden="true"/>
+</div>
     <div class="footer__bottom">
       <span>&copy; 2026 Atelier du Climat. Tous droits réservés.</span>
       <span>
@@ -701,5 +784,6 @@
 <script src="assets/js/promo.js"></script>
 <script src="assets/js/social-proof.js"></script>
 <script src="assets/js/devis.js" defer></script>
+<script src="assets/js/accordeon.js" defer></script>
 </body>
 </html>

@@ -3,37 +3,45 @@
    ============================================================ */
 
 :root {
-  /* Charte ATELIER DU CLIMAT */
-  --brand-dark:    #03234B;   /* bleu marine : structure, titres */
-  --brand-darker:  #021833;
-  --brand:         #0877C9;   /* bleu technique : liens, icônes, CTA */
-  --brand-light:   #3F9BDD;
-  --brand-dim:     #065E9F;
-  --brand-glow:    rgba(8,119,201,0.10);
+  /* Charte ATELIER DU CLIMAT — direction « ciel »
+     Le logo reste marine ; l'interface passe au bleu clair et à l'encre
+     presque noire, avec des formes en pilule. */
+  --brand-dark:    #19222C;   /* encre des titres, presque noire */
+  --brand-darker:  #0A0E14;   /* sections sombres */
+  --brand:         #3F8CE8;   /* bleu accent : boutons, chiffres, liens */
+  --brand-light:   #9CC9F5;
+  --brand-dim:     #2E78D0;
+  --brand-glow:    rgba(63,140,232,0.12);
   --accent:        #E52430;   /* rouge : accents ponctuels, jamais dominant */
+  --marine:        #03234B;   /* bleu du logo, pour la marque elle-même */
   /* Filet tricolore du logo, relevé sur le fichier source */
   --tri-bleu:      #0162BA;
   --tri-blanc:     #E9E9E9;
   --tri-rouge:     #DF161A;
   --white:         #FFFFFF;
-  --gray:          #F4F6F8;
-  --sand:          #F7F5F1;   /* neutre chaud : alternance des sections */
+  --gray:          #F4F7FA;
+  --sand:          #EAF4FD;   /* bleu très pâle : alternance des sections */
+  --ciel:          #ACD9FA;   /* ciel du haut de page */
+  --ciel-doux:     #E4F1FD;
+  --bleu-pale:     #E8F2FD;
   --gray-mid:      #E5E7EB;
-  --text:          #26364A;
-  --text-dim:      #5A6B80;
-  --text-muted:    #94A3B8;
-  --line:          #E3E7EC;
-  --line-strong:   #CBD3DC;
-  --line-hover:    rgba(8,119,201,0.35);
-  --shadow:        0 1px 2px rgba(3,35,75,0.05);
-  --shadow-heavy:  0 12px 32px rgba(3,35,75,0.10);
-  --radius-card:   4px;
-  --radius-btn:    3px;
+  --text:          #2A3139;
+  --text-dim:      #667484;
+  --text-muted:    #9AA6B2;
+  --line:          #E4EAF0;
+  --line-strong:   #CBD6E2;
+  --line-hover:    rgba(63,140,232,0.35);
+  --shadow:        0 1px 2px rgba(25,34,44,0.05);
+  --shadow-heavy:  0 14px 40px rgba(25,34,44,0.10);
+  --radius-card:   14px;
+  --radius-btn:    999px;     /* pilule */
+  --radius-champ:  10px;      /* champs de formulaire : pas de pilule */
   --ease-out:      cubic-bezier(0.16,1,0.3,1);
   --ease-inout:    cubic-bezier(0.7,0,0.2,1);
-  --font-head:     'Archivo', 'Helvetica Neue', Arial, sans-serif;
-  --font-body:     'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-head:     'Figtree', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:     'Figtree', 'Helvetica Neue', Arial, sans-serif;
 }
+
 
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1461,7 +1469,7 @@ h1,h2,h3,h4,h5 {
 .nav-drop.open .nav-drop__panel { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
 .nav-drop__panel a {
   display: flex !important; align-items: center !important; gap: 12px !important;
-  padding: 10px 12px !important; border-radius: var(--radius-btn) !important;
+  padding: 10px 12px !important; border-radius: var(--radius-champ) !important;
   color: var(--brand-dark) !important; font-size: 13px !important; font-weight: 400 !important;
   transition: background 0.15s !important; white-space: nowrap;
 }
@@ -1864,7 +1872,7 @@ h1,h2,h3,h4,h5 {
 .form-group textarea {
   width: 100%; padding: 13px 15px; font-family: var(--font-body); font-size: 16px;
   color: var(--text); background: var(--white);
-  border: 1px solid var(--line-strong); border-radius: var(--radius-btn);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-champ);
   transition: border-color .2s, box-shadow .2s;
 }
 .form-group textarea { min-height: 120px; resize: vertical; }
@@ -2341,3 +2349,234 @@ h1,h2,h3,h4,h5 {
   .mobile-acc__body a { min-height: 42px; display: flex; align-items: center; justify-content: center; }
   .btn { min-height: 48px; }
 }
+
+/* ============================================================
+   DIRECTION « CIEL » — composants de la maquette de référence
+   ============================================================ */
+
+/* ── Barre de navigation : bouton rond à gauche, logo au centre,
+      téléphone en pilule bordée et devis en pilule pleine à droite ── */
+.navbar { background: rgba(255,255,255,0.92); backdrop-filter: saturate(180%) blur(14px); border-bottom: none; }
+.navbar.scrolled { box-shadow: 0 1px 0 var(--line), var(--shadow-heavy); }
+.navbar__logo { position: absolute; left: 50%; transform: translateX(-50%); }
+.navbar__cta { margin-left: auto; }
+.navbar__rond {
+  width: 44px; height: 44px; border-radius: 999px;
+  border: 1px solid var(--line-strong); background: var(--white);
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: border-color .2s, background .2s; flex-shrink: 0;
+}
+.navbar__rond:hover { border-color: var(--brand); }
+.navbar__rond svg { stroke: var(--brand-dark); fill: none; stroke-width: 2; }
+.navbar__tel {
+  border: 1px solid var(--line-strong); border-radius: 999px;
+  padding: 11px 20px; background: var(--white); transition: border-color .2s;
+}
+.navbar__tel:hover { border-color: var(--brand); }
+.navbar__gauche { display: flex; align-items: center; gap: 10px; }
+
+/* ── Hero pleine page sur dégradé ciel ── */
+.ciel-hero {
+  position: relative; min-height: 100svh;
+  display: flex; align-items: flex-end; justify-content: center; text-align: center;
+  padding: 150px 0 72px; overflow: hidden;
+  background: linear-gradient(180deg, var(--ciel) 0%, var(--ciel-doux) 58%, var(--white) 100%);
+}
+.ciel-hero__visuel {
+  position: absolute; left: 50%; top: 96px; transform: translateX(-50%);
+  width: min(840px, 88vw); pointer-events: none; z-index: 0;
+}
+.ciel-hero__visuel img { width: 100%; height: auto; display: block; }
+.ciel-hero__contenu { position: relative; z-index: 1; max-width: 920px; margin: 0 auto; padding: 0 20px; }
+.ciel-hero__titre {
+  font-family: var(--font-head);
+  font-size: clamp(34px, 5.4vw, 74px);
+  font-weight: 800; line-height: 1.02; letter-spacing: -0.035em;
+  color: var(--brand-dark); margin-bottom: 20px; text-wrap: balance;
+}
+.ciel-hero__sous {
+  font-size: clamp(16px, 1.5vw, 19px); color: var(--text-dim);
+  line-height: 1.55; max-width: 520px; margin: 0 auto 30px; text-wrap: balance;
+}
+.ciel-hero__actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn--verre {
+  background: rgba(255,255,255,0.45); color: var(--brand-dark);
+  border-color: rgba(255,255,255,0.7); backdrop-filter: blur(8px);
+}
+.btn--verre:hover { background: rgba(255,255,255,0.7); border-color: var(--white); }
+@media (max-width: 760px) {
+  .ciel-hero { min-height: auto; padding: 300px 0 52px; }
+  .ciel-hero__visuel { width: 112%; top: 104px; }
+}
+
+/* ── Étiquette à pastille ── */
+.pastille {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-head); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand-dark);
+}
+.pastille::before { content: ""; width: 7px; height: 7px; border-radius: 999px; background: var(--brand); flex-shrink: 0; }
+.section--nuit .pastille, .ciel-faq .pastille { color: rgba(255,255,255,0.75); }
+
+/* ── Grand titre de section ── */
+.ciel-titre {
+  font-family: var(--font-head);
+  font-size: clamp(28px, 3.9vw, 54px);
+  font-weight: 800; line-height: 1.05; letter-spacing: -0.032em;
+  color: var(--brand-dark); text-wrap: balance;
+}
+.ciel-intro { margin-top: 18px; font-size: 17px; color: var(--text-dim); line-height: 1.6; max-width: 430px; }
+
+/* ── Services : visuel à gauche, titre et accordéon à droite ── */
+.ciel-services { padding: 92px 0; background: var(--white); overflow: hidden; }
+.ciel-services__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+@media (max-width: 920px) { .ciel-services__grid { grid-template-columns: 1fr; gap: 34px; } }
+.ciel-services__visuel { border-radius: var(--radius-card); overflow: hidden; background: var(--bleu-pale); }
+.ciel-services__visuel img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 4/5; }
+@media (max-width: 920px) { .ciel-services__visuel img { aspect-ratio: 16/10; } }
+
+.accordeon { margin-top: 44px; border-left: 1px solid var(--line); padding-left: 24px; }
+@media (max-width: 920px) { .accordeon { margin-top: 28px; } }
+.accordeon__item { border-bottom: 1px solid var(--line); position: relative; }
+.accordeon__item::before {
+  content: ""; position: absolute; left: -25px; top: 0; bottom: 0; width: 2px;
+  background: var(--brand); opacity: 0; transition: opacity .25s;
+}
+.accordeon__item--ouvert::before { opacity: 1; }
+.accordeon__tete {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  background: none; border: none; cursor: pointer; padding: 20px 0; text-align: left;
+}
+.accordeon__titre {
+  font-family: var(--font-head); font-size: clamp(17px, 1.7vw, 21px); font-weight: 600;
+  color: var(--brand-dark); letter-spacing: -0.015em;
+}
+.accordeon__fleche {
+  width: 38px; height: 38px; border-radius: 999px; flex-shrink: 0;
+  border: 1px solid var(--line-strong); background: var(--white);
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: background .25s, border-color .25s;
+}
+.accordeon__fleche svg { stroke: var(--brand); fill: none; stroke-width: 2; transition: stroke .25s; }
+.accordeon__item--ouvert .accordeon__fleche { background: var(--brand); border-color: var(--brand); }
+.accordeon__item--ouvert .accordeon__fleche svg { stroke: var(--white); }
+.accordeon__corps { max-height: 0; overflow: hidden; transition: max-height .35s var(--ease-out); }
+.accordeon__corps p { padding: 0 56px 22px 0; font-size: 16px; color: var(--text-dim); line-height: 1.65; }
+.accordeon__corps .btn { margin: 0 0 22px; }
+
+/* ── Chiffres : très grands, bleus, séparés par des filets ── */
+.ciel-chiffres { padding: 86px 0; background: var(--white); }
+.ciel-chiffres__grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; align-items: start; }
+@media (max-width: 920px) { .ciel-chiffres__grid { grid-template-columns: 1fr; gap: 32px; } }
+.ciel-chiffre { padding: 22px 0; border-top: 1px solid var(--line); }
+.ciel-chiffre:last-child { border-bottom: 1px solid var(--line); }
+.ciel-chiffre__valeur {
+  font-family: var(--font-head);
+  font-size: clamp(44px, 6vw, 86px);
+  font-weight: 700; line-height: 0.92; letter-spacing: -0.05em;
+  color: var(--brand); font-variant-numeric: tabular-nums;
+}
+.ciel-chiffre__label {
+  margin-top: 12px; font-family: var(--font-head); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); line-height: 1.5;
+}
+
+/* ── Bande photo pleine largeur ── */
+.ciel-bande { position: relative; overflow: hidden; }
+.ciel-bande img { width: 100%; height: clamp(300px, 46vw, 620px); object-fit: cover; display: block; }
+.ciel-bande__legende {
+  position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%);
+  background: rgba(255,255,255,0.22); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.4); color: var(--white);
+  font-family: var(--font-head); font-size: 14px; font-weight: 600;
+  padding: 12px 24px; border-radius: 999px; white-space: nowrap;
+}
+
+/* ── Les cinq étapes ── */
+.ciel-etapes { padding: 92px 0; background: var(--white); }
+.ciel-etapes__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 48px; }
+@media (max-width: 1100px) { .ciel-etapes__grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px)  { .ciel-etapes__grid { grid-template-columns: 1fr; } }
+.etape {
+  display: flex; flex-direction: column; min-height: 400px;
+  padding: 24px 22px; border-radius: var(--radius-card); background: var(--gray);
+}
+@media (max-width: 700px) { .etape { min-height: 0; } }
+.etape__rang {
+  display: flex; gap: 14px; font-family: var(--font-head); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: auto;
+}
+.etape__rang b { color: var(--brand-dark); font-weight: 700; }
+.etape h3 {
+  font-family: var(--font-head); font-size: 19px; font-weight: 700;
+  color: var(--brand-dark); letter-spacing: -0.02em; margin: 28px 0 8px;
+}
+.etape p { font-size: 15px; color: var(--text-dim); line-height: 1.6; }
+.etape--bleu { background: var(--ciel-doux); }
+.etape--plein { background: var(--brand); }
+.etape--plein .etape__rang, .etape--plein .etape__rang b { color: rgba(255,255,255,0.8); }
+.etape--plein h3 { color: var(--white); }
+.etape--plein p { color: rgba(255,255,255,0.88); }
+.etape--plein .btn { margin-top: 18px; align-self: flex-start; }
+
+/* ── FAQ sur fond sombre ── */
+.ciel-faq { padding: 92px 0; background: var(--brand-darker); }
+.ciel-faq .ciel-titre { color: var(--white); }
+.ciel-faq .ciel-intro { color: rgba(255,255,255,0.6); }
+.ciel-faq__liste { margin-top: 48px; }
+.ciel-faq__item { border-top: 1px solid rgba(255,255,255,0.12); }
+.ciel-faq__item:last-child { border-bottom: 1px solid rgba(255,255,255,0.12); }
+.ciel-faq__tete {
+  width: 100%; display: grid; grid-template-columns: 54px 1fr 44px; align-items: center; gap: 18px;
+  background: none; border: none; cursor: pointer; padding: 24px 0; text-align: left;
+}
+@media (max-width: 620px) { .ciel-faq__tete { grid-template-columns: 1fr 40px; gap: 14px; } }
+.ciel-faq__num {
+  font-family: var(--font-head); font-size: 14px; font-weight: 600;
+  color: rgba(255,255,255,0.4); font-variant-numeric: tabular-nums;
+}
+@media (max-width: 620px) { .ciel-faq__num { display: none; } }
+.ciel-faq__q {
+  font-family: var(--font-head); font-size: clamp(16px, 1.6vw, 20px); font-weight: 600;
+  color: var(--white); letter-spacing: -0.015em; line-height: 1.35;
+}
+.ciel-faq__plus {
+  width: 40px; height: 40px; border-radius: 999px; justify-self: end;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: background .25s, transform .25s;
+}
+.ciel-faq__plus svg { stroke: var(--white); fill: none; stroke-width: 2; }
+.ciel-faq__item--ouvert .ciel-faq__plus { background: var(--brand); border-color: var(--brand); transform: rotate(45deg); }
+.ciel-faq__corps { max-height: 0; overflow: hidden; transition: max-height .35s var(--ease-out); }
+.ciel-faq__corps p {
+  padding: 0 70px 26px 72px; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.62);
+}
+@media (max-width: 620px) { .ciel-faq__corps p { padding: 0 0 22px; } }
+
+/* ── Pied de page sombre, logo en grand ── */
+.footer { background: var(--brand-darker); }
+.footer__enseigne { padding-top: 48px; margin-top: 44px; border-top: 1px solid rgba(255,255,255,0.1); }
+.footer__enseigne img { width: min(520px, 76%); height: auto; display: block; }
+
+/* ── Zone d'intervention en clair ── */
+.ciel-zones { padding: 86px 0; background: var(--sand); }
+.ciel-zones .section__sub { color: var(--text-dim); }
+.ciel-zones .zones__grid { background: var(--line); border-color: var(--line); }
+.ciel-zones .zone-tag { background: var(--white); color: var(--text); }
+.ciel-zones .zone-tag:hover { background: var(--brand); color: var(--white); }
+
+/* ── Demande de devis sur dégradé ciel ── */
+.devis {
+  background: linear-gradient(180deg, var(--ciel-doux) 0%, var(--white) 100%);
+  padding: 86px 0;
+}
+.devis::after { display: none; }
+.devis .pastille { color: var(--brand-dark); }
+.devis__texte h2 { color: var(--brand-dark); }
+.devis__texte p { color: var(--text-dim); }
+.devis__carte { border: 1px solid var(--line); box-shadow: var(--shadow-heavy); }
+.devis__actions .btn--white { background: var(--brand-dark); color: var(--white); border-color: var(--brand-dark); }
+.devis__actions .btn--white:hover { background: #000; border-color: #000; }
+.devis__actions .btn--outline-white { color: var(--brand-dark); border-color: var(--line-strong); }
+.devis__actions .btn--outline-white:hover { border-color: var(--brand-dark); background: transparent; }

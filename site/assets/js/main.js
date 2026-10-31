@@ -29,13 +29,22 @@ const CF_ANALYTICS_TOKEN = '';
 
 // ── Mobile menu ──
 (function() {
-  const burger = document.querySelector('.navbar__burger');
+  const burger = document.getElementById('burger');
   const menu = document.querySelector('.mobile-menu');
   const close = document.querySelector('.mobile-menu__close');
   if (!burger || !menu) return;
-  burger.addEventListener('click', () => menu.classList.add('open'));
-  close && close.addEventListener('click', () => menu.classList.remove('open'));
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+  const basculer = (ouvert) => {
+    menu.classList.toggle('open', ouvert);
+    burger.setAttribute('aria-expanded', String(ouvert));
+    document.body.style.overflow = ouvert ? 'hidden' : '';
+    if (ouvert) close?.focus();
+  };
+  burger.addEventListener('click', () => basculer(true));
+  close && close.addEventListener('click', () => basculer(false));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => basculer(false)));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) basculer(false);
+  });
 })();
 
 // ── Reveal on scroll ──

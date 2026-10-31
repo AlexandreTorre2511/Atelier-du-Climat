@@ -28,27 +28,22 @@
   <script>if('IntersectionObserver' in window)document.documentElement.className+=' js';</script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap"/>
   <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
 <nav class="navbar" id="navbar">
-  <a href="index.html" class="navbar__logo"><img src="assets/img/logo-atelier-du-climat.png" alt="Atelier du Climat — climatisation, pompes à chaleur et ventilation" width="480" height="160"/></a>
-  <div class="navbar__links">
-    <a href="index.html">Accueil</a>
-    <a href="index.html#prestations">Prestations</a>
-    <div class="nav-drop"><button class="nav-drop__btn">Nos offres <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="entree-de-gamme.html"><span><strong>One Clima</strong><small>Entrée de gamme · dès 899 €</small></span></a><a href="bosch.html"><span><strong>Bosch</strong><small>Milieu de gamme · dès 1 199 €</small></span></a><a href="daikin-premium.html"><span><strong>Daikin</strong><small>Haut de gamme · dès 1 699 €</small></span></a></div></div>
-    <a href="realisations.html">Réalisations</a>
-    <div class="nav-drop"><button class="nav-drop__btn">Villes <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel nav-drop__panel--grid"><a href="climatisation-nice.html">Nice</a><a href="climatisation-antibes.html">Antibes</a><a href="climatisation-cannes.html">Cannes</a><a href="climatisation-monaco.html">Monaco</a><a href="climatisation-menton.html">Menton</a><a href="climatisation-grasse.html">Grasse</a><a href="climatisation-sophia-antipolis.html">Sophia Antipolis</a><a href="climatisation-cagnes-sur-mer.html">Cagnes-sur-Mer</a></div></div>
-    <div class="nav-drop"><button class="nav-drop__btn">Infos <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button><div class="nav-drop__panel"><a href="certifications-climatisation.html"><span><strong>Certifications</strong><small>F-Gaz, normes et réglementation</small></span></a><a href="blog.html"><span><strong>Blog</strong><small>Conseils &amp; guides</small></span></a></div></div>
-    <a href="contact.html">Contact</a>
+  <div class="navbar__gauche">
+    <button class="navbar__rond" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h10" stroke-linecap="round"/></svg></button>
+    <button class="navbar__rond" id="search-btn" aria-label="Rechercher une page"><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke-linecap="round"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg></button>
 </div>
+  <a href="index.html" class="navbar__logo" aria-label="Atelier du Climat — accueil">
+    <img src="assets/img/logo-atelier-du-climat.png" alt="Atelier du Climat — climatisation, pompes à chaleur et ventilation" width="480" height="160"/>
+  </a>
   <div class="navbar__cta">
     <a href="tel:+33766846856" class="navbar__tel"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>07 66 84 68 56</a>
-    <button class="navbar__search-btn" id="search-btn" aria-label="Rechercher une page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-    <a href="contact.html" class="btn btn--primary">Devis Gratuit</a>
+    <a href="contact.html" class="btn btn--primary">Demander un devis</a>
 </div>
-  <div class="navbar__burger" id="burger"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
   <button class="mobile-menu__close" id="menu-close">&#x2715;</button>
@@ -135,7 +130,10 @@
           <li><a href="realisations.html">Réalisations</a></li>
           <li><a href="certifications-climatisation.html">Certifications</a></li>
           <li></li><li><a href="blog.html">Blog</a>
-    <a href="realisations.html">Réalisations</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="politique-confidentialite.html">Confidentialité</a></li><li><a href="cgv.html">Conditions générales</a></li></ul></div><div class="footer__col"><h4>Contact</h4><p>Nice, Côte d'Azur — Département 06</p><p class="footer__ligne"><a href="mailto:depannage06contact@gmail.com" class="footer__lien-discret">depannage06contact@gmail.com</a></p></div></div><div class="footer__bottom"><span>&copy; 2026 Atelier du Climat. Tous droits réservés.</span><span><a href="mentions-legales.html">Mentions légales</a> &nbsp;|&nbsp; <a href="politique-confidentialite.html">Confidentialité</a> &nbsp;|&nbsp; <a href="cgv.html">CGV</a></span></div></div></footer>
+    <a href="realisations.html">Réalisations</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="politique-confidentialite.html">Confidentialité</a></li><li><a href="cgv.html">Conditions générales</a></li></ul></div><div class="footer__col"><h4>Contact</h4><p>Nice, Côte d'Azur — Département 06</p><p class="footer__ligne"><a href="mailto:depannage06contact@gmail.com" class="footer__lien-discret">depannage06contact@gmail.com</a></p></div></div><div class="footer__enseigne">
+      <img src="assets/img/logo-atelier-du-climat-blanc.png" alt="" width="480" height="160" loading="lazy" decoding="async" aria-hidden="true"/>
+</div>
+    <div class="footer__bottom"><span>&copy; 2026 Atelier du Climat. Tous droits réservés.</span><span><a href="mentions-legales.html">Mentions légales</a> &nbsp;|&nbsp; <a href="politique-confidentialite.html">Confidentialité</a> &nbsp;|&nbsp; <a href="cgv.html">CGV</a></span></div></div></footer>
 
 
 <script src="assets/js/nav.js"></script>
