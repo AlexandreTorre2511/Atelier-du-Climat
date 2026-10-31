@@ -120,7 +120,7 @@ h1,h2,h3{font-family:Manrope,sans-serif;color:var(--brand);letter-spacing:-.035e
 .btn svg{transition:transform .25s}.btn:hover svg{transform:translateX(3px)}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 /* Touches tricolores, en écho au trait du logo */
-.header{border-top:3px solid transparent;border-image:linear-gradient(90deg,#0055a4 0 33.34%,#e3e9f0 0 66.67%,#ef4135 0) 1}
+.header{border-bottom:3px solid transparent;border-image:linear-gradient(90deg,#0055a4 0 33.34%,#e3e9f0 0 66.67%,#ef4135 0) 1}
 .tricolore{display:flex;gap:5px;margin:14px 0 16px}.tricolore i{width:22px;height:3px;border-radius:2px;background:#0055a4}.tricolore i:nth-child(2){background:#e3e9f0}.tricolore i:nth-child(3){background:#ef4135}
 .trust-card .tricolore i:first-child,.contact-hero .tricolore i:first-child,.cta .tricolore i:first-child{background:#3a86e0}.trust-card .tricolore i:nth-child(2),.contact-hero .tricolore i:nth-child(2),.cta .tricolore i:nth-child(2){background:#fff}
 .cta .tricolore{justify-content:center}
