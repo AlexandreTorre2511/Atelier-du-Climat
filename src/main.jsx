@@ -13,7 +13,7 @@ const asset = (name) => import.meta.env.BASE_URL + name;
 // Clé d'accès Web3Forms. Tant qu'elle est vide, le formulaire le dit au
 // visiteur et lui donne le téléphone : il ne feint jamais un envoi réussi.
 // À obtenir sur https://web3forms.com (gratuit, la clé arrive par e-mail).
-const FORM_KEY = "00000000-0000-0000-0000-000000000000";
+const FORM_KEY = "";
 const TEL_AFFICHE = "07 66 84 68 56";
 const TEL_LIEN = "tel:+33766846856";
 const EMAIL_CONTACT = "depannage06contact@gmail.com";
