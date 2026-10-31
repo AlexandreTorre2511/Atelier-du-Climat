@@ -18,10 +18,8 @@ const TEL_AFFICHE = "07 66 84 68 56";
 const TEL_LIEN = "tel:+33766846856";
 const WHATSAPP_LIEN = "https://wa.me/33766846856?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20site%20au%20sujet%20d%E2%80%99une%20climatisation.";
 const EMAIL_CONTACT = "depannage06contact@gmail.com";
-// Mêmes adresses que les <link rel="preload"> d'index.html : ne pas les modifier séparément.
-const heroImage = matchMedia("(max-width: 620px)").matches
-  ? "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=70"
-  : "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=70";
+// Même adresse que le <link rel="preload"> d'index.html : ne pas la modifier séparément.
+const heroImage = asset("hero-clim.jpg");
 const services = [
   { icon: Snowflake, title: "Climatisation", kicker: "Enfin des nuits fraîches en été", text: "Installation, remplacement et mise en service de systèmes de climatisation réversible, adaptés à votre intérieur.", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=70", points: ["Étude de la configuration de votre logement", "Sélection d’un équipement adapté", "Installation soignée et mise en service"] },
   { icon: Thermometer, title: "Pompes à chaleur", kicker: "Chauffer mieux, consommer moins", text: "Des solutions de chauffage et de rafraîchissement pensées pour votre confort et votre consommation.", image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=900&q=70", points: ["Conseil selon vos besoins thermiques", "Équipements performants", "Accompagnement de votre projet"] },
