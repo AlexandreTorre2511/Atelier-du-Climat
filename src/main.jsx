@@ -71,7 +71,7 @@ function Deroule() {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) { setAvance(1); return; }
     const mesurer = () => {
       const r = section.current.getBoundingClientRect();
-      setAvance(Math.min(1, Math.max(0, (innerHeight * 0.75 - r.top) / (r.height * 0.75))));
+      setAvance(Math.min(1, Math.max(0, (innerHeight * 0.75 - r.top) / Math.max(r.height * 0.75, innerHeight * 0.55))));
     };
     mesurer();
     addEventListener("scroll", mesurer, { passive: true });
@@ -89,22 +89,32 @@ function Deroule() {
 }
 
 // Apparition au défilement : la classe est posée ici pour ne rien masquer si le JS ne tourne pas.
+// Tout ce qui est passé au-dessus du bas de l'écran apparaît, même après un saut d'ancre.
 function useApparitions() {
   useEffect(() => {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
-    const cibles = document.querySelectorAll(".section-heading, .section-top, .service-explorer, .offer-card, .offer-note, .technician-photo, .technician-copy, .trust-card, .reason, .deroule, .project-card, .faq-heading, .faq-list, .contact-hero-content, .footer-main > div");
-    const observateur = new IntersectionObserver(entrees => entrees.forEach(entree => {
-      if (!entree.isIntersecting) return;
-      entree.target.classList.add("visible");
-      observateur.unobserve(entree.target);
-    }), { rootMargin: "0px 0px -8% 0px" });
-    cibles.forEach(el => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let enAttente = [...document.querySelectorAll(".section-heading, .section-top, .service-explorer, .offer-card, .offer-note, .technician-photo, .technician-copy, .trust-card, .reason, .deroule, .project-card, .faq-heading, .faq-list, .contact-hero-content, .footer-main > div")];
+    enAttente.forEach(el => {
       const rang = [...el.parentElement.children].indexOf(el);
       el.style.setProperty("--delai", `${Math.min(rang, 5) * 70}ms`);
       el.classList.add("apparition");
-      observateur.observe(el);
     });
-    return () => observateur.disconnect();
+    let image = 0;
+    const verifier = () => {
+      image = 0;
+      const seuil = innerHeight * 0.92;
+      enAttente = enAttente.filter(el => {
+        if (el.getBoundingClientRect().top > seuil) return true;
+        el.classList.add("visible");
+        return false;
+      });
+      if (!enAttente.length) removeEventListener("scroll", planifier);
+    };
+    const planifier = () => { if (!image) image = requestAnimationFrame(verifier); };
+    addEventListener("scroll", planifier, { passive: true });
+    addEventListener("resize", planifier);
+    verifier();
+    return () => { removeEventListener("scroll", planifier); removeEventListener("resize", planifier); cancelAnimationFrame(image); };
   }, []);
 }
 
