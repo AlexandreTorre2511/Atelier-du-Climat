@@ -55,7 +55,7 @@ const faqs = [
 const villes = [["Nice", "nice"], ["Cannes", "cannes"], ["Antibes", "antibes"], ["Cagnes-sur-Mer", "cagnes-sur-mer"], ["Grasse", "grasse"], ["Menton", "menton"], ["Monaco", "monaco"], ["Sophia Antipolis", "sophia-antipolis"]];
 const nav = [["Accueil", "#accueil"], ["Prestations", "#prestations"], ["Nos offres", "#offres"], ["Réalisations", "#realisations"], ["À propos", "#apropos"], ["Contact", "#contact"]];
 
-const teintes = ["#e8761a", "#e39a1c", "#5aa6e6", "#2f8de8", "#087df0"];   // du chaud au froid
+const teintes = ["#d32f2f", "#e8761a", "#3b9be6", "#1f86ea", "#087df0"];   // du chaud au froid
 const etapes = [
   [Phone, 32, "Premier échange", "Vous nous présentez votre besoin et vos attentes."],
   [ClipboardCheck, 29, "Étude du projet", "Nous étudions vos espaces et les solutions possibles."],
@@ -83,7 +83,7 @@ function Deroule() {
   return <section className="process section" ref={section} style={{"--avance": avance}}>
     <div className="section-heading"><h2>Simple, du premier appel à la mise en route</h2><p>Suivez le thermomètre : de la canicule à la bonne température, en cinq étapes.</p></div>
     <div className="deroule">
-      <div className="deroule-piste" aria-hidden="true"><div className="deroule-remplissage"/><div className="deroule-curseur">{temperature}°C</div></div>
+      <div className="deroule-piste" aria-hidden="true"><div className="deroule-remplissage"/><div className="deroule-curseur" style={{background: teintes[Math.round(avance * 4)]}}>{temperature}°C</div></div>
       <ol className="deroule-etapes">{etapes.map(([Icon, degres, titre, texte], i) => <li key={titre} className={avance >= i / 4 - 0.02 ? "active" : ""} style={{"--teinte": teintes[i]}}><span className="deroule-point"><Icon/></span><span className="deroule-temp">{degres}°C</span><h3>{titre}</h3><p>{texte}</p></li>)}</ol>
     </div>
   </section>;
