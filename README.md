@@ -22,10 +22,10 @@ npm run preview
 
 Le workflow `.github/workflows/deploy.yml` construit le projet et tente de le publier automatiquement à chaque push sur `main`.
 
-**Activation initiale requise :** ouvrir [Settings → Pages](https://github.com/AlexandreTorre2511/TestClaude/settings/pages), puis choisir **GitHub Actions** comme source dans *Build and deployment*. L'intégration GitHub peut pousser le code et lancer les builds, mais ne dispose pas de l'autorisation nécessaire pour activer elle-même Pages sur ce dépôt.
+**Activation initiale requise :** ouvrir [Settings → Pages](https://github.com/AlexandreTorre2511/Atelier-du-Climat/settings/pages), puis choisir **GitHub Actions** comme source dans *Build and deployment*. L'intégration GitHub peut pousser le code et lancer les builds, mais ne dispose pas de l'autorisation nécessaire pour activer elle-même Pages sur ce dépôt.
 
-- Actions : https://github.com/AlexandreTorre2511/TestClaude/actions
-- URL prévue après activation : https://alexandretorre2511.github.io/TestClaude/
+- Actions : https://github.com/AlexandreTorre2511/Atelier-du-Climat/actions
+- URL prévue après activation : https://alexandretorre2511.github.io/Atelier-du-Climat/
 
 ## Avant publication commerciale
 
