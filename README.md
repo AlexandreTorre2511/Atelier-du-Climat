@@ -25,7 +25,7 @@ Le workflow `.github/workflows/deploy.yml` construit le projet et tente de le pu
 **Activation initiale requise :** ouvrir [Settings → Pages](https://github.com/AlexandreTorre2511/Atelier-du-Climat/settings/pages), puis choisir **GitHub Actions** comme source dans *Build and deployment*. L'intégration GitHub peut pousser le code et lancer les builds, mais ne dispose pas de l'autorisation nécessaire pour activer elle-même Pages sur ce dépôt.
 
 - Actions : https://github.com/AlexandreTorre2511/Atelier-du-Climat/actions
-- URL prévue après activation : https://alexandretorre2511.github.io/Atelier-du-Climat/
+- Site en ligne : https://atelierduclimat06.fr/ (hébergé sur Netlify)
 
 ## Avant publication commerciale
 

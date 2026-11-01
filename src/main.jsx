@@ -10,10 +10,6 @@ import "./style.css";
 
 const asset = (name) => import.meta.env.BASE_URL + name;
 
-// Clé d'accès Web3Forms. Tant qu'elle est vide, le formulaire le dit au
-// visiteur et lui donne le téléphone : il ne feint jamais un envoi réussi.
-// À obtenir sur https://web3forms.com (gratuit, la clé arrive par e-mail).
-const FORM_KEY = "";
 const TEL_AFFICHE = "07 66 84 68 56";
 const TEL_LIEN = "tel:+33766846856";
 const WHATSAPP_LIEN = "https://wa.me/33766846856?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20site%20au%20sujet%20d%E2%80%99une%20climatisation.";
@@ -134,20 +130,15 @@ function App() {
     e.preventDefault();
     const champs = Object.fromEntries(new FormData(e.currentTarget));
     if (champs.botcheck) return;                  // piège à robots
-    if (!FORM_KEY) { setEtatEnvoi("nonconfigure"); return; }
     setEtatEnvoi("envoi");
     try {
-      const reponse = await fetch("https://api.web3forms.com/submit", {
+      // Netlify Forms : le formulaire « devis » est déclaré en HTML statique dans index.html.
+      const reponse = await fetch("/", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: FORM_KEY,
-          subject: `Demande de devis - ${champs.nom || "site"}`,
-          ...champs
-        })
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ "form-name": "devis", ...champs }).toString()
       });
-      const resultat = await reponse.json().catch(() => ({}));
-      const envoye = reponse.ok && resultat.success;
+      const envoye = reponse.ok;
       if (envoye) window.adcSuivre?.({ event: "generate_lead", form_name: "devis" });
       setEtatEnvoi(envoye ? "ok" : "echec");
     } catch {
@@ -222,7 +213,7 @@ function App() {
 
     <footer className="footer"><div className="footer-main"><div className="footer-brand"><img src={asset("logo-blanc.png")} alt="Atelier du Climat" width="420" height="156" loading="lazy" decoding="async"/><p>Votre spécialiste climatisation, pompes à chaleur et ventilation sur la Côte d’Azur.</p></div><div><b>Navigation</b>{nav.map(([n, h]) => <a key={h} href={h}>{n}</a>)}<a href={asset("blog.html")}>Blog</a></div><div><b>Nos prestations</b>{services.map(s => <a key={s.title} href="#prestations">{s.title}</a>)}</div><div><b>Villes</b>{villes.map(([nom, slug]) => <a key={slug} href={asset(`climatisation-${slug}.html`)}>Climatisation {nom}</a>)}</div><div><b>Contact</b><a href="tel:+33766846856">07 66 84 68 56</a><a href="mailto:depannage06contact@gmail.com">depannage06contact@gmail.com</a><span>Nice · Alpes-Maritimes</span><span>7j/7 · 8h - 20h</span></div></div><div className="footer-bottom"><span>© 2026 Atelier du Climat. Tous droits réservés.</span><span className="drapeau-mention"><span className="drapeau" aria-hidden="true"><i/><i/><i/></span>Entreprise française, basée à Nice</span><span><a href={asset("mentions-legales.html")}>Mentions légales</a> · <a href={asset("politique-confidentialite.html")}>Politique de confidentialité</a><span data-zone-cookies> · <a href="#" data-open-cookies>Gérer mes cookies</a></span></span></div></footer>
 
-    {modal && <div className="modal-backdrop" onMouseDown={e => {if (e.target === e.currentTarget) setModal(false)}}><div className="quote-modal"><button className="modal-close" onClick={() => setModal(false)} aria-label="Fermer"><X/></button>{etatEnvoi === "ok" ? <div className="success"><span className="success-icon"><Check/></span><h2>Merci pour votre demande !</h2><p>Nous revenons vers vous rapidement. Pour une demande urgente, appelez-nous au <a href={TEL_LIEN}>{TEL_AFFICHE}</a>.</p><button className="btn btn-primary" onClick={() => setModal(false)}>Fermer</button></div> : etatEnvoi === "echec" || etatEnvoi === "nonconfigure" ? <div className="success"><span className="success-icon"><Phone/></span><h2>Contactez-nous directement</h2><p>Votre demande n'a pas pu être transmise. Appelez-nous au <a href={TEL_LIEN}>{TEL_AFFICHE}</a> ou écrivez à <a href={`mailto:${EMAIL_CONTACT}`}>{EMAIL_CONTACT}</a>.</p><button className="btn btn-primary" onClick={() => setEtatEnvoi(null)}>Réessayer</button></div> : <><span className="eyebrow">DEVIS GRATUIT &amp; SANS ENGAGEMENT</span><h2>Parlons de votre projet</h2><p>Quelques informations pour mieux vous accompagner.</p><form onSubmit={envoyerDemande}><input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" style={{display:"none"}} aria-hidden="true"/><div className="form-row"><label>Nom et prénom<input required name="nom" placeholder="Votre nom"/></label><label>Téléphone<input required name="telephone" type="tel" placeholder="06 00 00 00 00"/></label></div><label>Adresse e-mail<input required name="email" type="email" placeholder="vous@exemple.fr"/></label><label>Votre besoin<select name="prestation" defaultValue=""><option value="" disabled>Sélectionnez une prestation</option><option>Installation climatisation</option><option>Pompe à chaleur</option><option>Ventilation</option><option>Entretien / dépannage</option><option>Autre demande</option></select></label><label>Votre message<textarea name="message" rows="3" placeholder="Décrivez-nous votre projet…"/></label><button className="btn btn-primary form-submit" type="submit" disabled={etatEnvoi === "envoi"}>{etatEnvoi === "envoi" ? "Envoi en cours…" : <>Envoyer ma demande <ArrowRight/></>}</button><small className="form-legal">En envoyant ce formulaire, vous acceptez d’être recontacté au sujet de votre demande.</small></form></>}</div></div>}
+    {modal && <div className="modal-backdrop" onMouseDown={e => {if (e.target === e.currentTarget) setModal(false)}}><div className="quote-modal"><button className="modal-close" onClick={() => setModal(false)} aria-label="Fermer"><X/></button>{etatEnvoi === "ok" ? <div className="success"><span className="success-icon"><Check/></span><h2>Merci pour votre demande !</h2><p>Nous revenons vers vous rapidement. Pour une demande urgente, appelez-nous au <a href={TEL_LIEN}>{TEL_AFFICHE}</a>.</p><button className="btn btn-primary" onClick={() => setModal(false)}>Fermer</button></div> : etatEnvoi === "echec" || <><span className="eyebrow">DEVIS GRATUIT &amp; SANS ENGAGEMENT</span><h2>Parlons de votre projet</h2><p>Quelques informations pour mieux vous accompagner.</p><form onSubmit={envoyerDemande}><input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" style={{display:"none"}} aria-hidden="true"/><div className="form-row"><label>Nom et prénom<input required name="nom" placeholder="Votre nom"/></label><label>Téléphone<input required name="telephone" type="tel" placeholder="06 00 00 00 00"/></label></div><label>Adresse e-mail<input required name="email" type="email" placeholder="vous@exemple.fr"/></label><label>Votre besoin<select name="prestation" defaultValue=""><option value="" disabled>Sélectionnez une prestation</option><option>Installation climatisation</option><option>Pompe à chaleur</option><option>Ventilation</option><option>Entretien / dépannage</option><option>Autre demande</option></select></label><label>Votre message<textarea name="message" rows="3" placeholder="Décrivez-nous votre projet…"/></label><button className="btn btn-primary form-submit" type="submit" disabled={etatEnvoi === "envoi"}>{etatEnvoi === "envoi" ? "Envoi en cours…" : <>Envoyer ma demande <ArrowRight/></>}</button><small className="form-legal">En envoyant ce formulaire, vous acceptez d’être recontacté au sujet de votre demande.</small></form></>}</div></div>}
   </>;
 }
 createRoot(document.getElementById("root")).render(<App/>);
