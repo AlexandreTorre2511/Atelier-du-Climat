@@ -2,7 +2,7 @@
 // Chargé en synchrone dans le <head> de toutes les pages, avant tout autre script.
 // Tant que GTM_ID est vide, rien n'est chargé et aucun bandeau n'apparaît.
 (function () {
-  var GTM_ID = "";
+  var GTM_ID = "GTM-NGSF868S";
   var CLE = "adc_consent";
   var DUREE_CHOIX = 1000 * 60 * 60 * 24 * 182;   // le choix est redemandé après 6 mois
   var POLITIQUE = "politique-confidentialite.html";
