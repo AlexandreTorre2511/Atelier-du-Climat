@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import {
   ArrowRight, ArrowUpRight, Phone, Snowflake, Thermometer, Wind, Wrench,
   Zap, ShieldCheck, Users, Settings, Award, MapPin, FileText, CalendarDays,
-  Check, Star, Clock3, Menu, X, ChevronLeft, ChevronRight, Play, Quote,
+  Check, Star, Clock3, Menu, X, Play, Quote,
   ChevronDown, ClipboardCheck, BadgeCheck, Mail, Sparkles
 } from "lucide-react";
 import "./style.css";
@@ -17,17 +17,47 @@ const EMAIL_CONTACT = "depannage06contact@gmail.com";
 // Même adresse que le <link rel="preload"> d'index.html : ne pas la modifier séparément.
 const heroImage = asset("hero-clim.jpg");
 const services = [
-  { icon: Snowflake, title: "Climatisation", kicker: "Enfin des nuits fraîches en été", text: "Installation, remplacement et mise en service de systèmes de climatisation réversible, adaptés à votre intérieur.", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=70", points: ["Étude de la configuration de votre logement", "Sélection d’un équipement adapté", "Installation soignée et mise en service"] },
+  { icon: Snowflake, title: "Climatisation", kicker: "Enfin des nuits fraîches en été", text: "Installation, remplacement et mise en service de systèmes de climatisation réversible, adaptés à votre intérieur.", image: heroImage, points: ["Étude de la configuration de votre logement", "Sélection d’un équipement adapté", "Installation soignée et mise en service"] },
   { icon: Thermometer, title: "Pompes à chaleur", kicker: "Chauffer mieux, consommer moins", text: "Des solutions de chauffage et de rafraîchissement pensées pour votre confort et votre consommation.", image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=900&q=70", points: ["Conseil selon vos besoins thermiques", "Équipements performants", "Accompagnement de votre projet"] },
   { icon: Wind, title: "Ventilation", kicker: "Respirer un air sain chez soi", text: "Des solutions de renouvellement d’air pour améliorer le confort de votre habitat ou de vos locaux professionnels.", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=70", points: ["Analyse de vos espaces", "Solution adaptée à votre activité", "Installation et réglages"] },
   { icon: Wrench, title: "Entretien & dépannage", kicker: "Une clim qui dure et reste efficace", text: "Un suivi régulier et une assistance pour maintenir les performances et la fiabilité de vos installations.", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=70", points: ["Entretien des équipements", "Diagnostic de dysfonctionnement", "Conseils pour prolonger leur durée de vie"] }
 ];
-const offers = [
-  { tag: "CONFORT AU QUOTIDIEN", name: "Daikin Perfera", power: "3,5 kW", price: "Sur devis", brand: "DAIKIN", kind: "Climatisation", bullets: ["Performance énergétique", "Fonctionnement silencieux", "Pilotage à distance selon modèle", "Pour pièces de vie et chambres"] },
-  { tag: "DESIGN & PERFORMANCE", name: "Mitsubishi Electric MSZ-LN", power: "3,5 kW", price: "Sur devis", brand: "MITSUBISHI", kind: "Design", bullets: ["Finitions premium", "Technologies de filtration selon modèle", "Contrôle connecté selon configuration", "Confort été comme hiver"] },
-  { tag: "SOLUTION ACCESSIBLE", name: "Atlantic Takao", power: "3,5 kW", price: "Sur devis", brand: "ATLANTIC", kind: "Fiable", bullets: ["Solution résidentielle", "Confort thermique au quotidien", "Utilisation simple", "Étude selon votre logement"] },
-  { tag: "ÉLÉGANCE", name: "Daikin Stylish", power: "3,5 kW", price: "Sur devis", brand: "DAIKIN", kind: "Design", bullets: ["Format compact", "Design contemporain", "Régulation intelligente selon modèle", "Confort personnalisé"] }
+// Packs à prix d'appel : les deux suivent le même gabarit (confort, silence, pilotage).
+const packs = [
+  { nom: "Pack Confort", marque: "Midea", logo: "packs/logo-midea.png", modele: "Midea Elegance", puissance: "2,5 kW", reference: "MSAGSAU-09HRDN8", prix: "1 290", photo: "packs/midea-elegance.jpg",
+    atouts: ["Chauffe l’hiver, rafraîchit l’été", "Silencieux, jusqu’à 22 dB(A)¹", "Pilotage Wi-Fi depuis le téléphone"] },
+  { nom: "Pack Performance", marque: "Daikin", logo: "packs/logo-daikin.png", modele: "Daikin Sensira", puissance: "2,5 kW", reference: "FTXC25E", prix: "1 990", photo: "packs/daikin-sensira.jpg", echelle: .88,
+    atouts: ["Chauffe l’hiver, rafraîchit l’été", "Silencieux, jusqu’à 20 dB(A)¹", "Pilotage depuis le téléphone (Onecta)"] }
 ];
+// Catalogue sans prix, groupé par fabricant. `unites` dessine le schéma ; `pack` relie une référence à son pack.
+const catalogue = [
+  { marque: "Midea", logo: "packs/logo-midea.png", photo: "packs/gamme-midea.jpg", texte: "De l’Elegance pour une pièce au Xtreme Pro pour trois pièces.", references: [
+    { type: "Monosplit", detail: "2,5 kW · 9000 Btu", unites: 1, gamme: "Elegance", reference: "MSAGSAU-09HRDN8", options: ["Wi-Fi"], pack: "Pack Confort" },
+    { type: "Monosplit", detail: "3,5 kW · 12000 Btu", unites: 1, gamme: "Evolution", reference: "MSAGXBU-12HRDN8", options: ["R-32", "Wi-Fi"] },
+    { type: "Bi-split", detail: "2 unités 12000 Btu", unites: 2, gamme: "Xtreme Pro", reference: "Groupe M2OE-18HFN8-Q", options: ["R-32", "Wi-Fi"] },
+    { type: "Tri-split", detail: "3 unités 12000 Btu", unites: 3, gamme: "Xtreme Pro", reference: "Groupe M3OA-27", options: ["R-32", "Wi-Fi"] }
+  ] },
+  { marque: "Daikin", logo: "packs/logo-daikin.png", photo: "packs/gamme-daikin.jpg", texte: "La gamme Sensira en monosplit, et les groupes multi-split jusqu’à trois pièces.", references: [
+    { type: "Monosplit", detail: "2,5 kW · 9000 Btu", unites: 1, gamme: "Sensira", reference: "FTXC25E", options: ["R-32", "Wi-Fi"], pack: "Pack Performance" },
+    { type: "Monosplit", detail: "3,5 kW · 12000 Btu", unites: 1, gamme: "Sensira", reference: "FTXC35E", options: ["R-32", "Wi-Fi"] },
+    { type: "Bi-split", detail: "9000 + 9000 Btu", unites: 2, gamme: "Multi-split", reference: "Groupe 2AMXF40A", options: ["R-32", "Wi-Fi"] },
+    { type: "Tri-split", detail: "9000 + 9000 + 12000 Btu", unites: 3, gamme: "Multi-split", reference: "Groupe 3AMXF52A", options: ["R-32", "Wi-Fi"] }
+  ] }
+];
+const guideSplit = [
+  [1, "Monosplit", "Une pièce : une unité intérieure reliée à son unité extérieure."],
+  [2, "Bi-split", "Deux pièces sur un seul groupe extérieur, chacune réglée à sa température."],
+  [3, "Tri-split", "Trois pièces, un seul groupe dehors : moins d’appareils en façade."]
+];
+
+// Schéma d'installation : `unites` unités murales reliées à un seul groupe extérieur.
+function SchemaSplit({ unites }) {
+  const hauts = { 1: [21], 2: [12, 30], 3: [5, 21, 37] }[unites];
+  return <svg className="cat-schema" viewBox="0 0 64 48" aria-hidden="true">
+    {hauts.map(y => <g key={y}><rect x="3" y={y} width="20" height="7" rx="2"/><path d={`M23 ${y + 3.5}H33V24H43`}/></g>)}
+    <rect x="43" y="15" width="18" height="18" rx="2.5"/><circle cx="52" cy="24" r="4.5"/>
+  </svg>;
+}
 const reasons = [
   [Clock3, "Joignable 7j/7", "De 8h à 20h, week-end compris"],
   [Award, "Des marques fiables", "Daikin, Mitsubishi Electric, Atlantic"],
@@ -90,7 +120,7 @@ function Deroule() {
 function useApparitions() {
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let enAttente = [...document.querySelectorAll(".section-heading, .section-top, .service-explorer, .offer-card, .offer-note, .technician-photo, .technician-copy, .trust-card, .reason, .deroule, .project-card, .faq-heading, .faq-list, .contact-hero-content, .footer-main > div")];
+    let enAttente = [...document.querySelectorAll(".section-heading, .section-top, .service-explorer, .packs-titre, .pack, .cat-guide, .cat-onglets, .technician-photo, .technician-copy, .trust-card, .reason, .deroule, .project-card, .faq-heading, .faq-list, .contact-hero-content, .footer-main > div")];
     enAttente.forEach(el => {
       const rang = [...el.parentElement.children].indexOf(el);
       el.style.setProperty("--delai", `${Math.min(rang, 5) * 70}ms`);
@@ -118,13 +148,15 @@ function useApparitions() {
 function App() {
   useApparitions();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [offerIndex, setOfferIndex] = useState(0);
   const [modal, setModal] = useState(false);
   const [etatEnvoi, setEtatEnvoi] = useState(null);
+  const [produit, setProduit] = useState(null);
   const [activeService, setActiveService] = useState(0);
   const [activeFaq, setActiveFaq] = useState(0);
-  const visibleOffers = [0, 1, 2].map(i => offers[(offerIndex + i) % offers.length]);
-  const openQuote = (suivi = true) => { setEtatEnvoi(null); setModal(true); if (suivi) window.adcSuivre?.({ event: "click_devis" }); };
+  const [marqueActive, setMarqueActive] = useState(0);
+  // `choix` préremplit le devis (pack ou ligne du catalogue) ; les autres boutons l'effacent.
+  const openQuote = (suivi = true, choix = null) => { setProduit(choix); setEtatEnvoi(null); setModal(true); if (suivi) window.adcSuivre?.({ event: "click_devis", ...(choix && { produit: choix }) }); };
+  const demanderPrix = (choix) => openQuote(true, choix);
   useEffect(() => { if (location.hash === "#devis") openQuote(false); }, []);   // lien « Demander un devis » des pages villes
   const envoyerDemande = async (e) => {
     e.preventDefault();
@@ -173,6 +205,41 @@ function App() {
         <div className="rating-card"><b>Une question ? Appelez-nous.</b><small>7j/7, de 8h à 20h</small></div>
       </section>
 
+      <section className="packs" id="offres" style={{"--fond-packs": `url(${asset("packs/fond-salon.jpg")})`}}>
+        <div className="packs-titre"><h2>Nos packs climatisation</h2><span className="tricolore" aria-hidden="true"><i/><i/><i/></span><p>Deux solutions fiables et performantes, installées par nos équipes.</p><a href={TEL_LIEN}>Une question ? {TEL_AFFICHE}</a></div>
+        <div className="packs-panneaux">{packs.map(p => <article className="pack" key={p.nom}>
+          <div className="pack-vitrine"><img src={asset(p.photo)} alt={`Climatiseur mural ${p.modele}`} style={p.echelle && {scale: String(p.echelle)}} width="1000" height="500" loading="lazy" decoding="async"/></div>
+          <img className="pack-logo" src={asset(p.logo)} alt={p.marque} height="30" loading="lazy" decoding="async"/>
+          <h3>{p.nom}</h3>
+          <p className="pack-modele">{p.modele} · {p.puissance}</p>
+          <ul className="pack-atouts" role="list">{p.atouts.map(a => <li key={a}>{a}</li>)}</ul>
+          <details className="pack-inclus"><summary>Ce qui est inclus <ChevronDown size={14}/></summary><p>Unité intérieure {p.reference}, unité extérieure, télécommande, pose par nos équipes.</p></details>
+          <div className="pack-achat"><small>À partir de</small><p className="pack-prix">{p.prix} €<span>TTC*</span></p><button className="pack-bouton" onClick={() => demanderPrix(`${p.nom} · ${p.modele} ${p.puissance} (${p.reference})`)}>Demander un devis</button></div>
+        </article>)}</div>
+        <p className="packs-renvoi">* Autres modèles disponibles sur catalogue. Prix TTC, pose incluse, selon faisabilité technique et configuration du logement. Détails et conditions sur devis. ¹ Niveaux sonores minimaux annoncés par les fabricants pour les gammes Elegance et Sensira.</p>
+      </section>
+
+      <section className="catalogue" id="catalogue">
+        <h2>Notre catalogue climatisation</h2>
+        <span className="tricolore" aria-hidden="true"><i/><i/><i/></span>
+        <p className="catalogue-intro">Retrouvez nos références par fabricant et demandez un prix pour le modèle souhaité.</p>
+        <div className="cat-guide">{guideSplit.map(([unites, titre, texte]) => <div key={titre}><SchemaSplit unites={unites}/><span><b>{titre}</b><p>{texte}</p></span></div>)}</div>
+        <div className="cat-onglets" role="tablist">{catalogue.map((m, i) => <button key={m.marque} role="tab" aria-selected={marqueActive === i} onClick={() => setMarqueActive(i)}><img src={asset(m.logo)} alt={m.marque} height="28" decoding="async"/><small>{m.references.length} références</small></button>)}</div>
+        {catalogue.map((m, i) => <div className={marqueActive === i ? "cat-marque active" : "cat-marque"} key={m.marque}>
+          <button className="cat-accordeon" aria-expanded={marqueActive === i} onClick={() => setMarqueActive(marqueActive === i ? -1 : i)}><span><img src={asset(m.logo)} alt={m.marque} height="24" loading="lazy" decoding="async"/><small>{m.references.length} références</small></span><ChevronDown size={20}/></button>
+          <div className="cat-corps">
+          <aside className="cat-fiche"><div className="cat-fiche-photo"><img src={asset(m.photo)} alt={`Gamme de climatiseurs ${m.marque}`} loading="lazy" decoding="async"/></div><img className="cat-fiche-logo" src={asset(m.logo)} alt="" height="26" loading="lazy" decoding="async"/><p>{m.texte}</p></aside>
+          <ul className="cat-refs" role="list">{m.references.map(r => <li key={r.reference}>
+            <SchemaSplit unites={r.unites}/>
+            <span className="cat-type"><b>{r.type}</b><span>{r.detail}</span></span>
+            <span className="cat-ref"><b>{r.gamme}</b><span>{r.reference}</span>{r.pack && <em>Disponible en {r.pack}</em>}</span>
+            <span className="cat-options">{r.options.map(o => <span key={o}>{o}</span>)}</span>
+            <button onClick={() => demanderPrix(`${m.marque} ${r.gamme} ${r.type.toLowerCase()} ${r.detail} (${r.reference})`)}>Demander un prix</button>
+          </li>)}</ul>
+          </div>
+        </div>)}
+      </section>
+
       <section className="service-section section" id="prestations">
         <div className="section-heading"><h2>Du frais, du chaud, de l’air pur.</h2><p>Nous étudions, installons et entretenons. Un seul numéro pour tout.</p></div>
         <div className="service-explorer">
@@ -185,14 +252,9 @@ function App() {
         </div>
       </section>
 
-      <section className="offers-section section" id="offres">
-        <div className="section-top"><div><h2>Les climatisations<br/>que nous posons</h2><p className="section-subtitle">Daikin, Mitsubishi Electric, Atlantic : des marques fiables, choisies et dimensionnées pour votre pièce.</p></div><div className="carousel-controls"><a href={TEL_LIEN}><Phone size={15}/> Conseil au {TEL_AFFICHE} <ArrowRight size={16}/></a><button onClick={() => setOfferIndex((offerIndex + offers.length - 1) % offers.length)} aria-label="Offres précédentes"><ChevronLeft/></button><button onClick={() => setOfferIndex((offerIndex + 1) % offers.length)} aria-label="Offres suivantes"><ChevronRight/></button></div></div>
-        <div className="offer-grid">{visibleOffers.map(offer => <article className="offer-card" key={offer.name}><span className="offer-tag">{offer.tag}</span><div className="product-visual"><div className="aircon-unit"><span/><i/><b/></div></div><div className="offer-title"><div><h3>{offer.name}</h3><b>{offer.power}</b></div><span className="brand-word">{offer.brand}</span></div><div className="chips"><span>{offer.kind}</span><span>Confort thermique</span><span>Sur étude</span></div><div className="price-row"><div><strong>{offer.price}</strong><p>Installation selon configuration</p></div><button className="btn btn-primary btn-small" onClick={openQuote}>Demander un prix <ArrowRight size={15}/></button></div><ul role="list">{offer.bullets.map(b => <li key={b}>{b}</li>)}</ul></article>)}</div>
-        <p className="offer-note">Les équipements présentés sont des exemples de solutions. Le choix définitif et le tarif sont établis selon votre projet et la configuration des lieux.</p>
-      </section>
 
       <section className="technician-section">
-        <div className="technician-photo"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=70" alt="Intervention technique et savoir-faire professionnel" loading="lazy" decoding="async"/></div>
+        <div className="technician-photo"><img src={heroImage} alt="Salon climatisé avec une unité murale" loading="lazy" decoding="async"/></div>
         <div className="technician-copy"><h2>Chaque intérieur est différent. Votre clim aussi.</h2><p>Avant de vous proposer un appareil, nous étudions votre logement : la surface, l’exposition, l’emplacement des unités. Vous obtenez une installation pensée pour chez vous, pas un modèle standard.</p><ul className="tech-points" role="list"><li>Une étude adaptée à vos espaces</li><li>Des explications claires à chaque étape</li><li>Une installation pensée dans le détail</li></ul><button className="btn btn-primary" onClick={openQuote}>Échanger sur mon projet <ArrowRight size={17}/></button></div>
       </section>
 
@@ -213,7 +275,7 @@ function App() {
 
     <footer className="footer"><div className="footer-main"><div className="footer-brand"><img src={asset("logo-blanc.png")} alt="Atelier du Climat" width="420" height="156" loading="lazy" decoding="async"/><p>Votre spécialiste climatisation, pompes à chaleur et ventilation sur la Côte d’Azur.</p></div><div><b>Navigation</b>{nav.map(([n, h]) => <a key={h} href={h}>{n}</a>)}<a href={asset("blog.html")}>Blog</a></div><div><b>Nos prestations</b>{services.map(s => <a key={s.title} href="#prestations">{s.title}</a>)}</div><div><b>Villes</b>{villes.map(([nom, slug]) => <a key={slug} href={asset(`climatisation-${slug}.html`)}>Climatisation {nom}</a>)}</div><div><b>Contact</b><a href="tel:+33766846856">07 66 84 68 56</a><a href="mailto:depannage06contact@gmail.com">depannage06contact@gmail.com</a><span>Nice · Alpes-Maritimes</span><span>7j/7 · 8h - 20h</span></div></div><div className="footer-bottom"><span>© 2026 Atelier du Climat. Tous droits réservés.</span><span className="drapeau-mention"><span className="drapeau" aria-hidden="true"><i/><i/><i/></span>Entreprise française, basée à Nice</span><span><a href={asset("mentions-legales.html")}>Mentions légales</a> · <a href={asset("politique-confidentialite.html")}>Politique de confidentialité</a><span data-zone-cookies> · <a href="#" data-open-cookies>Gérer mes cookies</a></span></span></div></footer>
 
-    {modal && <div className="modal-backdrop" onMouseDown={e => {if (e.target === e.currentTarget) setModal(false)}}><div className="quote-modal"><button className="modal-close" onClick={() => setModal(false)} aria-label="Fermer"><X/></button>{etatEnvoi === "ok" ? <div className="success"><span className="success-icon"><Check/></span><h2>Merci pour votre demande !</h2><p>Nous revenons vers vous rapidement. Pour une demande urgente, appelez-nous au <a href={TEL_LIEN}>{TEL_AFFICHE}</a>.</p><button className="btn btn-primary" onClick={() => setModal(false)}>Fermer</button></div> : etatEnvoi === "echec" || <><span className="eyebrow">DEVIS GRATUIT &amp; SANS ENGAGEMENT</span><h2>Parlons de votre projet</h2><p>Quelques informations pour mieux vous accompagner.</p><form onSubmit={envoyerDemande}><input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" style={{display:"none"}} aria-hidden="true"/><div className="form-row"><label>Nom et prénom<input required name="nom" placeholder="Votre nom"/></label><label>Téléphone<input required name="telephone" type="tel" placeholder="06 00 00 00 00"/></label></div><label>Adresse e-mail<input required name="email" type="email" placeholder="vous@exemple.fr"/></label><label>Votre besoin<select name="prestation" defaultValue=""><option value="" disabled>Sélectionnez une prestation</option><option>Installation climatisation</option><option>Pompe à chaleur</option><option>Ventilation</option><option>Entretien / dépannage</option><option>Autre demande</option></select></label><label>Votre message<textarea name="message" rows="3" placeholder="Décrivez-nous votre projet…"/></label><button className="btn btn-primary form-submit" type="submit" disabled={etatEnvoi === "envoi"}>{etatEnvoi === "envoi" ? "Envoi en cours…" : <>Envoyer ma demande <ArrowRight/></>}</button><small className="form-legal">En envoyant ce formulaire, vous acceptez d’être recontacté au sujet de votre demande.</small></form></>}</div></div>}
+    {modal && <div className="modal-backdrop" onMouseDown={e => {if (e.target === e.currentTarget) setModal(false)}}><div className="quote-modal"><button className="modal-close" onClick={() => setModal(false)} aria-label="Fermer"><X/></button>{etatEnvoi === "ok" ? <div className="success"><span className="success-icon"><Check/></span><h2>Merci pour votre demande !</h2><p>Nous revenons vers vous rapidement. Pour une demande urgente, appelez-nous au <a href={TEL_LIEN}>{TEL_AFFICHE}</a>.</p><button className="btn btn-primary" onClick={() => setModal(false)}>Fermer</button></div> : etatEnvoi === "echec" || <><span className="eyebrow">DEVIS GRATUIT &amp; SANS ENGAGEMENT</span><h2>Parlons de votre projet</h2><p>Quelques informations pour mieux vous accompagner.</p><form onSubmit={envoyerDemande}><input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" style={{display:"none"}} aria-hidden="true"/><div className="form-row"><label>Nom et prénom<input required name="nom" placeholder="Votre nom"/></label><label>Téléphone<input required name="telephone" type="tel" placeholder="06 00 00 00 00"/></label></div><label>Adresse e-mail<input required name="email" type="email" placeholder="vous@exemple.fr"/></label>{produit && <><p className="form-produit">Votre demande concerne <b>{produit}</b></p><input type="hidden" name="modele" value={produit}/></>}<label>Votre besoin<select name="prestation" defaultValue={produit ? "Installation climatisation" : ""}><option value="" disabled>Sélectionnez une prestation</option><option>Installation climatisation</option><option>Pompe à chaleur</option><option>Ventilation</option><option>Entretien / dépannage</option><option>Autre demande</option></select></label><label>Votre message<textarea name="message" rows="3" placeholder="Décrivez-nous votre projet…"/></label><button className="btn btn-primary form-submit" type="submit" disabled={etatEnvoi === "envoi"}>{etatEnvoi === "envoi" ? "Envoi en cours…" : <>Envoyer ma demande <ArrowRight/></>}</button><small className="form-legal">En envoyant ce formulaire, vous acceptez d’être recontacté au sujet de votre demande.</small></form></>}</div></div>}
   </>;
 }
 createRoot(document.getElementById("root")).render(<App/>);
