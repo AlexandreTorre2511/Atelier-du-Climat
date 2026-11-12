@@ -157,7 +157,16 @@ function App() {
   // `choix` préremplit le devis (pack ou ligne du catalogue) ; les autres boutons l'effacent.
   const openQuote = (suivi = true, choix = null) => { setProduit(choix); setEtatEnvoi(null); setModal(true); if (suivi) window.adcSuivre?.({ event: "click_devis", ...(choix && { produit: choix }) }); };
   const demanderPrix = (choix) => openQuote(true, choix);
-  useEffect(() => { if (location.hash === "#devis") openQuote(false); }, []);   // lien « Demander un devis » des pages villes
+  useEffect(() => { if (location.hash === "#devis") openQuote(false); }, []);
+  // Plein écran : le contact prend la hauteur de l'écran moins celle du pied de page, mesurée ici.
+  useEffect(() => {
+    const pied = document.querySelector(".footer");
+    const mesurer = () => document.documentElement.style.setProperty("--pied", pied.offsetHeight + "px");
+    mesurer();
+    const observateur = new ResizeObserver(mesurer);
+    observateur.observe(pied);
+    return () => observateur.disconnect();
+  }, []);   // lien « Demander un devis » des pages villes
   const envoyerDemande = async (e) => {
     e.preventDefault();
     const champs = Object.fromEntries(new FormData(e.currentTarget));
@@ -258,9 +267,12 @@ function App() {
         <div className="technician-copy"><h2>Chaque intérieur est différent. Votre clim aussi.</h2><p>Avant de vous proposer un appareil, nous étudions votre logement : la surface, l’exposition, l’emplacement des unités. Vous obtenez une installation pensée pour chez vous, pas un modèle standard.</p><ul className="tech-points" role="list"><li>Une étude adaptée à vos espaces</li><li>Des explications claires à chaque étape</li><li>Une installation pensée dans le détail</li></ul><button className="btn btn-primary" onClick={openQuote}>Échanger sur mon projet <ArrowRight size={17}/></button></div>
       </section>
 
+      {/* Sur ordinateur, ces deux sections courtes se partagent un écran */}
+      <div className="ecran-duo">
       <section className="trust-section" id="apropos"><div className="trust-inner"><div className="trust-card"><h2>Pourquoi nous appeler</h2><span className="tricolore" aria-hidden="true"><i/><i/><i/></span><p>Un interlocuteur joignable 7j/7, un devis clair avant toute intervention, et des marques qui ont fait leurs preuves.</p><a className="btn btn-light" href={TEL_LIEN}><Phone size={16}/> Nous appeler <ArrowRight size={16}/></a></div><div className="reason-grid">{reasons.map(([Icon, title, text]) => <div className="reason" key={title}><span className="round-icon"><Icon/></span><span><b>{title}</b><small>{text}</small></span></div>)}</div></div></section>
 
       <Deroule/>
+      </div>
 
 
       <section className="projects section" id="realisations"><div className="section-top"><div><h2>Des projets qui prennent forme</h2><p className="section-subtitle">Quelques exemples de projets et d’environnements à équiper.</p></div><a href={TEL_LIEN}><Phone size={15}/> Présenter mon projet <ArrowRight size={16}/></a></div><div className="project-grid">{projects.map(p => <article className="project-card" key={p.title}><img src={p.image} alt={p.title} loading="lazy" decoding="async" width="500" height="333"/><div><b>{p.title}</b><span>{p.city}</span></div></article>)}</div></section>
