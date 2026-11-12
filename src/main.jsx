@@ -17,10 +17,10 @@ const EMAIL_CONTACT = "depannage06contact@gmail.com";
 // Même adresse que le <link rel="preload"> d'index.html : ne pas la modifier séparément.
 const heroImage = asset("hero-clim.jpg");
 const services = [
-  { icon: Snowflake, title: "Climatisation", kicker: "Enfin des nuits fraîches en été", text: "Installation, remplacement et mise en service de systèmes de climatisation réversible, adaptés à votre intérieur.", image: heroImage, points: ["Étude de la configuration de votre logement", "Sélection d’un équipement adapté", "Installation soignée et mise en service"] },
-  { icon: Thermometer, title: "Pompes à chaleur", kicker: "Chauffer mieux, consommer moins", text: "Des solutions de chauffage et de rafraîchissement pensées pour votre confort et votre consommation.", image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=900&q=70", points: ["Conseil selon vos besoins thermiques", "Équipements performants", "Accompagnement de votre projet"] },
-  { icon: Wind, title: "Ventilation", kicker: "Respirer un air sain chez soi", text: "Des solutions de renouvellement d’air pour améliorer le confort de votre habitat ou de vos locaux professionnels.", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=70", points: ["Analyse de vos espaces", "Solution adaptée à votre activité", "Installation et réglages"] },
-  { icon: Wrench, title: "Entretien & dépannage", kicker: "Une clim qui dure et reste efficace", text: "Un suivi régulier et une assistance pour maintenir les performances et la fiabilité de vos installations.", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=70", points: ["Entretien des équipements", "Diagnostic de dysfonctionnement", "Conseils pour prolonger leur durée de vie"] }
+  { icon: Snowflake, title: "Climatisation", kicker: "Enfin des nuits fraîches en été", text: "Installation, remplacement et mise en service de systèmes de climatisation réversible, adaptés à votre intérieur.", image: asset("photos/clim-maison.jpg"), points: ["Étude de la configuration de votre logement", "Sélection d’un équipement adapté", "Installation soignée et mise en service"] },
+  { icon: Thermometer, title: "Pompes à chaleur", kicker: "Chauffer mieux, consommer moins", text: "Des solutions de chauffage et de rafraîchissement pensées pour votre confort et votre consommation.", image: asset("photos/pompe-a-chaleur.jpg"), points: ["Conseil selon vos besoins thermiques", "Équipements performants", "Accompagnement de votre projet"] },
+  { icon: Wind, title: "Ventilation", kicker: "Respirer un air sain chez soi", text: "Des solutions de renouvellement d’air pour améliorer le confort de votre habitat ou de vos locaux professionnels.", image: asset("photos/clim-appartement.jpg"), points: ["Analyse de vos espaces", "Solution adaptée à votre activité", "Installation et réglages"] },
+  { icon: Wrench, title: "Entretien & dépannage", kicker: "Une clim qui dure et reste efficace", text: "Un suivi régulier et une assistance pour maintenir les performances et la fiabilité de vos installations.", image: asset("photos/clim-local-pro.jpg"), points: ["Entretien des équipements", "Diagnostic de dysfonctionnement", "Conseils pour prolonger leur durée de vie"] }
 ];
 // Packs à prix d'appel : les deux suivent le même gabarit (confort, silence, pilotage).
 const packs = [
@@ -65,10 +65,10 @@ const reasons = [
   [FileText, "Devis clair", "Le prix est fixé avant le début des travaux"]
 ];
 const projects = [
-  { title: "Climatisation maison individuelle", city: "Nice", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=500&q=70" },
-  { title: "Pompe à chaleur", city: "Antibes", image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=500&q=70" },
-  { title: "Climatisation appartement", city: "Cannes", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=500&q=70" },
-  { title: "Climatisation local professionnel", city: "Sophia Antipolis", image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=500&q=70" }
+  { title: "Climatisation maison individuelle", city: "Nice", image: asset("photos/clim-maison.jpg") },
+  { title: "Pompe à chaleur", city: "Antibes", image: asset("photos/pompe-a-chaleur.jpg") },
+  { title: "Climatisation appartement", city: "Cannes", image: asset("photos/clim-appartement.jpg") },
+  { title: "Climatisation local professionnel", city: "Sophia Antipolis", image: asset("photos/clim-local-pro.jpg") }
 ];
 const faqs = [
   ["Quel est le prix d’une installation de climatisation ?", "Le prix dépend notamment du type d’équipement, du nombre d’unités, de la configuration des lieux et des contraintes de pose. Après échange sur votre besoin, nous pouvons établir une proposition adaptée."],
