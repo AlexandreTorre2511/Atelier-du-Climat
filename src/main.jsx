@@ -60,7 +60,7 @@ function SchemaSplit({ unites }) {
 }
 const reasons = [
   [Clock3, "Joignable 7j/7", "De 8h à 20h, week-end compris"],
-  [Award, "Des marques fiables", "Daikin, Mitsubishi Electric, Atlantic"],
+  [Award, "Des marques fiables", "Daikin et Midea"],
   [MapPin, "Une entreprise locale", "Nice et toute la Côte d’Azur"],
   [FileText, "Devis clair", "Le prix est fixé avant le début des travaux"]
 ];
@@ -207,7 +207,7 @@ function App() {
           <div className="hero-actions"><a className="btn btn-primary" href={TEL_LIEN}><Phone size={18}/> Appeler le {TEL_AFFICHE}</a><a className="btn btn-outline" href="#prestations">Découvrir nos prestations</a></div>
           <div className="hero-benefits">
             <div><span className="round-icon"><Clock3/></span><span><b>Joignable 7j/7</b><small>De 8h à 20h, même le dimanche</small></span></div>
-            <div><span className="round-icon"><ShieldCheck/></span><span><b>Des marques sûres</b><small>Daikin, Mitsubishi Electric, Atlantic</small></span></div>
+            <div><span className="round-icon"><ShieldCheck/></span><span><b>Des marques sûres</b><small>Daikin et Midea</small></span></div>
             <div><span className="round-icon"><Users/></span><span><b>Particuliers & pros</b><small>Maison, appartement, bureau, commerce</small></span></div>
           </div>
         </div>
